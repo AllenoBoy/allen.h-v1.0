@@ -1,4 +1,4 @@
-# Biblioteca allen.h
+# Documentação Biblioteca allen.h
 
 TIPOS DE FUNÇÕES:
 - PR 
