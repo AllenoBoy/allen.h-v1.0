@@ -1,6 +1,7 @@
 # Documentação Biblioteca allen.h
 
-TIPOS DE FUNÇÕES:
+*funções*
+
 - PR 
 - CS 
 - SYS
