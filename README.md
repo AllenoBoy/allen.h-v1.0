@@ -1,17 +1,18 @@
 # Documentação Biblioteca allen.h
 
-*funções*
+*Avisos*
 
-- PR 
-- CS 
-- SYS
-- PROP
-- G
-- ALLEN
-- SB
-- ANIM
-- 3D
-- FILE
-- ASTX
-- POINTERS
+*Tutoriais*
 
+*Funções*
+
+1. PR 
+2. CS
+3. SYS
+4. PROP
+5. G
+6. allen
+7. SB
+8. MATTE
+9. LOCH
+10. FLEE
