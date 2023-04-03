@@ -147,6 +147,8 @@
 # define CRESCENTE      1004
 # define DECRESCENTE    4001
 # define NOTMULTIPLO    0404
+# define CUBO_X_DF_Y    3333
+# define CUBO_X_EQ_Y    9999
 
 
 
@@ -5751,12 +5753,13 @@ allen_INTa_COPY ( int SIZE , int ARRAY [] , int CONDITION , int COMPARATOR , int
 
      case QUADRADO_X_EQ_Y:
                          for ( jak = 0; jak < SIZE; jak++ )
-                         if ( ARRAY [jak] % COMPARATOR not_eq 0 ) { NEW_ARRAY [pos] = ARRAY [jak]; pos++; }
+                         if ( pow ( ARRAY [kaj] , 2 ) == COMPARATOR ) { NEW_ARRAY [pos] = ARRAY [jak]; pos++; }
      return pos;
      break;
 
      case QUADRADO_X_DF_Y:
-
+                        for ( jak = 0; jak < SIZE; jak++ )
+                        if ( pow ( ARRAY [kaj] , 2 ) not_eq COMPARATOR ) { NEW_ARRAY [pos] = ARRAY [jak]; pos++; }
      return pos;
      break;
 
