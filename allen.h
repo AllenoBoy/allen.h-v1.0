@@ -71,10 +71,14 @@
 */
 
 # define DEFAULT     850
-# define BRAZIL       21
-# define PT_BR      1252
-# define LATIN9 9      9
+# define BRAZIL     1252
+# define LATIN      1250
+# define CIRILICO   1251
 # define JAPAN       932
+# define COREAN      949
+# define GREGO      1253
+# define TURCO      1254
+
 
 
 
@@ -88,10 +92,6 @@
 # define DOWN_KEY     80
 # define LEFT_KEY     75
 # define RIGHT_KEY    77
-# define W           119
-# define S           115
-# define A            97
-# define D           100
 # define ENTER        13
 # define BACKSPACE     8
 # define EMPTY         0
@@ -138,6 +138,15 @@
 # define PWS 82
 # define ONN 34
 # define PWN 23
+# define PAR              54
+# define IMPAR            85
+# define MULTIPLO         62
+# define QUADRADO_X_DF_Y  78
+# define QUADRADO_X_EQ_Y  43
+# define INVERSO          82
+# define CRESCENTE      1004
+# define DECRESCENTE    4001
+# define NOTMULTIPLO    0404
 
 
 
@@ -222,13 +231,13 @@ void PRL_DOUBLE ( int REVERSE , int LINES , int COLS , int SPACE , int COMMA, co
 
 void CS_SETREGION                           ( int REGION );
 void CS_SETTITLE                            ( const char* TITLE );
-static inline void CS_SETFULLSCREEN         ( void );
-static inline void CS_DISABLEMAXIMIZEBUTTON ( void );
-static inline void CS_DISABLEMINIMIZEBUTTON ( void );
-static inline void CS_DISABLECLOSEBUTTON    ( void );
-static inline void CS_DISABLEALLBUTTONS     ( void );
-static inline void CS_DISABLERESIZE         ( void );
-static inline void CS_DISABLESCROLLBAR      ( void );
+void CS_SETFULLSCREEN                       ( void );
+void CS_DISABLEMAXIMIZEBUTTON               ( void );
+void CS_DISABLEMINIMIZEBUTTON               ( void );
+void CS_DISABLECLOSEBUTTON                  ( void );
+void CS_DISABLEALLBUTTONS                   ( void );
+void CS_DISABLERESIZE                       ( void );
+void CS_DISABLESCROLLBAR                    ( void );
 void CS_SETTEXTATTRIBUTE                    ( int VARIATION );
 void CS_SETPOSITION                         ( int X , int Y );
 void CS_SETSIZE                             ( int WIDHT , int HEIGHT );
@@ -241,8 +250,8 @@ int CS_GETyCURSORPOSITION                   ( void );
 COORD CS_SETxyCURSOR                        ( int X , int Y );
 void CS_SETCURSORPOSITION                   ( COORD newPos );
 void CS_SETVISIBILITY                       ( bool HIDE_ );
-static inline void NEWCONSOLE               ( void );
-static inline void CLOSECONSOLE             ( void );
+void NEWCONSOLE                             ( void );
+void CLOSECONSOLE                           ( void );
 
 
 
@@ -253,29 +262,29 @@ static inline void CLOSECONSOLE             ( void );
 */
 
 
-void SYS_SETREGION                   ( int REGION );
-void SYS_SETSIZE                     ( int COLS , int LINES );
-void SYS_SETCOLOR                    ( char TEXTCOLOR , char BACKGROUNDCOLOR );
-void SYS_SETTITLE                    ( const char* TITLE );
-void SYS_PAUSE                       ( int HIDE_ );
-void SYS_GCCVERSION                  ( void );
-void SYS_READFILE                    ( const char* TITLE );
-void SYS_RESTARTCOMPUTER             ( void );
-static inline void SYS_SETFULLSCREEN ( void );
-static inline void SYS_POPS          ( const char* COMMAND );
-void SYS_CLEARSCREEN                 ( void );
-void SYS_READFILE                    ( const char* FILENAME );
-void SYS_LISTDIR                     ( void );
-void SYS_MOVETODIR                   ( const char* DIR );
-void SYS_CREATEDIR                   ( const char* DIR );
-void SYS_REMOVEDIR                   ( const char* DIR );
-void SYS_COPYFILE                    ( const char* FILE , const char* DIR );
-void SYS_XCOPYFILE                   ( const char* FILE , const char* DIR );
-void SYS_MOVEDIR                     ( const char* DIR , const char* FINALDIR );
-void SYS_DELETEFILE                  ( const char* DIR_OR_FILE );
-void SYS_RENAMEFILE                  ( const char* FILE , const char* NEW_NAME );
-void SYS_ECHO                        ( const char* TEXT );
-void SYS_PING                        ( void );
+void SYS_SETREGION        ( int REGION );
+void SYS_SETSIZE          ( int COLS , int LINES );
+void SYS_SETCOLOR         ( char TEXTCOLOR , char BACKGROUNDCOLOR );
+void SYS_SETTITLE         ( const char* TITLE );
+void SYS_PAUSE            ( int HIDE_ );
+void SYS_GCCVERSION       ( void );
+void SYS_READFILE         ( const char* TITLE );
+void SYS_RESTARTCOMPUTER  ( void );
+void SYS_SETFULLSCREEN    ( void );
+void SYS_POPS             ( const char* COMMAND );
+void SYS_CLEARSCREEN      ( void );
+void SYS_READFILE         ( const char* FILENAME );
+void SYS_LISTDIR          ( void );
+void SYS_MOVETODIR        ( const char* DIR );
+void SYS_CREATEDIR        ( const char* DIR );
+void SYS_REMOVEDIR        ( const char* DIR );
+void SYS_COPYFILE         ( const char* FILE , const char* DIR );
+void SYS_XCOPYFILE        ( const char* FILE , const char* DIR );
+void SYS_MOVEDIR          ( const char* DIR , const char* FINALDIR );
+void SYS_DELETEFILE       ( const char* DIR_OR_FILE );
+void SYS_RENAMEFILE       ( const char* FILE , const char* NEW_NAME );
+void SYS_ECHO             ( const char* TEXT );
+void SYS_PING             ( void );
 
 
 
@@ -288,8 +297,8 @@ void SYS_PING                        ( void );
 
 
 // PROPS
-enum COLORS { DEFAULT_TEXT , BLACK_TEXT = 30 , RED_TEXT , GREEN_TEXT , YELLOW_TEXT , BLUE_TEXT , MAGENTA_TEXT , CYAN_TEXT , WHITE_TEXT , DEFAULT_BACKGROUND = 40 , RED_BACKGROUND , GREEN_BACKGROUND , YELLOW_BACKGROUND , BLUE_BACKGROUND , MAGENTA_BACKGROUND , CYAN_BACKGROUND , WHITE_BACKGROUND };
-enum CLEARCODES { ClearTheTextFromTheCursorToTheEnd, ClearTheTextFromTheCursorToTheStart, ClearTheScreen };
+enum   COLORS { DEFAULT_TEXT , BLACK_TEXT = 30 , RED_TEXT , GREEN_TEXT , YELLOW_TEXT , BLUE_TEXT , MAGENTA_TEXT , CYAN_TEXT , WHITE_TEXT , DEFAULT_BACKGROUND = 40 , RED_BACKGROUND , GREEN_BACKGROUND , YELLOW_BACKGROUND , BLUE_BACKGROUND , MAGENTA_BACKGROUND , CYAN_BACKGROUND , WHITE_BACKGROUND };
+enum   CLEARCODES { ClearTheTextFromTheCursorToTheEnd, ClearTheTextFromTheCursorToTheStart, ClearTheScreen };
 static HANDLE stdoutHandle , stdinHandle;
 static DWORD  outModeInit  , inModeInit;
 
@@ -346,19 +355,13 @@ char getS                   ( const char *QUESTION_TEXT , int LINES , int SPACES
 
 
 /*
-    5. allen FUNCTIONS
+    6. allen FUNCTIONS
 */
 
 
 void   allen_GOTOXY            ( int X , int Y );
 int    allen_GETDIGITS         ( int VARIABLE );
 void   allen_TESTCODEPAGE      ( int CODE_PAGE );
-
-int    allen_ARRAYSUBS ();
-int    allen_ARRAYREMOVE ();
-
-int    allen_BARRAYSUBS ();
-int    allen_BARRAYREMOVE ();
 
 
 
@@ -367,7 +370,7 @@ int    allen_BARRAYREMOVE ();
 
 
 /*
-    6. SB FUNCTION
+    7. SB FUNCTION
 */
 
 
@@ -378,7 +381,7 @@ int SB_CREATEBOX ( LPCTSTR BOX_TEXT , LPCTSTR BOX_CAPTION, UINT BOX_TYPE );
 
 
 /*
-    7. MATTE FUNCTIONS
+    8. MATTE FUNCTIONS
 */
 
 
@@ -409,7 +412,7 @@ double MATTE_raizquadrada        ( double X , bool PRINT , int COMMAS );
 
 
 /*
-    8. LOCH FUNCTIONS
+    9. LOCH FUNCTIONS
 */
 
 
@@ -421,8 +424,21 @@ void LOCH_SETLOCAL ( char TEXT [] );
 
 
 /*
-    9. FLEE FUNCTIONS
+    10. FLEE FUNCTIONS
 */
+
+
+void FLEE_CREATEAFILE 	       ( const char* FILE_NAME );
+void FLEE_RENAMEAFILE 		   ( const char* FILE_NAME , const char * NEW_FILE_NAME );
+void FLEE_MOVEAFILE 		   ( const char * FILE_NAME , const char * NEW_DIRECTORY );
+void FLEE_COPYAFILE 		   ( const char * FOLDER , const char * FILE_NAME, const char* NEW_FOLDER , const char* NEW_FILENAME );
+void FLEE_CREATEAFILEANDFOLDER ( const char* FOLDER_NAME , const char* FILE_NAME );
+void FLEE_CREATEAFOLDER 	   ( const char* FOLDER_NAME );
+void FLEE_RENAMEAFOLDER 	   ( const char *FOLDER_NAME , const char *NEW_FOLDER_NAME );
+void FLEE_DELETEAFILE 		   ( const char *FILE_NAME );
+void FLEE_DELETEAFOLDER 	   ( const char * FOLDER_NAME );
+void FLEE_MOVEAFOLDER 		   ( const char *FOLDER_NAME , const char *NEW_PATH );
+void FLEE_COPYAFOLDER 		   ( const char *FOLDER_NAME , const char *NEW_PATH );
 
 
 
@@ -568,7 +584,7 @@ PRV_INT ( int REVERSE , int SIZE , int TYPE , int SPACE , const char* ANY_TEXT ,
 {
 
 
-       int GUARD =_SPACE;
+       int GUARD = SPACE;
 
 
        if ( REVERSE == 0 )
@@ -577,15 +593,11 @@ PRV_INT ( int REVERSE , int SIZE , int TYPE , int SPACE , const char* ANY_TEXT ,
 
             if ( TYPE == 1 )
             {
+
                  for ( int kaj = 0; kaj < SIZE; kaj++ )
                  {
-                       while ( SPACE not_eq 0 )
-                       {
-                               printf(" ");
-                               SPACE--;
-                       }
-
                        printf ("%d", ARRAY [kaj]);
+                       while ( SPACE > 0 ) { printf(" "); SPACE--; }
                        SPACE = GUARD;
                  }
             }
@@ -596,13 +608,8 @@ PRV_INT ( int REVERSE , int SIZE , int TYPE , int SPACE , const char* ANY_TEXT ,
             {
                  for ( int kaj = 0; kaj < SIZE; kaj++ )
                  {
-                       while ( SPACE not_eq 0 )
-                       {
-                               printf(" ");
-                               SPACE--;
-                       }
-
                        printf ("%s%d", ANY_TEXT, ARRAY [kaj]);
+                       while ( SPACE > 0 ) { printf(" "); SPACE--; }
                        SPACE = GUARD;
                  }
             }
@@ -613,13 +620,8 @@ PRV_INT ( int REVERSE , int SIZE , int TYPE , int SPACE , const char* ANY_TEXT ,
             {
                  for ( int kaj = 0; kaj < SIZE; kaj++ )
                  {
-                       while ( SPACE not_eq 0 )
-                       {
-                               printf(" ");
-                               SPACE--;
-                       }
-
                        printf ("%s%d%s", ANY_TEXT, ARRAY [kaj], ANY_TEXT2);
+                       while ( SPACE > 0 ) { printf(" "); SPACE--; }
                        SPACE = GUARD;
                  }
             }
@@ -632,13 +634,8 @@ PRV_INT ( int REVERSE , int SIZE , int TYPE , int SPACE , const char* ANY_TEXT ,
                  {
                        printf ("\n");
 
-                       while ( SPACE not_eq 0 )
-                       {
-                               printf(" ");
-                               SPACE--;
-                       }
-
                        printf ("\n%d%s", ARRAY [kaj], ANY_TEXT);
+                       while ( SPACE > 0 ) { printf(" "); SPACE--; }
                        SPACE = GUARD;
                  }
             }
@@ -650,14 +647,8 @@ PRV_INT ( int REVERSE , int SIZE , int TYPE , int SPACE , const char* ANY_TEXT ,
                  for ( int kaj = 0; kaj < SIZE; kaj++ )
                  {
                        printf ("\n");
-
-                       while ( SPACE not_eq 0 )
-                       {
-                               printf(" ");
-                               SPACE--;
-                       }
-
                        printf ("\n%s%d%s", ANY_TEXT, ARRAY [kaj], ANY_TEXT2);
+                       while ( SPACE > 0 ) { printf(" "); SPACE--; }
                        SPACE = GUARD;
                  }
             }
@@ -669,14 +660,8 @@ PRV_INT ( int REVERSE , int SIZE , int TYPE , int SPACE , const char* ANY_TEXT ,
                  for ( int kaj = 0; kaj < SIZE; kaj++ )
                  {
                        printf ("\n");
-
-                       while ( SPACE not_eq 0 )
-                       {
-                               printf(" ");
-                               SPACE--;
-                       }
-
                        printf ("%d", ARRAY [kaj]);
+                       while ( SPACE > 0 ) { printf(" "); SPACE--; }
                        SPACE = GUARD;
                  }
             }
@@ -693,13 +678,8 @@ PRV_INT ( int REVERSE , int SIZE , int TYPE , int SPACE , const char* ANY_TEXT ,
             {
                  for ( int kaj = SIZE - 1; kaj >= 0; kaj-- )
                  {
-                       while ( SPACE not_eq 0 )
-                       {
-                               printf(" ");
-                               SPACE--;
-                       }
-
                        printf ("%d", ARRAY [kaj]);
+                       while ( SPACE > 0 ) { printf(" "); SPACE--; }
                        SPACE = GUARD;
                  }
             }
@@ -710,13 +690,8 @@ PRV_INT ( int REVERSE , int SIZE , int TYPE , int SPACE , const char* ANY_TEXT ,
        {
             for ( int kaj = SIZE - 1; kaj >= 0; kaj-- )
             {
-                  while ( SPACE not_eq 0 )
-                  {
-                          printf(" ");
-                          SPACE--;
-                  }
-
                   printf ("%s%d ", ANY_TEXT, ARRAY [kaj]);
+                  while ( SPACE > 0 ) { printf(" "); SPACE--; }
                   SPACE = GUARD;
             }
        }
@@ -727,13 +702,8 @@ PRV_INT ( int REVERSE , int SIZE , int TYPE , int SPACE , const char* ANY_TEXT ,
        {
             for ( int kaj = SIZE - 1; kaj >= 0; kaj-- )
             {
-                  while ( SPACE not_eq 0 )
-                  {
-                          printf(" ");
-                          SPACE--;
-                  }
-
                   printf ("%s%d%s", ANY_TEXT, ARRAY [kaj], ANY_TEXT2);
+                  while ( SPACE > 0 ) { printf(" "); SPACE--; }
                   SPACE = GUARD;
             }
        }
@@ -745,14 +715,8 @@ PRV_INT ( int REVERSE , int SIZE , int TYPE , int SPACE , const char* ANY_TEXT ,
             for ( int kaj = SIZE - 1; kaj >= 0; kaj-- )
             {
                   printf ("\n");
-
-                  while ( SPACE not_eq 0 )
-                  {
-                          printf(" ");
-                          SPACE--;
-                  }
-
                   printf ("%s%d", ANY_TEXT, ARRAY [kaj]);
+                  while ( SPACE > 0 ) { printf(" "); SPACE--; }
                   SPACE = GUARD;
             }
        }
@@ -764,14 +728,8 @@ PRV_INT ( int REVERSE , int SIZE , int TYPE , int SPACE , const char* ANY_TEXT ,
             for ( int kaj = SIZE - 1; kaj >= 0; kaj-- )
             {
                   printf ("\n");
-
-                  while ( SPACE not_eq 0 )
-                  {
-                          printf(" ");
-                          SPACE--;
-                  }
-
                   printf ("%s%d%s", ANY_TEXT, ARRAY [kaj], ANY_TEXT2);
+                  while ( SPACE > 0 ) { printf(" "); SPACE--; }
                   SPACE = GUARD;
             }
        }
@@ -783,14 +741,8 @@ PRV_INT ( int REVERSE , int SIZE , int TYPE , int SPACE , const char* ANY_TEXT ,
             for ( int kaj = SIZE - 1; kaj >= 0; kaj-- )
             {
                   printf ("\n");
-
-                  while ( SPACE not_eq 0 )
-                  {
-                          printf(" ");
-                          SPACE--;
-                  }
-
                   printf ("%d", ARRAY [kaj]);
+                  while ( SPACE > 0 ) { printf(" "); SPACE--; }
                   SPACE = GUARD;
             }
        }
@@ -821,13 +773,8 @@ PRV_FLOAT ( int REVERSE , int SIZE , int TYPE , int SPACE , int COMMA, const cha
             {
                  for ( int kaj = 0; kaj < SIZE; kaj++ )
                  {
-                       while ( SPACE not_eq 0 )
-                       {
-                               printf(" ");
-                               SPACE--;
-                       }
-
                        printf("%.*f", (COMMA <= 0) ? 0 : COMMA, ARRAY[kaj]);
+                       while ( SPACE > 0 ) { printf(" "); SPACE--; }
                        SPACE = guard;
                  }
             }
@@ -838,13 +785,8 @@ PRV_FLOAT ( int REVERSE , int SIZE , int TYPE , int SPACE , int COMMA, const cha
             {
                  for ( int kaj = 0; kaj < SIZE; kaj++ )
                  {
-                       while ( SPACE not_eq 0 )
-                       {
-                               printf(" ");
-                               SPACE--;
-                       }
-
                        printf("%s%.*f", (COMMA <= 0) ? 0 : ANY_TEXT, COMMA, ARRAY[kaj]);
+                       while ( SPACE > 0 ) { printf(" "); SPACE--; }
                        SPACE = guard;
                  }
             }
@@ -855,13 +797,8 @@ PRV_FLOAT ( int REVERSE , int SIZE , int TYPE , int SPACE , int COMMA, const cha
             {
                  for ( int kaj = 0; kaj < SIZE; kaj++ )
                  {
-                       while ( SPACE not_eq 0 )
-                       {
-                               printf(" ");
-                               SPACE--;
-                       }
-
                        printf("%s%.*f%s", (COMMA <= 0) ? 0 : ANY_TEXT, COMMA, ARRAY[kaj], ANY_TEXT2);
+                       while ( SPACE > 0 ) { printf(" "); SPACE--; }
                        SPACE = guard;
                  }
             }
@@ -873,14 +810,8 @@ PRV_FLOAT ( int REVERSE , int SIZE , int TYPE , int SPACE , int COMMA, const cha
                  for ( int kaj = 0; kaj < SIZE; kaj++ )
                  {
                        printf ("\n");
-
-                       while ( SPACE not_eq 0 )
-                       {
-                               printf(" ");
-                               SPACE--;
-                       }
-
                        printf("%.*f%s", (COMMA <= 0) ? 0 : COMMA, ARRAY[kaj], ANY_TEXT);
+                       while ( SPACE > 0 ) { printf(" "); SPACE--; }
                        SPACE = guard;
                  }
             }
@@ -892,14 +823,8 @@ PRV_FLOAT ( int REVERSE , int SIZE , int TYPE , int SPACE , int COMMA, const cha
                  for ( int kaj = 0; kaj < SIZE; kaj++ )
                  {
                        printf ("\n");
-
-                       while ( SPACE not_eq 0 )
-                       {
-                               printf(" ");
-                               SPACE--;
-                       }
-
                        printf("%s%.*f%s", (COMMA <= 0) ? 0 : ANY_TEXT, COMMA, ARRAY[kaj], ANY_TEXT2);
+                       while ( SPACE > 0 ) { printf(" "); SPACE--; }
                        SPACE = guard;
                  }
             }
@@ -912,14 +837,8 @@ PRV_FLOAT ( int REVERSE , int SIZE , int TYPE , int SPACE , int COMMA, const cha
                  for ( int kaj = 0; kaj < SIZE; kaj++ )
                  {
                        printf ("\n");
-
-                       while ( SPACE not_eq 0 )
-                       {
-                               printf(" ");
-                               SPACE--;
-                       }
-
                        printf("%.*f", (COMMA <= 0) ? 0 : COMMA, ARRAY[kaj]);
+                       while ( SPACE > 0 ) { printf(" "); SPACE--; }
                        SPACE = guard;
                  }
             }
@@ -936,13 +855,8 @@ PRV_FLOAT ( int REVERSE , int SIZE , int TYPE , int SPACE , int COMMA, const cha
             {
                  for ( int kaj = SIZE - 1; kaj >= 0; kaj-- )
                  {
-                       while ( SPACE not_eq 0 )
-                       {
-                               printf(" ");
-                               SPACE--;
-                       }
-
                        printf("%.*f", (COMMA <= 0) ? 0 : COMMA, ARRAY[kaj]);
+                       while ( SPACE > 0 ) { printf(" "); SPACE--; }
                        SPACE = guard;
                  }
             }
@@ -954,13 +868,8 @@ PRV_FLOAT ( int REVERSE , int SIZE , int TYPE , int SPACE , int COMMA, const cha
             {
                  for ( int kaj = SIZE - 1; kaj >= 0; kaj-- )
                  {
-                       while ( SPACE not_eq 0 )
-                       {
-                               printf(" ");
-                               SPACE--;
-                       }
-
                        printf("%s%.*f", (COMMA <= 0) ? 0 : ANY_TEXT, COMMA, ARRAY[kaj]);
+                       while ( SPACE > 0 ) { printf(" "); SPACE--; }
                        SPACE = guard;
                  }
             }
@@ -972,13 +881,8 @@ PRV_FLOAT ( int REVERSE , int SIZE , int TYPE , int SPACE , int COMMA, const cha
             {
                  for ( int kaj = SIZE - 1; kaj >= 0; kaj-- )
                  {
-                       while ( SPACE not_eq 0 )
-                       {
-                               printf(" ");
-                               SPACE--;
-                       }
-
                        printf("%s%.*f%s", (COMMA <= 0) ? 0 : ANY_TEXT, COMMA, ARRAY[kaj], ANY_TEXT2);
+                       while ( SPACE > 0 ) { printf(" "); SPACE--; }
                        SPACE = guard;
                  }
             }
@@ -991,14 +895,8 @@ PRV_FLOAT ( int REVERSE , int SIZE , int TYPE , int SPACE , int COMMA, const cha
                  for ( int kaj = SIZE - 1; kaj >= 0; kaj-- )
                  {
                        printf ("\n");
-
-                       while ( SPACE not_eq 0 )
-                       {
-                               printf(" ");
-                               SPACE--;
-                       }
-
                        printf("%.*f%s", (COMMA <= 0) ? 0 : COMMA, ARRAY[kaj], ANY_TEXT);
+                       while ( SPACE > 0 ) { printf(" "); SPACE--; }
                        SPACE = guard;
                  }
             }
@@ -1010,14 +908,8 @@ PRV_FLOAT ( int REVERSE , int SIZE , int TYPE , int SPACE , int COMMA, const cha
                  for ( int kaj = SIZE - 1; kaj >= 0; kaj-- )
                  {
                        printf ("\n");
-
-                       while ( SPACE not_eq 0 )
-                       {
-                               printf(" ");
-                               SPACE--;
-                       }
-
                        printf("%s%.*f%s", (COMMA <= 0) ? 0 : ANY_TEXT, COMMA, ARRAY[kaj], ANY_TEXT2);
+                       while ( SPACE > 0 ) { printf(" "); SPACE--; }
                        SPACE = guard;
                  }
             }
@@ -1029,14 +921,8 @@ PRV_FLOAT ( int REVERSE , int SIZE , int TYPE , int SPACE , int COMMA, const cha
                  for ( int kaj = SIZE - 1; kaj >= 0; kaj-- )
                  {
                        printf ("\n");
-
-                       while ( SPACE not_eq 0 )
-                       {
-                               printf(" ");
-                               SPACE--;
-                       }
-
                        printf("%.*f", (COMMA <= 0) ? 0 : COMMA, ARRAY[kaj]);
+                       while ( SPACE > 0 ) { printf(" "); SPACE--; }
                        SPACE = guard;
                  }
             }
@@ -1064,13 +950,8 @@ PRV_DOUBLE ( int REVERSE , int SIZE , int TYPE , int SPACE , int COMMA, const ch
             {
                  for ( int kaj = 0; kaj < SIZE; kaj++ )
                  {
-                       while ( SPACE not_eq 0 )
-                       {
-                               printf(" ");
-                               SPACE--;
-                       }
-
                        printf("%.*lf", (COMMA <= 0) ? 0 : COMMA, ARRAY[kaj]);
+                       while ( SPACE > 0 ) { printf(" "); SPACE--; }
                        SPACE = guard;
                  }
             }
@@ -1081,13 +962,8 @@ PRV_DOUBLE ( int REVERSE , int SIZE , int TYPE , int SPACE , int COMMA, const ch
             {
                  for ( int kaj = 0; kaj < SIZE; kaj++ )
                  {
-                       while ( SPACE not_eq 0 )
-                       {
-                               printf(" ");
-                               SPACE--;
-                       }
-
                        printf("%s%.*lf", (COMMA <= 0) ? 0 : ANY_TEXT, COMMA, ARRAY[kaj]);
+                       while ( SPACE > 0 ) { printf(" "); SPACE--; }
                        SPACE = guard;
                  }
             }
@@ -1098,13 +974,8 @@ PRV_DOUBLE ( int REVERSE , int SIZE , int TYPE , int SPACE , int COMMA, const ch
             {
                  for ( int kaj = 0; kaj < SIZE; kaj++ )
                  {
-                       while ( SPACE not_eq 0 )
-                       {
-                               printf(" ");
-                               SPACE--;
-                       }
-
                        printf("%s%.*lf%s", (COMMA <= 0) ? 0 : ANY_TEXT, COMMA, ARRAY[kaj], ANY_TEXT2);
+                       while ( SPACE > 0 ) { printf(" "); SPACE--; }
                        SPACE = guard;
                  }
             }
@@ -1116,14 +987,8 @@ PRV_DOUBLE ( int REVERSE , int SIZE , int TYPE , int SPACE , int COMMA, const ch
                  for ( int kaj = 0; kaj < SIZE; kaj++ )
                  {
                        printf ("\n");
-
-                       while ( SPACE not_eq 0 )
-                       {
-                               printf(" ");
-                               SPACE--;
-                       }
-
                        printf("%.*lf%s", (COMMA <= 0) ? 0 : COMMA, ARRAY[kaj], ANY_TEXT);
+                       while ( SPACE > 0 ) { printf(" "); SPACE--; }
                        SPACE = guard;
                  }
             }
@@ -1135,14 +1000,8 @@ PRV_DOUBLE ( int REVERSE , int SIZE , int TYPE , int SPACE , int COMMA, const ch
                  for ( int kaj = 0; kaj < SIZE; kaj++ )
                  {
                        printf ("\n");
-
-                       while ( SPACE not_eq 0 )
-                       {
-                               printf(" ");
-                               SPACE--;
-                       }
-
                        printf("%s%.*lf%s", (COMMA <= 0) ? 0 : ANY_TEXT, COMMA, ARRAY[kaj], ANY_TEXT2);
+                       while ( SPACE > 0 ) { printf(" "); SPACE--; }
                        SPACE = guard;
                  }
             }
@@ -1155,14 +1014,8 @@ PRV_DOUBLE ( int REVERSE , int SIZE , int TYPE , int SPACE , int COMMA, const ch
                  for ( int kaj = 0; kaj < SIZE; kaj++ )
                  {
                        printf ("\n");
-
-                       while ( SPACE not_eq 0 )
-                       {
-                               printf(" ");
-                               SPACE--;
-                       }
-
                        printf("%.*lf", (COMMA <= 0) ? 0 : COMMA, ARRAY[kaj]);
+                       while ( SPACE > 0 ) { printf(" "); SPACE--; }
                        SPACE = guard;
                  }
             }
@@ -1179,13 +1032,8 @@ PRV_DOUBLE ( int REVERSE , int SIZE , int TYPE , int SPACE , int COMMA, const ch
             {
                  for ( int kaj = SIZE - 1; kaj >= 0; kaj-- )
                  {
-                       while ( SPACE not_eq 0 )
-                       {
-                               printf(" ");
-                               SPACE--;
-                       }
-
                        printf("%.*lf", (COMMA <= 0) ? 0 : COMMA, ARRAY[kaj]);
+                       while ( SPACE > 0 ) { printf(" "); SPACE--; }
                        SPACE = guard;
                  }
             }
@@ -1197,13 +1045,8 @@ PRV_DOUBLE ( int REVERSE , int SIZE , int TYPE , int SPACE , int COMMA, const ch
             {
                  for ( int kaj = SIZE - 1; kaj >= 0; kaj-- )
                  {
-                       while ( SPACE not_eq 0 )
-                       {
-                               printf(" ");
-                               SPACE--;
-                       }
-
                        printf("%s%.*lf", (COMMA <= 0) ? 0 : ANY_TEXT, COMMA, ARRAY[kaj]);
+                       while ( SPACE > 0 ) { printf(" "); SPACE--; }
                        SPACE = guard;
                  }
             }
@@ -1215,13 +1058,8 @@ PRV_DOUBLE ( int REVERSE , int SIZE , int TYPE , int SPACE , int COMMA, const ch
             {
                  for ( int kaj = SIZE - 1; kaj >= 0; kaj-- )
                  {
-                       while ( SPACE not_eq 0 )
-                       {
-                               printf(" ");
-                               SPACE--;
-                       }
-
                        printf("%s%.*lf%s", (COMMA <= 0) ? 0 : ANY_TEXT, COMMA, ARRAY[kaj], ANY_TEXT2);
+                       while ( SPACE > 0 ) { printf(" "); SPACE--; }
                        SPACE = guard;
                  }
             }
@@ -1234,14 +1072,8 @@ PRV_DOUBLE ( int REVERSE , int SIZE , int TYPE , int SPACE , int COMMA, const ch
                  for ( int kaj = SIZE - 1; kaj >= 0; kaj-- )
                  {
                        printf ("\n");
-
-                       while ( SPACE not_eq 0 )
-                       {
-                               printf(" ");
-                               SPACE--;
-                       }
-
                        printf("%.*lf%s", (COMMA <= 0) ? 0 : COMMA, ARRAY[kaj], ANY_TEXT);
+                       while ( SPACE > 0 ) { printf(" "); SPACE--; }
                        SPACE = guard;
                  }
             }
@@ -1253,14 +1085,8 @@ PRV_DOUBLE ( int REVERSE , int SIZE , int TYPE , int SPACE , int COMMA, const ch
                  for ( int kaj = SIZE - 1; kaj >= 0; kaj-- )
                  {
                        printf ("\n");
-
-                       while ( SPACE not_eq 0 )
-                       {
-                               printf(" ");
-                               SPACE--;
-                       }
-
                        printf("%s%.*lf%s", (COMMA <= 0) ? 0 : ANY_TEXT, COMMA, ARRAY[kaj], ANY_TEXT2);
+                       while ( SPACE > 0 ) { printf(" "); SPACE--; }
                        SPACE = guard;
                  }
             }
@@ -1272,14 +1098,8 @@ PRV_DOUBLE ( int REVERSE , int SIZE , int TYPE , int SPACE , int COMMA, const ch
                  for ( int kaj = SIZE - 1; kaj >= 0; kaj-- )
                  {
                        printf ("\n");
-
-                       while ( SPACE not_eq 0 )
-                       {
-                               printf(" ");
-                               SPACE--;
-                       }
-
                        printf("%.*lf", (COMMA <= 0) ? 0 : COMMA, ARRAY[kaj]);
+                       while ( SPACE > 0 ) { printf(" "); SPACE--; }
                        SPACE = guard;
                  }
             }
@@ -1316,13 +1136,7 @@ PRM_INT ( int REVERSE , int STYLE , int LINES , int COLS , int SPACE , const cha
                      for ( jak = 0 ; jak < COLS;  jak++ )
                      {
                            printf ("%s%d%s", LEFT_TEXT, B_ARRAY [kaj] [jak], RIGHT_TEXT);
-
-                           while ( SPACE not_eq 0 )
-                           {
-                                   printf(" ");
-                                   SPACE--;
-                           }
-
+                           while ( SPACE > 0 ) { printf(" "); SPACE--; }
                            SPACE = guardby;
                      }
 
@@ -1334,13 +1148,8 @@ PRM_INT ( int REVERSE , int STYLE , int LINES , int COLS , int SPACE , const cha
                      for ( kaj = 0 ; kaj < LINES; kaj++ )
                      for ( jak = 0 ; jak < COLS;  jak++ )
                      {
-                           while ( SPACE not_eq 0 )
-                           {
-                                   printf(" ");
-                                   SPACE--;
-                           }
-
                            printf ("%s%d%s\n", LEFT_TEXT, B_ARRAY [kaj] [jak], RIGHT_TEXT);
+                           while ( SPACE > 0 ) { printf(" "); SPACE--; }
                            SPACE = guardby;
                      }
 
@@ -1353,13 +1162,7 @@ PRM_INT ( int REVERSE , int STYLE , int LINES , int COLS , int SPACE , const cha
                      for ( jak = 0 ; jak < COLS;  jak++ )
                      {
                            printf ("%s%d%s", LEFT_TEXT, B_ARRAY [kaj] [jak], RIGHT_TEXT);
-
-                           while ( SPACE not_eq 0 )
-                           {
-                                   printf(" ");
-                                   SPACE--;
-                           }
-
+                           while ( SPACE > 0 ) { printf(" "); SPACE--; }
                            SPACE = guardby;
 
                            if ( jak == COLS - 1 )
@@ -1394,13 +1197,7 @@ PRM_INT ( int REVERSE , int STYLE , int LINES , int COLS , int SPACE , const cha
                      for ( jak = 0 ; jak < COLS;  jak++ )
                      {
                            printf ("%s%*d%s", LEFT_TEXT, digits, B_ARRAY [kaj] [jak], RIGHT_TEXT);
-
-                           while ( SPACE not_eq 0 )
-                           {
-                                   printf(" ");
-                                   SPACE--;
-                           }
-
+                           while ( SPACE > 0 ) { printf(" "); SPACE--; }
                            SPACE = guardby;
 
                            if ( jak == COLS - 1 )
@@ -1421,13 +1218,7 @@ PRM_INT ( int REVERSE , int STYLE , int LINES , int COLS , int SPACE , const cha
                      for ( jak = COLS - 1; jak >= 0;  jak-- )
                      {
                            printf ("%s%d%s", LEFT_TEXT, B_ARRAY [kaj] [jak], RIGHT_TEXT);
-
-                           while ( SPACE not_eq 0 )
-                           {
-                                   printf(" ");
-                                   SPACE--;
-                           }
-
+                           while ( SPACE > 0 ) { printf(" "); SPACE--; }
                            SPACE = guardby;
                      }
 
@@ -1439,13 +1230,8 @@ PRM_INT ( int REVERSE , int STYLE , int LINES , int COLS , int SPACE , const cha
                      for ( kaj = LINES - 1; kaj >= 0; kaj-- )
                      for ( jak = COLS - 1; jak >= 0;  jak-- )
                      {
-                           while ( SPACE not_eq 0 )
-                           {
-                                   printf(" ");
-                                   SPACE--;
-                           }
-
                            printf ("%s%d%s\n", LEFT_TEXT, B_ARRAY [kaj] [jak], RIGHT_TEXT);
+                           while ( SPACE > 0 ) { printf(" "); SPACE--; }
                            SPACE = guardby;
                      }
 
@@ -1458,13 +1244,7 @@ PRM_INT ( int REVERSE , int STYLE , int LINES , int COLS , int SPACE , const cha
                       for ( jak = COLS - 1; jak >= 0;  jak-- )
                       {
                             printf ("%s%d%s", LEFT_TEXT, B_ARRAY [kaj] [jak], RIGHT_TEXT);
-
-                            while ( SPACE not_eq 0 )
-                            {
-                                    printf(" ");
-                                    SPACE--;
-                            }
-
+                            while ( SPACE > 0 ) { printf(" "); SPACE--; }
                             SPACE = guardby;
 
                             if ( jak == 0 )
@@ -1497,12 +1277,7 @@ PRM_INT ( int REVERSE , int STYLE , int LINES , int COLS , int SPACE , const cha
                      for ( jak = COLS - 1; jak >= 0;  jak-- )
                      {
                            printf ("%s%*d%s", LEFT_TEXT, digits, B_ARRAY [kaj] [jak], RIGHT_TEXT);
-                           while ( SPACE not_eq 0 )
-                           {
-                                   printf(" ");
-                                   SPACE--;
-                           }
-
+                           while ( SPACE > 0 ) { printf(" "); SPACE--; }
                            SPACE = guardby;
 
                            if ( jak == 0 )
@@ -1545,13 +1320,7 @@ PRM_FLOAT ( int REVERSE , int STYLE , int LINES , int COLS , int SPACE , int COM
             for ( jak = 0 ; jak < COLS;  jak++ )
             {
                   printf ("%s%.*f%s", LEFT_TEXT, COMMA, B_ARRAY [kaj] [jak], RIGHT_TEXT);
-
-                  while ( SPACE not_eq 0 )
-                  {
-                          printf(" ");
-                          SPACE--;
-                  }
-
+                  while ( SPACE > 0 ) { printf(" "); SPACE--; }
                   SPACE = guardby;
             }
        }
@@ -1561,14 +1330,8 @@ PRM_FLOAT ( int REVERSE , int STYLE , int LINES , int COLS , int SPACE , int COM
             for ( kaj = 0 ; kaj < LINES; kaj++ )
             for ( jak = 0 ; jak < COLS;  jak++ )
             {
-                  while ( SPACE not_eq 0 )
-                  {
-                          printf(" ");
-                          SPACE--;
-                  }
-
                   printf ("%s%.*f%s\n", LEFT_TEXT, COMMA, B_ARRAY [kaj] [jak], RIGHT_TEXT);
-
+                  while ( SPACE > 0 ) { printf(" "); SPACE--; }
                   SPACE = guardby;
             }
        }
@@ -1579,13 +1342,7 @@ PRM_FLOAT ( int REVERSE , int STYLE , int LINES , int COLS , int SPACE , int COM
             for ( jak = 0 ; jak < COLS;  jak++ )
             {
                   printf ("%s%.*f%s", LEFT_TEXT, COMMA, B_ARRAY [kaj] [jak], RIGHT_TEXT);
-
-                  while ( SPACE not_eq 0 )
-                  {
-                          printf(" ");
-                          SPACE--;
-                  }
-
+                  while ( SPACE > 0 ) { printf(" "); SPACE--; }
                   SPACE = guardby;
 
                   if ( jak == COLS - 1 )
@@ -1603,13 +1360,7 @@ PRM_FLOAT ( int REVERSE , int STYLE , int LINES , int COLS , int SPACE , int COM
             for ( jak = COLS - 1; jak >= 0;  jak-- )
             {
                   printf ("%s%.*f%s", LEFT_TEXT, COMMA, B_ARRAY [kaj] [jak], RIGHT_TEXT);
-
-                  while ( SPACE not_eq 0 )
-                  {
-                          printf(" ");
-                          SPACE--;
-                  }
-
+                  while ( SPACE > 0 ) { printf(" "); SPACE--; }
                   SPACE = guardby;
             }
        }
@@ -1619,14 +1370,8 @@ PRM_FLOAT ( int REVERSE , int STYLE , int LINES , int COLS , int SPACE , int COM
             for ( kaj = LINES - 1; kaj >= 0; kaj-- )
             for ( jak = COLS - 1; jak >= 0;  jak-- )
             {
-                  while ( SPACE not_eq 0 )
-                  {
-                          printf(" ");
-                          SPACE--;
-                  }
-
+                  while ( SPACE > 0 ) { printf(" "); SPACE--; }
                   printf ("%s%.*f%s\n", LEFT_TEXT, COMMA, B_ARRAY [kaj] [jak], RIGHT_TEXT);
-
                   SPACE = guardby;
             }
        }
@@ -1638,13 +1383,7 @@ PRM_FLOAT ( int REVERSE , int STYLE , int LINES , int COLS , int SPACE , int COM
             for ( jak = COLS - 1; jak >= 0;  jak-- )
             {
                   printf ("%s%.*f%s", LEFT_TEXT, COMMA, B_ARRAY [kaj] [jak], RIGHT_TEXT);
-
-                  while ( SPACE not_eq 0 )
-                  {
-                          printf(" ");
-                          SPACE--;
-                  }
-
+                  while ( SPACE > 0 ) { printf(" "); SPACE--; }
                   SPACE = guardby;
 
                   if ( jak == 0 )
@@ -1686,13 +1425,7 @@ PRM_DOUBLE ( int REVERSE , int STYLE , int LINES , int COLS , int SPACE , int CO
             for ( jak = 0 ; jak < COLS;  jak++ )
             {
                   printf ("%s%.*lf%s", LEFT_TEXT, COMMA, B_ARRAY [kaj] [jak], RIGHT_TEXT);
-
-                  while ( SPACE not_eq 0 )
-                  {
-                          printf(" ");
-                          SPACE--;
-                  }
-
+                  while ( SPACE > 0 ) { printf(" "); SPACE--; }
                   SPACE = guardby;
             }
        }
@@ -1702,14 +1435,8 @@ PRM_DOUBLE ( int REVERSE , int STYLE , int LINES , int COLS , int SPACE , int CO
             for ( kaj = 0 ; kaj < LINES; kaj++ )
             for ( jak = 0 ; jak < COLS;  jak++ )
             {
-                  while ( SPACE not_eq 0 )
-                  {
-                          printf(" ");
-                          SPACE--;
-                  }
-
                   printf ("%s%.*lf%s\n", LEFT_TEXT, COMMA, B_ARRAY [kaj] [jak], RIGHT_TEXT);
-
+                  while ( SPACE > 0 ) { printf(" "); SPACE--; }
                   SPACE = guardby;
             }
        }
@@ -1720,13 +1447,7 @@ PRM_DOUBLE ( int REVERSE , int STYLE , int LINES , int COLS , int SPACE , int CO
             for ( jak = 0 ; jak < COLS;  jak++ )
             {
                   printf ("%s%.*lf%s", LEFT_TEXT, COMMA, B_ARRAY [kaj] [jak], RIGHT_TEXT);
-
-                  while ( SPACE not_eq 0 )
-                  {
-                          printf(" ");
-                          SPACE--;
-                  }
-
+                  while ( SPACE > 0 ) { printf(" "); SPACE--; }
                   SPACE = guardby;
 
                   if ( jak == COLS - 1 )
@@ -1744,13 +1465,7 @@ PRM_DOUBLE ( int REVERSE , int STYLE , int LINES , int COLS , int SPACE , int CO
             for ( jak = COLS - 1; jak >= 0;  jak-- )
             {
                   printf ("%s%.*lf%s", LEFT_TEXT, COMMA, B_ARRAY [kaj] [jak], RIGHT_TEXT);
-
-                  while ( SPACE not_eq 0 )
-                  {
-                          printf(" ");
-                          SPACE--;
-                  }
-
+                  while ( SPACE > 0 ) { printf(" "); SPACE--; }
                   SPACE = guardby;
             }
        }
@@ -1760,14 +1475,10 @@ PRM_DOUBLE ( int REVERSE , int STYLE , int LINES , int COLS , int SPACE , int CO
             for ( kaj = LINES - 1; kaj >= 0; kaj-- )
             for ( jak = COLS - 1; jak >= 0;  jak-- )
             {
-                  while ( SPACE not_eq 0 )
-                  {
-                          printf(" ");
-                          SPACE--;
-                  }
+
 
                   printf ("%s%.*lf%s\n", LEFT_TEXT, COMMA, B_ARRAY [kaj] [jak], RIGHT_TEXT);
-
+                  while ( SPACE > 0 ) { printf(" "); SPACE--; }
                   SPACE = guardby;
             }
        }
@@ -1779,13 +1490,7 @@ PRM_DOUBLE ( int REVERSE , int STYLE , int LINES , int COLS , int SPACE , int CO
             for ( jak = COLS - 1; jak >= 0;  jak-- )
             {
                   printf ("%s%.*lf%s", LEFT_TEXT, COMMA, B_ARRAY [kaj] [jak], RIGHT_TEXT);
-
-                  while ( SPACE not_eq 0 )
-                  {
-                          printf(" ");
-                          SPACE--;
-                  }
-
+                  while ( SPACE > 0 ) { printf(" "); SPACE--; }
                   SPACE = guardby;
 
                   if ( jak == 0 )
@@ -1816,13 +1521,8 @@ PRL_INT ( int REVERSE , int LINES , int COLS , int SPACE , const char TEXT1 [] ,
           {
                for ( int kaj = 0; kaj < LINES; kaj++ )
                {
-                     while ( SPACE not_eq 0 )
-                     {
-                             printf(" ");
-                             SPACE--;
-                     }
-
                      printf ("%s%d%s%s", TEXT1, array[kaj], TEXT2, string [kaj]);
+                     while ( SPACE > 0 ) { printf(" "); SPACE--; }
 
                      if ( MORE_SPACE == 1 ) printf ("\n\n");
 
@@ -1836,14 +1536,8 @@ PRL_INT ( int REVERSE , int LINES , int COLS , int SPACE , const char TEXT1 [] ,
           {
                for ( int kaj = LINES - 1; kaj >= 0; kaj-- )
                {
-                     while ( SPACE not_eq 0 )
-                     {
-                             printf(" ");
-                             SPACE--;
-                     }
-
                      printf ("%s%d%s%s\n", TEXT1, array[kaj], TEXT2, string [kaj]);
-
+                     while ( SPACE > 0 ) { printf(" "); SPACE--; }
                      if ( MORE_SPACE == 1 ) printf ("\n\n");
 
                      else printf ("\n");
@@ -1868,13 +1562,8 @@ PRL_FLOAT ( int REVERSE , int LINES , int COLS , int SPACE , int COMMA, const ch
           {
                for ( int kaj = 0; kaj < LINES; kaj++)
                {
-                     while ( SPACE not_eq 0 )
-                     {
-                             printf(" ");
-                             SPACE--;
-                     }
-
                      printf("%s%.*f%s%s", (COMMA <= 0) ? 0 : TEXT1, COMMA, array[kaj], TEXT2, string [kaj]);
+                     while ( SPACE > 0 ) { printf(" "); SPACE--; }
 
                      if ( MORE_SPACE == 1 ) printf ("\n\n");
 
@@ -1888,13 +1577,9 @@ PRL_FLOAT ( int REVERSE , int LINES , int COLS , int SPACE , int COMMA, const ch
           {
                for ( int kaj = LINES - 1; kaj >= 0; kaj-- )
                {
-                     while ( SPACE not_eq 0 )
-                     {
-                             printf(" ");
-                             SPACE--;
-                     }
 
                      printf("%s%.*f%s%s", (COMMA <= 0) ? 0 : TEXT1, COMMA, array[kaj], TEXT2, string [kaj]);
+                     while ( SPACE > 0 ) { printf(" "); SPACE--; }
 
                      if ( MORE_SPACE == 1 ) printf ("\n\n");
 
@@ -1919,13 +1604,8 @@ PRL_DOUBLE ( int REVERSE , int LINES , int COLS , int SPACE , int COMMA, const c
           {
                for ( int kaj = 0; kaj < LINES; kaj++)
                {
-                     while ( SPACE not_eq 0 )
-                     {
-                             printf(" ");
-                             SPACE--;
-                     }
-
                      printf("%s%.*lf%s%s", (COMMA <= 0) ? 0 : TEXT1, COMMA, array[kaj], TEXT2, string [kaj]);
+                     while ( SPACE > 0 ) { printf(" "); SPACE--; }
 
                      if ( MORE_SPACE == 1 ) printf ("\n\n");
 
@@ -1939,13 +1619,8 @@ PRL_DOUBLE ( int REVERSE , int LINES , int COLS , int SPACE , int COMMA, const c
           {
                for ( int kaj = LINES - 1; kaj >= 0; kaj-- )
                {
-                     while ( SPACE not_eq 0 )
-                     {
-                             printf(" ");
-                             SPACE--;
-                     }
-
                      printf("%s%.*lf%s%s", (COMMA <= 0) ? 0 : TEXT1, COMMA, array[kaj], TEXT2, string [kaj]);
+                     while ( SPACE > 0 ) { printf(" "); SPACE--; }
 
                      if ( MORE_SPACE == 1 ) printf ("\n\n");
 
@@ -1984,7 +1659,7 @@ CS_SETTITLE ( const char* TITLE )
 
 
 
-static inline
+
 void
 CS_SETFULLSCREEN ()
 {
@@ -1996,7 +1671,6 @@ CS_SETFULLSCREEN ()
 
 
 
-static inline
 void
 CS_DISABLEMAXIMIZEBUTTON ()
 {
@@ -2011,7 +1685,6 @@ CS_DISABLEMAXIMIZEBUTTON ()
 
 
 
-static inline
 void
 CS_DISABLEMINIMIZEBUTTON ()
 {
@@ -2026,7 +1699,6 @@ CS_DISABLEMINIMIZEBUTTON ()
 
 
 
-static inline
 void
 CS_DISABLECLOSEBUTTON ()
 {
@@ -2041,7 +1713,6 @@ CS_DISABLECLOSEBUTTON ()
 
 
 
-static inline
 void
 CS_DISABLEALLBUTTONS ()
 {
@@ -2056,7 +1727,6 @@ CS_DISABLEALLBUTTONS ()
 
 
 
-static inline
 void
 CS_DISABLERESIZE ()
 {
@@ -2072,7 +1742,6 @@ CS_DISABLERESIZE ()
 
 
 
-static inline
 void
 CS_DISABLESCROLLBAR ()
 {
@@ -2253,7 +1922,6 @@ CS_SETVISIBILITY ( bool HIDE_ )
 
 
 
-static inline
 void
 NEWCONSOLE ()
 {
@@ -2268,7 +1936,6 @@ NEWCONSOLE ()
 
 
 
-static inline
 void
 CLOSECONSOLE ()
 {
@@ -2358,9 +2025,9 @@ SYS_PAUSE ( int HIDE_ )
 
 
 
-static inline
+
 void
-SYS_SETFULLSCREEN ()
+SYS_SETFULLSCREEN ( void )
 {
      keybd_event ( VK_MENU, 0x36, 0, 0 );
      keybd_event ( VK_RETURN, 0x1C, 0, 0 );
@@ -2381,7 +2048,6 @@ void SYS_GCCVERSION ( void )
 
 
 
-static inline
 void
 SYS_POPS ( const char* COMMAND )
 {
@@ -5906,6 +5572,212 @@ allen_CLEARSTRING ( char *STRING )
 
 
 
+
+
+int
+allen_INTa_SUBS ( int SIZE , int ARRAY [] , int CONDITION , int COMPARATOR , int TOKEN )
+{
+    int kaj = 0, pos = 0, COPYA [SIZE];
+
+
+     switch ( CONDITION )
+     {
+     case HT:
+         for ( kaj = 0; kaj < SIZE; kaj++ )
+           if ( ARRAY [kaj] > COMPARATOR ) { ARRAY [kaj] = TOKEN; pos++; }
+                return pos;
+     break;
+
+     case LT:
+          for ( kaj = 0; kaj < SIZE; kaj++ )
+           if ( ARRAY [kaj] < COMPARATOR ) { ARRAY [kaj] = TOKEN; pos++; }
+                return pos;
+     break;
+
+     case EQ:
+          for ( kaj = 0; kaj < SIZE; kaj++ )
+           if ( ARRAY [kaj] == COMPARATOR ) { ARRAY [kaj] = TOKEN; pos++; }
+                return pos;
+     break;
+
+     case DF:
+          for ( kaj = 0; kaj < SIZE; kaj++ )
+           if ( ARRAY [kaj] not_eq COMPARATOR ) { ARRAY [kaj] = TOKEN; pos++; }
+                return pos;
+     break;
+
+     case HE:
+          for ( kaj = 0; kaj < SIZE; kaj++ )
+            if ( ARRAY [kaj] >= COMPARATOR ) { ARRAY [kaj] = TOKEN; pos++; }
+                 return pos;
+     break;
+
+     case LE:
+          for ( kaj = 0; kaj < SIZE; kaj++ )
+           if ( ARRAY [kaj] <= COMPARATOR ) { ARRAY [kaj] = TOKEN; pos++; }
+                return pos;
+     break;
+
+     case PAR:
+         for ( kaj = 0; kaj < SIZE; kaj++ )
+           if ( ARRAY [kaj] % 2 == 0 ) { ARRAY [kaj] = TOKEN; pos++; }
+                return pos;
+     break;
+
+     case IMPAR:
+         for ( kaj = 0; kaj < SIZE; kaj++ )
+           if ( ARRAY [kaj] % 2 not_eq 0 ) { ARRAY [kaj] = TOKEN; pos++; }
+                return pos;
+     break;
+
+     case MULTIPLO:
+         for ( kaj = 0; kaj < SIZE; kaj++ )
+           if ( ARRAY [kaj] % COMPARATOR == 0 ) { ARRAY [kaj] = TOKEN; pos++; }
+                return pos;
+     break;
+
+     case NOTMULTIPLO:
+         for ( kaj = 0; kaj < SIZE; kaj++ )
+           if ( ARRAY [kaj] % COMPARATOR not_eq 0 ) { ARRAY [kaj] = TOKEN; pos++; }
+                return pos;
+     break;
+
+     case QUADRADO_X_EQ_Y:
+         for ( kaj = 0; kaj < SIZE; kaj++ )
+           if ( pow ( ARRAY [kaj] , 2 ) == COMPARATOR ) { ARRAY [kaj] = TOKEN; pos++; }
+                return pos;
+     break;
+
+     case QUADRADO_X_DF_Y:
+         for ( kaj = 0; kaj < SIZE; kaj++ )
+           if ( pow ( ARRAY [kaj] , 2 ) not_eq COMPARATOR ) { ARRAY [kaj] = TOKEN; pos++; }
+                return pos;
+     break;
+
+     case INVERSO:
+
+         for ( kaj = 0; kaj < SIZE; kaj++ )
+               COPYA [kaj] = ARRAY [kaj];
+
+         for ( kaj = SIZE - 1; kaj > -1; kaj-- )
+         {
+               ARRAY [pos] = COPYA [kaj];
+               pos++;
+         }
+
+
+     return pos;
+     break;
+
+     case DECRESCENTE:
+     break;
+
+     case CRESCENTE:
+     break;
+
+     }
+
+     return pos;
+}
+
+
+int
+allen_INTa_COPY ( int SIZE , int ARRAY [] , int CONDITION , int COMPARATOR , int NEW_ARRAY [] )
+{
+    int jak = 0, pos = 0;
+
+    switch ( CONDITION )
+     {
+     case HT:
+            for ( jak = 0; jak < SIZE; jak++ )
+                  if ( ARRAY [jak] > COMPARATOR ) { NEW_ARRAY [pos] = ARRAY [jak]; pos++; }
+
+     return pos;
+     break;
+
+     case LT:
+            for ( jak = 0; jak < SIZE; jak++ )
+                  if ( ARRAY [jak] < COMPARATOR ) { NEW_ARRAY [pos] = ARRAY [jak]; pos++; }
+     return pos;
+     break;
+
+     case EQ:
+            for ( jak = 0; jak < SIZE; jak++ )
+                  if ( ARRAY [jak] == COMPARATOR ) { NEW_ARRAY [pos] = ARRAY [jak]; pos++; }
+     return pos;
+     break;
+
+     case DF:
+            for ( jak = 0; jak < SIZE; jak++ )
+                  if ( ARRAY [jak] not_eq COMPARATOR ) { NEW_ARRAY [pos] = ARRAY [jak]; pos++; }
+     return pos;
+     break;
+
+     case HE:
+            for ( jak = 0; jak < SIZE; jak++ )
+                  if ( ARRAY [jak] >= COMPARATOR ) { NEW_ARRAY [pos] = ARRAY [jak]; pos++; }
+     return pos;
+     break;
+
+     case LE:
+            for ( jak = 0; jak < SIZE; jak++ )
+                  if ( ARRAY [jak] <= COMPARATOR ) { NEW_ARRAY [pos] = ARRAY [jak]; pos++; }
+     return pos;
+     break;
+
+     case PAR:
+             for ( jak = 0; jak < SIZE; jak++ )
+                  if ( ARRAY [jak] % 2 == 0 ) { NEW_ARRAY [pos] = ARRAY [jak]; pos++; }
+     return pos;
+     break;
+
+     case IMPAR:
+               for ( jak = 0; jak < SIZE; jak++ )
+                  if ( ARRAY [jak] % 2 not_eq 0 ) { NEW_ARRAY [pos] = ARRAY [jak]; pos++; }
+     return pos;
+     break;
+
+     case MULTIPLO:
+                  for ( jak = 0; jak < SIZE; jak++ )
+                     if ( ARRAY [jak] % COMPARATOR == 0 ) { NEW_ARRAY [pos] = ARRAY [jak]; pos++; }
+     return pos;
+     break;
+
+     case  NOTMULTIPLO:
+                      for ( jak = 0; jak < SIZE; jak++ )
+                         if ( ARRAY [jak] % COMPARATOR not_eq 0 ) { NEW_ARRAY [pos] = ARRAY [jak]; pos++; }
+     return pos;
+     break;
+
+     case QUADRADO_X_EQ_Y:
+                         for ( jak = 0; jak < SIZE; jak++ )
+                         if ( ARRAY [jak] % COMPARATOR not_eq 0 ) { NEW_ARRAY [pos] = ARRAY [jak]; pos++; }
+     return pos;
+     break;
+
+     case QUADRADO_X_DF_Y:
+
+     return pos;
+     break;
+
+     case INVERSO:
+
+     return pos;
+     break;
+     }
+     return pos;
+}
+
+
+void
+allen_INTa_CLSR ()
+{
+}
+
+
+
+
+
 // SIMPLE BOX
 
 int
@@ -6291,7 +6163,7 @@ FLEE_MOVEAFILE ( const char * FILE_NAME , const char * NEW_DIRECTORY )
 
 
 void
-FLEE_COPYFILE ( const char * FOLDER , const char * FILE_NAME, const char* NEW_FOLDER , const char* NEW_FILENAME )
+FLEE_COPYAFILE ( const char * FOLDER , const char * FILE_NAME, const char* NEW_FOLDER , const char* NEW_FILENAME )
 {
 
                 char CHECKNAME [1024];
@@ -6354,7 +6226,7 @@ FLEE_CREATEAFOLDER ( const char* FOLDER_NAME )
 
 
 void
-FLEE_RENAMEFOLDER ( const char *FOLDER_NAME , const char *NEW_FOLDER_NAME )
+FLEE_RENAMEAFOLDER ( const char *FOLDER_NAME , const char *NEW_FOLDER_NAME )
 {
                     int RESULT = rename ( FOLDER_NAME , NEW_FOLDER_NAME );
 
@@ -6366,7 +6238,7 @@ FLEE_RENAMEFOLDER ( const char *FOLDER_NAME , const char *NEW_FOLDER_NAME )
 
 
 void
-FLEE_DELETEFILE ( const char *FILE_NAME )
+FLEE_DELETEAFILE ( const char *FILE_NAME )
 {
                   int RESULT = remove ( FILE_NAME );
 
@@ -6415,13 +6287,13 @@ FLEE_DELETEAFOLDER ( const char * FOLDER_NAME )
 
 
 void
-FLEE_MOVEAFOLDER ( const char *source , const char *dest )
+FLEE_MOVEAFOLDER ( const char *FOLDER_NAME , const char *NEW_PATH )
 {
-                   DIR* dir = opendir ( source );
+                   DIR* dir = opendir ( FOLDER_NAME );
 
                    if ( dir == NULL ) printf ("Failed to open directory!");
 
-                   int ret = mkdir ( dest );
+                   int ret = mkdir ( NEW_PATH );
 
                    struct dirent * entry;
 
@@ -6432,8 +6304,8 @@ FLEE_MOVEAFOLDER ( const char *source , const char *dest )
                    {
                              if ( strcmp ( entry -> d_name , "." ) == 0 or strcmp ( entry -> d_name , ".." ) == 0) continue;
 
-                             sprintf ( source_path , "%s/%s" , source , entry -> d_name );
-                             sprintf ( dest_path   , "%s/%s" , dest   , entry -> d_name );
+                             sprintf ( source_path , "%s/%s" , FOLDER_NAME , entry -> d_name );
+                             sprintf ( dest_path   , "%s/%s" , NEW_PATH   , entry -> d_name );
 
                        struct stat stat_buf;
 
@@ -6466,15 +6338,62 @@ FLEE_MOVEAFOLDER ( const char *source , const char *dest )
                                    }
                    }
                    closedir ( dir );
-                   rmdir (source);
+                   rmdir (FOLDER_NAME);
 }
 
 
 
 
 
+void
+FLEE_COPYAFOLDER ( const char *FOLDER_NAME , const char *NEW_PATH )
+{
+                   DIR* dir = opendir ( FOLDER_NAME );
 
+                   if ( dir == NULL ) printf ("Failed to open directory!");
 
+                   mkdir ( FOLDER_NAME );
+
+                   struct dirent * entry;
+
+                   char source_path [ 1024 ];
+                   char dest_path   [ 1024 ];
+
+                   while ( ( entry = readdir ( dir ) ) not_eq NULL )
+                   {
+                             if ( strcmp ( entry -> d_name , "." ) == 0 or strcmp ( entry -> d_name , ".." ) == 0) continue;
+
+                             sprintf ( source_path , "%s/%s" , FOLDER_NAME , entry -> d_name );
+                             sprintf ( dest_path   , "%s/%s" , FOLDER_NAME   , entry -> d_name );
+
+                       struct stat stat_buf;
+
+                                   if ( stat ( source_path , &stat_buf ) not_eq 0 ) { printf("Failed to get file status!"); continue; }
+                                   if ( S_ISDIR ( stat_buf.st_mode ) )
+                                   {
+                                        FLEE_COPYAFOLDER ( source_path , dest_path );
+                                   }
+                                   else
+                                   {
+                                       FILE* source_file = fopen ( source_path , "rb" );
+                                       if ( source_file == NULL ) { printf("Failed to open source file!"); continue; }
+
+                                       FILE* dest_file = fopen ( dest_path , "wb" );
+                                       if ( dest_file == NULL ) { printf("Failed to open destination file!"); fclose ( source_file );  continue; }
+
+                                       char buffer [1024];
+                                       size_t bytes_read;
+
+                       while ( ( bytes_read = fread ( buffer , sizeof ( char ) , sizeof ( buffer ) , source_file ) ) > 0)
+                       fwrite ( buffer , sizeof ( char ) , bytes_read , dest_file );
+
+                       fclose ( source_file );
+                       fclose ( dest_file );
+
+                                   }
+                   }
+                   closedir ( dir );
+}
 
 
 
