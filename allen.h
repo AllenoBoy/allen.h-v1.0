@@ -165,8 +165,6 @@
 # define string_INVERTED 99
 # define string_FORMAT_H 88
 # define string_FORMAT_L 77
-# define string_CAIXAalta 65
-# define string_CAIXAbaixa 35
 # define string_CRYPTO   90
 # define noSUBS 0
 # define noTOKEN ' '
@@ -541,90 +539,6 @@ PR_STRING ( char STRING[] , int HOW_TO_PRINT ,char REPLACEMENT_CHAR , int NUMBER
 
               case string_FORMAT_L:
                                    for ( kaj = 0; kaj < strlen ( STRING ); kaj++ ) putchar ( tolower ( STRING [ kaj ] ) );
-              break;
-
-
-
-              case string_CAIXAalta:
-              SetConsoleOutputCP (1252);
-
-                                    for ( kaj = 0; kaj < strlen(STRING); kaj++ )
-                                    {
-
-                                    switch ( STRING [kaj] )
-                                    {
-                                             // A
-                                             case 'á':  putchar ('Á');  break;
-                                             case 'à':  putchar ('À');  break;
-                                             case 'ã':  putchar ('Ã');  break;
-                                             case 'â':  putchar ('Â');  break;
-                                             // E
-                                             case 'é':  putchar ('É');  break;
-                                             case 'è':  putchar ('È');  break;
-                                             case 'ê':  putchar ('Ê');  break;
-                                             // I
-                                             case 'í':  putchar ('Í');  break;
-                                             case 'ì':  putchar ('Ì');  break;
-                                             case 'î':  putchar ('Î');  break;
-                                             // O
-                                             case 'ó':  putchar ('Ó');  break;
-                                             case 'ò':  putchar ('Ò');  break;
-                                             case 'ô':  putchar ('Ô');  break;
-                                             case 'õ':  putchar ('Õ');  break;
-                                             // U
-                                             case 'ú':  putchar ('Ú');  break;
-                                             case 'ù':  putchar ('Ù');  break;
-                                             case 'û':  putchar ('Û');  break;
-                                             // Ç
-                                             case 'ç':  putchar ('Ç');  break;
-
-                                             default:   putchar ( toupper ( STRING [ kaj ] ) ); break;
-                                    }
-
-                                    }
-              SetConsoleOutputCP (850);
-              break;
-
-
-
-              case string_CAIXAbaixa:
-              SetConsoleOutputCP (1252);
-
-                                    for ( kaj = 0; kaj < strlen(STRING); kaj++ )
-                                    {
-
-                                    switch ( STRING [kaj] )
-                                    {
-                                             // A
-                                             case 'Á':  putchar ('á');  break;
-                                             case 'Â':  putchar ('â');  break;
-                                             case 'À':  putchar ('à');  break;
-                                             case 'Ã':  putchar ('ã');  break;
-                                             // E
-                                             case 'É':  putchar ('é');  break;
-                                             case 'È':  putchar ('è');  break;
-                                             case 'Ê':  putchar ('ê');  break;
-                                             // I
-                                             case 'Í':  putchar ('í');  break;
-                                             case 'Ì':  putchar ('ì');  break;
-                                             case 'Î':  putchar ('î');  break;
-                                             // O
-                                             case 'Ô':  putchar ('ô');  break;
-                                             case 'Ó':  putchar ('ó');  break;
-                                             case 'Ò':  putchar ('ò');  break;
-                                             case 'Õ':  putchar ('õ');  break;
-                                             // U
-                                             case 'Ú':  putchar ('ú');  break;
-                                             case 'Ù':  putchar ('ù');  break;
-                                             case 'Û':  putchar ('û');  break;
-                                             // Ç
-                                             case 'Ç':  putchar ('ç');  break;
-
-                                             default:   putchar ( tolower ( STRING [ kaj ] ) ); break;
-                                    }
-
-                                    }
-              SetConsoleOutputCP (850);
               break;
 
 
