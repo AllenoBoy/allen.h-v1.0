@@ -233,23 +233,31 @@
 */
 
 
-void PR         ( const char *TEXT );
-void PRL        ( int TIMES );
-void PRS        ( int TIMES );
-void PR_INT     ( int VARIABLE );
-void PR_CHAR    ( char VARIABLE, int TIMES );
-void PR_FLOAT   ( float VARIABLE, int COMMAS );
-void PR_DOUBLE  ( double VARIABLE, int COMMAS );
-void PR_STRING  ( char STRING[] , int HOW_TO_PRINT ,char REPLACEMENT_CHAR , int NUMBER_OF_REPLACEMENTS , ...);
-void PRV_INT    ( int REVERSE , int SIZE , int TYPE , int SPACE , const char* ANY_TEXT , const char* ANY_TEXT2, int ARRAY [] );
-void PRV_FLOAT  ( int REVERSE , int SIZE , int TYPE , int SPACE , int COMMA, const char ANY_TEXT [] , const char ANY_TEXT2 [], float ARRAY [] );
-void PRV_DOUBLE ( int REVERSE , int SIZE , int TYPE , int SPACE , int COMMA, const char ANY_TEXT [] , const char ANY_TEXT2 [], double ARRAY [] );
-void PRM_INT    ( int REVERSE , int STYLE , int LINES , int COLS , int SPACE , const char LEFT_TEXT [] , const char RIGHT_TEXT [] ,  int B_ARRAY [LINES] [COLS] );
-void PRM_FLOAT  ( int REVERSE , int STYLE , int LINES , int COLS , int SPACE , int COMMA , const char LEFT_TEXT [] , const char RIGHT_TEXT [] ,  float B_ARRAY [LINES] [COLS] );
-void PRM_DOUBLE ( int REVERSE , int STYLE , int LINES , int COLS , int SPACE , int COMMA , const char LEFT_TEXT [] , const char RIGHT_TEXT [] ,  double B_ARRAY [LINES] [COLS] );
-void PRL_INT    ( int REVERSE , int LINES , int COLS , int SPACE , const char TEXT1 [] , const char TEXT2 [] ,  int array [] , char string [LINES] [COLS] , int MORE_SPACE );
-void PRL_FLOAT  ( int REVERSE , int LINES , int COLS , int SPACE , int COMMA, const char TEXT1 [] , const char TEXT2 [] ,  float array [] , char string [LINES] [COLS], int MORE_SPACE );
-void PRL_DOUBLE ( int REVERSE , int LINES , int COLS , int SPACE , int COMMA, const char TEXT1 [] , const char TEXT2 [] ,  double array [] , char string [LINES] [COLS], int MORE_SPACE );
+void PR              ( const char *TEXT );
+void PRL             ( int TIMES );
+void PRS             ( int TIMES );
+void PR_INT          ( int VARIABLE );
+void PR_CHAR         ( char VARIABLE, int TIMES );
+void PR_FLOAT        ( float VARIABLE, int COMMAS );
+void PR_DOUBLE       ( double VARIABLE, int COMMAS );
+void PR_STRING       ( char STRING[] , int HOW_TO_PRINT ,char REPLACEMENT_CHAR , int NUMBER_OF_REPLACEMENTS , ...);
+void PRV_INT         ( int REVERSE , int SIZE , int TYPE , int SPACE , const char* ANY_TEXT , const char* ANY_TEXT2, int ARRAY [] );
+void PRV_FLOAT       ( int REVERSE , int SIZE , int TYPE , int SPACE , int COMMA, const char ANY_TEXT [] , const char ANY_TEXT2 [], float ARRAY [] );
+void PRV_DOUBLE      ( int REVERSE , int SIZE , int TYPE , int SPACE , int COMMA, const char ANY_TEXT [] , const char ANY_TEXT2 [], double ARRAY [] );
+void PRM_INT         ( int REVERSE , int STYLE , int LINES , int COLS , int SPACE , const char LEFT_TEXT [] , const char RIGHT_TEXT [] ,  int B_ARRAY [LINES] [COLS] );
+void PRM_FLOAT       ( int REVERSE , int STYLE , int LINES , int COLS , int SPACE , int COMMA , const char LEFT_TEXT [] , const char RIGHT_TEXT [] ,  float B_ARRAY [LINES] [COLS] );
+void PRM_DOUBLE      ( int REVERSE , int STYLE , int LINES , int COLS , int SPACE , int COMMA , const char LEFT_TEXT [] , const char RIGHT_TEXT [] ,  double B_ARRAY [LINES] [COLS] );
+void PRL_INT         ( int REVERSE , int LINES , int COLS , int SPACE , const char TEXT1 [] , const char TEXT2 [] ,  int array [] , char string [LINES] [COLS] , int MORE_SPACE );
+void PRL_FLOAT       ( int REVERSE , int LINES , int COLS , int SPACE , int COMMA, const char TEXT1 [] , const char TEXT2 [] ,  float array [] , char string [LINES] [COLS], int MORE_SPACE );
+void PRL_DOUBLE      ( int REVERSE , int LINES , int COLS , int SPACE , int COMMA, const char TEXT1 [] , const char TEXT2 [] ,  double array [] , char string [LINES] [COLS], int MORE_SPACE );
+void PR_intVETOR     ( int SIZE , int ARRAY [] );
+void PR_intMATRIZ    ( int LINES , int COLS , int B_ARRAY [LINES] [COLS] );
+void PR_floatVETOR   ( int SIZE , int COMMA , float ARRAY [] );
+void PR_floatMATRIZ  ( int LINES , int COLS , int COMMA , float B_ARRAY [LINES] [COLS] );
+void PR_doubleVETOR  ( int SIZE , int COMMA , double ARRAY [] );
+void PR_doubleMATRIZ ( int LINES , int COLS , int COMMA , double B_ARRAY [LINES] [COLS] );
+void PR_charVETOR    ( int SIZE , char ARRAY [] );
+void PR_charMATRIZ   ( int LINES , int COLS , char B_ARRAY [LINES] [COLS] );
 
 
 
@@ -1671,6 +1679,93 @@ PRL_DOUBLE ( int REVERSE , int LINES , int COLS , int SPACE , int COMMA, const c
                      SPACE = guard;
                }
           }
+}
+
+
+
+
+
+void PR_intVETOR     ( int SIZE , int ARRAY [] )
+{
+    int kaj = 0;
+    for ( kaj = 0; kaj < SIZE; kaj++ ) printf ("%d ", ARRAY [kaj] );
+}
+
+
+
+
+
+void PR_intMATRIZ    ( int LINES , int COLS , int B_ARRAY [LINES] [COLS] )
+{
+    int kaj = 0, jak = 0;
+    for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLS; jak++ )
+          printf ("%d ", B_ARRAY [kaj] [jak] );
+}
+
+
+
+
+
+void PR_floatVETOR   ( int SIZE , int COMMA , float ARRAY [] )
+{
+    int kaj = 0;
+    for ( kaj = 0; kaj < SIZE; kaj++ )
+          printf("%.*f ", (COMMA <= 0) ? 0 : COMMA , ARRAY [kaj] );
+}
+
+
+
+
+
+void PR_floatMATRIZ  ( int LINES , int COLS , int COMMA , float B_ARRAY [LINES] [COLS] )
+{
+    int kaj = 0, jak = 0;
+    for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLS; jak++ )
+          printf ("%.*f ", (COMMA <= 0) ? 0 : COMMA , B_ARRAY [kaj] [jak] );
+}
+
+
+
+
+
+
+void PR_doubleVETOR  ( int SIZE , int COMMA , double ARRAY [] )
+{
+    int kaj = 0;
+    for ( kaj = 0; kaj < SIZE; kaj++ )
+          printf("%.*lf ", (COMMA <= 0) ? 0 : COMMA , ARRAY [kaj] );
+}
+
+
+
+
+
+void PR_doubleMATRIZ ( int LINES , int COLS , int COMMA , double B_ARRAY [LINES] [COLS] )
+{
+    int kaj = 0, jak = 0;
+    for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLS; jak++ )
+          printf ("%.*lf ", (COMMA <= 0) ? 0 : COMMA , B_ARRAY [kaj] [jak] );
+}
+
+
+
+
+
+void PR_charVETOR    ( int SIZE , char ARRAY [] )
+{
+    int kaj = 0;
+    for ( kaj = 0; kaj < SIZE; kaj++ ) printf ("%c ", ARRAY [kaj] );
+}
+
+
+
+
+
+void PR_charMATRIZ   ( int LINES , int COLS , char B_ARRAY [LINES] [COLS] )
+{
+     int kaj = 0, jak = 0;
+     for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLS; jak++ )
+           printf ("%c ", B_ARRAY [kaj] [jak] );
 }
 
 
