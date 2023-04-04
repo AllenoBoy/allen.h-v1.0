@@ -1,4 +1,4 @@
-# Documentação Biblioteca allen.h
+# allen.h
 
 *Avisos*
 
