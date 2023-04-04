@@ -147,8 +147,6 @@
 # define CRESCENTE      1004
 # define DECRESCENTE    4001
 # define NOTMULTIPLO    0404
-# define CUBO_X_DF_Y    3333
-# define CUBO_X_EQ_Y    9999
 
 
 
@@ -181,10 +179,41 @@
 # define noTOKEN ' '
 
 
+/*
+    8. C FUNCTIONS MACRO
+*/
 
-
-
-
+# define se             if
+# define e_se           else if
+# define senao          else
+# define para           for
+# define enquanto       while
+# define faca           do
+# define escolha        switch
+# define caso           case
+# define quebre         break
+# define inteiro        int
+# define real32         float
+# define real64         double
+# define caractere      char
+# define booleano       bool
+# define emlinha        inline
+# define tipoderegistro typedef
+# define registro       struct
+# define vazio          void
+# define nao_registrado unsigned
+# define padrao         default
+# define tamanhode      sizeof
+# define inteiro_longo  long
+# define registrado     signed
+# define estatico       static
+# define inteiro_curto  short
+# define constante      const
+# define uniao          union
+# define volatil        volatile
+# define retorne        return
+# define devolva        return
+# define salve          return
 
 
 
@@ -231,29 +260,29 @@ void PRL_DOUBLE ( int REVERSE , int LINES , int COLS , int SPACE , int COMMA, co
 */
 
 
-void CS_SETREGION                           ( int REGION );
-void CS_SETTITLE                            ( const char* TITLE );
-void CS_SETFULLSCREEN                       ( void );
-void CS_DISABLEMAXIMIZEBUTTON               ( void );
-void CS_DISABLEMINIMIZEBUTTON               ( void );
-void CS_DISABLECLOSEBUTTON                  ( void );
-void CS_DISABLEALLBUTTONS                   ( void );
-void CS_DISABLERESIZE                       ( void );
-void CS_DISABLESCROLLBAR                    ( void );
-void CS_SETTEXTATTRIBUTE                    ( int VARIATION );
-void CS_SETPOSITION                         ( int X , int Y );
-void CS_SETSIZE                             ( int WIDHT , int HEIGHT );
-void CS_SETFONTSIZE                         ( int SIZE );
-void CS_SETFONTFAMILY                       ( char* FONTNAME , int FONTWIDTH , int FONTHEIGHT );
-void CS_SETCURSORATTRIBUTES                 ( bool HIDE_ , bool BOLDCURSOR );
-COORD CS_GETCURSORPOSITION                  ( void );
-int CS_GETxCURSORPOSITION                   ( void );
-int CS_GETyCURSORPOSITION                   ( void );
-COORD CS_SETxyCURSOR                        ( int X , int Y );
-void CS_SETCURSORPOSITION                   ( COORD newPos );
-void CS_SETVISIBILITY                       ( bool HIDE_ );
-void NEWCONSOLE                             ( void );
-void CLOSECONSOLE                           ( void );
+void  CS_SETREGION                           ( int REGION );
+void  CS_SETTITLE                            ( const char* TITLE );
+void  CS_SETFULLSCREEN                       ( void );
+void  CS_DISABLEMAXIMIZEBUTTON               ( void );
+void  CS_DISABLEMINIMIZEBUTTON               ( void );
+void  CS_DISABLECLOSEBUTTON                  ( void );
+void  CS_DISABLEALLBUTTONS                   ( void );
+void  CS_DISABLERESIZE                       ( void );
+void  CS_DISABLESCROLLBAR                    ( void );
+void  CS_SETTEXTATTRIBUTE                    ( int VARIATION );
+void  CS_SETPOSITION                         ( int X , int Y );
+void  CS_SETSIZE                             ( int WIDHT , int HEIGHT );
+void  CS_SETFONTSIZE                         ( int SIZE );
+void  CS_SETFONTFAMILY                       ( char* FONTNAME , int FONTWIDTH , int FONTHEIGHT );
+void  CS_SETCURSORATTRIBUTES                 ( bool HIDE_ , bool BOLDCURSOR );
+COORD CS_GETCURSORPOSITION                   ( void );
+int   CS_GETxCURSORPOSITION                  ( void );
+int   CS_GETyCURSORPOSITION                  ( void );
+COORD CS_SETxyCURSOR                         ( int X , int Y );
+void  CS_SETCURSORPOSITION                   ( COORD newPos );
+void  CS_SETVISIBILITY                       ( bool HIDE_ );
+void  NEWCONSOLE                             ( void );
+void  CLOSECONSOLE                           ( void );
 
 
 
@@ -338,22 +367,22 @@ static inline void PROP_SHOWCURSOR 		      ( void );
 */
 
 
-static inline void BUFFER   ( void );
-char get                    ( void );
-int G_INT                   ( void );
-char G_CHAR                 ( void );
-float G_FLOAT               ( void );
-double G_DOUBLE             ( void );
-static inline char G_STRING ( char STRING [] );
-int GWC_INT                 ( int VALUE , int CONDITION , int COMPARATOR , const char* TEXT , int LINE , int SPACES );
-float GWC_FLOAT             ( float VALUE , int CONDITION , float COMPARATOR , const char* TEXT , int LINE , int SPACES );
-double GWC_DOUBLE           ( double VALUE , int CONDITION , double COMPARATOR , const char* TEXT , int LINE , int SPACES );
-char GWC_CHAR               ( char VALUE , int CONDITION , char COMPARATOR , const char* TEXT , int LINE , int SPACES );
-char GWC_STRING             ( const char *QUESTION , char STRING [] , int LINES , int SPACES , int TYPE_OF , int SIZE_LIMITER , char TEXT_COMPARATOR [] , char EXIT_TOKEN [] );
-int getI                    ( const char *QUESTION_TEXT , int LINES , int SPACES , int CONDITION , int COMPARATOR );
-float getF                  ( const char *QUESTION_TEXT , int LINES , int SPACES , int CONDITION , float COMPARATOR );
-float getD                  ( const char *QUESTION_TEXT , int LINES , int SPACES , int CONDITION , double COMPARATOR );
-char getS                   ( const char *QUESTION_TEXT , int LINES , int SPACES , int CONDITION , int MAX_SIZE , char STRING [MAX_SIZE] , char TOKEN , int NUMBER_OF_REPLACEMENTS , ... );
+static inline void BUFFER     ( void );
+char               get        ( void );
+int                G_INT      ( void );
+char               G_CHAR     ( void );
+float              G_FLOAT    ( void );
+double             G_DOUBLE   ( void );
+static inline char G_STRING   ( char STRING [] );
+int                GWC_INT    ( int VALUE , int CONDITION , int COMPARATOR , const char* TEXT , int LINE , int SPACES );
+float              GWC_FLOAT  ( float VALUE , int CONDITION , float COMPARATOR , const char* TEXT , int LINE , int SPACES );
+double             GWC_DOUBLE ( double VALUE , int CONDITION , double COMPARATOR , const char* TEXT , int LINE , int SPACES );
+char               GWC_CHAR   ( char VALUE , int CONDITION , char COMPARATOR , const char* TEXT , int LINE , int SPACES );
+char               GWC_STRING ( const char *QUESTION , char STRING [] , int LINES , int SPACES , int TYPE_OF , int SIZE_LIMITER , char TEXT_COMPARATOR [] , char EXIT_TOKEN [] );
+int                getI       ( const char *QUESTION_TEXT , int LINES , int SPACES , int CONDITION , int COMPARATOR );
+float              getF       ( const char *QUESTION_TEXT , int LINES , int SPACES , int CONDITION , float COMPARATOR );
+float              getD       ( const char *QUESTION_TEXT , int LINES , int SPACES , int CONDITION , double COMPARATOR );
+char               getS       ( const char *QUESTION_TEXT , int LINES , int SPACES , int CONDITION , int MAX_SIZE , char STRING [MAX_SIZE] , char TOKEN , int NUMBER_OF_REPLACEMENTS , ... );
 
 
 /*
@@ -361,9 +390,20 @@ char getS                   ( const char *QUESTION_TEXT , int LINES , int SPACES
 */
 
 
-void   allen_GOTOXY            ( int X , int Y );
-int    allen_GETDIGITS         ( int VARIABLE );
-void   allen_TESTCODEPAGE      ( int CODE_PAGE );
+int  allen_GETDIGITS              ( int VARIABLE );
+void allen_GOTOXY                 ( int X , int Y );
+void allen_TESTCODEPAGE           ( int CODE_PAGE );
+void allen_CLEARSTRING            ( char *STRING );
+int  allen_HIGHERVALUEOF_ARRAY    ( int SIZE , int ARRAY [] );
+int  allen_HIGHERVALUEOFA_B_ARRAY ( int LINES , int COLUNS , int B_ARRAY [LINES] [COLUNS] );
+int  allen_LOWERVALUEOF_ARRAY     ( int SIZE , int ARRAY [] );
+int  allen_LOWERVALUEOFA_B_ARRAY  ( int LINES , int COLUNS , int B_ARRAY [LINES] [COLUNS] );
+int  allen_SUBSINTARRAY           ( int SIZE , int ARRAY [] , int CONDITION , int COMPARATOR , int TOKEN );
+int  allen_COPYINTARRAY           ( int SIZE , int ARRAY [] , int CONDITION , int COMPARATOR , int NEW_ARRAY [] );
+void allen_CLEARINTARRAY          ( int SIZE , int ARRAY [] );
+int  allen_SUBSINTB_ARRAY         ( int LINES , int COLUNS , int CONDITION , int COMPARATOR , int TOKEN , int B_ARRAY [LINES] [COLUNS] );
+int  allen_INTCOPYB_ARRAY         ( int LINES , int COLUNS , int CONDITION , int COMPARATOR , int B_ARRAY [LINES] [COLUNS] , int NEW_B_ARRAY [LINES] [COLUNS] );
+void allen_CLEARINTB_ARRAY        ( int LINES , int COLUNS , int B_ARRAY [ LINES ] [ COLUNS ] );
 
 
 
@@ -5569,7 +5609,7 @@ allen_TESTCODEPAGE ( int CODE_PAGE )
 void
 allen_CLEARSTRING ( char *STRING )
 {
-    memset ( STRING , 0, strlen(STRING) );
+    memset ( STRING , 0, strlen ( STRING ) );
 }
 
 
@@ -5577,10 +5617,73 @@ allen_CLEARSTRING ( char *STRING )
 
 
 int
-allen_INTa_SUBS ( int SIZE , int ARRAY [] , int CONDITION , int COMPARATOR , int TOKEN )
+allen_HIGHERVALUEOF_ARRAY ( int SIZE , int ARRAY [] )
 {
-    int kaj = 0, pos = 0, COPYA [SIZE];
+                   int HIGHER = ARRAY [0];
 
+  for ( int i = 1; i < SIZE; i++ )
+     if ( ARRAY [i] > HIGHER ) HIGHER = ARRAY [i];
+
+  return HIGHER;
+}
+
+
+
+
+
+int
+allen_HIGHERVALUEOFA_B_ARRAY ( int LINES , int COLUNS , int B_ARRAY [LINES] [COLUNS] )
+{
+                   int HIGHER = B_ARRAY [0] [0];
+                   int l = 0, c = 0;
+
+  for ( l = 1; l < LINES; l++ ) for ( c = 1; c < COLUNS; c++ )
+     if ( B_ARRAY [l] [c] > HIGHER ) HIGHER = B_ARRAY [l] [c];
+
+  return HIGHER;
+}
+
+
+
+
+
+int
+allen_LOWERVALUEOF_ARRAY ( int SIZE , int ARRAY [] )
+{
+                   int LOWER = ARRAY [0];
+                   int i = 0;
+
+  for ( i = 1; i < SIZE; i++ )
+     if ( ARRAY [i] < LOWER ) LOWER = ARRAY [i];
+
+  return LOWER;
+}
+
+
+
+
+
+int
+allen_LOWERVALUEOFA_B_ARRAY ( int LINES , int COLUNS , int B_ARRAY [LINES] [COLUNS] )
+{
+                   int LOWER = B_ARRAY [0] [0];
+                   int l = 0, c = 0;
+
+  for ( l = 1; l < LINES; l++ ) for ( c = 1; c < COLUNS; c++ )
+     if ( B_ARRAY [l] [c] < LOWER ) LOWER = B_ARRAY [l] [c];
+
+  return LOWER;
+}
+
+
+
+
+
+int
+allen_SUBSINTARRAY ( int SIZE , int ARRAY [] , int CONDITION , int COMPARATOR , int TOKEN )
+{
+
+    int kaj = 0, jak = 0 , pos = 0, COPYA [SIZE], temp = 0;
 
      switch ( CONDITION )
      {
@@ -5667,14 +5770,34 @@ allen_INTa_SUBS ( int SIZE , int ARRAY [] , int CONDITION , int COMPARATOR , int
                pos++;
          }
 
-
      return pos;
      break;
 
-     case DECRESCENTE:
+     case CRESCENTE:
+                   for ( kaj = 0; kaj < SIZE - 1; kaj++ )
+                       for ( jak = kaj + 1; jak < SIZE; jak++ )
+                             if ( ARRAY [kaj] > ARRAY [jak] )
+                             {
+                                  temp = ARRAY [kaj];
+                                  ARRAY [kaj] = ARRAY [jak];
+                                  ARRAY [jak] = temp;
+                                  pos++;
+                             }
+     return pos;
      break;
 
-     case CRESCENTE:
+
+     case DECRESCENTE:
+                    for ( kaj = 0; kaj < SIZE - 1; kaj++ )
+                       for ( jak = kaj + 1; jak < SIZE; jak++ )
+                             if ( ARRAY [kaj] < ARRAY [jak] )
+                             {
+                                  temp = ARRAY [kaj];
+                                  ARRAY [kaj] = ARRAY [jak];
+                                  ARRAY [jak] = temp;
+                                  pos++;
+                             }
+
      break;
 
      }
@@ -5684,9 +5807,9 @@ allen_INTa_SUBS ( int SIZE , int ARRAY [] , int CONDITION , int COMPARATOR , int
 
 
 int
-allen_INTa_COPY ( int SIZE , int ARRAY [] , int CONDITION , int COMPARATOR , int NEW_ARRAY [] )
+allen_COPYINTARRAY ( int SIZE , int ARRAY [] , int CONDITION , int COMPARATOR , int NEW_ARRAY [] )
 {
-    int jak = 0, pos = 0;
+    int jak = 0, kaj = 0, pos = 0, temp = 0;
 
     switch ( CONDITION )
      {
@@ -5753,29 +5876,434 @@ allen_INTa_COPY ( int SIZE , int ARRAY [] , int CONDITION , int COMPARATOR , int
 
      case QUADRADO_X_EQ_Y:
                          for ( jak = 0; jak < SIZE; jak++ )
-                         if ( pow ( ARRAY [kaj] , 2 ) == COMPARATOR ) { NEW_ARRAY [pos] = ARRAY [jak]; pos++; }
+                         if ( pow ( ARRAY [jak] , 2 ) == COMPARATOR ) { NEW_ARRAY [pos] = ARRAY [jak]; pos++; }
      return pos;
      break;
 
      case QUADRADO_X_DF_Y:
                         for ( jak = 0; jak < SIZE; jak++ )
-                        if ( pow ( ARRAY [kaj] , 2 ) not_eq COMPARATOR ) { NEW_ARRAY [pos] = ARRAY [jak]; pos++; }
+                        if ( pow ( ARRAY [jak] , 2 ) not_eq COMPARATOR ) { NEW_ARRAY [pos] = ARRAY [jak]; pos++; }
      return pos;
      break;
 
      case INVERSO:
+                        for ( jak = 0; jak < SIZE; jak++ )
+                              NEW_ARRAY [jak] = ARRAY [jak];
 
+                        for ( jak = SIZE - 1; jak > -1; jak-- )
+                        {
+                               NEW_ARRAY [pos] = ARRAY [jak];
+                               pos++;
+                        }
      return pos;
      break;
+
+     case CRESCENTE:
+                       for ( kaj = 0; kaj < SIZE - 1; kaj++ )
+                       {
+                       for ( jak = kaj + 1; jak < SIZE; jak++ )
+                             if ( ARRAY [kaj] > ARRAY [jak] )
+                             {
+                                  temp = ARRAY [kaj];
+                                  ARRAY [kaj] = ARRAY [jak];
+                                  ARRAY [jak] = temp;
+                                  pos++;
+                             }
+                       }
+                       for ( kaj = 0; kaj < SIZE; kaj++ )
+     NEW_ARRAY [kaj] = ARRAY [kaj];
+     return pos;
+     break;
+
+     case DECRESCENTE:
+
+                     for ( kaj = 0; kaj < SIZE - 1; kaj++ )
+                     {
+                       for ( jak = kaj + 1; jak < SIZE; jak++ )
+                             if ( ARRAY [kaj] < ARRAY [jak] )
+                             {
+                                  temp = ARRAY [kaj];
+                                  ARRAY [kaj] = ARRAY [jak];
+                                  ARRAY [jak] = temp;
+                                  pos++;
+                             }
+                     }
+                       for ( kaj = 0; kaj < SIZE; kaj++ )
+     NEW_ARRAY [kaj] = ARRAY [kaj];
+
+     break;
+
      }
      return pos;
 }
 
 
 void
-allen_INTa_CLSR ()
+allen_CLEARINTARRAY  ( int SIZE , int ARRAY [] )
 {
+      int jaks;
+
+      for ( jaks = 0; jaks < SIZE; jaks++ ) ARRAY [jaks] = 0;
 }
+
+
+
+
+
+int
+allen_SUBSINTB_ARRAY ( int LINES , int COLUNS , int CONDITION , int COMPARATOR , int TOKEN , int B_ARRAY [LINES] [COLUNS] )
+{
+    int pos = 0 , kaj = 0, jak = 0, low_1 = 0, low_2 = 0, COPYA [LINES] [COLUNS], SIZE = LINES * COLUNS , VET [SIZE];
+
+    switch ( CONDITION )
+     {
+     case HT:
+             for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
+                   if ( B_ARRAY [kaj] [jak] > COMPARATOR ) { B_ARRAY [kaj] [jak] = TOKEN; pos++; }
+
+     return pos;
+     break;
+
+     case LT:
+             for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
+                   if ( B_ARRAY [kaj] [jak] < COMPARATOR ) { B_ARRAY [kaj] [jak] = TOKEN; pos++; }
+     return pos;
+     break;
+
+     case EQ:
+            for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
+                  if ( B_ARRAY [kaj] [jak] == COMPARATOR ) { B_ARRAY [kaj] [jak] = TOKEN; pos++; }
+     return pos;
+     break;
+
+     case DF:
+             for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
+                   if ( B_ARRAY [kaj] [jak] not_eq COMPARATOR ) { B_ARRAY [kaj] [jak] = TOKEN; pos++; }
+     return pos;
+     break;
+
+     case HE:
+             for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
+                   if ( B_ARRAY [kaj] [jak] >= COMPARATOR ) { B_ARRAY [kaj] [jak] = TOKEN; pos++; }
+     return pos;
+     break;
+
+     case LE:
+             for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
+                   if ( B_ARRAY [kaj] [jak] <= COMPARATOR ) { B_ARRAY [kaj] [jak] = TOKEN; pos++; }
+     return pos;
+     break;
+
+     case PAR:
+              for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
+                   if ( B_ARRAY [kaj] [jak] % 2 == 0 ) { B_ARRAY [kaj] [jak] = TOKEN; pos++; }
+     return pos;
+     break;
+
+     case IMPAR:
+                for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
+                   if ( B_ARRAY [kaj] [jak] % 2 not_eq 0 ) { B_ARRAY [kaj] [jak] = TOKEN; pos++; }
+     return pos;
+     break;
+
+     case MULTIPLO:
+                   for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
+                         if ( B_ARRAY [kaj] [jak] % COMPARATOR == 0 ) { B_ARRAY [kaj] [jak] = TOKEN; pos++; }
+     return pos;
+     break;
+
+     case NOTMULTIPLO:
+                      for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
+                            if ( B_ARRAY [kaj] [jak] % COMPARATOR not_eq 0 ) { B_ARRAY [kaj] [jak] = TOKEN; pos++; }
+     return pos;
+     break;
+
+     case QUADRADO_X_EQ_Y:
+                          for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
+                                if ( pow ( B_ARRAY [kaj] [jak] , 2 ) == COMPARATOR ) { B_ARRAY [kaj] [jak] = TOKEN; pos++; }
+     return pos;
+     break;
+
+     case QUADRADO_X_DF_Y:
+                          for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
+                                if ( pow ( B_ARRAY [kaj] [jak] , 2 ) not_eq COMPARATOR ) { B_ARRAY [kaj] [jak] = TOKEN; pos++; }
+     return pos;
+     break;
+
+     case INVERSO:
+                         for ( kaj = LINES - 1; kaj >= 0; kaj-- , low_1++ ) for ( jak = COLUNS - 1; jak >= 0; jak-- , low_2++ )
+                         { COPYA [ low_1 ] [ low_2 ] = B_ARRAY [ kaj ] [ jak ]; pos++; }
+
+
+                         low_1 = 0; low_2 = 0;
+
+                         for ( kaj = 0; kaj < LINES;  low_1++ , kaj++ ) for ( jak = 0; jak < COLUNS; low_2++ , jak++ )
+                         B_ARRAY [ kaj ] [ jak ] = COPYA [ low_1 ] [ low_2 ];
+     return pos;
+     break;
+
+     case CRESCENTE:
+                         low_1 = 0;
+
+                         for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
+                         {
+                              VET [ low_1 ] = B_ARRAY [ kaj ] [ jak ];
+                              low_1++;
+                         }
+
+                         for ( kaj = 0; kaj < SIZE - 1; kaj++ ) for ( jak = kaj + 1; jak < SIZE; jak++ )
+
+                            if ( VET [kaj] > VET [jak] )
+                            {
+                                  low_2 = VET [kaj];
+                                  VET [kaj] = VET [jak];
+                                  VET [jak] = low_2;
+                                  pos++;
+                            }
+
+                         low_2 = 0;
+
+                         for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
+                         {
+                            B_ARRAY [ kaj ] [ jak ] = VET [low_2];
+                            low_2++;
+                         }
+     return pos;
+     break;
+
+
+     case DECRESCENTE:
+                                                  low_1 = 0;
+
+                         for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
+                         {
+                              VET [ low_1 ] = B_ARRAY [ kaj ] [ jak ];
+                              // printf ("%d " , VET [low_1] );
+                              low_1++;
+                         }
+
+                         for ( kaj = 0; kaj < SIZE - 1; kaj++ ) for ( jak = kaj + 1; jak < SIZE; jak++ )
+
+                            if ( VET [kaj] < VET [jak] )
+                            {
+                                  low_2 = VET [kaj];
+                                  VET [kaj] = VET [jak];
+                                  VET [jak] = low_2;
+                                  pos++;
+                            }
+
+                         low_2 = 0;
+
+                         for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
+                         {
+                            B_ARRAY [ kaj ] [ jak ] = VET [low_2];
+                            low_2++;
+                         }
+     return pos;
+     break;
+
+     }
+
+    return pos;
+}
+
+
+
+
+
+int
+allen_INTCOPYB_ARRAY ( int LINES , int COLUNS , int CONDITION , int COMPARATOR , int B_ARRAY [LINES] [COLUNS] , int NEW_B_ARRAY [LINES] [COLUNS] )
+{
+    int pos = 0 , kaj = 0, jak = 0, low_1 = 0, low_2 = 0, COPYA [LINES] [COLUNS], SIZE = LINES * COLUNS , VET [SIZE];
+
+    switch ( CONDITION )
+     {
+     case HT:
+             for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
+                   if ( B_ARRAY [kaj] [jak] > COMPARATOR ) { NEW_B_ARRAY [kaj] [jak] = B_ARRAY [kaj] [jak];  pos++; }
+     return pos;
+     break;
+
+
+     case LT:
+             for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
+                   if ( B_ARRAY [kaj] [jak] < COMPARATOR ) { NEW_B_ARRAY [kaj] [jak] = B_ARRAY [kaj] [jak];  pos++; }
+     return pos;
+     break;
+
+
+
+     case EQ:
+            for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
+                   if ( B_ARRAY [kaj] [jak] == COMPARATOR ) { NEW_B_ARRAY [kaj] [jak] = B_ARRAY [kaj] [jak];  pos++; }
+     return pos;
+     break;
+
+
+
+     case DF:
+             for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
+                   if ( B_ARRAY [kaj] [jak] not_eq COMPARATOR ) { NEW_B_ARRAY [kaj] [jak] = B_ARRAY [kaj] [jak];  pos++; }
+     return pos;
+     break;
+
+
+
+     case HE:
+             for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
+                   if ( B_ARRAY [kaj] [jak] >= COMPARATOR ) { NEW_B_ARRAY [kaj] [jak] = B_ARRAY [kaj] [jak];  pos++; }
+     return pos;
+     break;
+
+
+
+     case LE:
+             for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
+                   if ( B_ARRAY [kaj] [jak] <= COMPARATOR ) { NEW_B_ARRAY [kaj] [jak] = B_ARRAY [kaj] [jak];  pos++; }
+     return pos;
+     break;
+
+
+
+     case PAR:
+              for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
+                   if ( B_ARRAY [kaj] [jak] % 2 == 0 ) { NEW_B_ARRAY [kaj] [jak] = B_ARRAY [kaj] [jak];  pos++; }
+     return pos;
+     break;
+
+
+
+     case IMPAR:
+                for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
+                   if ( B_ARRAY [kaj] [jak] % 2 not_eq 0 ) { NEW_B_ARRAY [kaj] [jak] = B_ARRAY [kaj] [jak];  pos++; }
+     return pos;
+     break;
+
+
+
+     case MULTIPLO:
+                   for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
+                         if ( B_ARRAY [kaj] [jak] % COMPARATOR == 0 ) { NEW_B_ARRAY [kaj] [jak] = B_ARRAY [kaj] [jak];  pos++; }
+     return pos;
+     break;
+
+
+
+     case NOTMULTIPLO:
+                      for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
+                         if ( B_ARRAY [kaj] [jak] % COMPARATOR not_eq 0 ) { NEW_B_ARRAY [kaj] [jak] = B_ARRAY [kaj] [jak];  pos++; }
+     return pos;
+     break;
+
+
+
+     case QUADRADO_X_EQ_Y:
+                          for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
+                             if ( pow ( B_ARRAY [kaj] [jak] , 2 ) == COMPARATOR ) { NEW_B_ARRAY [kaj] [jak] = B_ARRAY [kaj] [jak];  pos++; }
+     return pos;
+     break;
+
+
+
+     case QUADRADO_X_DF_Y:
+                          for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
+                             if ( pow ( B_ARRAY [kaj] [jak] , 2 ) not_eq COMPARATOR ) { NEW_B_ARRAY [kaj] [jak] = B_ARRAY [kaj] [jak];  pos++; }
+     return pos;
+     break;
+
+
+
+     case INVERSO:
+                         for ( kaj = LINES - 1; kaj >= 0; kaj-- , low_1++ ) for ( jak = COLUNS - 1; jak >= 0; jak-- , low_2++ )
+                         { COPYA [ low_1 ] [ low_2 ] = B_ARRAY [ kaj ] [ jak ]; pos++; }
+
+
+                         low_1 = 0; low_2 = 0;
+
+                         for ( kaj = 0; kaj < LINES;  low_1++ , kaj++ ) for ( jak = 0; jak < COLUNS; low_2++ , jak++ )
+                         NEW_B_ARRAY [ kaj ] [ jak ] = COPYA [ low_1 ] [ low_2 ];
+     return pos;
+     break;
+
+
+
+     case CRESCENTE:
+                         low_1 = 0;
+
+                         for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
+                         {
+                              VET [ low_1 ] = B_ARRAY [ kaj ] [ jak ];
+                              low_1++;
+                         }
+
+                         for ( kaj = 0; kaj < SIZE - 1; kaj++ ) for ( jak = kaj + 1; jak < SIZE; jak++ )
+
+                            if ( VET [kaj] > VET [jak] )
+                            {
+                                  low_2 = VET [kaj];
+                                  VET [kaj] = VET [jak];
+                                  VET [jak] = low_2;
+                                  pos++;
+                            }
+
+                         low_2 = 0;
+
+                         for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
+                         {
+                            NEW_B_ARRAY [ kaj ] [ jak ] = VET [low_2];
+                            low_2++;
+                         }
+     return pos;
+     break;
+
+
+     case DECRESCENTE:
+                                                  low_1 = 0;
+
+                         for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
+                         {
+                              VET [ low_1 ] = B_ARRAY [ kaj ] [ jak ];
+                              // printf ("%d " , VET [low_1] );
+                              low_1++;
+                         }
+
+                         for ( kaj = 0; kaj < SIZE - 1; kaj++ ) for ( jak = kaj + 1; jak < SIZE; jak++ )
+
+                            if ( VET [kaj] < VET [jak] )
+                            {
+                                  low_2 = VET [kaj];
+                                  VET [kaj] = VET [jak];
+                                  VET [jak] = low_2;
+                                  pos++;
+                            }
+
+                         low_2 = 0;
+
+                         for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
+                         {
+                            NEW_B_ARRAY [ kaj ] [ jak ] = VET [low_2];
+                            low_2++;
+                         }
+     return pos;
+     break;
+
+     }
+
+    return pos;
+}
+
+
+
+
+
+void
+allen_CLEARINTB_ARRAY  ( int LINES , int COLUNS , int B_ARRAY [ LINES ] [ COLUNS ] )
+{
+      int allen, llen;
+
+      for ( allen = 0; allen < LINES; allen++ ) for ( llen = 0; llen < COLUNS; llen++ ) B_ARRAY [allen] [llen] = 0;
+}
+
 
 
 
