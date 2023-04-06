@@ -479,19 +479,31 @@ void LOCH_SETLOCAL ( char TEXT [] );
 */
 
 
-void FLEE_CREATEAFILE 	       ( const char* FILE_NAME );
-void FLEE_RENAMEAFILE 		   ( const char* FILE_NAME , const char * NEW_FILE_NAME );
-void FLEE_MOVEAFILE 		   ( const char * FILE_NAME , const char * NEW_DIRECTORY );
-void FLEE_COPYAFILE 		   ( const char * FOLDER , const char * FILE_NAME, const char* NEW_FOLDER , const char* NEW_FILENAME );
-void FLEE_CREATEAFILEANDFOLDER ( const char* FOLDER_NAME , const char* FILE_NAME );
-void FLEE_CREATEAFOLDER 	   ( const char* FOLDER_NAME );
-void FLEE_RENAMEAFOLDER 	   ( const char *FOLDER_NAME , const char *NEW_FOLDER_NAME );
-void FLEE_DELETEAFILE 		   ( const char *FILE_NAME );
-void FLEE_DELETEAFOLDER 	   ( const char * FOLDER_NAME );
-void FLEE_MOVEAFOLDER 		   ( const char *FOLDER_NAME , const char *NEW_PATH );
-void FLEE_COPYAFOLDER 		   ( const char *FOLDER_NAME , const char *NEW_PATH );
-
-
+void   FLEE_CREATEAFILE 	     ( const char* FILE_NAME );
+void   FLEE_RENAMEAFILE 		 ( const char* FILE_NAME , const char * NEW_FILE_NAME );
+void   FLEE_MOVEAFILE 		     ( const char * FILE_NAME , const char * NEW_DIRECTORY );
+void   FLEE_COPYAFILE 		     ( const char * FOLDER , const char * FILE_NAME, const char* NEW_FOLDER , const char* NEW_FILENAME );
+void   FLEE_CREATEAFILEANDFOLDER ( const char* FOLDER_NAME , const char* FILE_NAME );
+void   FLEE_CREATEAFOLDER 	     ( const char* FOLDER_NAME );
+void   FLEE_RENAMEAFOLDER 	     ( const char *FOLDER_NAME , const char *NEW_FOLDER_NAME );
+void   FLEE_DELETEAFILE 		 ( const char *FILE_NAME );
+void   FLEE_DELETEAFOLDER 	     ( const char * FOLDER_NAME );
+void   FLEE_MOVEAFOLDER 		 ( const char *FOLDER_NAME , const char *NEW_PATH );
+void   FLEE_COPYAFOLDER 		 ( const char *FOLDER_NAME , const char *NEW_PATH );
+void   FLEE_saveINT              ( int VALUE , const char * FILE_NAME );
+int    FLEE_loadINT              ( const char * FILE_NAME );
+void   FLEE_saveCHAR             ( char CHARACTER , const char * FILE_NAME );
+char   FLEE_loadCHAR             ( const char * FILE_NAME );
+void   FLEE_saveFLOAT            ( float VALUE , int COMMAS , const char * FILE_NAME );
+float  FLEE_loadFLOAT            ( const char * FILE_NAME );
+void   FLEE_saveDOUBLE           ( double VALUE , int COMMAS , const char * FILE_NAME );
+double FLEE_loadDOUBLE           ( const char* FILE_NAME );
+void   FLEE_saveSTRING           ( const char * STRING , const char * FILE_NAME );
+void   FLEE_loadSTRING           ( char * STRING , int SIZE_OF_READ , const char * FILE_NAME );
+int    FLEE_COUNTLINES           ( const char * FILE_NAME );
+int    FLEE_COUNTWORDS           ( const char * FILE_NAME );
+int    FLEE_COUNTNUMBERS         ( const char * FILE_NAME );
+int    FLEE_COUNTint 	         ( const char * FILE_NAME , int VALUE );
 
 
 // PR
@@ -7153,18 +7165,301 @@ FLEE_loadFLOAT ( const char * FILE_NAME )
 
 
 
+void
+FLEE_saveDOUBLE ( double VALUE , int COMMAS , const char * FILE_NAME )
+{
+    FILE* fp = fopen ( FILE_NAME, "w" );
+
+    if ( fp == NULL ) printf("Erro ao abrir o arquivo.\n");
+
+    char format[20];
+
+    sprintf ( format , "%%.%dlf" , COMMAS );
+    fprintf ( fp , format , VALUE );
+    fclose  ( fp );
+}
 
 
 
 
 
+double
+FLEE_loadDOUBLE ( const char* FILE_NAME )
+{
+    double RETURN_VALUE;
+    char str [ 100 ];
+
+    FILE* fp = fopen ( FILE_NAME , "r" );
+
+    if ( fp == NULL ) printf("Erro ao abrir o arquivo.\n");
+
+    fgets  ( str , 100 , fp );
+    sscanf ( str , "%lf" , &RETURN_VALUE );
+    fclose ( fp );
+
+    return RETURN_VALUE;
+}
 
 
 
 
 
+void
+FLEE_saveSTRING ( const char * STRING , const char * FILE_NAME )
+{
+    FILE* fp = fopen ( FILE_NAME , "w");
+
+    if (fp == NULL) printf ("Erro ao abrir o arquivo.\n");
+
+    fprintf ( fp , "%s" , STRING );
+    fclose  ( fp );
+}
 
 
+
+
+
+void
+FLEE_loadSTRING ( char * STRING , int SIZE_OF_READ , const char * FILE_NAME )
+{
+    FILE* fp = fopen ( FILE_NAME , "r" );
+
+    if ( fp == NULL ) printf ("Erro ao abrir o arquivo.\n");
+
+    fgets ( STRING , SIZE_OF_READ , fp );
+    fclose ( fp );
+}
+
+
+
+/* SCAN FILE FUNCTIONS */
+
+
+
+int
+FLEE_COUNTLINES ( const char * FILE_NAME )
+{
+    FILE* fp = fopen ( FILE_NAME , "r" );
+
+    if (fp == NULL) printf("Erro ao abrir o arquivo.\n");
+
+    int NUMBER_OF_LINES = 0;
+
+    char buffer [ 1024 * 100 ];
+
+    while ( fgets ( buffer , sizeof ( buffer ) , fp ) ) NUMBER_OF_LINES++;
+
+    fclose ( fp );
+
+    return NUMBER_OF_LINES;
+}
+
+
+
+
+
+int
+FLEE_COUNTWORDS ( const char * FILE_NAME )
+{
+    FILE* fp = fopen ( FILE_NAME , "r" );
+
+    if ( fp == NULL ) printf("Erro ao abrir o arquivo.\n");
+
+    int NUMBER_OF_WORDS = 0;
+
+    char word [100];
+
+    while ( fscanf ( fp , "%s" , word ) != EOF ) NUMBER_OF_WORDS++;
+
+    fclose ( fp );
+
+    return NUMBER_OF_WORDS;
+}
+
+
+
+
+
+int
+FLEE_COUNTNUMBERS ( const char * FILE_NAME )
+{
+
+    FILE* fp;
+
+    int count_int = 0;
+    int count_float = 0;
+    int ch;
+
+    fp = fopen ( FILE_NAME, "r" );
+    if ( fp == NULL ) perror ("Error opening file");
+
+
+    while ( ( ch = fgetc ( fp ) ) not_eq EOF )
+    {
+        if ( isdigit ( ch ) or ch == '.' or ch == ',' )
+        {
+             while ( isdigit ( ch ) or ch == '.' or ch == ',' ) ch = fgetc ( fp );
+
+             if ( ch == '.' or ch == ',' ) count_float++;
+
+             else count_int++;
+        }
+    }
+
+    fclose ( fp );
+
+    return count_int + count_float;
+}
+
+
+
+
+
+int FLEE_COUNTint ( const char * FILE_NAME , int VALUE )
+{
+    FILE *fp = fopen ( FILE_NAME , "r" );
+    int RETURN_VALUE = 0;
+
+    if ( fp == NULL ) printf("Erro ao abrir o arquivo.\n");
+
+    char c;
+    int num = 0;
+    int is_num = 0;
+
+    while ( ( c = fgetc ( fp ) ) not_eq EOF )
+    {
+           if ( c == ' ' or c == '\t' or c == '\n' )
+           {
+                if ( is_num and num == VALUE ) RETURN_VALUE++;
+
+                num = 0;
+                is_num = 0;
+           }
+
+           else if ( c >= '0' and c <= '9' ) { num = num * 10 + (c - '0'); is_num = 1; }
+
+           else if ( c == '.' )
+           {
+                     is_num = 0;
+                     num = 0;
+
+           while ( ( c = fgetc ( fp ) ) not_eq EOF ) if ( c == ' ' or c == '\t' or c == '\n' ) break;
+
+           }
+    }
+
+    if ( is_num and num == VALUE ) RETURN_VALUE++;
+
+    fclose ( fp );
+
+    return RETURN_VALUE;
+}
+
+
+
+
+
+int
+FLEE_COUNTfloat ( const char * FILE_NAME , float VALUE )
+{
+                  FILE* fp;
+             char buffer [ 1024 ];
+              int len;
+            float num, diff;
+              int RETURN_VALUE = 0;
+
+    if ( ( fp = fopen ( FILE_NAME , "r" ) ) == NULL ) fprintf ( stderr, "Error opening the file!\n");
+
+    while ( fgets ( buffer , 1024 , fp ) )
+    {
+        len = strlen ( buffer );
+
+        if ( len > 0 and buffer [ len - 1 ] == '\n' ) buffer [ len - 1 ] = '\0';
+
+        char * comma = strchr ( buffer , ',' );
+        while ( comma not_eq NULL ) { *comma = '.'; comma = strchr(comma, ','); }
+        char* token = strtok ( buffer , " " );
+
+        while ( token not_eq NULL )
+        {
+                num = atof ( token );
+                diff = num - VALUE;
+
+            if ( diff > -0.0001 and diff < 0.0001 ) RETURN_VALUE++;
+            token = strtok ( NULL , " " );
+        }
+    }
+
+    fclose ( fp );
+    return RETURN_VALUE;
+}
+
+
+
+
+
+int
+FLEE_COUNTdouble ( const char * FILE_NAME , double VALUE )
+{
+                  FILE* fp;
+             char buffer [ 1024 ];
+              int len;
+            double num, diff;
+              int RETURN_VALUE = 0;
+
+    if ( ( fp = fopen ( FILE_NAME , "r" ) ) == NULL ) fprintf ( stderr, "Error opening the file!\n");
+
+    while ( fgets ( buffer , 1024 , fp ) )
+    {
+        len = strlen ( buffer );
+
+        if ( len > 0 and buffer [ len - 1 ] == '\n' ) buffer [ len - 1 ] = '\0';
+
+        char * comma = strchr ( buffer , ',' );
+        while ( comma not_eq NULL ) { *comma = '.'; comma = strchr(comma, ','); }
+        char* token = strtok ( buffer , " " );
+
+        while ( token not_eq NULL )
+        {
+                num = atof ( token );
+                diff = num - VALUE;
+
+            if ( diff > -0.0001 and diff < 0.0001 ) RETURN_VALUE++;
+            token = strtok ( NULL , " " );
+        }
+    }
+
+    fclose ( fp );
+    return RETURN_VALUE;
+}
+
+
+
+
+
+int
+FLEE_COUNTchar ( const char * FILE_NAME , char CHAR )
+{
+    FILE* fp;
+    char buffer[1024];
+    int len, i;
+    int RETURN_VALUE = 0;
+
+    if ( ( fp = fopen ( FILE_NAME , "r" ) ) == NULL ) fprintf ( stderr , "Erro ao abrir o arquivo.\n" );
+
+    while ( fgets ( buffer , 1024 , fp ) )
+    {
+            len = strlen ( buffer );
+                for ( i = 0; i < len; i++ ) if ( buffer [ i ] == CHAR ) RETURN_VALUE++;
+
+
+
+    }
+
+    fclose ( fp );
+
+    return RETURN_VALUE;
+}
 
 
 
