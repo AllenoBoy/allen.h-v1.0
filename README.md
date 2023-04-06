@@ -3,7 +3,7 @@
 *Avisos*
 
 *Tutoriais*
-
+sprintf ( file , "%s\\%s", getenv ("APPDATA"), "FILES/data.txt" );
 *Funções*
 
 1. PR 
