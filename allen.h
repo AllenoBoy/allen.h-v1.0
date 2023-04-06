@@ -479,12 +479,12 @@ void LOCH_SETLOCAL ( char TEXT [] );
 */
 
 
-void   FLEE_CREATEAFILE 	     ( const char* FILE_NAME );
-void   FLEE_RENAMEAFILE 		 ( const char* FILE_NAME , const char * NEW_FILE_NAME );
+void   FLEE_CREATEAFILE 	     ( const char * FILE_NAME );
+void   FLEE_RENAMEAFILE 		 ( const char * FILE_NAME , const char * NEW_FILE_NAME );
 void   FLEE_MOVEAFILE 		     ( const char * FILE_NAME , const char * NEW_DIRECTORY );
 void   FLEE_COPYAFILE 		     ( const char * FOLDER , const char * FILE_NAME, const char* NEW_FOLDER , const char* NEW_FILENAME );
-void   FLEE_CREATEAFILEANDFOLDER ( const char* FOLDER_NAME , const char* FILE_NAME );
-void   FLEE_CREATEAFOLDER 	     ( const char* FOLDER_NAME );
+void   FLEE_CREATEAFILEANDFOLDER ( const char * FOLDER_NAME , const char* FILE_NAME );
+void   FLEE_CREATEAFOLDER 	     ( const char * FOLDER_NAME );
 void   FLEE_RENAMEAFOLDER 	     ( const char *FOLDER_NAME , const char *NEW_FOLDER_NAME );
 void   FLEE_DELETEAFILE 		 ( const char *FILE_NAME );
 void   FLEE_DELETEAFOLDER 	     ( const char * FOLDER_NAME );
@@ -504,6 +504,14 @@ int    FLEE_COUNTLINES           ( const char * FILE_NAME );
 int    FLEE_COUNTWORDS           ( const char * FILE_NAME );
 int    FLEE_COUNTNUMBERS         ( const char * FILE_NAME );
 int    FLEE_COUNTint 	         ( const char * FILE_NAME , int VALUE );
+int    FLEE_COUNTLINES           ( const char * FILE_NAME );
+int    FLEE_COUNTWORDS           ( const char * FILE_NAME );
+int    FLEE_COUNTNUMBERS         ( const char * FILE_NAME );
+int    FLEE_COUNTint 	         ( const char * FILE_NAME , int VALUE );
+int    FLEE_COUNTfloat           ( const char * FILE_NAME , float VALUE );
+int    FLEE_COUNTdouble          ( const char * FILE_NAME , double VALUE );
+int    FLEE_COUNTchar            ( const char * FILE_NAME , char CHAR );
+int    FLEE_COUNTstring          ( const char * FILE_NAME , const char * STRING );
 
 
 // PR
@@ -7465,7 +7473,38 @@ FLEE_COUNTchar ( const char * FILE_NAME , char CHAR )
 
 
 
+int
+FLEE_COUNTstring ( const char * FILE_NAME , const char * STRING )
+{
+    FILE* fp;
 
+    char buffer [ 1024 ];
+    int RETURN_VALUE = 0;
+
+    if ( ( fp = fopen ( FILE_NAME , "r" ) ) == NULL ) fprintf ( stderr, "Erro ao abrir o arquivo.\n");
+
+    int string_len = strlen ( STRING );
+
+    while ( fgets ( buffer , 1024 , fp ) )
+    {
+            int buffer_len = strlen ( buffer );
+
+            if ( buffer [ buffer_len - 1 ] == '\n' ) { buffer [ buffer_len - 1 ] = '\0'; buffer_len--; }
+
+            char* ptr = buffer;
+
+            while ( ( ptr = strstr ( ptr , STRING ) ) not_eq NULL )
+            {
+                      if ( ( ptr == buffer or isspace ( * ( ptr - 1 ) ) ) and ( ptr + string_len == buffer + buffer_len or isspace ( * ( ptr + string_len ) ) ) )
+                      RETURN_VALUE++;
+            ptr++;
+            }
+    }
+
+    fclose ( fp );
+
+    return RETURN_VALUE;
+}
 
 
 
