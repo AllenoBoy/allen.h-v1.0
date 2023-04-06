@@ -420,11 +420,12 @@ void allen_CLEARINTB_ARRAY        ( int LINES , int COLUNS , int B_ARRAY [ LINES
 
 
 /*
-    7. SB FUNCTION
+    7. SB FUNCTIONS
 */
 
 
-int SB_CREATEBOX ( LPCTSTR BOX_TEXT , LPCTSTR BOX_CAPTION, UINT BOX_TYPE );
+int  SB_CREATEBOX ( LPCTSTR BOX_TEXT , LPCTSTR BOX_CAPTION, UINT BOX_TYPE );
+void SB_PLAYSOUND ( UINT SOUND ); // MB_ICONASTERISK MB_ICONEXCLAMATION 0xFFFFFFFF MB_ICONERROR MB_ICONHAND MB_ICONINFORMATION MB_ICONQUESTION MB_ICONSTOP MB_ICONWARNING MB_OK
 
 
 
@@ -6406,11 +6407,26 @@ allen_CLEARINTB_ARRAY  ( int LINES , int COLUNS , int B_ARRAY [ LINES ] [ COLUNS
 
 // SIMPLE BOX
 
+
+
 int
 SB_CREATEBOX ( LPCTSTR BOX_TEXT , LPCTSTR BOX_CAPTION, UINT BOX_TYPE )
 {
     return MessageBox ( NULL , BOX_TEXT, BOX_CAPTION, BOX_TYPE );
 }
+
+
+
+
+
+void
+SB_PLAYSOUND ( UINT SOUND )
+{
+   MessageBeep ( SOUND );
+}
+
+
+
 
 
 
@@ -6746,6 +6762,10 @@ LOCH_SETLOCAL ( char TEXT [] )
 
 
 
+/* GENERAL FILE FUNCTIONS */
+
+
+
 void
 FLEE_CREATEAFILE ( const char* FILE_NAME )
 {
@@ -7020,6 +7040,127 @@ FLEE_COPYAFOLDER ( const char *FOLDER_NAME , const char *NEW_PATH )
                    }
                    closedir ( dir );
 }
+
+
+
+/* BASIC / SIMPLE VARIABLE FILE FUNCTIONS */
+
+
+
+void
+FLEE_saveINT ( int VALUE , const char * FILE_NAME )
+{
+    FILE* fp = fopen ( FILE_NAME , "w");
+    if (fp == NULL)  printf("Erro ao abrir o arquivo.\n");
+
+    fprintf ( fp , "%d" , VALUE );
+    fclose ( fp );
+}
+
+
+
+
+
+int
+FLEE_loadINT ( const char * FILE_NAME )
+{
+    int RETURN_VALUE;
+
+    FILE* fp = fopen ( FILE_NAME , "r" );
+
+    if ( fp == NULL ) printf("Erro ao abrir o arquivo.\n");
+
+    fscanf ( fp, "%d", &RETURN_VALUE);
+    fclose ( fp );
+
+    return RETURN_VALUE;
+}
+
+
+
+
+
+void
+FLEE_saveCHAR ( char CHARACTER , const char * FILE_NAME )
+{
+    FILE* fp = fopen ( FILE_NAME, "w");
+
+    if ( fp == NULL ) printf ("Erro ao abrir o arquivo.\n");
+
+    fputc ( CHARACTER , fp );
+    fclose ( fp );
+}
+
+
+
+
+
+char
+FLEE_loadCHAR ( const char * FILE_NAME )
+{
+    char CHARACTER;
+
+    FILE* fp = fopen ( FILE_NAME, "r" );
+
+    if ( fp == NULL ) printf ("Erro ao abrir o arquivo.\n");
+
+    CHARACTER = fgetc(fp);
+    fclose(fp);
+
+    return CHARACTER;
+}
+
+
+
+
+
+void
+FLEE_saveFLOAT ( float VALUE , int COMMAS , const char * FILE_NAME )
+{
+    FILE * fp = fopen ( FILE_NAME , "w" );
+
+    if ( fp == NULL ) printf ("Erro ao abrir o arquivo.\n");
+
+    char format [20];
+
+    sprintf ( format , "%%.%df" , COMMAS );
+    fprintf ( fp , format , VALUE );
+    fclose  ( fp );
+}
+
+
+
+
+
+float
+FLEE_loadFLOAT ( const char * FILE_NAME )
+{
+    float RETURN_VALUE;
+    char str[100];
+
+    FILE* fp = fopen ( FILE_NAME , "r" );
+
+    if (fp == NULL) printf("Erro ao abrir o arquivo.\n");
+
+    fgets  ( str , 100 , fp );
+    sscanf ( str , "%f" , &RETURN_VALUE );
+    fclose ( fp );
+
+    return RETURN_VALUE;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
