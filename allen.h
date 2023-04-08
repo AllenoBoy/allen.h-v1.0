@@ -343,27 +343,27 @@ static DWORD  outModeInit  , inModeInit;
 
 // FUNCTIONS
 static inline void ENABLEPROPS                ( void );
-static inline void PROP_RESTORECONSOLE   	  ( void );
-static inline void PROP_TEXTCOLOR        	  ( int CODE );
-static inline void PROP_TEXTSTYLE       	  ( int CODE );
-static inline void PROP_BACKGROUNDCOLOR 	  ( int CODE );
-static inline void PROP_BACKGROUNDSTYLE 	  ( int CODE );
-static inline void PROP_RESETCOLOR      	  ( void );
+static inline void PROP_RESTORECONSOLE        ( void );
+static inline void PROP_TEXTCOLOR             ( int CODE );
+static inline void PROP_TEXTSTYLE             ( int CODE );
+static inline void PROP_BACKGROUNDCOLOR       ( int CODE );
+static inline void PROP_BACKGROUNDSTYLE       ( int CODE );
+static inline void PROP_RESETCOLOR            ( void );
 static inline void PROP_CLS                   ( void );
 static inline void PROP_CLsAFTER              ( void );
 static inline void PROP_ClsBEFORE             ( void );
 static inline void PROP_CLEARLINE             ( void );
 static inline void PROP_CLEARLINEtoRIGHT      ( void );
 static inline void PROP_CLEARLINEtoLEFT       ( void );
-static inline void PROP_MOVECURSORup 		  ( int POSITION );
-static inline void PROP_MOVECURSORdown 		  ( int POSITION );
-static inline void PROP_MOVECURSORright 	  ( int POSITION );
-static inline void PROP_MOVECURSORleft 		  ( int POSITION );
-static inline void PROP_MOVECURSORto 		  ( int ROW , int COL );
+static inline void PROP_MOVECURSORup          ( int POSITION );
+static inline void PROP_MOVECURSORdown        ( int POSITION );
+static inline void PROP_MOVECURSORright       ( int POSITION );
+static inline void PROP_MOVECURSORleft        ( int POSITION );
+static inline void PROP_MOVECURSORto          ( int ROW , int COL );
 static inline void PROP_SAVECURSORPOSITION    ( void );
 static inline void PROP_RESTORECURSORPOSITION ( void );
-static inline void PROP_HIDECURSOR 		      ( void );
-static inline void PROP_SHOWCURSOR 		      ( void );
+static inline void PROP_HIDECURSOR            ( void );
+static inline void PROP_SHOWCURSOR            ( void );
 
 
 
