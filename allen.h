@@ -218,7 +218,6 @@
 
 
 
-
 # endif /*_ALLEN_*/
 
 
@@ -412,6 +411,8 @@ void allen_CLEARINTARRAY          ( int SIZE , int ARRAY [] );
 int  allen_SUBSINTB_ARRAY         ( int LINES , int COLUNS , int CONDITION , int COMPARATOR , int TOKEN , int B_ARRAY [LINES] [COLUNS] );
 int  allen_INTCOPYB_ARRAY         ( int LINES , int COLUNS , int CONDITION , int COMPARATOR , int B_ARRAY [LINES] [COLUNS] , int NEW_B_ARRAY [LINES] [COLUNS] );
 void allen_CLEARINTB_ARRAY        ( int LINES , int COLUNS , int B_ARRAY [ LINES ] [ COLUNS ] );
+void allen_ADDTOSTRING            ( char * STRING , char * ADD );
+void allen_REMAKESTRING           ( char * STRING , char * REMAKE );
 
 
 
@@ -490,6 +491,7 @@ void   FLEE_DELETEAFILE 		 ( const char *FILE_NAME );
 void   FLEE_DELETEAFOLDER 	     ( const char * FOLDER_NAME );
 void   FLEE_MOVEAFOLDER 		 ( const char *FOLDER_NAME , const char *NEW_PATH );
 void   FLEE_COPYAFOLDER 		 ( const char *FOLDER_NAME , const char *NEW_PATH );
+void   FLEE_SYSTEMFOLDER         ( const char * SYSTEM_FOLDER_NAME , char * FOLDER , char * SAVE_PATH );
 void   FLEE_saveINT              ( int VALUE , const char * FILE_NAME );
 int    FLEE_loadINT              ( const char * FILE_NAME );
 void   FLEE_saveCHAR             ( char CHARACTER , const char * FILE_NAME );
@@ -512,7 +514,26 @@ int    FLEE_COUNTfloat           ( const char * FILE_NAME , float VALUE );
 int    FLEE_COUNTdouble          ( const char * FILE_NAME , double VALUE );
 int    FLEE_COUNTchar            ( const char * FILE_NAME , char CHAR );
 int    FLEE_COUNTstring          ( const char * FILE_NAME , const char * STRING );
+int    FLEE_GLOBALSUBSint        ( const char * FILE_NAME, int VALUE , const char * TOKEN );
+int    FLEE_LOCALSUBSint         ( const char * FILE_NAME , int VALUE , const char * TOKEN );
+int    FLEE_GLOBALSUBSintl       ( const char* FILE_NAME , int WHAT_LINE , int VALUE , const char* TOKEN );
+int    FLEE_LOCALSUBSintl        ( const char * FILE_NAME , int WHAT_LINE , int VALUE , const char * TOKEN );
 
+
+int    FLEE_GLOBALSUBSfloat      ( const char * FILE_NAME , float VALUE , int COMMAS , const char * TOKEN );
+int    FLEE_LOCALSUBSfloat       ( const char * FILE_NAME , float VALUE , int COMMAS , const char * TOKEN );
+
+
+int    FLEE_GLOBALSUBSdouble     ( const char * FILE_NAME , double VALUE , int COMMAS , const char * TOKEN );
+int    FLEE_LOCALSUBSdouble      ( const char * FILE_NAME , double VALUE , int COMMAS , const char * TOKEN );
+
+
+int    FLEE_GLOBALSUBSchar       ( const char * FILE_NAME , char VALUE , const char * TOKEN );
+int    FLEE_LOCALSUBSchar        ( const char * FILE_NAME , char VALUE , const char * TOKEN );
+
+
+int    FLEE_GLOBALSUBSstring     ( const char * FILE_NAME , const char * OLD_WORD , const char * TOKEN );
+int    FLEE_LOCALSUBSstring      ( const char * FILE_NAME , const char * OLD_WORD , const char * TOKEN );
 
 // PR
 
@@ -6424,6 +6445,25 @@ allen_CLEARINTB_ARRAY  ( int LINES , int COLUNS , int B_ARRAY [ LINES ] [ COLUNS
 
 
 
+void
+allen_ADDTOSTRING ( char * STRING , char * ADD )
+{
+    sprintf ( STRING , "%s%s" , STRING , ADD );
+}
+
+
+
+
+
+void
+allen_REMAKESTRING ( char * STRING , char * REMAKE )
+{
+     sprintf ( STRING , "%s" , REMAKE );
+}
+
+
+
+
 
 // SIMPLE BOX
 
@@ -7063,6 +7103,16 @@ FLEE_COPYAFOLDER ( const char *FOLDER_NAME , const char *NEW_PATH )
 
 
 
+
+
+void
+FLEE_SYSTEMFOLDER ( const char * SYSTEM_FOLDER_NAME , char * FOLDER , char * SAVE_PATH )
+{
+     sprintf ( SAVE_PATH , "%s\\%s\\" , getenv ( SYSTEM_FOLDER_NAME ) , FOLDER );
+}
+
+
+
 /* BASIC / SIMPLE VARIABLE FILE FUNCTIONS */
 
 
@@ -7508,21 +7558,724 @@ FLEE_COUNTstring ( const char * FILE_NAME , const char * STRING )
 
 
 
+/* SUBS IN THE FILE FUNCTIONS */
+
+
+
+int
+FLEE_GLOBALSUBSint ( const char * FILE_NAME, int VALUE , const char * TOKEN )
+{
+    FILE * file;
+    char STRING_VALUE[50];
+
+    sprintf ( STRING_VALUE , "%d" , VALUE );
+
+    char temp_filename [] = "allen.txt";
+    int old_word_len = strlen ( STRING_VALUE );
+
+    int RETURN_VALUE = 0;
+
+    file = fopen ( FILE_NAME , "r" );
+    if ( file == NULL ) printf ("Failed to open the file!\n");
+
+    FILE * temp_file = fopen ( temp_filename , "w" );
+    if ( temp_file == NULL ) { printf("Error with the file reading!\n"); fclose ( file ); }
+
+         char line [ 99999 ];
+
+    while ( fgets ( line , 99999 , file ) )
+    {
+         char * pos = line;
+
+         while ( ( pos = strstr ( pos , STRING_VALUE ) ) not_eq NULL )
+         {
+              char temp [ 100 ] = "";
+              int len = pos - line;
+
+                   strncat ( temp , line , len );
+                   strcat  ( temp , TOKEN );
+                   pos += old_word_len;
+
+                   strcpy  ( line , pos );
+                   pos = line;
+
+                   strncat ( temp , line , strlen ( line ) );
+                   strcpy  ( line , temp );
+                   RETURN_VALUE++;
+         }
+
+        fwrite ( line , strlen ( line ) , 1 , temp_file );
+    }
+
+    fclose ( file );    fclose ( temp_file );   remove ( FILE_NAME ); rename ( temp_filename , FILE_NAME );
+
+    return RETURN_VALUE;
+}
 
 
 
 
 
+int
+FLEE_GLOBALSUBSfloat ( const char * FILE_NAME , float VALUE , int COMMAS , const char * TOKEN )
+{
+     FILE * file;
+     FILE * temp_file;
+
+     char temp_filename [ ] = "allen.txt";
+     char line [ 99999 ];
+     char string_value [ 50 ];
+     char * pos;
+     int old_word_len , new_word_len;
+     int return_value = 0;
+
+         snprintf ( string_value , 50 , "%.*f" , COMMAS , VALUE );
+
+     for ( pos = string_value; * pos not_eq '\0'; pos++ ) if ( * pos == ',') * pos = '.';
+
+     old_word_len = strlen ( string_value );
+     new_word_len = strlen ( TOKEN );
+
+     file = fopen ( FILE_NAME , "r" );
+           if ( file == NULL ) printf ("Failed to open the file!\n");
+
+     temp_file = fopen ( temp_filename , "w" );
+              if ( temp_file == NULL ) { printf ("Failed to open temporary file!\n"); fclose ( file ); }
+
+              while ( fgets ( line , 99999 , file ) )
+              {
+                   char * comma = strchr ( line , ',' );
+
+                   while ( comma not_eq NULL ) { * comma = '.'; comma = strchr ( comma , ','); }
+
+                   pos = line;
+
+              while ( ( pos = strstr ( pos , string_value ) ) not_eq NULL )
+              {
+                   fwrite ( line , pos - line , 1 , temp_file );
+                   fwrite ( TOKEN , new_word_len , 1 , temp_file );
+                   pos += old_word_len;
+
+                         if ( * pos == '.' )
+                         {
+                                pos++;
+                                int i;
+
+                           for ( i = 0; i < COMMAS and * pos not_eq '\0'; i++, pos++ ) fwrite ( pos , 1 , 1 , temp_file );
+
+                                old_word_len += i - COMMAS;
+                         }
+
+               strcpy ( line , pos );
+               pos = line;
+               return_value++;
+              }
+
+     fwrite ( line , strlen ( line ) , 1 , temp_file );
+
+    }
+
+     fclose ( file ); fclose ( temp_file );
+
+     if ( remove ( FILE_NAME ) not_eq 0 )                 printf ("Failed on the end of the function execution!");
+     if ( rename ( temp_filename , FILE_NAME ) not_eq 0 ) printf ("Failed on the end of the function execution!");
+
+     return return_value;
+}
 
 
 
 
 
+int
+FLEE_GLOBALSUBSdouble ( const char * FILE_NAME , double VALUE , int COMMAS , const char * TOKEN )
+{
+     FILE * file;
+     FILE * temp_file;
+
+     char temp_filename [ ] = "allen.txt";
+     char line [ 99999 ];
+     char string_value [ 50 ];
+     char * pos;
+     int old_word_len , new_word_len;
+     int return_value = 0;
+
+         snprintf ( string_value , 50 , "%.*lf" , COMMAS , VALUE );
+
+     for ( pos = string_value; * pos not_eq '\0'; pos++ ) if ( * pos == ',') * pos = '.';
+
+     old_word_len = strlen ( string_value );
+     new_word_len = strlen ( TOKEN );
+
+     file = fopen ( FILE_NAME , "r" );
+           if ( file == NULL ) printf ("Failed to open the file!\n");
+
+     temp_file = fopen ( temp_filename , "w" );
+              if ( temp_file == NULL ) { printf ("Failed to open temporary file!\n"); fclose ( file ); }
+
+              while ( fgets ( line , 99999 , file ) )
+              {
+                   char * comma = strchr ( line , ',' );
+
+                   while ( comma not_eq NULL ) { * comma = '.'; comma = strchr ( comma , ','); }
+
+                   pos = line;
+
+              while ( ( pos = strstr ( pos , string_value ) ) not_eq NULL )
+              {
+                   fwrite ( line , pos - line , 1 , temp_file );
+                   fwrite ( TOKEN , new_word_len , 1 , temp_file );
+                   pos += old_word_len;
+
+                         if ( * pos == '.' )
+                         {
+                                pos++;
+                                int i;
+
+                           for ( i = 0; i < COMMAS and * pos not_eq '\0'; i++, pos++ ) fwrite ( pos , 1 , 1 , temp_file );
+
+                                old_word_len += i - COMMAS;
+                         }
+
+               strcpy ( line , pos );
+               pos = line;
+               return_value++;
+              }
+
+     fwrite ( line , strlen ( line ) , 1 , temp_file );
+
+    }
+
+     fclose ( file ); fclose ( temp_file );
+
+     if ( remove ( FILE_NAME ) not_eq 0 )                 printf ("Failed on the end of the function execution!");
+     if ( rename ( temp_filename , FILE_NAME ) not_eq 0 ) printf ("Failed on the end of the function execution!");
+
+     return return_value;
+}
 
 
 
 
 
+int
+FLEE_GLOBALSUBSchar ( const char * FILE_NAME , char VALUE , const char * TOKEN )
+{
+     FILE * file;
+
+    char STRING_VALUE [ 2 ] = "";
+    STRING_VALUE      [ 0 ] = VALUE;
+
+    char temp_filename [ ] = "allen.txt";
+    int  old_word_len      = strlen ( STRING_VALUE );
+    int new_word_len       = strlen ( TOKEN );
+    int RETURN_VALUE       = 0;
+
+                            file = fopen ( FILE_NAME , "r" );
+                            if ( file == NULL ) printf ("Failed to open the file!");
+
+                            FILE * temp_file = fopen ( temp_filename , "w" );
+                            if ( temp_file == NULL ) { printf ("Error with the file reading!\n"); fclose ( file ); }
+
+    char line [ 99999 ];
+
+         while ( fgets ( line , 99999 , file ) )
+         {
+              char * pos = line;
+
+         while ( ( pos = strstr ( pos , STRING_VALUE ) ) not_eq NULL )
+         {
+              if ( * pos not_eq VALUE and pos [ old_word_len ] not_eq ' ' and pos [ old_word_len ] not_eq '\n' ) { pos += old_word_len; continue; }
+
+                fwrite ( line  , pos - line   , 1 , temp_file );
+                fwrite ( TOKEN , new_word_len , 1 , temp_file );
+                pos += old_word_len;
+
+                strcpy ( line , pos );
+                pos = line;
+                RETURN_VALUE++;
+         }
+
+          fwrite ( line , strlen ( line ) , 1 , temp_file );
+
+         }
+
+    fclose ( file );    fclose ( temp_file );  remove ( FILE_NAME );    rename ( temp_filename , FILE_NAME );
+
+    return RETURN_VALUE;
+}
 
 
 
+
+
+int
+FLEE_GLOBALSUBSstring ( const char * FILE_NAME , const char * OLD_WORD , const char * TOKEN )
+{
+    FILE * file;
+
+    char temp_filename [] = "allen.txt";
+    int old_word_len = strlen ( OLD_WORD );
+    int new_word_len =  strlen ( TOKEN);
+
+    int RETURN_VALUE = 0;
+
+    file = fopen ( FILE_NAME, "r");
+    if ( file == NULL) printf("Failed to open the file!");
+
+    FILE * temp_file = fopen ( temp_filename , "w" );
+    if ( temp_file == NULL ) { printf("Error with the file reading!\n"); fclose ( file ); }
+
+    char line [ 99999 ];
+
+    while ( fgets ( line , 99999 , file ) )
+    {
+         char * pos = line;
+
+               while ( ( pos = strstr ( pos , OLD_WORD ) ) not_eq NULL )
+               {
+                      fwrite ( line  , pos - line   , 1 , temp_file );
+                      fwrite ( TOKEN , new_word_len , 1 , temp_file );
+                      pos += old_word_len;
+
+                      strcpy ( line , pos );
+                      pos = line;
+                      RETURN_VALUE++;
+               }
+
+        fwrite ( line , strlen ( line ) , 1 , temp_file );
+    }
+
+    fclose ( file ); fclose ( temp_file ); remove ( FILE_NAME ); rename ( temp_filename , FILE_NAME );
+
+    return RETURN_VALUE;
+}
+
+
+
+
+
+int
+FLEE_LOCALSUBSint ( const char * FILE_NAME , int VALUE , const char * TOKEN )
+{
+
+    FILE * file;
+    char STRING_VALUE [ 50 ];
+
+         sprintf ( STRING_VALUE , "%d" , VALUE );
+
+    char temp_filename [ ] = "allen.txt";
+    int  old_word_len      = strlen ( STRING_VALUE );
+    int  new_word_len      = strlen ( TOKEN );
+
+    int RETURN_VALUE = 0;
+
+    file = fopen ( FILE_NAME , "r" );
+    if ( file == NULL ) printf ("Failed to open the file!\n");
+
+    FILE * temp_file = fopen ( temp_filename , "w" );
+    if ( temp_file == NULL ) { printf ("Error with the file reading!\n"); fclose ( file ); }
+
+    char line [ 99999 ];
+
+         while ( fgets ( line , 99999 , file ) )
+         {
+              char * pos = line;
+
+         while ( ( pos = strstr ( pos , STRING_VALUE ) ) not_eq NULL )
+         {
+              if ( ( * ( pos + old_word_len ) == ' ' or * ( pos + old_word_len ) == '\n' or * ( pos + old_word_len ) == '\0' ) and ( pos == line or * ( pos - 1 ) == ' ' or * ( pos - 1 ) == '\n' or * ( pos - 1 ) == '\0' ) )
+              {
+                   fwrite ( line , pos - line , 1 , temp_file );
+                   fwrite ( TOKEN , new_word_len , 1 , temp_file );
+                   pos += old_word_len;
+
+                   strcpy ( line , pos );
+                   pos = line;
+                   RETURN_VALUE++;
+              }
+              else pos += old_word_len;
+         }
+
+              fwrite ( line , strlen ( line ) , 1 , temp_file );
+         }
+
+    fclose ( file );    fclose ( temp_file );   remove ( FILE_NAME );    rename ( temp_filename , FILE_NAME );
+
+    return RETURN_VALUE;
+}
+
+
+
+
+
+int
+FLEE_LOCALSUBSfloat ( const char * FILE_NAME , float VALUE , int COMMAS , const char * TOKEN )
+{
+    FILE * file;
+    FILE * temp_file;
+
+         char   temp_filename [ ] = "allen.txt";
+         char   line [ 99999 ];
+         char   string_value [ 50 ];
+         char * pos;
+         int    old_word_len , new_word_len;
+         int    return_value = 0;
+
+    snprintf ( string_value , 50 , "%.*f" , COMMAS , VALUE );
+
+            for ( pos = string_value; * pos not_eq '\0'; pos++ ) if ( * pos == ',') * pos = '.';
+
+    old_word_len = strlen ( string_value );
+    new_word_len = strlen ( TOKEN );
+
+                file = fopen ( FILE_NAME , "r" );
+                if ( file == NULL ) printf ("Failed to open the file!\n");
+
+                temp_file = fopen ( temp_filename , "w" );
+                if ( temp_file == NULL ) { printf ("Failed to open temporary file!\n");  fclose ( file ); }
+
+    while ( fgets ( line , 99999 , file ) )
+    {
+
+         char * comma = strchr ( line , ',' );
+
+    while ( comma not_eq NULL ) { * comma = '.'; comma = strchr ( comma , ',' ); }
+    pos = line;
+
+    while ( ( pos = strstr ( pos , string_value ) ) not_eq NULL )
+    {
+         if ( ( pos == line or isspace ( * ( pos - 1 ) ) ) and isspace ( * ( pos + old_word_len ) ) )
+         {
+           fwrite ( line  , pos - line   , 1 , temp_file );
+           fwrite ( TOKEN , new_word_len , 1 , temp_file );
+           pos += old_word_len;
+
+         if ( * pos == '.' )
+         {
+                pos++;
+            int i;
+
+                for ( i = 0; i < COMMAS and * pos not_eq '\0'; i++, pos++ ) fwrite ( pos , 1 , 1 , temp_file );
+                old_word_len += i - COMMAS;
+         }
+
+              strcpy ( line , pos );
+              pos = line;
+              return_value++;
+
+         }
+
+         else pos += old_word_len;
+
+    }
+
+         fwrite ( line , strlen ( line ) , 1 , temp_file );
+    }
+
+    fclose ( file );    fclose ( temp_file );
+
+    if ( remove ( FILE_NAME ) not_eq 0 )                 printf ("Error with the end of the function!");
+    if ( rename ( temp_filename , FILE_NAME ) not_eq 0 ) printf ("Error with the end of the function!");
+
+    return return_value;
+}
+
+
+
+
+int
+FLEE_LOCALSUBSdouble ( const char * FILE_NAME , double VALUE , int COMMAS , const char * TOKEN )
+{
+    FILE * file;
+    FILE * temp_file;
+
+         char   temp_filename [ ] = "allen.txt";
+         char   line [ 99999 ];
+         char   string_value [ 50 ];
+         char * pos;
+         int    old_word_len , new_word_len;
+         int    return_value = 0;
+
+    snprintf ( string_value , 50 , "%.*lf" , COMMAS , VALUE );
+
+            for ( pos = string_value; * pos not_eq '\0'; pos++ ) if ( * pos == ',') * pos = '.';
+
+    old_word_len = strlen ( string_value );
+    new_word_len = strlen ( TOKEN );
+
+                file = fopen ( FILE_NAME , "r" );
+                if ( file == NULL ) printf ("Failed to open the file!\n");
+
+                temp_file = fopen ( temp_filename , "w" );
+                if ( temp_file == NULL ) { printf ("Failed to open temporary file!\n");  fclose ( file ); }
+
+    while ( fgets ( line , 99999 , file ) )
+    {
+
+         char * comma = strchr ( line , ',' );
+
+    while ( comma not_eq NULL ) { * comma = '.'; comma = strchr ( comma , ',' ); }
+    pos = line;
+
+    while ( ( pos = strstr ( pos , string_value ) ) not_eq NULL )
+    {
+         if ( ( pos == line or isspace ( * ( pos - 1 ) ) ) and isspace ( * ( pos + old_word_len ) ) )
+         {
+           fwrite ( line  , pos - line   , 1 , temp_file );
+           fwrite ( TOKEN , new_word_len , 1 , temp_file );
+           pos += old_word_len;
+
+         if ( * pos == '.' )
+         {
+                pos++;
+            int i;
+
+                for ( i = 0; i < COMMAS and * pos not_eq '\0'; i++, pos++ ) fwrite ( pos , 1 , 1 , temp_file );
+                old_word_len += i - COMMAS;
+         }
+
+              strcpy ( line , pos );
+              pos = line;
+              return_value++;
+
+         }
+
+         else pos += old_word_len;
+
+    }
+
+         fwrite ( line , strlen ( line ) , 1 , temp_file );
+    }
+
+    fclose ( file );    fclose ( temp_file );
+
+    if ( remove ( FILE_NAME ) not_eq 0 )                 printf ("Error with the end of the function!");
+    if ( rename ( temp_filename , FILE_NAME ) not_eq 0 ) printf ("Error with the end of the function!");
+
+    return return_value;
+}
+
+
+
+
+
+int
+FLEE_LOCALSUBSchar ( const char * FILE_NAME , char VALUE , const char * TOKEN )
+{
+    FILE *file;
+
+    char STRING_VALUE [ 2 ];
+                            sprintf ( STRING_VALUE , "%c" , VALUE );
+
+    char temp_filename [ ] = "allen.txt";
+    int  old_word_len      = strlen ( STRING_VALUE );
+    int  new_word_len      = strlen ( TOKEN );
+    int  RETURN_VALUE = 0;
+
+    file = fopen ( FILE_NAME , "r" );
+    if ( file == NULL ) printf ("Failed to open the file!");
+
+    FILE * temp_file = fopen ( temp_filename , "w" );
+    if ( temp_file == NULL ) { printf ("Error with the file reading!\n"); fclose(file); }
+
+    char line [ 99999 ];
+
+    while ( fgets ( line , 99999 , file ) )
+    {
+
+         char * pos = line;
+
+    while ( ( pos = strstr ( pos , STRING_VALUE ) ) not_eq NULL )
+    {
+
+         if ( pos [ old_word_len ] not_eq ' ' and pos [ old_word_len ] not_eq '\n' ) { pos += old_word_len; continue; }
+
+       fwrite ( line  , pos - line   , 1 , temp_file );
+       fwrite ( TOKEN , new_word_len , 1 , temp_file );
+       pos += old_word_len;
+
+       strcpy ( line , pos );
+       pos = line;
+       RETURN_VALUE++;
+    }
+
+       fwrite ( line , strlen ( line ) , 1 , temp_file );
+    }
+
+    fclose ( file ); fclose ( temp_file ); remove ( FILE_NAME ); rename ( temp_filename , FILE_NAME );
+
+    return RETURN_VALUE;
+}
+
+
+
+
+
+int
+FLEE_LOCALSUBSstring ( const char * FILE_NAME , const char * OLD_WORD , const char * TOKEN )
+{
+    FILE * file;
+    char temp_filename [ ] = "allen.txt";
+
+    int old_word_len = strlen ( OLD_WORD );
+    int new_word_len = strlen ( TOKEN );
+    int RETURN_VALUE = 0;
+
+    file = fopen ( FILE_NAME , "r" );
+    if ( file == NULL ) printf ("Failed to open the file!");
+
+    FILE * temp_file = fopen ( temp_filename , "w" );
+    if ( temp_file == NULL ) { printf ("Error with the file reading!\n"); fclose ( file ); }
+
+    char line [ 99999 ];
+
+        while ( fgets ( line , 99999 , file ) )
+        {
+
+             char * pos = line;
+
+        while ( ( pos = strstr ( pos , OLD_WORD ) ) not_eq NULL )
+        {
+
+             if ( ( pos == line or isspace ( * ( pos - 1 ) ) ) and ( pos [ old_word_len ] == '\0' or isspace ( pos [ old_word_len ] ) ) )
+             {
+                 fwrite ( line  , pos - line   , 1 , temp_file );
+                 fwrite ( TOKEN , new_word_len , 1 , temp_file );
+                 pos += old_word_len;
+
+                  strcpy ( line , pos );
+                  pos = line;
+                  RETURN_VALUE++;
+             }
+             else pos += old_word_len;
+        }
+
+        fwrite ( line , strlen ( line ) , 1 , temp_file );
+
+        }
+
+    fclose ( file );    fclose ( temp_file );   remove ( FILE_NAME );   rename ( temp_filename , FILE_NAME );
+
+    return RETURN_VALUE;
+}
+
+
+
+
+
+int
+FLEE_GLOBALSUBSintl ( const char* FILE_NAME , int WHAT_LINE , int VALUE , const char* TOKEN )
+{
+     FILE* file;
+     char STRING_VALUE [ 50 ];
+
+                         sprintf ( STRING_VALUE , "%d" , VALUE );
+
+     char temp_filename [ ] = "allen.txt";
+     int  old_word_len      = strlen ( STRING_VALUE );
+     int  RETURN_VALUE      = 0;
+     int  current_line      = 1;
+
+          file = fopen(FILE_NAME, "r");
+              if ( file == NULL ) printf ("Failed to open the file!\n");
+
+          FILE * temp_file = fopen ( temp_filename , "w" );
+              if ( temp_file == NULL ) { printf ("Error with the file reading!\n"); fclose ( file ); }
+
+     char line [ 99999 ];
+
+     while ( fgets ( line , 99999 , file ) )
+     {
+
+          if ( current_line == WHAT_LINE )
+          {
+              char* pos = line;
+
+     while ( ( pos = strstr ( pos , STRING_VALUE ) ) not_eq NULL )
+     {
+                char temp [ 100 ] = "";
+                int  len          = pos - line;
+
+                     strncat ( temp , line , len );
+                     strcat  ( temp , TOKEN );
+                     pos += old_word_len;
+
+                     strcpy ( line , pos );
+                     pos = line;
+
+                strncat ( temp , line , strlen ( line ) );
+                strcpy  ( line , temp );
+                RETURN_VALUE++;
+     }
+     }
+
+      fwrite ( line , strlen ( line ) , 1 , temp_file );
+      current_line++;
+
+    }
+
+    fclose ( file );    fclose ( temp_file );   remove ( FILE_NAME );    rename ( temp_filename , FILE_NAME );
+
+    return RETURN_VALUE;
+}
+
+
+
+
+
+int
+FLEE_LOCALSUBSintl ( const char * FILE_NAME , int WHAT_LINE , int VALUE , const char * TOKEN )
+{
+
+    FILE* file;
+    char STRING_VALUE [ 50 ];
+
+                            sprintf ( STRING_VALUE , "%d" , VALUE );
+
+    char temp_filename [ ]  = "allen.txt";
+    int  old_word_len       = strlen ( STRING_VALUE );
+    int  new_word_len       = strlen ( TOKEN );
+    int RETURN_VALUE        = 0;
+    int current_line_number = 1;
+
+                            file = fopen ( FILE_NAME , "r" );
+                                if ( file == NULL ) printf ("Failed to open the file!\n");
+
+                            FILE * temp_file = fopen ( temp_filename , "w" );
+                                if ( temp_file == NULL ) { printf ("Error with the file reading!\n"); fclose ( file ); }
+
+    char line [ 99999 ];
+
+        while ( fgets ( line , 99999 , file ) )
+        {
+             if ( current_line_number == WHAT_LINE )
+             {
+               char * pos = line;
+
+        while ( ( pos = strstr ( pos , STRING_VALUE ) ) not_eq NULL )
+        {
+                if ( ( * ( pos + old_word_len ) == ' ' or * ( pos + old_word_len ) == '\n' or * ( pos + old_word_len ) == '\0' ) and ( pos == line or * ( pos - 1 ) == ' ' or * ( pos - 1 ) == '\n' or * ( pos - 1 ) == '\0' ) )
+                {
+                      fwrite ( line  , pos - line   , 1 , temp_file );
+                      fwrite ( TOKEN , new_word_len , 1 , temp_file );
+                      pos += old_word_len;
+
+                      strcpy ( line , pos );
+                      pos = line;
+                      RETURN_VALUE++;
+                }
+                else pos += old_word_len;
+        }
+
+             fwrite ( line , strlen ( line ) , 1 , temp_file );
+        }
+        else fwrite ( line , strlen ( line ) , 1 , temp_file );
+
+        current_line_number++;
+    }
+
+    fclose ( file ); fclose ( temp_file ); remove ( FILE_NAME ); rename ( temp_filename , FILE_NAME );
+
+    return RETURN_VALUE;
+}
