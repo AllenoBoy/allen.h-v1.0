@@ -480,17 +480,17 @@ void LOCH_SETLOCAL ( char TEXT [] );
 */
 
 
-void   FLEE_CREATEAFILE 	     ( const char * FILE_NAME );
-void   FLEE_RENAMEAFILE 		 ( const char * FILE_NAME , const char * NEW_FILE_NAME );
-void   FLEE_MOVEAFILE 		     ( const char * FILE_NAME , const char * NEW_DIRECTORY );
-void   FLEE_COPYAFILE 		     ( const char * FOLDER , const char * FILE_NAME, const char* NEW_FOLDER , const char* NEW_FILENAME );
+void   FLEE_CREATEAFILE          ( const char * FILE_NAME );
+void   FLEE_RENAMEAFILE          ( const char * FILE_NAME , const char * NEW_FILE_NAME );
+void   FLEE_MOVEAFILE            ( const char * FILE_NAME , const char * NEW_DIRECTORY );
+void   FLEE_COPYAFILE            ( const char * FOLDER , const char * FILE_NAME, const char* NEW_FOLDER , const char* NEW_FILENAME );
 void   FLEE_CREATEAFILEANDFOLDER ( const char * FOLDER_NAME , const char* FILE_NAME );
-void   FLEE_CREATEAFOLDER 	     ( const char * FOLDER_NAME );
-void   FLEE_RENAMEAFOLDER 	     ( const char *FOLDER_NAME , const char *NEW_FOLDER_NAME );
-void   FLEE_DELETEAFILE 		 ( const char *FILE_NAME );
-void   FLEE_DELETEAFOLDER 	     ( const char * FOLDER_NAME );
-void   FLEE_MOVEAFOLDER 		 ( const char *FOLDER_NAME , const char *NEW_PATH );
-void   FLEE_COPYAFOLDER 		 ( const char *FOLDER_NAME , const char *NEW_PATH );
+void   FLEE_CREATEAFOLDER        ( const char * FOLDER_NAME );
+void   FLEE_RENAMEAFOLDER        ( const char *FOLDER_NAME , const char *NEW_FOLDER_NAME );
+void   FLEE_DELETEAFILE          ( const char *FILE_NAME );
+void   FLEE_DELETEAFOLDER        ( const char * FOLDER_NAME );
+void   FLEE_MOVEAFOLDER          ( const char *FOLDER_NAME , const char *NEW_PATH );
+void   FLEE_COPYAFOLDER          ( const char *FOLDER_NAME , const char *NEW_PATH );
 void   FLEE_SYSTEMFOLDER         ( const char * SYSTEM_FOLDER_NAME , char * FOLDER , char * SAVE_PATH );
 void   FLEE_saveINT              ( int VALUE , const char * FILE_NAME );
 int    FLEE_loadINT              ( const char * FILE_NAME );
@@ -505,11 +505,11 @@ void   FLEE_loadSTRING           ( char * STRING , int SIZE_OF_READ , const char
 int    FLEE_COUNTLINES           ( const char * FILE_NAME );
 int    FLEE_COUNTWORDS           ( const char * FILE_NAME );
 int    FLEE_COUNTNUMBERS         ( const char * FILE_NAME );
-int    FLEE_COUNTint 	         ( const char * FILE_NAME , int VALUE );
+int    FLEE_COUNTint             ( const char * FILE_NAME , int VALUE );
 int    FLEE_COUNTLINES           ( const char * FILE_NAME );
 int    FLEE_COUNTWORDS           ( const char * FILE_NAME );
 int    FLEE_COUNTNUMBERS         ( const char * FILE_NAME );
-int    FLEE_COUNTint 	         ( const char * FILE_NAME , int VALUE );
+int    FLEE_COUNTint             ( const char * FILE_NAME , int VALUE );
 int    FLEE_COUNTfloat           ( const char * FILE_NAME , float VALUE );
 int    FLEE_COUNTdouble          ( const char * FILE_NAME , double VALUE );
 int    FLEE_COUNTchar            ( const char * FILE_NAME , char CHAR );
