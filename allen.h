@@ -454,16 +454,16 @@ void   FLEE_DELETEAFOLDER        ( const char * FOLDER_NAME );
 void   FLEE_MOVEAFOLDER          ( const char *FOLDER_NAME , const char *NEW_PATH );
 void   FLEE_COPYAFOLDER          ( const char *FOLDER_NAME , const char *NEW_PATH );
 void   FLEE_SYSTEMFOLDER         ( const char * SYSTEM_FOLDER_NAME , char * FOLDER , char * SAVE_PATH );
-void   FLEE_saveINT              ( int VALUE , const char * FILE_NAME );
-int    FLEE_loadINT              ( const char * FILE_NAME );
-void   FLEE_saveCHAR             ( char CHARACTER , const char * FILE_NAME );
-char   FLEE_loadCHAR             ( const char * FILE_NAME );
-void   FLEE_saveFLOAT            ( float VALUE , int COMMAS , const char * FILE_NAME );
-float  FLEE_loadFLOAT            ( const char * FILE_NAME );
-void   FLEE_saveDOUBLE           ( double VALUE , int COMMAS , const char * FILE_NAME );
-double FLEE_loadDOUBLE           ( const char * FILE_NAME );
-void   FLEE_saveSTRING           ( const char * STRING , const char * FILE_NAME );
-void   FLEE_loadSTRING           ( const char * FILE_NAME, char* STRING );
+void   FLEE_Sint                 ( int VALUE , const char * FILE_NAME );
+int    FLEE_Lint                 ( const char * FILE_NAME );
+void   FLEE_Schar                ( char CHARACTER , const char * FILE_NAME );
+char   FLEE_Lchar                ( const char * FILE_NAME );
+void   FLEE_Sfloat               ( float VALUE , int COMMAS , const char * FILE_NAME );
+float  FLEE_Lfloat               ( const char * FILE_NAME );
+void   FLEE_Sdouble              ( double VALUE , int COMMAS , const char * FILE_NAME );
+double FLEE_Ldouble              ( const char * FILE_NAME );
+void   FLEE_Sstring              ( const char * FILE_NAME , const char * STRING );
+void   FLEE_Lstring              ( const char * FILE_NAME, char * STRING );
 int    FLEE_COUNTLINES           ( const char * FILE_NAME );
 int    FLEE_COUNTWORDS           ( const char * FILE_NAME );
 int    FLEE_COUNTNUMBERS         ( const char * FILE_NAME );
@@ -7114,7 +7114,7 @@ FLEE_SYSTEMFOLDER ( const char * SYSTEM_FOLDER_NAME , char * FOLDER , char * SAV
 
 
 void
-FLEE_saveINT ( int VALUE , const char * FILE_NAME )
+FLEE_Sint ( int VALUE , const char * FILE_NAME )
 {
 
     FILE* fp = fopen ( FILE_NAME , "w");
@@ -7130,7 +7130,7 @@ FLEE_saveINT ( int VALUE , const char * FILE_NAME )
 
 
 int
-FLEE_loadINT ( const char * FILE_NAME )
+FLEE_Lint ( const char * FILE_NAME )
 {
 
     int RETURN_VALUE;
@@ -7150,7 +7150,7 @@ FLEE_loadINT ( const char * FILE_NAME )
 
 
 void
-FLEE_saveCHAR ( char CHARACTER , const char * FILE_NAME )
+FLEE_Schar ( char CHARACTER , const char * FILE_NAME )
 {
     FILE* fp = fopen ( FILE_NAME, "w");
 
@@ -7165,7 +7165,7 @@ FLEE_saveCHAR ( char CHARACTER , const char * FILE_NAME )
 
 
 char
-FLEE_loadCHAR ( const char * FILE_NAME )
+FLEE_Lchar ( const char * FILE_NAME )
 {
     SetConsoleOutputCP ( 65001 );
 
@@ -7188,7 +7188,7 @@ FLEE_loadCHAR ( const char * FILE_NAME )
 
 
 void
-FLEE_saveFLOAT ( float VALUE , int COMMAS , const char * FILE_NAME )
+FLEE_Sfloat ( float VALUE , int COMMAS , const char * FILE_NAME )
 {
 
     FILE * fp = fopen ( FILE_NAME , "w" );
@@ -7208,7 +7208,7 @@ FLEE_saveFLOAT ( float VALUE , int COMMAS , const char * FILE_NAME )
 
 
 float
-FLEE_loadFLOAT ( const char * FILE_NAME )
+FLEE_Lfloat ( const char * FILE_NAME )
 {
 
     float RETURN_VALUE;
@@ -7230,7 +7230,7 @@ FLEE_loadFLOAT ( const char * FILE_NAME )
 
 
 void
-FLEE_saveDOUBLE ( double VALUE , int COMMAS , const char * FILE_NAME )
+FLEE_Sdouble ( double VALUE , int COMMAS , const char * FILE_NAME )
 {
 
     FILE* fp = fopen ( FILE_NAME, "w" );
@@ -7250,7 +7250,7 @@ FLEE_saveDOUBLE ( double VALUE , int COMMAS , const char * FILE_NAME )
 
 
 double
-FLEE_loadDOUBLE ( const char* FILE_NAME )
+FLEE_Ldouble ( const char* FILE_NAME )
 {
 
     double RETURN_VALUE;
@@ -7272,7 +7272,7 @@ FLEE_loadDOUBLE ( const char* FILE_NAME )
 
 
 void
-FLEE_saveSTRING ( const char * STRING , const char * FILE_NAME )
+FLEE_Sstring ( const char * FILE_NAME , const char * STRING  )
 {
 
     FILE* fp = fopen ( FILE_NAME , "w");
@@ -7289,7 +7289,7 @@ FLEE_saveSTRING ( const char * STRING , const char * FILE_NAME )
 
 
 void
-FLEE_loadSTRING ( const char* FILE_NAME, char* STRING )
+FLEE_Lstring ( const char* FILE_NAME, char* STRING )
 {
     SetConsoleOutputCP ( 65001 );
 
