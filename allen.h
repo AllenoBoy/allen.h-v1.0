@@ -8,6 +8,7 @@
 
 
 
+
 // DEFAULT HEADERS
 
 # include <stdio.h>
@@ -477,7 +478,7 @@ int    FLEE_COUNTchar            ( const char * FILE_NAME , char CHAR );
 int    FLEE_COUNTstring          ( const char * FILE_NAME , const char * STRING );
 int    FLEE_GLOBALSUBSint        ( const char * FILE_NAME, int VALUE , const char * TOKEN );
 int    FLEE_LOCALSUBSint         ( const char * FILE_NAME , int VALUE , const char * TOKEN );
-int    FLEE_GLOBALSUBSintl       ( const char* FILE_NAME , int WHAT_LINE , int VALUE , const char* TOKEN );
+int    FLEE_GLOBALSUBSintl       ( const char * FILE_NAME , int WHAT_LINE , int VALUE , const char* TOKEN );
 int    FLEE_LOCALSUBSintl        ( const char * FILE_NAME , int WHAT_LINE , int VALUE , const char * TOKEN );
 int    FLEE_GLOBALSUBSfloat      ( const char * FILE_NAME , float VALUE , int COMMAS , const char * TOKEN );
 int    FLEE_LOCALSUBSfloat       ( const char * FILE_NAME , float VALUE , int COMMAS , const char * TOKEN );
@@ -495,6 +496,22 @@ int    FLEE_GLOBALSUBSstring     ( const char * FILE_NAME , const char * OLD_WOR
 int    FLEE_LOCALSUBSstring      ( const char * FILE_NAME , const char * OLD_WORD , const char * TOKEN );
 int    FLEE_GLOBALSUBSstringl    ( const char * FILE_NAME , int WHAT_LINE , const char * STRING , const char * TOKEN );
 int    FLEE_LOCALSUBSstringl     ( const char * FILE_NAME , int WHAT_LINE , const char * STRING , const char * TOKEN );
+void   FLEE_WRITEint             ( const char * FILE_NAME , int VALUE );
+void   FLEE_WRITEintl 	         ( const char * FILE_NAME , int VALUE , int WHAT_LINE );
+void   FLEE_WRITESUPAint         ( const char * FILE_NAME , int VALUE , int WHAT_LINE , int WHAT_COLUMN );
+void   FLEE_WRITEfloat           ( const char * FILE_NAME , float VALUE , int COMMAS );
+void   FLEE_WRITEfloatl          ( const char * FILE_NAME , float VALUE , int COMMAS , int WHAT_LINE );
+void   FLEE_WRITESUPAfloat       ( const char * FILE_NAME , float VALUE , int COMMA , int WHAT_LINE , int WHAT_COLUMN );
+void   FLEE_WRITEdouble          ( const char * FILE_NAME , double VALUE , int COMMAS );
+void   FLEE_WRITEdoublel         ( const char * FILE_NAME , double VALUE , int COMMAS , int WHAT_LINE );
+void   FLEE_WRITESUPAdouble      ( const char * FILE_NAME , double VALUE , int COMMA , int WHAT_LINE , int WHAT_COLUMN );
+void   FLEE_WRITEchar            ( const char * FILE_NAME , char VALUE );
+void   FLEE_WRITEcharl           ( const char * FILE_NAME , char VALUE , int WHAT_LINE );
+void   FLEE_WRITESUPAchar        ( const char * FILE_NAME , char VALUE , int WHAT_LINE , int WHAT_COLUMN );
+void   FLEE_WRITEstring          ( const char * FILE_NAME , const char * STRING );
+void   FLEE_WRITEstringl         ( const char * FILE_NAME , const char * STRING , int WHAT_LINE );
+void   FLEE_WRITESUPAstring      ( const char * FILE_NAME , const char * STRING , int WHAT_LINE , int WHAT_COLUMN );
+
 
 // PR
 
@@ -6790,12 +6807,15 @@ LOCH_SETLOCAL ( char TEXT [] )
 void
 FLEE_CREATEAFILE ( const char* FILE_NAME )
 {
+        SetConsoleOutputCP ( 1252 );
 
                   FILE* file = fopen ( FILE_NAME , "w" );
 
                   if ( file == NULL ) printf ("Error creating file!");
 
                   fclose ( file );
+
+        SetConsoleOutputCP ( 850 );
 }
 
 
@@ -6805,9 +6825,14 @@ FLEE_CREATEAFILE ( const char* FILE_NAME )
 void
 FLEE_RENAMEAFILE ( const char* FILE_NAME , const char * NEW_FILE_NAME )
 {
+
+    SetConsoleOutputCP ( 1252 );
+
                    int RESULT = rename ( FILE_NAME , NEW_FILE_NAME );
 
                    if ( RESULT not_eq 0 ) printf ("Erro on renaming the file");
+
+    SetConsoleOutputCP ( 850 );
 }
 
 
@@ -6817,12 +6842,17 @@ FLEE_RENAMEAFILE ( const char* FILE_NAME , const char * NEW_FILE_NAME )
 void
 FLEE_MOVEAFILE ( const char * FILE_NAME , const char * NEW_DIRECTORY )
 {
+
+    SetConsoleOutputCP ( 1252 );
+
                  char NEW_DIR [50];
                  sprintf ( NEW_DIR , "./%s/%s" , NEW_DIRECTORY , FILE_NAME  );
 
                  int RESULT = rename ( FILE_NAME , NEW_DIR );
 
                  if ( RESULT not_eq 0 ) printf ("Error moving the file!");
+
+    SetConsoleOutputCP ( 850 );
 }
 
 
@@ -6832,6 +6862,8 @@ FLEE_MOVEAFILE ( const char * FILE_NAME , const char * NEW_DIRECTORY )
 void
 FLEE_COPYAFILE ( const char * FOLDER , const char * FILE_NAME, const char* NEW_FOLDER , const char* NEW_FILENAME )
 {
+
+    SetConsoleOutputCP ( 1252 );
 
                 char CHECKNAME [1024];
                 sprintf ( CHECKNAME , "./%s/%s", FOLDER , FILE_NAME );
@@ -6858,6 +6890,8 @@ FLEE_COPYAFILE ( const char * FOLDER , const char * FILE_NAME, const char* NEW_F
     fclose ( ORIGIN );
     fclose ( ENDPOINT );
 
+    SetConsoleOutputCP ( 850 );
+
 }
 
 
@@ -6866,6 +6900,9 @@ FLEE_COPYAFILE ( const char * FOLDER , const char * FILE_NAME, const char* NEW_F
 void
 FLEE_CREATEAFILEANDFOLDER ( const char* FOLDER_NAME , const char* FILE_NAME )
 {
+
+    SetConsoleOutputCP ( 1252 );
+
                             char FINAL [50];
                             sprintf ( FINAL , "./%s/%s" , FOLDER_NAME , FILE_NAME );
 
@@ -6874,6 +6911,8 @@ FLEE_CREATEAFILEANDFOLDER ( const char* FOLDER_NAME , const char* FILE_NAME )
                             if ( file == NULL ) printf ("Error with the creation!");
 
                             fclose ( file );
+
+    SetConsoleOutputCP ( 850 );
 }
 
 
@@ -6883,9 +6922,13 @@ FLEE_CREATEAFILEANDFOLDER ( const char* FOLDER_NAME , const char* FILE_NAME )
 void
 FLEE_CREATEAFOLDER ( const char* FOLDER_NAME )
 {
+    SetConsoleOutputCP ( 1252 );
+
                      int RESULT = mkdir ( FOLDER_NAME );
 
                      if ( RESULT not_eq 0 ) printf ("Error creating folder!");
+
+    SetConsoleOutputCP ( 850 );
 }
 
 
@@ -6895,9 +6938,14 @@ FLEE_CREATEAFOLDER ( const char* FOLDER_NAME )
 void
 FLEE_RENAMEAFOLDER ( const char *FOLDER_NAME , const char *NEW_FOLDER_NAME )
 {
+
+    SetConsoleOutputCP ( 1252 );
+
                     int RESULT = rename ( FOLDER_NAME , NEW_FOLDER_NAME );
 
                     if ( RESULT not_eq 0 ) printf ("Error renaming the folder!");
+
+    SetConsoleOutputCP ( 850 );
 }
 
 
@@ -6907,9 +6955,14 @@ FLEE_RENAMEAFOLDER ( const char *FOLDER_NAME , const char *NEW_FOLDER_NAME )
 void
 FLEE_DELETEAFILE ( const char *FILE_NAME )
 {
+
+    SetConsoleOutputCP ( 1252 );
+
                   int RESULT = remove ( FILE_NAME );
 
                   if ( RESULT not_eq 0 ) printf ("Error removing the file!");
+
+    SetConsoleOutputCP ( 850 );
 }
 
 
@@ -6920,6 +6973,8 @@ FLEE_DELETEAFILE ( const char *FILE_NAME )
 void
 FLEE_DELETEAFOLDER ( const char * FOLDER_NAME )
 {
+    SetConsoleOutputCP ( 1252 );
+
     DIR *FOLDER = opendir ( FOLDER_NAME );
     struct dirent *arquivo;
     char caminho[1000];
@@ -6946,6 +7001,8 @@ FLEE_DELETEAFOLDER ( const char * FOLDER_NAME )
     int RESULT = rmdir ( FOLDER_NAME );
     if ( RESULT not_eq 0 ) printf ("Error deleting the folder!");
 
+    SetConsoleOutputCP ( 850 );
+
 }
 
 
@@ -6956,6 +7013,8 @@ FLEE_DELETEAFOLDER ( const char * FOLDER_NAME )
 void
 FLEE_MOVEAFOLDER ( const char *FOLDER_NAME , const char *NEW_PATH )
 {
+     SetConsoleOutputCP ( 1252 );
+
                    DIR* dir = opendir ( FOLDER_NAME );
 
                    if ( dir == NULL ) printf ("Failed to open directory!");
@@ -7006,6 +7065,8 @@ FLEE_MOVEAFOLDER ( const char *FOLDER_NAME , const char *NEW_PATH )
                    }
                    closedir ( dir );
                    rmdir (FOLDER_NAME);
+
+                   SetConsoleOutputCP ( 850 );
 }
 
 
@@ -7015,6 +7076,9 @@ FLEE_MOVEAFOLDER ( const char *FOLDER_NAME , const char *NEW_PATH )
 void
 FLEE_COPYAFOLDER ( const char *FOLDER_NAME , const char *NEW_PATH )
 {
+
+    SetConsoleOutputCP ( 1252 );
+
                    DIR* dir = opendir ( FOLDER_NAME );
 
                    if ( dir == NULL ) printf ("Failed to open directory!");
@@ -7060,6 +7124,9 @@ FLEE_COPYAFOLDER ( const char *FOLDER_NAME , const char *NEW_PATH )
                                    }
                    }
                    closedir ( dir );
+
+    SetConsoleOutputCP ( 850 );
+
 }
 
 
@@ -7069,7 +7136,11 @@ FLEE_COPYAFOLDER ( const char *FOLDER_NAME , const char *NEW_PATH )
 void
 FLEE_SYSTEMFOLDER ( const char * SYSTEM_FOLDER_NAME , char * FOLDER , char * SAVE_PATH )
 {
+     SetConsoleOutputCP ( 1252 );
+
      sprintf ( SAVE_PATH , "%s\\%s\\" , getenv ( SYSTEM_FOLDER_NAME ) , FOLDER );
+
+     SetConsoleOutputCP ( 850 );
 }
 
 
@@ -7081,11 +7152,15 @@ FLEE_SYSTEMFOLDER ( const char * SYSTEM_FOLDER_NAME , char * FOLDER , char * SAV
 void
 FLEE_saveINT ( int VALUE , const char * FILE_NAME )
 {
+    SetConsoleOutputCP ( 1252 );
+
     FILE* fp = fopen ( FILE_NAME , "w");
     if (fp == NULL)  printf("Erro ao abrir o arquivo.\n");
 
     fprintf ( fp , "%d" , VALUE );
     fclose ( fp );
+
+    SetConsoleOutputCP ( 850 );
 }
 
 
@@ -7095,6 +7170,8 @@ FLEE_saveINT ( int VALUE , const char * FILE_NAME )
 int
 FLEE_loadINT ( const char * FILE_NAME )
 {
+    SetConsoleOutputCP ( 1252 );
+
     int RETURN_VALUE;
 
     FILE* fp = fopen ( FILE_NAME , "r" );
@@ -7103,6 +7180,8 @@ FLEE_loadINT ( const char * FILE_NAME )
 
     fscanf ( fp, "%d", &RETURN_VALUE);
     fclose ( fp );
+
+    SetConsoleOutputCP ( 850 );
 
     return RETURN_VALUE;
 }
@@ -7114,12 +7193,16 @@ FLEE_loadINT ( const char * FILE_NAME )
 void
 FLEE_saveCHAR ( char CHARACTER , const char * FILE_NAME )
 {
+    SetConsoleOutputCP ( 1252 );
+
     FILE* fp = fopen ( FILE_NAME, "w");
 
     if ( fp == NULL ) printf ("Erro ao abrir o arquivo.\n");
 
     fputc ( CHARACTER , fp );
     fclose ( fp );
+
+    SetConsoleOutputCP ( 850 );
 }
 
 
@@ -7129,14 +7212,18 @@ FLEE_saveCHAR ( char CHARACTER , const char * FILE_NAME )
 char
 FLEE_loadCHAR ( const char * FILE_NAME )
 {
+    SetConsoleOutputCP ( 1252 );
+
     char CHARACTER;
 
     FILE* fp = fopen ( FILE_NAME, "r" );
 
     if ( fp == NULL ) printf ("Erro ao abrir o arquivo.\n");
 
-    CHARACTER = fgetc(fp);
-    fclose(fp);
+    CHARACTER = fgetc ( fp );
+    fclose ( fp );
+
+    SetConsoleOutputCP ( 850 );
 
     return CHARACTER;
 }
@@ -7148,6 +7235,8 @@ FLEE_loadCHAR ( const char * FILE_NAME )
 void
 FLEE_saveFLOAT ( float VALUE , int COMMAS , const char * FILE_NAME )
 {
+    SetConsoleOutputCP ( 1252 );
+
     FILE * fp = fopen ( FILE_NAME , "w" );
 
     if ( fp == NULL ) printf ("Erro ao abrir o arquivo.\n");
@@ -7157,6 +7246,8 @@ FLEE_saveFLOAT ( float VALUE , int COMMAS , const char * FILE_NAME )
     sprintf ( format , "%%.%df" , COMMAS );
     fprintf ( fp , format , VALUE );
     fclose  ( fp );
+
+    SetConsoleOutputCP ( 850 );
 }
 
 
@@ -7166,6 +7257,8 @@ FLEE_saveFLOAT ( float VALUE , int COMMAS , const char * FILE_NAME )
 float
 FLEE_loadFLOAT ( const char * FILE_NAME )
 {
+    SetConsoleOutputCP ( 1252 );
+
     float RETURN_VALUE;
     char str[100];
 
@@ -7177,6 +7270,8 @@ FLEE_loadFLOAT ( const char * FILE_NAME )
     sscanf ( str , "%f" , &RETURN_VALUE );
     fclose ( fp );
 
+    SetConsoleOutputCP ( 850 );
+
     return RETURN_VALUE;
 }
 
@@ -7187,6 +7282,8 @@ FLEE_loadFLOAT ( const char * FILE_NAME )
 void
 FLEE_saveDOUBLE ( double VALUE , int COMMAS , const char * FILE_NAME )
 {
+    SetConsoleOutputCP ( 1252 );
+
     FILE* fp = fopen ( FILE_NAME, "w" );
 
     if ( fp == NULL ) printf("Erro ao abrir o arquivo.\n");
@@ -7196,6 +7293,8 @@ FLEE_saveDOUBLE ( double VALUE , int COMMAS , const char * FILE_NAME )
     sprintf ( format , "%%.%dlf" , COMMAS );
     fprintf ( fp , format , VALUE );
     fclose  ( fp );
+
+    SetConsoleOutputCP ( 850 );
 }
 
 
@@ -7205,6 +7304,8 @@ FLEE_saveDOUBLE ( double VALUE , int COMMAS , const char * FILE_NAME )
 double
 FLEE_loadDOUBLE ( const char* FILE_NAME )
 {
+    SetConsoleOutputCP ( 1252 );
+
     double RETURN_VALUE;
     char str [ 100 ];
 
@@ -7216,6 +7317,8 @@ FLEE_loadDOUBLE ( const char* FILE_NAME )
     sscanf ( str , "%lf" , &RETURN_VALUE );
     fclose ( fp );
 
+    SetConsoleOutputCP ( 850 );
+
     return RETURN_VALUE;
 }
 
@@ -7226,12 +7329,16 @@ FLEE_loadDOUBLE ( const char* FILE_NAME )
 void
 FLEE_saveSTRING ( const char * STRING , const char * FILE_NAME )
 {
+    SetConsoleOutputCP ( 1252 );
+
     FILE* fp = fopen ( FILE_NAME , "w");
 
     if (fp == NULL) printf ("Erro ao abrir o arquivo.\n");
 
     fprintf ( fp , "%s" , STRING );
     fclose  ( fp );
+
+    SetConsoleOutputCP ( 850 );
 }
 
 
@@ -7241,12 +7348,16 @@ FLEE_saveSTRING ( const char * STRING , const char * FILE_NAME )
 void
 FLEE_loadSTRING ( char * STRING , int SIZE_OF_READ , const char * FILE_NAME )
 {
+    SetConsoleOutputCP ( 1252 );
+
     FILE* fp = fopen ( FILE_NAME , "r" );
 
     if ( fp == NULL ) printf ("Erro ao abrir o arquivo.\n");
 
     fgets ( STRING , SIZE_OF_READ , fp );
     fclose ( fp );
+
+    SetConsoleOutputCP ( 850 );
 }
 
 
@@ -7258,6 +7369,8 @@ FLEE_loadSTRING ( char * STRING , int SIZE_OF_READ , const char * FILE_NAME )
 int
 FLEE_COUNTLINES ( const char * FILE_NAME )
 {
+    SetConsoleOutputCP ( 1252 );
+
     FILE* fp = fopen ( FILE_NAME , "r" );
 
     if (fp == NULL) printf("Erro ao abrir o arquivo.\n");
@@ -7270,6 +7383,8 @@ FLEE_COUNTLINES ( const char * FILE_NAME )
 
     fclose ( fp );
 
+    SetConsoleOutputCP ( 850 );
+
     return NUMBER_OF_LINES;
 }
 
@@ -7280,6 +7395,9 @@ FLEE_COUNTLINES ( const char * FILE_NAME )
 int
 FLEE_COUNTWORDS ( const char * FILE_NAME )
 {
+
+    SetConsoleOutputCP ( 1252 );
+
     FILE* fp = fopen ( FILE_NAME , "r" );
 
     if ( fp == NULL ) printf("Erro ao abrir o arquivo.\n");
@@ -7292,6 +7410,8 @@ FLEE_COUNTWORDS ( const char * FILE_NAME )
 
     fclose ( fp );
 
+    SetConsoleOutputCP ( 850 );
+
     return NUMBER_OF_WORDS;
 }
 
@@ -7302,6 +7422,7 @@ FLEE_COUNTWORDS ( const char * FILE_NAME )
 int
 FLEE_COUNTNUMBERS ( const char * FILE_NAME )
 {
+    SetConsoleOutputCP ( 1252 );
 
     FILE* fp;
 
@@ -7327,6 +7448,8 @@ FLEE_COUNTNUMBERS ( const char * FILE_NAME )
 
     fclose ( fp );
 
+    SetConsoleOutputCP ( 850 );
+
     return count_int + count_float;
 }
 
@@ -7336,6 +7459,8 @@ FLEE_COUNTNUMBERS ( const char * FILE_NAME )
 
 int FLEE_COUNTint ( const char * FILE_NAME , int VALUE )
 {
+    SetConsoleOutputCP ( 1252 );
+
     FILE *fp = fopen ( FILE_NAME , "r" );
     int RETURN_VALUE = 0;
 
@@ -7371,6 +7496,8 @@ int FLEE_COUNTint ( const char * FILE_NAME , int VALUE )
 
     fclose ( fp );
 
+    SetConsoleOutputCP ( 850 );
+
     return RETURN_VALUE;
 }
 
@@ -7381,6 +7508,9 @@ int FLEE_COUNTint ( const char * FILE_NAME , int VALUE )
 int
 FLEE_COUNTfloat ( const char * FILE_NAME , float VALUE )
 {
+    SetConsoleOutputCP ( 1252 );
+
+
                   FILE* fp;
              char buffer [ 1024 ];
               int len;
@@ -7410,6 +7540,9 @@ FLEE_COUNTfloat ( const char * FILE_NAME , float VALUE )
     }
 
     fclose ( fp );
+
+    SetConsoleOutputCP ( 850 );
+
     return RETURN_VALUE;
 }
 
@@ -7420,6 +7553,9 @@ FLEE_COUNTfloat ( const char * FILE_NAME , float VALUE )
 int
 FLEE_COUNTdouble ( const char * FILE_NAME , double VALUE )
 {
+
+    SetConsoleOutputCP ( 1252 );
+
                   FILE* fp;
              char buffer [ 1024 ];
               int len;
@@ -7449,6 +7585,9 @@ FLEE_COUNTdouble ( const char * FILE_NAME , double VALUE )
     }
 
     fclose ( fp );
+
+    SetConsoleOutputCP ( 850 );
+
     return RETURN_VALUE;
 }
 
@@ -7459,6 +7598,9 @@ FLEE_COUNTdouble ( const char * FILE_NAME , double VALUE )
 int
 FLEE_COUNTchar ( const char * FILE_NAME , char CHAR )
 {
+
+    SetConsoleOutputCP ( 1252 );
+
     FILE* fp;
     char buffer[1024];
     int len, i;
@@ -7477,6 +7619,8 @@ FLEE_COUNTchar ( const char * FILE_NAME , char CHAR )
 
     fclose ( fp );
 
+    SetConsoleOutputCP ( 850 );
+
     return RETURN_VALUE;
 }
 
@@ -7487,6 +7631,8 @@ FLEE_COUNTchar ( const char * FILE_NAME , char CHAR )
 int
 FLEE_COUNTstring ( const char * FILE_NAME , const char * STRING )
 {
+    SetConsoleOutputCP ( 1252 );
+
     FILE* fp;
 
     char buffer [ 1024 ];
@@ -7514,6 +7660,8 @@ FLEE_COUNTstring ( const char * FILE_NAME , const char * STRING )
 
     fclose ( fp );
 
+    SetConsoleOutputCP ( 850 );
+
     return RETURN_VALUE;
 }
 
@@ -7526,6 +7674,9 @@ FLEE_COUNTstring ( const char * FILE_NAME , const char * STRING )
 int
 FLEE_GLOBALSUBSint ( const char * FILE_NAME, int VALUE , const char * TOKEN )
 {
+
+    SetConsoleOutputCP ( 1252 );
+
     FILE * file;
     char STRING_VALUE[50];
 
@@ -7570,6 +7721,8 @@ FLEE_GLOBALSUBSint ( const char * FILE_NAME, int VALUE , const char * TOKEN )
 
     fclose ( file );    fclose ( temp_file );   remove ( FILE_NAME ); rename ( temp_filename , FILE_NAME );
 
+    SetConsoleOutputCP ( 850 );
+
     return RETURN_VALUE;
 }
 
@@ -7580,6 +7733,8 @@ FLEE_GLOBALSUBSint ( const char * FILE_NAME, int VALUE , const char * TOKEN )
 int
 FLEE_GLOBALSUBSfloat ( const char * FILE_NAME , float VALUE , int COMMAS , const char * TOKEN )
 {
+     SetConsoleOutputCP ( 1252 );
+
      FILE * file;
      FILE * temp_file;
 
@@ -7641,6 +7796,8 @@ FLEE_GLOBALSUBSfloat ( const char * FILE_NAME , float VALUE , int COMMAS , const
      if ( remove ( FILE_NAME ) not_eq 0 )                 printf ("Failed on the end of the function execution!");
      if ( rename ( temp_filename , FILE_NAME ) not_eq 0 ) printf ("Failed on the end of the function execution!");
 
+     SetConsoleOutputCP ( 850 );
+
      return return_value;
 }
 
@@ -7651,6 +7808,8 @@ FLEE_GLOBALSUBSfloat ( const char * FILE_NAME , float VALUE , int COMMAS , const
 int
 FLEE_GLOBALSUBSdouble ( const char * FILE_NAME , double VALUE , int COMMAS , const char * TOKEN )
 {
+     SetConsoleOutputCP ( 1252 );
+
      FILE * file;
      FILE * temp_file;
 
@@ -7712,6 +7871,8 @@ FLEE_GLOBALSUBSdouble ( const char * FILE_NAME , double VALUE , int COMMAS , con
      if ( remove ( FILE_NAME ) not_eq 0 )                 printf ("Failed on the end of the function execution!");
      if ( rename ( temp_filename , FILE_NAME ) not_eq 0 ) printf ("Failed on the end of the function execution!");
 
+     SetConsoleOutputCP ( 850 );
+
      return return_value;
 }
 
@@ -7722,6 +7883,8 @@ FLEE_GLOBALSUBSdouble ( const char * FILE_NAME , double VALUE , int COMMAS , con
 int
 FLEE_GLOBALSUBSchar ( const char * FILE_NAME , char VALUE , const char * TOKEN )
 {
+    SetConsoleOutputCP ( 1252 );
+
      FILE * file;
 
     char STRING_VALUE [ 2 ] = "";
@@ -7763,6 +7926,8 @@ FLEE_GLOBALSUBSchar ( const char * FILE_NAME , char VALUE , const char * TOKEN )
 
     fclose ( file );    fclose ( temp_file );  remove ( FILE_NAME );    rename ( temp_filename , FILE_NAME );
 
+    SetConsoleOutputCP ( 850 );
+
     return RETURN_VALUE;
 }
 
@@ -7773,6 +7938,8 @@ FLEE_GLOBALSUBSchar ( const char * FILE_NAME , char VALUE , const char * TOKEN )
 int
 FLEE_GLOBALSUBSstring ( const char * FILE_NAME , const char * OLD_WORD , const char * TOKEN )
 {
+    SetConsoleOutputCP ( 1252 );
+
     FILE * file;
 
     char temp_filename [] = "allen.txt";
@@ -7809,6 +7976,8 @@ FLEE_GLOBALSUBSstring ( const char * FILE_NAME , const char * OLD_WORD , const c
 
     fclose ( file ); fclose ( temp_file ); remove ( FILE_NAME ); rename ( temp_filename , FILE_NAME );
 
+    SetConsoleOutputCP ( 850 );
+
     return RETURN_VALUE;
 }
 
@@ -7819,6 +7988,8 @@ FLEE_GLOBALSUBSstring ( const char * FILE_NAME , const char * OLD_WORD , const c
 int
 FLEE_LOCALSUBSint ( const char * FILE_NAME , int VALUE , const char * TOKEN )
 {
+
+    SetConsoleOutputCP ( 1252 );
 
     FILE * file;
     char STRING_VALUE [ 50 ];
@@ -7863,6 +8034,8 @@ FLEE_LOCALSUBSint ( const char * FILE_NAME , int VALUE , const char * TOKEN )
 
     fclose ( file );    fclose ( temp_file );   remove ( FILE_NAME );    rename ( temp_filename , FILE_NAME );
 
+    SetConsoleOutputCP ( 850 );
+
     return RETURN_VALUE;
 }
 
@@ -7873,6 +8046,8 @@ FLEE_LOCALSUBSint ( const char * FILE_NAME , int VALUE , const char * TOKEN )
 int
 FLEE_LOCALSUBSfloat ( const char * FILE_NAME , float VALUE , int COMMAS , const char * TOKEN )
 {
+    SetConsoleOutputCP ( 1252 );
+
     FILE * file;
     FILE * temp_file;
 
@@ -7939,6 +8114,8 @@ FLEE_LOCALSUBSfloat ( const char * FILE_NAME , float VALUE , int COMMAS , const 
     if ( remove ( FILE_NAME ) not_eq 0 )                 printf ("Error with the end of the function!");
     if ( rename ( temp_filename , FILE_NAME ) not_eq 0 ) printf ("Error with the end of the function!");
 
+    SetConsoleOutputCP ( 850 );
+
     return return_value;
 }
 
@@ -7948,6 +8125,9 @@ FLEE_LOCALSUBSfloat ( const char * FILE_NAME , float VALUE , int COMMAS , const 
 int
 FLEE_LOCALSUBSdouble ( const char * FILE_NAME , double VALUE , int COMMAS , const char * TOKEN )
 {
+
+    SetConsoleOutputCP ( 1252 );
+
     FILE * file;
     FILE * temp_file;
 
@@ -8014,6 +8194,8 @@ FLEE_LOCALSUBSdouble ( const char * FILE_NAME , double VALUE , int COMMAS , cons
     if ( remove ( FILE_NAME ) not_eq 0 )                 printf ("Error with the end of the function!");
     if ( rename ( temp_filename , FILE_NAME ) not_eq 0 ) printf ("Error with the end of the function!");
 
+    SetConsoleOutputCP ( 850 );
+
     return return_value;
 }
 
@@ -8024,6 +8206,8 @@ FLEE_LOCALSUBSdouble ( const char * FILE_NAME , double VALUE , int COMMAS , cons
 int
 FLEE_LOCALSUBSchar ( const char * FILE_NAME , char VALUE , const char * TOKEN )
 {
+    SetConsoleOutputCP ( 1252 );
+
     FILE *file;
 
     char STRING_VALUE [ 2 ];
@@ -8066,6 +8250,8 @@ FLEE_LOCALSUBSchar ( const char * FILE_NAME , char VALUE , const char * TOKEN )
 
     fclose ( file ); fclose ( temp_file ); remove ( FILE_NAME ); rename ( temp_filename , FILE_NAME );
 
+    SetConsoleOutputCP ( 850 );
+
     return RETURN_VALUE;
 }
 
@@ -8076,6 +8262,8 @@ FLEE_LOCALSUBSchar ( const char * FILE_NAME , char VALUE , const char * TOKEN )
 int
 FLEE_LOCALSUBSstring ( const char * FILE_NAME , const char * OLD_WORD , const char * TOKEN )
 {
+    SetConsoleOutputCP ( 1252 );
+
     FILE * file;
     char temp_filename [ ] = "allen.txt";
 
@@ -8118,6 +8306,8 @@ FLEE_LOCALSUBSstring ( const char * FILE_NAME , const char * OLD_WORD , const ch
 
     fclose ( file );    fclose ( temp_file );   remove ( FILE_NAME );   rename ( temp_filename , FILE_NAME );
 
+    SetConsoleOutputCP ( 850 );
+
     return RETURN_VALUE;
 }
 
@@ -8128,6 +8318,8 @@ FLEE_LOCALSUBSstring ( const char * FILE_NAME , const char * OLD_WORD , const ch
 int
 FLEE_GLOBALSUBSintl ( const char* FILE_NAME , int WHAT_LINE , int VALUE , const char* TOKEN )
 {
+     SetConsoleOutputCP ( 1252 );
+
      FILE* file;
      char STRING_VALUE [ 50 ];
 
@@ -8178,6 +8370,8 @@ FLEE_GLOBALSUBSintl ( const char* FILE_NAME , int WHAT_LINE , int VALUE , const 
 
     fclose ( file );    fclose ( temp_file );   remove ( FILE_NAME );    rename ( temp_filename , FILE_NAME );
 
+    SetConsoleOutputCP ( 850 );
+
     return RETURN_VALUE;
 }
 
@@ -8188,6 +8382,8 @@ FLEE_GLOBALSUBSintl ( const char* FILE_NAME , int WHAT_LINE , int VALUE , const 
 int
 FLEE_LOCALSUBSintl ( const char * FILE_NAME , int WHAT_LINE , int VALUE , const char * TOKEN )
 {
+
+    SetConsoleOutputCP ( 1252 );
 
     FILE* file;
     char STRING_VALUE [ 50 ];
@@ -8238,6 +8434,8 @@ FLEE_LOCALSUBSintl ( const char * FILE_NAME , int WHAT_LINE , int VALUE , const 
 
     fclose ( file ); fclose ( temp_file ); remove ( FILE_NAME ); rename ( temp_filename , FILE_NAME );
 
+    SetConsoleOutputCP ( 850 );
+
     return RETURN_VALUE;
 }
 
@@ -8248,6 +8446,8 @@ FLEE_LOCALSUBSintl ( const char * FILE_NAME , int WHAT_LINE , int VALUE , const 
 int
 FLEE_GLOBALSUBSfloatl ( const char * FILE_NAME , int WHAT_LINE , float VALUE, int COMMAS , const char * TOKEN )
 {
+
+    SetConsoleOutputCP ( 1252 );
 
     FILE * file;
     FILE * temp_file;
@@ -8315,6 +8515,8 @@ FLEE_GLOBALSUBSfloatl ( const char * FILE_NAME , int WHAT_LINE , float VALUE, in
     if ( remove ( FILE_NAME ) not_eq 0 or rename ( temp_filename , FILE_NAME ) not_eq 0)
     printf("Failed on the end of the function execution!\n");
 
+    SetConsoleOutputCP ( 850 );
+
     return return_value;
 }
 
@@ -8325,6 +8527,8 @@ FLEE_GLOBALSUBSfloatl ( const char * FILE_NAME , int WHAT_LINE , float VALUE, in
 int
 FLEE_LOCALSUBSfloatl ( const char * FILE_NAME , int WHAT_LINE , float VALUE , int COMMAS , const char * TOKEN )
 {
+    SetConsoleOutputCP ( 1252 );
+
     FILE * file;
     FILE * temp_file;
 
@@ -8395,6 +8599,8 @@ FLEE_LOCALSUBSfloatl ( const char * FILE_NAME , int WHAT_LINE , float VALUE , in
     if ( remove ( FILE_NAME ) not_eq 0 )                 printf ("Error with the end of the function!");
     if ( rename ( temp_filename , FILE_NAME ) not_eq 0 ) printf ("Error with the end of the function!");
 
+    SetConsoleOutputCP ( 850 );
+
     return return_value;
 }
 
@@ -8405,6 +8611,8 @@ FLEE_LOCALSUBSfloatl ( const char * FILE_NAME , int WHAT_LINE , float VALUE , in
 int
 FLEE_GLOBALSUBSdoublel ( const char * FILE_NAME , int WHAT_LINE , double VALUE, int COMMAS , const char * TOKEN )
 {
+
+    SetConsoleOutputCP ( 1252 );
 
     FILE * file;
     FILE * temp_file;
@@ -8472,6 +8680,8 @@ FLEE_GLOBALSUBSdoublel ( const char * FILE_NAME , int WHAT_LINE , double VALUE, 
     if ( remove ( FILE_NAME ) not_eq 0 or rename ( temp_filename , FILE_NAME ) not_eq 0)
     printf("Failed on the end of the function execution!\n");
 
+    SetConsoleOutputCP ( 850 );
+
     return return_value;
 }
 
@@ -8482,6 +8692,8 @@ FLEE_GLOBALSUBSdoublel ( const char * FILE_NAME , int WHAT_LINE , double VALUE, 
 int
 FLEE_LOCALSUBSdoublel ( const char * FILE_NAME , int WHAT_LINE , double VALUE , int COMMAS , const char * TOKEN )
 {
+    SetConsoleOutputCP ( 1252 );
+
     FILE * file;
     FILE * temp_file;
 
@@ -8552,6 +8764,8 @@ FLEE_LOCALSUBSdoublel ( const char * FILE_NAME , int WHAT_LINE , double VALUE , 
     if ( remove ( FILE_NAME ) not_eq 0 )                 printf ("Error with the end of the function!");
     if ( rename ( temp_filename , FILE_NAME ) not_eq 0 ) printf ("Error with the end of the function!");
 
+    SetConsoleOutputCP ( 850 );
+
     return return_value;
 }
 
@@ -8561,6 +8775,8 @@ FLEE_LOCALSUBSdoublel ( const char * FILE_NAME , int WHAT_LINE , double VALUE , 
 int
 FLEE_GLOBALSUBScharl ( const char * FILE_NAME , int WHAT_LINE , char VALUE , const char * TOKEN )
 {
+
+    SetConsoleOutputCP ( 1252 );
 
     FILE * file = fopen ( FILE_NAME , "r" );
     if ( file == NULL ) printf ("Failed to open the file!\n");
@@ -8598,7 +8814,10 @@ FLEE_GLOBALSUBScharl ( const char * FILE_NAME , int WHAT_LINE , char VALUE , con
     }
     fclose ( file ); fclose ( temp_file ); remove ( FILE_NAME ); rename ( temp_filename , FILE_NAME );
 
+    SetConsoleOutputCP ( 850 );
+
     return RETURN_VALUE;
+
 }
 
 
@@ -8608,6 +8827,9 @@ FLEE_GLOBALSUBScharl ( const char * FILE_NAME , int WHAT_LINE , char VALUE , con
 int
 FLEE_LOCALSUBScharl ( const char * FILE_NAME , int WHAT_LINE , char VALUE , const char * TOKEN )
 {
+
+    SetConsoleOutputCP ( 1252 );
+
     FILE * file;
     char STRING_VALUE [ 2 ];
 
@@ -8657,7 +8879,10 @@ FLEE_LOCALSUBScharl ( const char * FILE_NAME , int WHAT_LINE , char VALUE , cons
 
     fclose ( file ); fclose ( temp_file ); remove ( FILE_NAME ); rename ( temp_filename , FILE_NAME );
 
+    SetConsoleOutputCP ( 850 );
+
     return RETURN_VALUE;
+
 }
 
 
@@ -8667,6 +8892,9 @@ FLEE_LOCALSUBScharl ( const char * FILE_NAME , int WHAT_LINE , char VALUE , cons
 int
 FLEE_GLOBALSUBSstringl ( const char * FILE_NAME , int WHAT_LINE , const char * STRING , const char * TOKEN )
 {
+
+    SetConsoleOutputCP ( 1252 );
+
     FILE * file;
 
     char temp_filename [ ] = "allen.txt";
@@ -8712,7 +8940,10 @@ FLEE_GLOBALSUBSstringl ( const char * FILE_NAME , int WHAT_LINE , const char * S
 
     fclose ( file );        fclose ( temp_file );       remove ( FILE_NAME );      rename ( temp_filename , FILE_NAME );
 
+    SetConsoleOutputCP ( 850 );
+
     return RETURN_VALUE;
+
 }
 
 
@@ -8722,6 +8953,8 @@ FLEE_GLOBALSUBSstringl ( const char * FILE_NAME , int WHAT_LINE , const char * S
 int
 FLEE_LOCALSUBSstringl ( const char * FILE_NAME , int WHAT_LINE , const char * STRING , const char * TOKEN )
 {
+    SetConsoleOutputCP ( 1252 );
+
     FILE * file;
 
     char temp_filename [ ] = "allen.txt";
@@ -8768,6 +9001,8 @@ FLEE_LOCALSUBSstringl ( const char * FILE_NAME , int WHAT_LINE , const char * ST
 
     fclose ( file ); fclose ( temp_file ); remove ( FILE_NAME ); rename ( temp_filename , FILE_NAME );
 
+    SetConsoleOutputCP ( 850 );
+
     return return_value;
 }
 
@@ -8781,12 +9016,134 @@ void
 FLEE_WRITEint ( const char * FILE_NAME , int VALUE )
 {
 
+    SetConsoleOutputCP ( 1252 );
+
     FILE * fp = fopen ( FILE_NAME , "a" );
-    if ( fp == NULL ) printf("Erro ao abrir o arquivo!");
+    if ( fp == NULL ) printf("Error opening the file!");
 
     fprintf ( fp , "%d" , VALUE );
 
     fclose ( fp );
+
+    SetConsoleOutputCP ( 850 );
+}
+
+
+
+
+
+void
+FLEE_WRITEintl ( const char * FILE_NAME , int VALUE , int WHAT_LINE )
+{
+    SetConsoleOutputCP ( 1252 );
+
+    FILE * fp , * fpTemp;
+
+    char STRING [ 1024 ];
+
+    sprintf ( STRING , "%d" , VALUE );
+
+    char buffer [ 1024 ];
+    int  linhaAtual = 1;
+    int  linhaEncontrada = 0;
+
+    fp = fopen ( FILE_NAME , "r" );
+    if ( fp == NULL ) printf ("Error opening the file!");
+
+    fpTemp = fopen ("temp.txt", "w");
+    if ( fpTemp == NULL ) { printf ("Error with the function execution on the file!"); fclose(fp); }
+
+      while ( fgets ( buffer , 1024 , fp ) not_eq NULL )
+      {
+           if ( linhaAtual == WHAT_LINE )
+           {
+
+             int comprimentoLinha = strlen ( buffer );
+             int posicaoInsercao  = comprimentoLinha - 1;
+
+      while ( posicaoInsercao > 0 and ( buffer [ posicaoInsercao ] == '\r' or buffer [ posicaoInsercao ] == '\n' ) )
+      posicaoInsercao--;
+
+             if ( posicaoInsercao > 0 )
+             {
+                buffer [ posicaoInsercao + 1 ] = ' ';
+                posicaoInsercao ++;
+             }
+
+             buffer [ posicaoInsercao ] = '\0';
+             fprintf ( fpTemp , "%s%s\n" , buffer , STRING );
+             linhaEncontrada = 1;
+
+          }
+
+          else fprintf ( fpTemp , "%s" , buffer );
+
+
+          linhaAtual++;
+      }
+
+       if ( !linhaEncontrada and linhaAtual == WHAT_LINE ) fprintf ( fpTemp , "%s\n" , STRING );
+
+       fclose ( fp ); fclose ( fpTemp ); remove ( FILE_NAME ); rename ( "temp.txt" , FILE_NAME );
+
+    SetConsoleOutputCP ( 850 );
+
+}
+
+
+
+
+
+void
+FLEE_WRITESUPAint ( const char * FILE_NAME , int VALUE , int WHAT_LINE , int WHAT_COLUMN )
+{
+
+    SetConsoleOutputCP ( 1252 );
+
+    char STRING [ 100 ];
+    sprintf ( STRING , "%d" , VALUE );
+
+    FILE * file = fopen ( FILE_NAME , "r" );
+    if ( file == NULL ) printf ("Failed to open the file !");
+
+    char tmp_filename [ ] = "temp.txt";
+
+    FILE * tmp_file = fopen ( tmp_filename , "w" );
+    if ( tmp_file == NULL ) { printf ("Error creating temporary file."); fclose ( file ); }
+
+    char line_buf [ 9999 ];
+    int  current_line = 1;
+
+        while ( fgets ( line_buf , sizeof ( line_buf ) , file ) )
+        {
+             if ( current_line == WHAT_LINE )
+             {
+
+               int line_len = strlen ( line_buf );
+
+             if ( WHAT_COLUMN > line_len ) strcat ( line_buf , STRING );
+
+             else
+             {
+                for ( int i = line_len; i >= WHAT_COLUMN; i-- ) line_buf [ i + strlen ( STRING ) ] = line_buf [ i ];
+
+                for ( int i = 0; i < strlen ( STRING ); i++ ) line_buf [ WHAT_COLUMN + i ] = STRING [ i ];
+
+             }
+             }
+
+         fputs ( line_buf , tmp_file );
+         current_line ++;
+
+        }
+
+         fclose ( file ); fclose ( tmp_file );
+
+    if ( remove ( FILE_NAME ) not_eq 0 ) printf ("Error with the final of the function! (maybe the original file have been broken)");
+
+    if ( rename ( tmp_filename, FILE_NAME) not_eq 0 ) printf ("Error with the final of the function!");
+
+    SetConsoleOutputCP ( 850 );
 }
 
 
@@ -8796,13 +9153,134 @@ FLEE_WRITEint ( const char * FILE_NAME , int VALUE )
 void
 FLEE_WRITEfloat ( const char * FILE_NAME , float VALUE , int COMMAS )
 {
+    SetConsoleOutputCP ( 1252 );
 
     FILE * fp = fopen ( FILE_NAME , "a" );
-    if ( fp == NULL ) printf("Erro ao abrir o arquivo!");
+    if ( fp == NULL ) printf("Error opening the file!");
 
     fprintf ( fp , "%.*f" , COMMAS , VALUE );
 
     fclose ( fp );
+
+    SetConsoleOutputCP ( 850 );
+}
+
+
+
+
+
+void
+FLEE_WRITEfloatl ( const char * FILE_NAME , float VALUE , int COMMAS , int WHAT_LINE )
+{
+
+    SetConsoleOutputCP ( 1252 );
+
+    FILE * fp , * fpTemp;
+
+    char STRING [ 1024 ];
+
+    sprintf ( STRING , "%.*f" , COMMAS , VALUE );
+
+    char buffer [ 1024 ];
+    int  linhaAtual = 1;
+    int  linhaEncontrada = 0;
+
+    fp = fopen ( FILE_NAME , "r" );
+    if ( fp == NULL ) printf ("Error opening the file!");
+
+    fpTemp = fopen ("temp.txt", "w");
+    if ( fpTemp == NULL ) { printf ("Error with the function execution on the file!"); fclose(fp); }
+
+      while ( fgets ( buffer , 1024 , fp ) not_eq NULL )
+      {
+           if ( linhaAtual == WHAT_LINE )
+           {
+
+             int comprimentoLinha = strlen ( buffer );
+             int posicaoInsercao  = comprimentoLinha - 1;
+
+      while ( posicaoInsercao > 0 and ( buffer [ posicaoInsercao ] == '\r' or buffer [ posicaoInsercao ] == '\n' ) )
+      posicaoInsercao--;
+
+             if ( posicaoInsercao > 0 )
+             {
+                buffer [ posicaoInsercao + 1 ] = ' ';
+                posicaoInsercao ++;
+             }
+
+             buffer [ posicaoInsercao ] = '\0';
+             fprintf ( fpTemp , "%s%s\n" , buffer , STRING );
+             linhaEncontrada = 1;
+
+          }
+
+          else fprintf ( fpTemp , "%s" , buffer );
+
+
+          linhaAtual++;
+      }
+
+       if ( !linhaEncontrada and linhaAtual == WHAT_LINE ) fprintf ( fpTemp , "%s\n" , STRING );
+
+       fclose ( fp ); fclose ( fpTemp ); remove ( FILE_NAME ); rename ( "temp.txt" , FILE_NAME );
+
+    SetConsoleOutputCP ( 850 );
+}
+
+
+
+
+
+void
+FLEE_WRITESUPAfloat ( const char * FILE_NAME , float VALUE , int COMMA , int WHAT_LINE , int WHAT_COLUMN )
+{
+
+    SetConsoleOutputCP ( 1252 );
+
+    char STRING [ 100 ];
+    sprintf ( STRING , "%.*f" , COMMA , VALUE );
+
+    FILE * file = fopen ( FILE_NAME , "r" );
+    if ( file == NULL ) printf ("Failed to open the file !");
+
+    char tmp_filename [ ] = "temp.txt";
+
+    FILE * tmp_file = fopen ( tmp_filename , "w" );
+    if ( tmp_file == NULL ) { printf ("Error creating temporary file."); fclose ( file ); }
+
+    char line_buf [ 9999 ];
+    int  current_line = 1;
+
+        while ( fgets ( line_buf , sizeof ( line_buf ) , file ) )
+        {
+             if ( current_line == WHAT_LINE )
+             {
+
+               int line_len = strlen ( line_buf );
+
+             if ( WHAT_COLUMN > line_len ) strcat ( line_buf , STRING );
+
+             else
+             {
+                for ( int i = line_len; i >= WHAT_COLUMN; i-- ) line_buf [ i + strlen ( STRING ) ] = line_buf [ i ];
+
+                for ( int i = 0; i < strlen ( STRING ); i++ ) line_buf [ WHAT_COLUMN + i ] = STRING [ i ];
+
+             }
+             }
+
+         fputs ( line_buf , tmp_file );
+         current_line ++;
+
+        }
+
+         fclose ( file ); fclose ( tmp_file );
+
+    if ( remove ( FILE_NAME ) not_eq 0 ) printf ("Error with the final of the function! (maybe the original file have been broken)");
+
+    if ( rename ( tmp_filename, FILE_NAME) not_eq 0 ) printf ("Error with the final of the function!");
+
+    SetConsoleOutputCP ( 850 );
 }
 
 
@@ -8812,13 +9290,134 @@ FLEE_WRITEfloat ( const char * FILE_NAME , float VALUE , int COMMAS )
 void
 FLEE_WRITEdouble ( const char * FILE_NAME , double VALUE , int COMMAS )
 {
+    SetConsoleOutputCP ( 1252 );
 
     FILE * fp = fopen ( FILE_NAME , "a" );
-    if ( fp == NULL ) printf("Erro ao abrir o arquivo!");
+    if ( fp == NULL ) printf("Error opening the file!");
 
     fprintf ( fp , "%.*lf" , COMMAS , VALUE );
 
     fclose ( fp );
+
+    SetConsoleOutputCP ( 850 );
+}
+
+
+
+
+
+void
+FLEE_WRITEdoublel ( const char * FILE_NAME , double VALUE , int COMMAS , int WHAT_LINE )
+{
+
+    SetConsoleOutputCP ( 1252 );
+
+    FILE * fp , * fpTemp;
+
+    char STRING [ 1024 ];
+
+    sprintf ( STRING , "%.*lf" , COMMAS , VALUE );
+
+    char buffer [ 1024 ];
+    int  linhaAtual = 1;
+    int  linhaEncontrada = 0;
+
+    fp = fopen ( FILE_NAME , "r" );
+    if ( fp == NULL ) printf ("Error opening the file!");
+
+    fpTemp = fopen ("temp.txt", "w");
+    if ( fpTemp == NULL ) { printf ("Error with the function execution on the file!"); fclose(fp); }
+
+      while ( fgets ( buffer , 1024 , fp ) not_eq NULL )
+      {
+           if ( linhaAtual == WHAT_LINE )
+           {
+
+             int comprimentoLinha = strlen ( buffer );
+             int posicaoInsercao  = comprimentoLinha - 1;
+
+      while ( posicaoInsercao > 0 and ( buffer [ posicaoInsercao ] == '\r' or buffer [ posicaoInsercao ] == '\n' ) )
+      posicaoInsercao--;
+
+             if ( posicaoInsercao > 0 )
+             {
+                buffer [ posicaoInsercao + 1 ] = ' ';
+                posicaoInsercao ++;
+             }
+
+             buffer [ posicaoInsercao ] = '\0';
+             fprintf ( fpTemp , "%s%s\n" , buffer , STRING );
+             linhaEncontrada = 1;
+
+          }
+
+          else fprintf ( fpTemp , "%s" , buffer );
+
+
+          linhaAtual++;
+      }
+
+       if ( !linhaEncontrada and linhaAtual == WHAT_LINE ) fprintf ( fpTemp , "%s\n" , STRING );
+
+       fclose ( fp ); fclose ( fpTemp ); remove ( FILE_NAME ); rename ( "temp.txt" , FILE_NAME );
+
+    SetConsoleOutputCP ( 850 );
+}
+
+
+
+
+
+void
+FLEE_WRITESUPAdouble ( const char * FILE_NAME , double VALUE , int COMMA , int WHAT_LINE , int WHAT_COLUMN )
+{
+
+    SetConsoleOutputCP ( 1252 );
+
+    char STRING [ 100 ];
+    sprintf ( STRING , "%.*lf" , COMMA , VALUE );
+
+    FILE * file = fopen ( FILE_NAME , "r" );
+    if ( file == NULL ) printf ("Failed to open the file !");
+
+    char tmp_filename [ ] = "temp.txt";
+
+    FILE * tmp_file = fopen ( tmp_filename , "w" );
+    if ( tmp_file == NULL ) { printf ("Error creating temporary file."); fclose ( file ); }
+
+    char line_buf [ 9999 ];
+    int  current_line = 1;
+
+        while ( fgets ( line_buf , sizeof ( line_buf ) , file ) )
+        {
+             if ( current_line == WHAT_LINE )
+             {
+
+               int line_len = strlen ( line_buf );
+
+             if ( WHAT_COLUMN > line_len ) strcat ( line_buf , STRING );
+
+             else
+             {
+                for ( int i = line_len; i >= WHAT_COLUMN; i-- ) line_buf [ i + strlen ( STRING ) ] = line_buf [ i ];
+
+                for ( int i = 0; i < strlen ( STRING ); i++ ) line_buf [ WHAT_COLUMN + i ] = STRING [ i ];
+
+             }
+             }
+
+         fputs ( line_buf , tmp_file );
+         current_line ++;
+
+        }
+
+         fclose ( file ); fclose ( tmp_file );
+
+    if ( remove ( FILE_NAME ) not_eq 0 ) printf ("Error with the final of the function! (maybe the original file have been broken)");
+
+    if ( rename ( tmp_filename, FILE_NAME) not_eq 0 ) printf ("Error with the final of the function!");
+
+    SetConsoleOutputCP ( 850 );
 }
 
 
@@ -8829,12 +9428,80 @@ void
 FLEE_WRITEchar ( const char * FILE_NAME , char VALUE )
 {
 
+    SetConsoleOutputCP ( 1252 );
+
     FILE * fp = fopen ( FILE_NAME , "a" );
-    if ( fp == NULL ) printf("Erro ao abrir o arquivo!");
+    if ( fp == NULL ) printf("Error opening the file!");
 
     fprintf ( fp , "%c" , VALUE );
 
     fclose ( fp );
+
+    SetConsoleOutputCP ( 850 );
+}
+
+
+
+
+
+
+void
+FLEE_WRITEcharl ( const char * FILE_NAME , char VALUE , int WHAT_LINE )
+{
+
+    SetConsoleOutputCP ( 1252 );
+
+    FILE * fp , * fpTemp;
+
+    char STRING [ 2 ];
+
+    sprintf ( STRING , "%c" , VALUE );
+
+    char buffer [ 1024 ];
+    int  linhaAtual = 1;
+    int  linhaEncontrada = 0;
+
+    fp = fopen ( FILE_NAME , "r" );
+    if ( fp == NULL ) printf ("Error opening the file!");
+
+    fpTemp = fopen ("temp.txt", "w");
+    if ( fpTemp == NULL ) { printf ("Error with the function execution on the file!"); fclose(fp); }
+
+      while ( fgets ( buffer , 1024 , fp ) not_eq NULL )
+      {
+           if ( linhaAtual == WHAT_LINE )
+           {
+
+             int comprimentoLinha = strlen ( buffer );
+             int posicaoInsercao  = comprimentoLinha - 1;
+
+      while ( posicaoInsercao > 0 and ( buffer [ posicaoInsercao ] == '\r' or buffer [ posicaoInsercao ] == '\n' ) )
+      posicaoInsercao--;
+
+             if ( posicaoInsercao > 0 )
+             {
+                buffer [ posicaoInsercao + 1 ] = ' ';
+                posicaoInsercao ++;
+             }
+
+             buffer [ posicaoInsercao ] = '\0';
+             fprintf ( fpTemp , "%s%s\n" , buffer , STRING );
+             linhaEncontrada = 1;
+
+          }
+
+          else fprintf ( fpTemp , "%s" , buffer );
+
+
+          linhaAtual++;
+      }
+
+       if ( !linhaEncontrada and linhaAtual == WHAT_LINE ) fprintf ( fpTemp , "%s\n" , STRING );
+
+       fclose ( fp ); fclose ( fpTemp ); remove ( FILE_NAME ); rename ( "temp.txt" , FILE_NAME );
+
+       SetConsoleOutputCP ( 850 );
+
 }
 
 
@@ -8842,15 +9509,75 @@ FLEE_WRITEchar ( const char * FILE_NAME , char VALUE )
 
 
 void
-FLEE_WRITEstring ( const char * FILE_NAME , const char * VALUE )
+FLEE_WRITESUPAchar ( const char * FILE_NAME , char VALUE , int WHAT_LINE , int WHAT_COLUMN )
 {
+
+    SetConsoleOutputCP ( 1252 );
+
+    char STRING [ 2 ];
+    sprintf ( STRING , "%c" , VALUE );
+
+    FILE * file = fopen ( FILE_NAME , "r" );
+    if ( file == NULL ) printf ("Failed to open the file !");
+
+    char tmp_filename [ ] = "temp.txt";
+
+    FILE * tmp_file = fopen ( tmp_filename , "w" );
+    if ( tmp_file == NULL ) { printf ("Error creating temporary file."); fclose ( file ); }
+
+    char line_buf [ 9999 ];
+    int  current_line = 1;
+
+        while ( fgets ( line_buf , sizeof ( line_buf ) , file ) )
+        {
+             if ( current_line == WHAT_LINE )
+             {
+
+               int line_len = strlen ( line_buf );
+
+             if ( WHAT_COLUMN > line_len ) strcat ( line_buf , STRING );
+
+             else
+             {
+                for ( int i = line_len; i >= WHAT_COLUMN; i-- ) line_buf [ i + strlen ( STRING ) ] = line_buf [ i ];
+
+                for ( int i = 0; i < strlen ( STRING ); i++ ) line_buf [ WHAT_COLUMN + i ] = STRING [ i ];
+
+             }
+             }
+
+         fputs ( line_buf , tmp_file );
+         current_line ++;
+
+        }
+
+         fclose ( file ); fclose ( tmp_file );
+
+    if ( remove ( FILE_NAME ) not_eq 0 ) printf ("Error with the final of the function! (maybe the original file have been broken)");
+
+    if ( rename ( tmp_filename, FILE_NAME) not_eq 0 ) printf ("Error with the final of the function!");
+
+    SetConsoleOutputCP ( 850 );
+}
+
+
+
+
+
+void
+FLEE_WRITEstring ( const char * FILE_NAME , const char * STRING )
+{
+
+    SetConsoleOutputCP ( 1252 );
 
     FILE * fp = fopen ( FILE_NAME , "a" );
-    if ( fp == NULL ) printf("Erro ao abrir o arquivo!");
+    if ( fp == NULL ) printf("Error opening the file!");
 
-    fprintf ( fp , "%s" , VALUE );
+    fprintf ( fp , "%s" , STRING );
 
     fclose ( fp );
+
+    SetConsoleOutputCP ( 850 );
 }
 
 
@@ -8858,55 +9585,58 @@ FLEE_WRITEstring ( const char * FILE_NAME , const char * VALUE )
 
 
 void
-FLEE_WRITEstringl ( const char * nomeArquivo , int numeroLinha , const char * texto )
+FLEE_WRITEstringl ( const char * FILE_NAME , const char * STRING , int WHAT_LINE )
 {
-    FILE *fp, *fpTemp;
-    char buffer[1024];
-    int linhaAtual = 1;
-    int linhaEncontrada = 0;
 
-    fp = fopen(nomeArquivo, "r");
-    if (fp == NULL) {
-        printf("Erro ao abrir o arquivo!");
-        return;
-    }
+    SetConsoleOutputCP ( 1252 );
 
-    fpTemp = fopen("temp.txt", "w");
-    if (fpTemp == NULL) {
-        printf("Erro ao criar arquivo temporario!");
-        fclose(fp);
-        return;
-    }
+    FILE * fp , * fpTemp;
 
-    while (fgets(buffer, 1024, fp) != NULL) {
-        if (linhaAtual == numeroLinha) {
-            int comprimentoLinha = strlen(buffer);
-            int posicaoInsercao = comprimentoLinha - 1;
-            while (posicaoInsercao > 0 && (buffer[posicaoInsercao] == '\r' || buffer[posicaoInsercao] == '\n')) {
-                posicaoInsercao--;
-            }
-            if (posicaoInsercao > 0) {
-                buffer[posicaoInsercao + 1] = ' ';
-                posicaoInsercao++;
-            }
-            buffer[posicaoInsercao] = '\0';
-            fprintf(fpTemp, "%s%s\n", buffer, texto);
-            linhaEncontrada = 1;
-        } else {
-            fprintf(fpTemp, "%s", buffer);
-        }
-        linhaAtual++;
-    }
+    char buffer [ 1024 ];
+    int  linhaAtual = 1;
+    int  linhaEncontrada = 0;
 
-    if (!linhaEncontrada && linhaAtual == numeroLinha) {
-        fprintf(fpTemp, "%s\n", texto);
-    }
+    fp = fopen ( FILE_NAME , "r" );
+    if ( fp == NULL ) printf ("Error opening the file!");
 
-    fclose(fp);
-    fclose(fpTemp);
+    fpTemp = fopen ("temp.txt", "w");
+    if ( fpTemp == NULL ) { printf ("Error with the function execution on the file!"); fclose(fp); }
 
-    remove(nomeArquivo);
-    rename("temp.txt", nomeArquivo);
+      while ( fgets ( buffer , 1024 , fp ) not_eq NULL )
+      {
+           if ( linhaAtual == WHAT_LINE )
+           {
+
+             int comprimentoLinha = strlen ( buffer );
+             int posicaoInsercao  = comprimentoLinha - 1;
+
+      while ( posicaoInsercao > 0 and ( buffer [ posicaoInsercao ] == '\r' or buffer [ posicaoInsercao ] == '\n' ) )
+      posicaoInsercao--;
+
+             if ( posicaoInsercao > 0 )
+             {
+                buffer [ posicaoInsercao + 1 ] = ' ';
+                posicaoInsercao ++;
+             }
+
+             buffer [ posicaoInsercao ] = '\0';
+             fprintf ( fpTemp , "%s%s\n" , buffer , STRING );
+             linhaEncontrada = 1;
+
+          }
+
+          else fprintf ( fpTemp , "%s" , buffer );
+
+
+          linhaAtual++;
+      }
+
+       if ( !linhaEncontrada and linhaAtual == WHAT_LINE ) fprintf ( fpTemp , "%s\n" , STRING );
+
+       fclose ( fp ); fclose ( fpTemp ); remove ( FILE_NAME ); rename ( "temp.txt" , FILE_NAME );
+
+    SetConsoleOutputCP ( 850 );
+
 }
 
 
@@ -8914,64 +9644,52 @@ FLEE_WRITEstringl ( const char * nomeArquivo , int numeroLinha , const char * te
 
 
 void
-FLEE_WRITESUPAstring ( const char* filename , int line , int column, const char* token) {
+FLEE_WRITESUPAstring ( const char * FILE_NAME , const char * STRING , int WHAT_LINE , int WHAT_COLUMN )
+{
 
-    FILE* file = fopen(filename, "r");
-    if (file == NULL) {
-        printf("Failed to open the file %s\n", filename);
-        return;
-    }
+    SetConsoleOutputCP ( 1252 );
 
-    char tmp_filename[] = "temp.txt";
-    FILE* tmp_file = fopen(tmp_filename, "w");
-    if (tmp_file == NULL) {
-        printf("Error creating temporary file.\n");
-        fclose(file);
-        return;
-    }
+    FILE * file = fopen ( FILE_NAME , "r" );
+    if ( file == NULL ) printf ("Failed to open the file !");
 
-    char line_buf[1000];
-    int current_line = 1;
+    char tmp_filename [ ] = "temp.txt";
 
-    while (fgets(line_buf, sizeof(line_buf), file)) {
-        if (current_line == line) {
-            int line_len = strlen(line_buf);
+    FILE * tmp_file = fopen ( tmp_filename , "w" );
+    if ( tmp_file == NULL ) { printf ("Error creating temporary file."); fclose ( file ); }
 
-            if (column > line_len) {
-                // if the column is beyond the end of the line, append the new string
-                strcat(line_buf, token);
-            } else {
-                // shift existing characters to the right to make space for the new string
-                for (int i = line_len; i >= column; i--) {
-                    line_buf[i + strlen(token)] = line_buf[i];
-                }
+    char line_buf [ 9999 ];
+    int  current_line = 1;
 
-                // insert the new string
-                for (int i = 0; i < strlen(token); i++) {
-                    line_buf[column + i] = token[i];
-                }
-            }
+        while ( fgets ( line_buf , sizeof ( line_buf ) , file ) )
+        {
+             if ( current_line == WHAT_LINE )
+             {
+
+               int line_len = strlen ( line_buf );
+
+             if ( WHAT_COLUMN > line_len ) strcat ( line_buf , STRING );
+
+             else
+             {
+                for ( int i = line_len; i >= WHAT_COLUMN; i-- ) line_buf [ i + strlen ( STRING ) ] = line_buf [ i ];
+
+                for ( int i = 0; i < strlen ( STRING ); i++ ) line_buf [ WHAT_COLUMN + i ] = STRING [ i ];
+
+             }
+             }
+
+         fputs ( line_buf , tmp_file );
+         current_line ++;
+
         }
 
-        fputs(line_buf, tmp_file);
+         fclose ( file ); fclose ( tmp_file );
 
-        current_line++;
-    }
+    if ( remove ( FILE_NAME ) not_eq 0 ) printf ("Error with the final of the function! (maybe the original file have been broken)");
 
-    fclose(file);
-    fclose(tmp_file);
+    if ( rename ( tmp_filename, FILE_NAME) not_eq 0 ) printf ("Error with the final of the function!");
 
-    if (remove(filename) != 0) {
-        printf("Error deleting original file.\n");
-        return;
-    }
-
-    if (rename(tmp_filename, filename) != 0) {
-        printf("Error renaming temporary file.\n");
-        return;
-    }
-
-    printf("Successfully inserted the string at line %d, column %d of file %s.\n", line, column, filename);
+    SetConsoleOutputCP ( 850 );
 }
 
 
@@ -8980,7 +9698,7 @@ FLEE_WRITESUPAstring ( const char* filename , int line , int column, const char*
 /* READ VALUE FROM FILES */
 
 
-
+/* PRINT FILE FUNCTIONS */
 
 
 
