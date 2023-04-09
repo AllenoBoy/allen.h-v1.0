@@ -8774,41 +8774,211 @@ FLEE_LOCALSUBSstringl ( const char * FILE_NAME , int WHAT_LINE , const char * ST
 
 
 
+/* WRITE IN A FILE FUNCTIONS */
+
+
+
+void
+FLEE_WRITEint ( const char * FILE_NAME , int VALUE )
+{
+
+    FILE * fp = fopen ( FILE_NAME , "a" );
+    if ( fp == NULL ) printf("Erro ao abrir o arquivo!");
+
+    fprintf ( fp , "%d" , VALUE );
+
+    fclose ( fp );
+}
 
 
 
 
 
+void
+FLEE_WRITEfloat ( const char * FILE_NAME , float VALUE , int COMMAS )
+{
+
+    FILE * fp = fopen ( FILE_NAME , "a" );
+    if ( fp == NULL ) printf("Erro ao abrir o arquivo!");
+
+    fprintf ( fp , "%.*f" , COMMAS , VALUE );
+
+    fclose ( fp );
+}
 
 
 
 
 
+void
+FLEE_WRITEdouble ( const char * FILE_NAME , double VALUE , int COMMAS )
+{
+
+    FILE * fp = fopen ( FILE_NAME , "a" );
+    if ( fp == NULL ) printf("Erro ao abrir o arquivo!");
+
+    fprintf ( fp , "%.*lf" , COMMAS , VALUE );
+
+    fclose ( fp );
+}
 
 
 
 
 
+void
+FLEE_WRITEchar ( const char * FILE_NAME , char VALUE )
+{
+
+    FILE * fp = fopen ( FILE_NAME , "a" );
+    if ( fp == NULL ) printf("Erro ao abrir o arquivo!");
+
+    fprintf ( fp , "%c" , VALUE );
+
+    fclose ( fp );
+}
 
 
 
 
 
+void
+FLEE_WRITEstring ( const char * FILE_NAME , const char * VALUE )
+{
+
+    FILE * fp = fopen ( FILE_NAME , "a" );
+    if ( fp == NULL ) printf("Erro ao abrir o arquivo!");
+
+    fprintf ( fp , "%s" , VALUE );
+
+    fclose ( fp );
+}
 
 
 
 
 
+void
+FLEE_WRITEstringl ( const char * nomeArquivo , int numeroLinha , const char * texto )
+{
+    FILE *fp, *fpTemp;
+    char buffer[1024];
+    int linhaAtual = 1;
+    int linhaEncontrada = 0;
+
+    fp = fopen(nomeArquivo, "r");
+    if (fp == NULL) {
+        printf("Erro ao abrir o arquivo!");
+        return;
+    }
+
+    fpTemp = fopen("temp.txt", "w");
+    if (fpTemp == NULL) {
+        printf("Erro ao criar arquivo temporario!");
+        fclose(fp);
+        return;
+    }
+
+    while (fgets(buffer, 1024, fp) != NULL) {
+        if (linhaAtual == numeroLinha) {
+            int comprimentoLinha = strlen(buffer);
+            int posicaoInsercao = comprimentoLinha - 1;
+            while (posicaoInsercao > 0 && (buffer[posicaoInsercao] == '\r' || buffer[posicaoInsercao] == '\n')) {
+                posicaoInsercao--;
+            }
+            if (posicaoInsercao > 0) {
+                buffer[posicaoInsercao + 1] = ' ';
+                posicaoInsercao++;
+            }
+            buffer[posicaoInsercao] = '\0';
+            fprintf(fpTemp, "%s%s\n", buffer, texto);
+            linhaEncontrada = 1;
+        } else {
+            fprintf(fpTemp, "%s", buffer);
+        }
+        linhaAtual++;
+    }
+
+    if (!linhaEncontrada && linhaAtual == numeroLinha) {
+        fprintf(fpTemp, "%s\n", texto);
+    }
+
+    fclose(fp);
+    fclose(fpTemp);
+
+    remove(nomeArquivo);
+    rename("temp.txt", nomeArquivo);
+}
 
 
 
 
 
+void
+FLEE_WRITESUPAstring ( const char* filename , int line , int column, const char* token) {
+
+    FILE* file = fopen(filename, "r");
+    if (file == NULL) {
+        printf("Failed to open the file %s\n", filename);
+        return;
+    }
+
+    char tmp_filename[] = "temp.txt";
+    FILE* tmp_file = fopen(tmp_filename, "w");
+    if (tmp_file == NULL) {
+        printf("Error creating temporary file.\n");
+        fclose(file);
+        return;
+    }
+
+    char line_buf[1000];
+    int current_line = 1;
+
+    while (fgets(line_buf, sizeof(line_buf), file)) {
+        if (current_line == line) {
+            int line_len = strlen(line_buf);
+
+            if (column > line_len) {
+                // if the column is beyond the end of the line, append the new string
+                strcat(line_buf, token);
+            } else {
+                // shift existing characters to the right to make space for the new string
+                for (int i = line_len; i >= column; i--) {
+                    line_buf[i + strlen(token)] = line_buf[i];
+                }
+
+                // insert the new string
+                for (int i = 0; i < strlen(token); i++) {
+                    line_buf[column + i] = token[i];
+                }
+            }
+        }
+
+        fputs(line_buf, tmp_file);
+
+        current_line++;
+    }
+
+    fclose(file);
+    fclose(tmp_file);
+
+    if (remove(filename) != 0) {
+        printf("Error deleting original file.\n");
+        return;
+    }
+
+    if (rename(tmp_filename, filename) != 0) {
+        printf("Error renaming temporary file.\n");
+        return;
+    }
+
+    printf("Successfully inserted the string at line %d, column %d of file %s.\n", line, column, filename);
+}
 
 
 
 
-
+/* READ VALUE FROM FILES */
 
 
 
