@@ -446,13 +446,13 @@ void   FLEE_CREATEAFILE          ( const char * FILE_NAME );
 void   FLEE_RENAMEAFILE          ( const char * FILE_NAME , const char * NEW_FILE_NAME );
 void   FLEE_MOVEAFILE            ( const char * FILE_NAME , const char * NEW_DIRECTORY );
 void   FLEE_COPYAFILE            ( const char * FOLDER , const char * FILE_NAME, const char* NEW_FOLDER , const char* NEW_FILENAME );
-void   FLEE_CREATEAFILEANDFOLDER ( const char * FOLDER_NAME , const char* FILE_NAME );
+void   FLEE_CREATEAFILEANDFOLDER ( const char * FOLDER_NAME , const char * FILE_NAME );
 void   FLEE_CREATEAFOLDER        ( const char * FOLDER_NAME );
-void   FLEE_RENAMEAFOLDER        ( const char *FOLDER_NAME , const char *NEW_FOLDER_NAME );
-void   FLEE_DELETEAFILE          ( const char *FILE_NAME );
+void   FLEE_RENAMEAFOLDER        ( const char * FOLDER_NAME , const char * NEW_FOLDER_NAME );
+void   FLEE_DELETEAFILE          ( const char * FILE_NAME );
 void   FLEE_DELETEAFOLDER        ( const char * FOLDER_NAME );
-void   FLEE_MOVEAFOLDER          ( const char *FOLDER_NAME , const char *NEW_PATH );
-void   FLEE_COPYAFOLDER          ( const char *FOLDER_NAME , const char *NEW_PATH );
+void   FLEE_MOVEAFOLDER          ( const char * FOLDER_NAME , const char * NEW_PATH );
+void   FLEE_COPYAFOLDER          ( const char * FOLDER_NAME , const char * NEW_PATH );
 void   FLEE_SYSTEMFOLDER         ( const char * SYSTEM_FOLDER_NAME , char * FOLDER , char * SAVE_PATH );
 void   FLEE_Sint                 ( int VALUE , const char * FILE_NAME );
 int    FLEE_Lint                 ( const char * FILE_NAME );
@@ -9488,8 +9488,107 @@ FLEE_WRITESUPAstring ( const char * FILE_NAME , const char * STRING , int WHAT_L
 
 
 
-
 /* READ VALUE FROM FILES */
+
+
+
+int
+FLEE_GETSint ( const char * FILE_NAME , int WHAT_LINE )
+{
+    FILE * fp = fopen ( FILE_NAME , "r" );
+    if ( fp == NULL )   printf ("Error opening the file!\n");
+
+    char linha_atual [ 99999 ];
+    int  valor = -1;
+
+    for ( int i = 1; i <= WHAT_LINE; i++ )
+    if ( fgets ( linha_atual , sizeof ( linha_atual ) , fp ) == NULL ) { printf ("Error with the line\n"); fclose ( fp ); }
+
+    char valor_str [ 100 ];
+    int j = 0;
+
+    for ( int i = 0; i < strlen ( linha_atual ); i++ )
+       if ( isdigit ( linha_atual [ i ] ) ) { valor_str [ j ] = linha_atual [ i ]; j ++; }
+
+    valor_str [ j ] = '\0';
+
+    if ( sscanf ( valor_str , "%d" , &valor ) not_eq 1 ) { printf ("Error with the int value!\n"); fclose ( fp ); }
+
+    fclose ( fp );
+
+    return valor;
+}
+
+
+
+
+
+float
+FLEE_GETSfloat ( const char * FILE_NAME , int WHAT_LINE )
+{
+
+    FILE* fp = fopen ( FILE_NAME , "r" );
+    if ( fp == NULL ) printf ("Error opening the file.\n");
+
+    char  linha_atual [ 99999 ];
+    float valor = -1;
+
+    for ( int i = 1; i <= WHAT_LINE; i++ )
+       if ( fgets ( linha_atual , sizeof ( linha_atual ) , fp ) == NULL ) { printf ("Error reading the line.\n");  fclose ( fp ); }
+
+    char valor_str [ 99999 ];
+    int j = 0;
+
+    for ( int i = 0; i < strlen ( linha_atual ); i++ )
+       if ( isdigit ( linha_atual [ i ] ) or linha_atual [ i ] == '.' or linha_atual [ i ] == ',' ) { valor_str [ j ] = linha_atual [ i ]; j++; }
+
+    valor_str [ j ] = '\0';
+
+    for ( int i = 0; i < strlen ( valor_str ); i++)
+       if ( valor_str [ i ] == ',' ) valor_str [ i ] = '.';
+
+    if ( sscanf ( valor_str , "%f" , &valor ) not_eq 1 ) { printf ("Error reading the line.\n"); fclose ( fp ); }
+
+    fclose ( fp );
+    return valor;
+}
+
+
+
+
+
+double
+FLEE_GETSdouble ( const char * FILE_NAME , int WHAT_LINE )
+{
+
+    FILE* fp = fopen ( FILE_NAME , "r" );
+    if ( fp == NULL ) printf ("Error opening the file.\n");
+
+    char  linha_atual [ 99999 ];
+    double valor = -1;
+
+    for ( int i = 1; i <= WHAT_LINE; i++ )
+       if ( fgets ( linha_atual , sizeof ( linha_atual ) , fp ) == NULL ) { printf ("Error reading the line.\n");  fclose ( fp ); }
+
+    char valor_str [ 99999 ];
+    int j = 0;
+
+    for ( int i = 0; i < strlen ( linha_atual ); i++ )
+       if ( isdigit ( linha_atual [ i ] ) or linha_atual [ i ] == '.' or linha_atual [ i ] == ',' ) { valor_str [ j ] = linha_atual [ i ]; j++; }
+
+    valor_str [ j ] = '\0';
+
+    for ( int i = 0; i < strlen ( valor_str ); i++)
+       if ( valor_str [ i ] == ',' ) valor_str [ i ] = '.';
+
+    if ( sscanf ( valor_str , "%lf" , &valor ) not_eq 1 ) { printf ("Error reading the line.\n"); fclose ( fp ); }
+
+    fclose ( fp );
+    return valor;
+}
+
+
+
 
 
 /* PRINT FILE FUNCTIONS */
