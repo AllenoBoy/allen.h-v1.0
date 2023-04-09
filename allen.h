@@ -78,6 +78,7 @@
 # define COREAN      949
 # define GREGO      1253
 # define TURCO      1254
+# define ISO       65001
 
 
 
@@ -442,6 +443,7 @@ void LOCH_SETLOCAL ( char TEXT [] );
 */
 
 
+void   prf                       ( const char * FILE_NAME, bool ADD , const char * TEXT , ...  );
 void   FLEE_CREATEAFILE          ( const char * FILE_NAME );
 void   FLEE_RENAMEAFILE          ( const char * FILE_NAME , const char * NEW_FILE_NAME );
 void   FLEE_MOVEAFILE            ( const char * FILE_NAME , const char * NEW_DIRECTORY );
@@ -6800,6 +6802,32 @@ LOCH_SETLOCAL ( char TEXT [] )
 
 
 
+void
+prf ( const char * FILE_NAME, bool ADD , const char * TEXT , ... )
+{
+
+    FILE * file;
+
+    if ( ADD == true  ) { file = fopen ( FILE_NAME , "a"); }
+    if ( ADD == false ) { file = fopen ( FILE_NAME , "w"); }
+
+
+    if ( file == NULL ) printf ("Error with the file!\n");
+
+    va_list args;
+    va_start ( args , TEXT );
+    vfprintf ( file , TEXT , args );
+    va_end   ( args );
+
+    fclose ( file );
+}
+
+
+
+
+
+
+
 /* GENERAL FILE FUNCTIONS */
 
 
@@ -9590,6 +9618,29 @@ FLEE_GETSdouble ( const char * FILE_NAME , int WHAT_LINE )
 
 
 
+
+void
+FLEE_GETSstring ( const char * FILE_NAME , char * STRING, int WHAT_LINE )
+{
+    FILE * file = fopen ( FILE_NAME , "r" );
+    if ( file == NULL ) printf("Error opening the file!");
+
+    int  line_number = 0;
+    char line[ 99999 ];
+
+    memset ( line , 0 , sizeof ( line ) );
+
+    while ( fgets ( line , sizeof ( line ) , file ) not_eq NULL )
+    {
+        line_number++;
+
+        if (line_number == WHAT_LINE) { strcpy ( STRING , line ); break; }
+
+        memset ( line , 0 , sizeof ( line ) );
+    }
+
+    fclose ( file );
+}
 
 /* PRINT FILE FUNCTIONS */
 
