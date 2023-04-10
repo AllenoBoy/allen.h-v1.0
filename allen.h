@@ -443,7 +443,7 @@ void LOCH_SETLOCAL ( char TEXT [] );
 */
 
 
-void   prf                       ( const char * FILE_NAME, bool ADD , const char * TEXT , ...  );
+void   FLEE_PUTS                 ( const char * FILE_NAME, bool ADD , const char * TEXT , ...  );
 void   FLEE_CREATEAFILE          ( const char * FILE_NAME );
 void   FLEE_RENAMEAFILE          ( const char * FILE_NAME , const char * NEW_FILE_NAME );
 void   FLEE_MOVEAFILE            ( const char * FILE_NAME , const char * NEW_DIRECTORY );
@@ -513,6 +513,25 @@ void   FLEE_WRITESUPAchar        ( const char * FILE_NAME , char VALUE , int WHA
 void   FLEE_WRITEstring          ( const char * FILE_NAME , const char * STRING );
 void   FLEE_WRITEstringl         ( const char * FILE_NAME , const char * STRING , int WHAT_LINE );
 void   FLEE_WRITESUPAstring      ( const char * FILE_NAME , const char * STRING , int WHAT_LINE , int WHAT_COLUMN );
+int    FLEE_GETSint              ( const char * FILE_NAME , int WHAT_LINE );
+int    FLEE_GETSLint             ( const char * FILE_NAME , int WHAT_LINE , int COL );
+int    FLEE_GETCHint             ( const char * FILE_NAME, int WHAT_LINE, int START_COL, int END_COL );
+float  FLEE_GETSfloat            ( const char * FILE_NAME , int WHAT_LINE );
+float  FLEE_GETSLfloat           ( const char * FILE_NAME , int WHAT_LINE , int COL );
+float  FLEE_GETCHfloat           ( const char * FILE_NAME , int WHAT_LINE , int START_COL , int END_COL );
+double FLEE_GETSdouble           ( const char * FILE_NAME , int WHAT_LINE );
+double FLEE_GETSLdouble          ( const char * FILE_NAME , int WHAT_LINE , int COL );
+float  FLEE_GETCHdouble          ( const char * FILE_NAME , int WHAT_LINE , int START_COL , int END_COL );
+char   FLEE_GETCHchar            ( const char * FILE_NAME , int WHAT_LINE , int START_COL , int END_COL );
+char   FLEE_GETSLchar            ( const char * FILE_NAME , int WHAT_LINE , int COL );
+void   FLEE_GETSstring           ( const char * FILE_NAME , char * STRING, int WHAT_LINE );
+void   FLEE_GETCHstring          ( const char * FILE_NAME , int WHAT_LINE , int START_COL , int END_COL , char * STRING );
+void   FLEE_GETSLstring          ( const char * FILE_NAME , int WHAT_LINE , int COL , char * STRING );
+void   FLEE_PRINT                ( const char * FILE_NAME );
+void   FLEE_PRINTLINE            ( const char * FILE_NAME , int WHAT_LINE );
+void   FLEE_PRINTCOL             ( const char * FILE_NAME , int WHAT_LINE , int WHAT_COL );
+void   FLEE_PRINTAREA            ( const char* FILE_NAME , int WHAT_LINE , int START_COL , int END_COL );
+
 
 
 // PR
@@ -6803,7 +6822,7 @@ LOCH_SETLOCAL ( char TEXT [] )
 
 
 void
-prf ( const char * FILE_NAME, bool ADD , const char * TEXT , ... )
+FLEE_PUTS ( const char * FILE_NAME, bool ADD , const char * TEXT , ... )
 {
 
     FILE * file;
@@ -9642,14 +9661,402 @@ FLEE_GETSstring ( const char * FILE_NAME , char * STRING, int WHAT_LINE )
     fclose ( file );
 }
 
+
+
+
+
+int
+FLEE_GETCHint ( const char * FILE_NAME, int WHAT_LINE, int START_COL, int END_COL )
+{
+    FILE * fp = fopen ( FILE_NAME , "r" );
+    if ( fp == NULL ) printf ("Error opening the file!\n");
+
+    char linha_atual[ 99999 ];
+    int valor = -1;
+
+    for ( int i = 1; i <= WHAT_LINE; i++ )
+       if ( fgets ( linha_atual , sizeof ( linha_atual ) , fp ) == NULL ) { printf ("Error with the line\n"); fclose ( fp ); }
+
+    char valor_str [ 100 ];
+    int j = 0;
+
+    for ( int i = START_COL - 1; i < END_COL and i < strlen ( linha_atual ); i++ )
+       if ( isdigit ( linha_atual [ i ] ) ) { valor_str [ j ] = linha_atual [ i ];  j++; }
+
+    valor_str [ j ] = '\0';
+
+    if ( sscanf ( valor_str , "%d" , &valor ) not_eq 1 ) { printf ("Error with the int value!\n"); fclose ( fp ); }
+
+    fclose ( fp );
+    return valor;
+}
+
+
+
+
+
+float
+FLEE_GETCHfloat ( const char * FILE_NAME , int WHAT_LINE , int START_COL , int END_COL )
+{
+
+    FILE * fp = fopen ( FILE_NAME , "r" );
+    if ( fp == NULL ) printf ("Error opening the file!\n");
+
+    char linha_atual[ 99999 ];
+    float valor = -1.0;
+
+    for ( int i = 1; i <= WHAT_LINE; i++ )
+       if ( fgets ( linha_atual , sizeof ( linha_atual ) , fp ) == NULL ) { printf ("Error reading the file!\n"); fclose ( fp ); }
+
+    char valor_str[100];
+    int j = 0;
+
+    for ( int i = START_COL - 1; i < END_COL and i < strlen ( linha_atual ); i++ )
+       if ( isdigit ( linha_atual [ i ] ) or linha_atual [ i ] == '.' or linha_atual [ i ] == ',') { valor_str [ j ] = ( linha_atual [ i ] == ',' ) ? '.' : linha_atual [ i ]; j++; }
+
+    valor_str [ j ] = '\0';
+
+    if ( sscanf ( valor_str , "%f" , &valor ) not_eq 1 ) { printf("Error with the float value!\n"); fclose ( fp ); }
+
+    fclose ( fp );
+    return valor;
+}
+
+
+
+
+
+double
+FLEE_GETCHdouble ( const char * FILE_NAME , int WHAT_LINE , int START_COL , int END_COL )
+{
+
+    FILE * fp = fopen ( FILE_NAME , "r" );
+    if ( fp == NULL ) printf ("Error opening the file!\n");
+
+    char linha_atual[ 99999 ];
+    double valor = -1.0;
+
+    for ( int i = 1; i <= WHAT_LINE; i++ )
+       if ( fgets ( linha_atual , sizeof ( linha_atual ) , fp ) == NULL ) { printf ("Error reading the file!\n"); fclose ( fp ); }
+
+    char valor_str[100];
+    int j = 0;
+
+    for ( int i = START_COL - 1; i < END_COL and i < strlen ( linha_atual ); i++ )
+       if ( isdigit ( linha_atual [ i ] ) or linha_atual [ i ] == '.' or linha_atual [ i ] == ',') { valor_str [ j ] = ( linha_atual [ i ] == ',' ) ? '.' : linha_atual [ i ]; j++; }
+
+    valor_str [ j ] = '\0';
+
+    if ( sscanf ( valor_str , "%lf" , &valor ) not_eq 1 ) { printf("Error with the float value!\n"); fclose ( fp ); }
+
+    fclose ( fp );
+    return valor;
+}
+
+
+
+
+
+char
+FLEE_GETCHchar ( const char * FILE_NAME , int WHAT_LINE , int START_COL , int END_COL )
+{
+    FILE * fp = fopen ( FILE_NAME , "r" );
+    if ( fp == NULL ) printf ("Error opening the file!\n");
+
+    char linha_atual [ 99999 ];
+    char valor = '\0';
+
+    for ( int i = 1; i <= WHAT_LINE; i++ )
+        if ( fgets ( linha_atual , sizeof ( linha_atual ) , fp ) == NULL ) { printf ("Error with the line\n"); fclose ( fp ); }
+
+    for ( int i = START_COL - 1; i < END_COL and i < strlen ( linha_atual ); i++ )
+       if ( !isspace ( linha_atual [ i ] ) ) { valor = linha_atual [ i ]; break; }
+
+    fclose ( fp );
+    return valor;
+}
+
+
+
+
+
+void
+FLEE_GETCHstring ( const char * FILE_NAME , int WHAT_LINE , int START_COL , int END_COL , char * STRING )
+{
+
+    FILE * fp = fopen ( FILE_NAME , "r" );
+    if ( fp == NULL ) printf ("Error opening the file!\n");
+
+    char linha_atual [ 99999 ];
+
+    for ( int i = 1; i <= WHAT_LINE; i++ )
+       if ( fgets ( linha_atual , sizeof ( linha_atual ) , fp ) == NULL ) { printf ("Error with the line\n"); fclose ( fp ); }
+
+    int j = 0;
+
+    for ( int i = START_COL - 1; i < END_COL and i < strlen ( linha_atual ); i++ )
+    {
+        if ( linha_atual [ i ] == '\n' ) break;
+
+        STRING [ j ] = linha_atual [ i ]; j++;
+    }
+
+    STRING [ j ] = '\0';
+    fclose ( fp );
+}
+
+
+
+
+
+int
+FLEE_GETSLint ( const char * FILE_NAME , int WHAT_LINE , int COL )
+{
+    FILE * fp = fopen ( FILE_NAME , "r" );
+    if ( fp == NULL ) printf ("Error opening the file!\n");
+
+    char linha_atual [ 99999 ];
+
+    for ( int i = 1; i <= WHAT_LINE; i++ )
+       if ( fgets ( linha_atual , sizeof ( linha_atual ) , fp ) == NULL ) { printf ("Error with the line\n"); fclose ( fp ); }
+
+    int valor = -1;
+    char valor_str [ 100 ];
+    int j = 0;
+
+    for ( int i = COL - 1; i < strlen ( linha_atual ); i++ )
+       if ( isdigit ( linha_atual [ i ] ) ) { valor_str [ j ] = linha_atual [ i ]; j++; }
+
+    valor_str [ j ] = '\0';
+
+    if ( sscanf ( valor_str , "%d" , &valor ) not_eq 1 ) { printf("Error with the int value!\n"); fclose ( fp ); }
+
+    fclose ( fp );
+    return valor;
+}
+
+
+
+
+
+float
+FLEE_GETSLfloat ( const char * FILE_NAME , int WHAT_LINE , int COL )
+{
+
+    FILE * fp = fopen ( FILE_NAME , "r" );
+    if ( fp == NULL ) printf ("Error opening the file!\n");
+
+    char linha_atual [ 99999 ];
+
+    for ( int i = 1; i <= WHAT_LINE; i++)
+       if ( fgets ( linha_atual , sizeof ( linha_atual ) , fp ) == NULL) { printf ("Error with the line\n"); fclose ( fp ); }
+
+    float valor = -1.0;
+    char valor_str [ 100 ];
+    int j = 0;
+
+    for ( int i = COL - 1; i < strlen ( linha_atual ); i++ )
+       if ( isdigit ( linha_atual [ i ] ) or linha_atual [ i ] == '.' or linha_atual [ i ] == ',') { valor_str [ j ] = linha_atual [ i ]; j++; }
+
+    valor_str [ j ] = '\0';
+
+    for ( int i = 0; i < strlen ( valor_str ); i++ )
+       if ( valor_str [ i ] == ',' ) valor_str [ i ] = '.';
+
+    if ( sscanf ( valor_str , "%f" , &valor ) not_eq 1 )
+    {
+        printf ("Error with the float value!\n");
+        fclose ( fp );
+    }
+
+    fclose ( fp );
+    return valor;
+}
+
+
+
+
+
+double
+FLEE_GETSLdouble ( const char * FILE_NAME , int WHAT_LINE , int COL )
+{
+
+    FILE * fp = fopen ( FILE_NAME , "r" );
+    if ( fp == NULL ) printf ("Error opening the file!\n");
+
+    char linha_atual [ 99999 ];
+
+    for ( int i = 1; i <= WHAT_LINE; i++)
+       if ( fgets ( linha_atual , sizeof ( linha_atual ) , fp ) == NULL) { printf ("Error with the line\n"); fclose ( fp ); }
+
+    double valor = -1.0;
+    char valor_str [ 100 ];
+    int j = 0;
+
+    for ( int i = COL - 1; i < strlen ( linha_atual ); i++ )
+       if ( isdigit ( linha_atual [ i ] ) or linha_atual [ i ] == '.' or linha_atual [ i ] == ',') { valor_str [ j ] = linha_atual [ i ]; j++; }
+
+    valor_str [ j ] = '\0';
+
+    for ( int i = 0; i < strlen ( valor_str ); i++ )
+       if ( valor_str [ i ] == ',' ) valor_str [ i ] = '.';
+
+    if ( sscanf ( valor_str , "%lf" , &valor ) not_eq 1 )
+    {
+        printf ("Error with the float value!\n");
+        fclose ( fp );
+    }
+
+    fclose ( fp );
+    return valor;
+}
+
+
+
+
+
+char
+FLEE_GETSLchar ( const char * FILE_NAME , int WHAT_LINE , int COL )
+{
+    FILE * fp = fopen ( FILE_NAME , "r" );
+    if ( fp == NULL ) printf ("Error opening the file!\n");
+
+    char linha_atual [ 99999 ];
+    char valor = '\0';
+
+    for (int i = 1; i <= WHAT_LINE; i++)
+       if ( fgets ( linha_atual , sizeof ( linha_atual ) , fp ) == NULL ) { printf ("Error with the line\n"); fclose ( fp ); }
+
+    for ( int i = COL; i < strlen ( linha_atual ); i++)
+       if ( !isspace ( linha_atual [ i ] ) ) { valor = linha_atual [ i ]; break; }
+
+    fclose ( fp );
+    return valor;
+}
+
+
+
+
+
+void
+FLEE_GETSLstring ( const char * FILE_NAME , int WHAT_LINE , int COL , char * STRING )
+{
+    FILE * fp = fopen ( FILE_NAME , "r" );
+    if ( fp == NULL ) printf ("Error opening the file!\n");
+
+    char linha_atual [ 99999 ];
+
+    for ( int i = 0; i < WHAT_LINE; i++ )
+       if ( fgets ( linha_atual , sizeof ( linha_atual ) , fp ) == NULL) { printf ("Error with the line\n"); fclose ( fp ); }
+
+    int len = strlen ( linha_atual );
+
+    if ( linha_atual [ len - 1 ] == '\n' ) linha_atual [ len - 1 ] = '\0';
+
+    int str_idx = 0;
+
+    for ( int i = COL; i < len and linha_atual [ i ] not_eq '\0'; i++ ) { STRING [ str_idx ] = linha_atual [ i ]; str_idx++; }
+
+    STRING [ str_idx ] = '\0';
+
+    fclose( fp );
+}
+
+
+
+
+
 /* PRINT FILE FUNCTIONS */
 
 
 
+void
+FLEE_PRINT ( const char * FILE_NAME )
+{
+    FILE * file = fopen ( FILE_NAME , "r" );
+    if ( file == NULL ) printf ("Error opening the file!\n");
+
+    int c;
+
+    while ( ( c = fgetc ( file ) ) not_eq EOF ) putchar ( c );
+
+    fclose ( file );
+}
 
 
 
 
 
+void
+FLEE_PRINTLINE ( const char * FILE_NAME , int WHAT_LINE )
+{
+    FILE * file = fopen ( FILE_NAME , "r" );
+    if ( file == NULL ) printf ("Erro ao abrir o arquivo!\n");
+
+    int current_line = 1;
+    int c;
+
+    while ( ( c = fgetc ( file ) ) not_eq EOF )
+    {
+         if ( current_line == WHAT_LINE ) putchar ( c );
+
+         if ( c == '\n' ) current_line++;
+    }
+
+    fclose ( file );
+}
 
 
+
+
+
+void
+FLEE_PRINTCOL ( const char * FILE_NAME , int WHAT_LINE , int WHAT_COL )
+{
+    FILE * file = fopen ( FILE_NAME , "r" );
+    if ( file == NULL ) printf ("Error opening the file!\n");
+
+    int current_line = 1;
+    int current_col = 0;
+    int c;
+
+    while ( ( c = fgetc ( file ) ) not_eq EOF )
+    {
+        if ( current_line == WHAT_LINE and current_col >= WHAT_COL ) putchar ( c );
+
+        if (c == '\n') { current_line++; current_col = 0; }
+
+        else current_col++;
+
+    }
+
+    fclose ( file );
+}
+
+
+
+
+
+void
+FLEE_PRINTAREA ( const char* FILE_NAME , int WHAT_LINE , int START_COL , int END_COL )
+{
+    FILE * file = fopen ( FILE_NAME , "r" );
+    if ( file == NULL ) printf ("Error opening the file!\n");
+
+    int current_line = 1;
+    int current_col = 0;
+    int c;
+
+    while ( ( c = fgetc ( file ) ) not_eq EOF )
+    {
+         if ( current_line == WHAT_LINE and current_col >= START_COL and current_col <= END_COL ) putchar ( c );
+
+         if ( c == '\n' ) { current_line++; current_col = 0; }
+
+         else current_col++;
+    }
+
+    fclose ( file );
+}
+
+// END
