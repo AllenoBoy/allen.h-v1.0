@@ -374,7 +374,7 @@ void allen_CLEARINTARRAY          ( int SIZE , int ARRAY [] );
 int  allen_SUBSINTB_ARRAY         ( int LINES , int COLUNS , int CONDITION , int COMPARATOR , int TOKEN , int B_ARRAY [LINES] [COLUNS] );
 int  allen_INTCOPYB_ARRAY         ( int LINES , int COLUNS , int CONDITION , int COMPARATOR , int B_ARRAY [LINES] [COLUNS] , int NEW_B_ARRAY [LINES] [COLUNS] );
 void allen_CLEARINTB_ARRAY        ( int LINES , int COLUNS , int B_ARRAY [ LINES ] [ COLUNS ] );
-void allen_ADDTOSTRING            ( char * STRING , char * ADD );
+void allen_ADDTOSTRING            ( char * STRING, const char * ADD );
 void allen_REMAKESTRING           ( char * STRING , char * REMAKE );
 
 
