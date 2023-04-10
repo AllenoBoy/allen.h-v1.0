@@ -6444,10 +6444,9 @@ allen_CLEARINTB_ARRAY  ( int LINES , int COLUNS , int B_ARRAY [ LINES ] [ COLUNS
 
 
 
-void
-allen_ADDTOSTRING ( char * STRING , char * ADD )
+void allen_ADDTOSTRING ( char * STRING , const char * ADD ) 
 {
-    sprintf ( STRING , "%s%s" , STRING , ADD );
+    sprintf ( STRING + strlen ( STRING ) , "%s" , ADD );
 }
 
 
