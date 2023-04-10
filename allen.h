@@ -521,7 +521,7 @@ float  FLEE_GETSLfloat           ( const char * FILE_NAME , int WHAT_LINE , int 
 float  FLEE_GETCHfloat           ( const char * FILE_NAME , int WHAT_LINE , int START_COL , int END_COL );
 double FLEE_GETSdouble           ( const char * FILE_NAME , int WHAT_LINE );
 double FLEE_GETSLdouble          ( const char * FILE_NAME , int WHAT_LINE , int COL );
-float  FLEE_GETCHdouble          ( const char * FILE_NAME , int WHAT_LINE , int START_COL , int END_COL );
+double  FLEE_GETCHdouble          ( const char * FILE_NAME , int WHAT_LINE , int START_COL , int END_COL );
 char   FLEE_GETCHchar            ( const char * FILE_NAME , int WHAT_LINE , int START_COL , int END_COL );
 char   FLEE_GETSLchar            ( const char * FILE_NAME , int WHAT_LINE , int COL );
 void   FLEE_GETSstring           ( const char * FILE_NAME , char * STRING, int WHAT_LINE );
