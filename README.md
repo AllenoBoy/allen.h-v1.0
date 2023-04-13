@@ -246,6 +246,8 @@ O objetivo dessa biblioteca é fornecer uma simplificação de código da `lingu
 
 <h3 align="center"> FUNÇÕES </h3> 
 
+<h4 align="center"> Clique para acessar a documentação das funções </h4>
+
 <br>
 
 #### <p align="center"> <a href="URL do link"> PR </a> </p>
@@ -259,7 +261,7 @@ O objetivo dessa biblioteca é fornecer uma simplificação de código da `lingu
 #### <p align="center"> <a href="URL do link"> LOCH </a> </p>
 #### <p align="center"> <a href="URL do link"> FLEE </a> </p>
 
-
+<br>
 
 ---
 
