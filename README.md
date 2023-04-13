@@ -125,6 +125,37 @@ O objetivo da biblioteca é fornecer uma simplificação de código da `linguage
 
 > Esses macros devem ser utilizados somente nas seguintes funções: `GWC_STRING` e `PR_STRING`;
 
+##### 3.5 MACROS DE OPERADORES
+
+| MACRO                                              | Descrição                                                           |
+| :------------------------------------------------- | :------------------------------------------------------------------ |
+| `HT`                                               | MAIOR QUE      ( > )                                                |
+| `LT`                                               | MENOR QUE      ( < )                                                |
+| `EQ`                                               | IGUAL          ( == )                                               |
+| `DF`                                               | DIFERENTE      ( != )                                               |
+| `HE`                                               | MAIOR OU IGUAL ( >= )                                               |
+| `LE`                                               | MENOR OU IGUAL ( <= )                                               |
+| `NRM`                                              | A função PR_STRING, printará a string em caixa baixa ( formatada )  |
+| `CRY`                                              | A função PR_STRING, printará a string criptografada ( formatada )   |
+| `SZE`                                              | Macro para dizer que não deseja substituições em PR_STRING          |
+| `PWD`                                              | Macro para dizer que não terá nenhum texto em GWC_STRING            |
+| `ONS`                                              | Macro para dizer que não tem limite de tamanho                      |
+| `PWS`                                              | Macro para dizer que não há substiuição                             |
+| `ONN`                                              | Macro para dizer que não há substiuição                             |
+| `PWN`                                              | Macro para dizer que não há substiuição                             |
+| `PAR`                                              | Macro para dizer que não há substiuição                             |
+| `IMPAR`                                            | Macro para dizer que não há substiuição                             |
+| `MULTIPLO`                                         | Macro para dizer que não há substiuição                             |
+| `QUADRADO_X_DF_Y`                                  | Macro para dizer que não há substiuição                             |
+| `QUADRADO_X_EQ_Y`                                  | Macro para dizer que não há substiuição                             |
+| `INVERSO`                                          | Macro para dizer que não há substiuição                             |
+| `CRESCENTE`                                        | Macro para dizer que não há substiuição                             |
+| `DECRESCENTE`                                      | Macro para dizer que não há substiuição                             |
+| `NOTMULTIPLO`                                      | Macro para dizer que não há substiuição                             |
+
+
+> Esses macros devem ser utilizados somente nas seguintes funções: `GWC_STRING` e `PR_STRING`;
+
 ---
 
 ### 4. FUNÇÕES
