@@ -15,10 +15,13 @@
 
 
 
+
+
 <br>
 
 <h3 align="center"> void PR ( const char * TEXT ) </h3> 
 
+<br>
 <br>
 
 - **O QUE ELA FAZ**: `Escreve no console um texto definido por "" ou uma string`;
@@ -46,10 +49,63 @@ main ( void )
 
 ```
 
+<br>
+
 #### SAÍDA DO CONSOLE:
 
 ```ssh
 GOSTO DE COMER CHOCOLATE! allen
 ```
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void PRL ( int TIMES ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Escreve no console uma quantidade de vezes '\n', definida pelo parâmetro TIMES `;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+       printf ("Arroz e bom!");
+       
+       // Pula uma linha
+       PRL (1);
+       
+       printf ("Feijao e bom tambem!");
+       
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```ssh
+Arroz e bom!
+Feijao e bom tambem!
+```
+
 
 
