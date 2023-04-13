@@ -250,16 +250,16 @@ O objetivo dessa biblioteca é fornecer uma simplificação de código da `lingu
 
 <br>
 
-#### <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/blob/main/FUNCTIONS_DESCRIPTION/CS.md"> PR </a> </p>
-#### <p align="center"> <a href="URL do link"> CS </a> </p>
-#### <p align="center"> <a href="URL do link"> SYS </a> </p>
-#### <p align="center"> <a href="URL do link"> PROPS </a> </p>
-#### <p align="center"> <a href="URL do link"> G </a> </p>
-#### <p align="center"> <a href="URL do link"> allen </a> </p>
-#### <p align="center"> <a href="URL do link"> SB </a> </p>
-#### <p align="center"> <a href="URL do link"> MATTE </a> </p>
-#### <p align="center"> <a href="URL do link"> LOCH </a> </p>
-#### <p align="center"> <a href="URL do link"> FLEE </a> </p>
+### <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/blob/main/FUNCTIONS_DESCRIPTION/PR.md"> 1. PR </a> </p>
+### <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/blob/main/FUNCTIONS_DESCRIPTION/CS.md"> 2. CS </a> </p>
+### <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/blob/main/FUNCTIONS_DESCRIPTION/SYS.md"> 3. SYS </a> </p>
+### <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/blob/main/FUNCTIONS_DESCRIPTION/PROPS.md"> 4. PROPS </a> </p>
+### <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/blob/main/FUNCTIONS_DESCRIPTION/G.md"> 5. G </a> </p>
+### <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/blob/main/FUNCTIONS_DESCRIPTION/allen.md"> 6. allen </a> </p>
+### <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/blob/main/FUNCTIONS_DESCRIPTION/SB.md"> 7. SB </a> </p>
+### <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/blob/main/FUNCTIONS_DESCRIPTION/MATTE.md"> 8. MATTE </a> </p>
+### <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/blob/main/FUNCTIONS_DESCRIPTION/LOCH.md"> 9. LOCH </a> </p>
+### <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/blob/main/FUNCTIONS_DESCRIPTION/FLEE.md"> 10. FLEE </a> </p>
 
 <br>
 
