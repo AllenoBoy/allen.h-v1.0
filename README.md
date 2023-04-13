@@ -105,6 +105,23 @@ O objetivo da biblioteca é fornecer uma simplificação de código da `linguage
 
 > Esses macros devem ser utilizados somente nas seguintes funções: `PROP_TEXTCOLOR` e `PROP_BACKGROUNDCOLOR` quando `ENABLEPROPS` tiver sido chamado;
 
+##### 3.4 MACROS DAS FUNÇÕES DE STRINGS
+
+| MACRO                                              | Descrição                                                         |
+| :------------------------------------------------- | :---------------------------------------------------------------- |
+| `BRIGHT1`                                          | Deixa o texto ou fundo brilhantes                                 |
+| `BRIGHT2`                                          | Deixa o texto ou fundo brilhantes                                 |
+| `UNBRIGHT`                                         | Deixa o texto ou fundo escurecidos                                |
+| `ITALIC`                                           | Deixa o texto escrito na forma itálica                            |
+| `UNDERLINE`                                        | Deixa o texto escrito sublinhado                                  |
+| `BLINKER1`                                         | Deixa o texto ou fundo piscando                                   |
+| `BLINKER2`                                         | Deixa o texto ou fundo piscando                                   |
+| `BACKSET`                                          | Deixa o fundo esbranquiçado                                       |
+| `HIDE`                                             | Deixa o texto escrito escondido                                   |
+| `CUT`                                              | Deixa o texto escrito cortado                                     |
+
+> Esses macros devem ser utilizados somente nas seguintes funções: `GWC_STRING` e `PR_STRING`;
+
 ---
 
 ### 4. FUNÇÕES
