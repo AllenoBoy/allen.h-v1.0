@@ -204,9 +204,33 @@ O objetivo da biblioteca é fornecer uma simplificação de código da `linguage
 
 ### 4. FUNÇÕES
 
+---
+
+Em resumo as funções estão divididas em funcionalidades: 
+
+> PR:    *print*
+> 
+> CS:    *controle do console*
+> 
+> SYS:   *controle do sistema*
+> 
+> PROP:  *estilização de texto* 
+> 
+> G:     *controle de entrada*
+> 
+> allen: *testes simples*
+> 
+> SB:    *som e caixa de mensagens*
+> 
+> MATTE: *matemática*
+> 
+> LOCH:  *pequena implementação da setlocale*
+> 
+> FLEE:  *arquivos*
+  
 <br>
 
-## 01 - PR FUNCTIONS 
+## 01 - PR FUNCTIONS (#01)
 
 <br>
 
