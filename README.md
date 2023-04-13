@@ -298,7 +298,9 @@ O objetivo da biblioteca é fornecer uma simplificação de código da `linguage
 
 ### Essa função retorna um valor do tipo double e possui 3 parâmetros; Sua função é retornar o ângulo em radianos do coseno informado;
 > Parametro 01 ( double COS ): Valor double do cos para calcular;
+> 
 > Parametro 02 ( bool PRINT ): se yes ou true printará o resultado;
+> 
 > Parametro 03 ( int COMMAS ): quantidade de casas decimais que será printada
 
 - EXEMPLO DE USO: 
@@ -325,7 +327,9 @@ main ( void )
 
 ### Essa função retorna um valor do tipo double e possui 3 parâmetros; Sua função é retornar o ângulo em radianos do seno informado;
 > Parametro 01 ( double SIN ): Valor double do sin para calcular;
+> 
 > Parametro 02 ( bool PRINT ): se yes ou true printará o resultado;
+> 
 > Parametro 03 ( int COMMAS ): quantidade de casas decimais que será printada
 
 - EXEMPLO DE USO: 
@@ -352,7 +356,9 @@ main ( void )
 
 ### Essa função retorna um valor do tipo double e possui 3 parâmetros; Sua função é retornar o ângulo em radianos da tangente informada; 
 > Parametro 01 ( double TAN ): Valor double do sin para calcular;
+> 
 > Parametro 02 ( bool PRINT ): se yes ou true printará o resultado;
+> 
 > Parametro 03 ( int COMMAS ): quantidade de casas decimais que será printada
 
 - EXEMPLO DE USO: 
@@ -379,8 +385,11 @@ main ( void )
 
 ### Essa função retorna um valor do tipo double e possui 4 parâmetros; Sua função é retornar o arco tangente de y / x em um intervalo; 
 > Parametro 01 ( double X ): Valor double do x para calcular;
+> 
 > Parametro 02 ( double Y ): Valor double do y para calcular;
+> 
 > Parametro 03 ( bool PRINT ): se yes ou true printará o resultado;
+> 
 > Parametro 04 ( int COMMAS ): quantidade de casas decimais que será printada
 
 - EXEMPLO DE USO: 
@@ -407,8 +416,11 @@ main ( void )
 
 ### Essa função retorna um valor do tipo double e possui 4 parâmetros; Sua função é retornar o arco tangente de y / x em um intervalo; 
 > Parametro 01 ( double X ): Valor double do x para calcular;
+> 
 > Parametro 02 ( double Y ): Valor double do y para calcular;
+> 
 > Parametro 03 ( bool PRINT ): se yes ou true printará o resultado;
+> 
 > Parametro 04 ( int COMMAS ): quantidade de casas decimais que será printada
 
 - EXEMPLO DE USO: 
@@ -435,7 +447,9 @@ main ( void )
 
 ### Essa função retorna um valor do tipo double e possui 3 parâmetros; Sua função é retornar o maior inteiro menor ou igual a x; 
 > Parametro 01 ( double X ): Valor double do x para calcular;
+> 
 > Parametro 02 ( bool PRINT ): se yes ou true printará o resultado;
+> 
 > Parametro 03 ( int COMMAS ): quantidade de casas decimais que será printada
 
 - EXEMPLO DE USO: 
@@ -462,7 +476,9 @@ main ( void )
 
 ### Essa função retorna um valor do tipo double e possui 3 parâmetros; Sua função é retornar o valor do cosseno do ângulo;
 > Parametro 01 ( double ANGULO): alor double do x para calcular;
+> 
 > Parametro 02 ( bool PRINT ): se yes ou true printará o resultado;
+> 
 > Parametro 03 ( int COMMAS ): quantidade de casas decimais que será printada
 
 - EXEMPLO DE USO: 
@@ -489,7 +505,9 @@ main ( void )
 
 ### Essa função retorna um valor do tipo double e possui 3 parâmetros; Sua função é retornar o cosseno hiperbólico;
 > Parametro 01 ( double ANGULO): alor double do x para calcular;
+> 
 > Parametro 02 ( bool PRINT ): se yes ou true printará o resultado;
+> 
 > Parametro 03 ( int COMMAS ): quantidade de casas decimais que será printada
 
 - EXEMPLO DE USO: 
@@ -516,7 +534,9 @@ main ( void )
 
 ### Essa função retorna um valor do tipo double e possui 3 parâmetros; Sua função é retornar o número de euler;
 > Parametro 01 ( double X ): valor double do x para calcular;
+> 
 > Parametro 02 ( bool PRINT ): se yes ou true printará o resultado;
+> 
 > Parametro 03 ( int COMMAS ): quantidade de casas decimais que será printada
 
 - EXEMPLO DE USO: 
@@ -543,7 +563,9 @@ main ( void )
 
 ### Essa função retorna um valor do tipo double e possui 3 parâmetros; Sua função é retornar o módulo de um valor;
 > Parametro 01 ( double X ): valor double do x para calcular;
+> 
 > Parametro 02 ( bool PRINT ): se yes ou true printará o resultado;
+> 
 > Parametro 03 ( int COMMAS ): quantidade de casas decimais que será printada
 
 - EXEMPLO DE USO: 
@@ -570,7 +592,9 @@ main ( void )
 
 ### Essa função retorna um valor do tipo double e possui 3 parâmetros; Sua função é retornar o menor inteiro maior ou igual a x;
 > Parametro 01 ( double X ): valor double do x para calcular;
+> 
 > Parametro 02 ( bool PRINT ): se yes ou true printará o resultado;
+> 
 > Parametro 03 ( int COMMAS ): quantidade de casas decimais que será printada
 
 - EXEMPLO DE USO: 
@@ -599,7 +623,9 @@ main ( void )
 
 ### Essa função retorna um valor do tipo double e possui 3 parâmetros; Sua função é retornar a mantissa;
 > Parametro 01 ( double X ): valor double do x para calcular;
+> 
 > Parametro 02 ( bool PRINT ): se yes ou true printará o resultado;
+> 
 > Parametro 03 ( int COMMAS ): quantidade de casas decimais que será printada
 
 - EXEMPLO DE USO: 
@@ -626,8 +652,11 @@ main ( void )
 
 ### Essa função retorna um valor do tipo double e possui 4 parâmetros; Sua função é retornar o x * 2 ^ exp;
 > Parametro 01 ( double X ): valor double do x para calcular;
+> 
 > Parametro 02 ( int EXPOENTE ): expoente de x
+> 
 > Parametro 03 ( bool PRINT ): se yes ou true printará o resultado;
+> 
 > Parametro 04 ( int COMMAS ): quantidade de casas decimais que será printada
 
 - EXEMPLO DE USO: 
@@ -654,7 +683,9 @@ main ( void )
 
 ### Essa função retorna um valor do tipo double e possui 3 parâmetros; Sua função é retornar o logaritmo de x na base e;
 > Parametro 01 ( double X ): valor double do x para calcular;
+> 
 > Parametro 02 ( bool PRINT ): se yes ou true printará o resultado;
+> 
 > Parametro 03 ( int COMMAS ): quantidade de casas decimais que será printada
 
 - EXEMPLO DE USO: 
@@ -681,7 +712,9 @@ main ( void )
 
 ### Essa função retorna um valor do tipo double e possui 3 parâmetros; Sua função é retornar o logaritmo de x na base 10;
 > Parametro 01 ( double X ): valor double do x para calcular;
+> 
 > Parametro 02 ( bool PRINT ): se yes ou true printará o resultado;
+> 
 > Parametro 03 ( int COMMAS ): quantidade de casas decimais que será printada
 
 - EXEMPLO DE USO: 
@@ -708,7 +741,9 @@ main ( void )
 
 ### Essa função retorna um valor do tipo double e possui 3 parâmetros; Sua função é retornar só a parte decimal;
 > Parametro 01 ( double X ): valor double do x para calcular;
+> 
 > Parametro 02 ( bool PRINT ): se yes ou true printará o resultado;
+> 
 > Parametro 03 ( int COMMAS ): quantidade de casas decimais que será printada
 
 - EXEMPLO DE USO: 
@@ -735,8 +770,11 @@ main ( void )
 
 ### Essa função retorna um valor do tipo double e possui 4 parâmetros; Sua função é retornar BASE^EXPO;
 > Parametro 01 ( double BASE ): valor double de BASE para calcular;
+> 
 > Parametro 02 ( double EXOI ): valor double de EXPO para calcular;
+> 
 > Parametro 03 ( bool PRINT ): se yes ou true printará o resultado;
+> 
 > Parametro 04 ( int COMMAS ): quantidade de casas decimais que será printada
 
 - EXEMPLO DE USO: 
@@ -763,7 +801,9 @@ main ( void )
 
 ### Essa função retorna um valor do tipo double e possui 3 parâmetros; Sua função é retornar o valor do seno do angulo;
 > Parametro 01 ( double ANGULO ): valor double de BASE para calcular;
+> 
 > Parametro 02 ( bool PRINT ): se yes ou true printará o resultado;
+> 
 > Parametro 03 ( int COMMAS ): quantidade de casas decimais que será printada
 
 - EXEMPLO DE USO: 
@@ -790,7 +830,9 @@ main ( void )
 
 ### Essa função retorna um valor do tipo double e possui 3 parâmetros; Sua função é retornar o valor do seno hiperbólico do anglulo;
 > Parametro 01 ( double ANGULO ): valor double de BASE para calcular;
+> 
 > Parametro 02 ( bool PRINT ): se yes ou true printará o resultado;
+> 
 > Parametro 03 ( int COMMAS ): quantidade de casas decimais que será printada
 
 - EXEMPLO DE USO: 
@@ -817,7 +859,9 @@ main ( void )
 
 ### Essa função retorna um valor do tipo double e possui 3 parâmetros; Sua função é retornar o valor da raiz quadrada de X;
 > Parametro 01 ( double X ): valor double de BASE para calcular;
+> 
 > Parametro 02 ( bool PRINT ): se yes ou true printará o resultado;
+> 
 > Parametro 03 ( int COMMAS ): quantidade de casas decimais que será printada
 
 - EXEMPLO DE USO: 
@@ -844,7 +888,9 @@ main ( void )
 
 ### Essa função retorna um valor do tipo double e possui 3 parâmetros; Sua função é retornar o valor da tangente do angulo;
 > Parametro 01 ( double ANGULO ): valor double de BASE para calcular;
+> 
 > Parametro 02 ( bool PRINT ): se yes ou true printará o resultado;
+> 
 > Parametro 03 ( int COMMAS ): quantidade de casas decimais que será printada
 
 - EXEMPLO DE USO: 
@@ -871,7 +917,9 @@ main ( void )
 
 ### Essa função retorna um valor do tipo double e possui 3 parâmetros; Sua função é retornar o valor da tangente hiperbólica do angulo;
 > Parametro 01 ( double ANGULO ): valor double de BASE para calcular;
+> 
 > Parametro 02 ( bool PRINT ): se yes ou true printará o resultado;
+> 
 > Parametro 03 ( int COMMAS ): quantidade de casas decimais que será printada
 
 - EXEMPLO DE USO: 
