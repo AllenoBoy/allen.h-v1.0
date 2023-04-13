@@ -4,7 +4,7 @@
 
 <br>
 
-O objetivo dessa biblioteca é fornecer uma simplificação de código da `linguagem c`, onde aqui estarão `definidas e explicadas` todas as `funcionalidades` da mesma, com as funções, macros e informações necessárias, `em caso de bugs reportar na aba issues`, por fim todas as informações necessárias foram divididas em tópicos explicativos e demonstrativos da execução / utilização da biblioteca nesse arquivo readme.
+A biblioteca allen.h tem como objetivo a `simplificação dinâmica de código da linguagem c`, permitindo maior controle sobre o programa sendo criado substituindo a enorme quantidade de linhas necessárias, para o uso de funções que variam desde o controle do console, controle de arquivos, estilização, formatação de texto e alteração de valores. A atual versão da biblioteca LTS, possui 10 tipos de funções. A biblioteca foi produzida como simples intuito educativo e somente por uma pessoa, portanto não está passível de bugs ou irregularidades na execução da biblioteca e de suas funções, para relatar algum bug ou dar uma sugestão, abra um `ticket` na aba `issues`, que irei resolver o quanto antes.  
 
 <br>
 
