@@ -297,3 +297,115 @@ main ( void )
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void PR_FLOAT ( float VARIABLE , int COMMAS ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Escreve no console um valor do tipo float, definido pelo parâmetro VARIABLE e quantas casas decimais irá possuir, definido por COMMAS`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    float grade = 91.12344;
+
+    // Sem variável
+    PR_FLOAT ( 12.323213 , 2 );
+
+    printf ("\n");
+
+    // Com variável
+    PR_FLOAT ( grade , 2 );
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```ssh
+12.32
+91.12
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void PR_DOUBLE ( double VARIABLE , int COMMAS ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Escreve no console um valor do tipo double, definido pelo parâmetro VARIABLE e quantas casas decimais irá possuir, definido por COMMAS`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    double grade = 91.12344;
+
+    // Sem variável
+    PR_DOUBLE ( 12.323213 , 2 );
+
+    printf ("\n");
+
+    // Com variável
+    PR_DOUBLE ( grade , 2 );
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```ssh
+12.32
+91.12
+```
+
+
