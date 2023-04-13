@@ -36,9 +36,12 @@ O objetivo da biblioteca é fornecer uma simplificação de código da `linguage
 # include <pthread.h>
 ```
 
+---
+
 ### 2. OBSERVAÇÕES DA BIBLIOTECA
 
 - A biblioteca possui suporte ao uso de `threads` por causa da biblioteca pthread.h;
+- A biblioteca foi produzida utilizando o compilador `TDM-GCC` ( caso ocorram erros chequem o compilador );
 - A biblioteca permite o uso de `variáveis booleanas`;
 - A biblioteca possui macros personalizados, para amantes de `portugol`;
 - Caso não queira usar as funções específicas da biblioteca, como o `PR` use as padrões da linguagem c, como o `printf`
@@ -47,6 +50,25 @@ O objetivo da biblioteca é fornecer uma simplificação de código da `linguage
 - A biblioteca foi `produzida somente como uma forma de aprendizagem`, ou seja, está passível de bugs!
 - A biblioteca possui alguns `códigos de padronização de console`, para impedir bugs!
 
+---
+
 ### 3. MACROS DA BIBLIOTECA
+
+##### 3.1 MACROS DE REGIÕES DO CONSOLE
+
+| MACRO                                              | Descrição                                                        |
+| :------------------------------------------------- | :--------------------------------------------------------------- |
+| `DEFAULT`                                          | Define o console como o padrão da linguagem C ( sem acentuação)  |
+| `BRAZIL`                                           | Define o console como o nosso pt-br com acentuação               |
+| `LATIN`                                            | Define o console como latino não pt-br, possui alguns caracteres |
+| `CIRILICO`                                         | Define o console como do tipo cirílico ( й , и , к , с )         | 
+| `JAPAN`                                            | Define o console como do tipo japonês ( 日 , 本 , 語 )            |
+| `COREAN`                                           | 
+| `GREGO`                                            |
+| `TURCO`                                            | 
+| `ISO`                                              |
+
+
+---
 
 ### 4. FUNÇÕES
