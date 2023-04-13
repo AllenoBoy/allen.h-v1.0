@@ -521,7 +521,7 @@ allen walker
 <br>
 <br>
 
-- **O QUE ELA FAZ**: `Escreve no console um vetor do tipo int de forma formatada, onde, REVERSE define se a função irá printar o vetor de forma invertida, SIZE define o tamanho do vetor que será utilizado, TYPE a variação de print que vai de 1 até 6 , SPACE que define a quantidade de espaços que serão printados depois do valor, ANY_TEXT define o que será escrito antes do valor e ANY-TEXT2 define o que será escrito após o print do valor e por fim ARRAY recebe o vetor que será utilizado na função`;
+- **O QUE ELA FAZ**: `Escreve no console um vetor do tipo int de forma formatada, onde, REVERSE define se a função irá printar o vetor de forma invertida, SIZE define o tamanho do vetor que será utilizado, TYPE a variação de print que vai de 1 até 6 , SPACE que define a quantidade de espaços que serão printados depois do valor, ANY_TEXT define o que será escrito antes do valor e ANY_TEXT2 define o que será escrito após o print do valor e por fim ARRAY recebe o vetor que será utilizado na função`;
 
 <br>
 
@@ -575,5 +575,146 @@ COM REVERSE:
 5 4 3 2 1
 <5 <4 <3 <2 <1
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void PRV_FLOAT ( int REVERSE , int SIZE , int TYPE , int SPACE , int COMMA, const char ANY_TEXT [] , const char ANY_TEXT2 [], float ARRAY [] ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Escreve no console um vetor do tipo float de forma formatada, onde, REVERSE define se a função irá printar o vetor de forma invertida, SIZE define o tamanho do vetor que será utilizado, TYPE a variação de print que vai de 1 até 6 , SPACE que define a quantidade de espaços que serão printados depois do valor, COMMA define quantas casas decimais serão printadas com o valor, ANY_TEXT define o que será escrito antes do valor e ANY_TEXT2 define o que será escrito após o print do valor e por fim ARRAY recebe o vetor que será utilizado na função`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{
+    float eovetor [] = { 1.44 , 2.02 , 3.11 , 43.22 , 5.33 };
+
+    // Printando sem inverter
+    printf ("\n Sem inverter: ");
+    PRV_FLOAT ( no , 5 , 3 , 1 , 1 , "< " , " >" , eovetor );
+
+    // Printando invertendo
+    printf ("\n Invertendo:   ");
+    PRV_FLOAT ( YES , 5 , 3 , 1 , 1 , "< " , " >" , eovetor );
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```ssh
+ Sem inverter: < 1.4 > < 2.0 > < 3.1 > < 43.2 > < 5.3 >
+ Invertendo:   < 5.3 > < 43.2 > < 3.1 > < 2.0 > < 1.4 >
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void PRV_DOUBLE ( int REVERSE , int SIZE , int TYPE , int SPACE , int COMMA, const char ANY_TEXT [] , const char ANY_TEXT2 [], double ARRAY [] ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Escreve no console um vetor do tipo double de forma formatada, onde, REVERSE define se a função irá printar o vetor de forma invertida, SIZE define o tamanho do vetor que será utilizado, TYPE a variação de print que vai de 1 até 6 , SPACE que define a quantidade de espaços que serão printados depois do valor, COMMA define quantas casas decimais serão printadas com o valor, ANY_TEXT define o que será escrito antes do valor e ANY_TEXT2 define o que será escrito após o print do valor e por fim ARRAY recebe o vetor que será utilizado na função`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{
+    double eovetor [] = { 1.44 , 2.02 , 3.11 , 43.22 , 5.33 };
+
+    // Printando sem inverter
+    printf ("\n Sem inverter: ");
+    PRV_DOUBLE ( no , 5 , 3 , 1 , 1 , "< " , " >" , eovetor );
+
+    // Printando invertendo
+    printf ("\n Invertendo:   ");
+    PRV_DOUBLE ( YES , 5 , 3 , 1 , 1 , "< " , " >" , eovetor );
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```ssh
+ Sem inverter: < 1.4 > < 2.0 > < 3.1 > < 43.2 > < 5.3 >
+ Invertendo:   < 5.3 > < 43.2 > < 3.1 > < 2.0 > < 1.4 >
+```
+
 
 
