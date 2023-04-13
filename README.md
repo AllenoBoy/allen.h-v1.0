@@ -537,9 +537,384 @@ main ( void )
 2.718
 ```
 
+<br>
+
+<h2 align="center"> double MATTE_modulo ( double X , bool PRINT , int COMMAS ) </h2> 
+
+### Essa função retorna um valor do tipo double e possui 3 parâmetros; Sua função é retornar o módulo de um valor;
+> Parametro 01 ( double X ): valor double do x para calcular;
+> Parametro 02 ( bool PRINT ): se yes ou true printará o resultado;
+> Parametro 03 ( int COMMAS ): quantidade de casas decimais que será printada
+
+- EXEMPLO DE USO: 
+
+```c
+# include "allen.h"
+
+int
+main ( void )
+{   
+  MATTE_modulo ( -9 , true , 2 ); 
+}
+```
+
+- SAÍDA DO CONSOLE: 
+
+```sh
+9.00
+```
+
+<br>
+
+<h2 align="center"> double MATTE_arredondarparamenor ( double X , bool PRINT , int COMMAS ) </h2> 
+
+### Essa função retorna um valor do tipo double e possui 3 parâmetros; Sua função é retornar o menor inteiro maior ou igual a x;
+> Parametro 01 ( double X ): valor double do x para calcular;
+> Parametro 02 ( bool PRINT ): se yes ou true printará o resultado;
+> Parametro 03 ( int COMMAS ): quantidade de casas decimais que será printada
+
+- EXEMPLO DE USO: 
+
+```c
+# include "allen.h"
+
+int
+main ( void )
+{   
+ MATTE_arredondarparamenor ( 9.4 , true, 2 );  
+}
+```
+
+- SAÍDA DO CONSOLE: 
+
+```sh
+9.00
+```
+
 ---
 
 <br>
+
+<h2 align="center"> double MATTE_mantissa ( double X , bool PRINT , int COMMAS ) </h2> 
+
+### Essa função retorna um valor do tipo double e possui 3 parâmetros; Sua função é retornar a mantissa;
+> Parametro 01 ( double X ): valor double do x para calcular;
+> Parametro 02 ( bool PRINT ): se yes ou true printará o resultado;
+> Parametro 03 ( int COMMAS ): quantidade de casas decimais que será printada
+
+- EXEMPLO DE USO: 
+
+```c
+# include "allen.h"
+
+int
+main ( void )
+{   
+ MATTE_mantissa ( 1024 , true , 2 );  
+}
+```
+
+- SAÍDA DO CONSOLE: 
+
+```sh
+0.50
+```
+
+<br>
+
+<h2 align="center"> double MATTE_ldexp ( double X , int EXPOENTE , bool PRINT , int COMMAS ) </h2> 
+
+### Essa função retorna um valor do tipo double e possui 4 parâmetros; Sua função é retornar o x * 2 ^ exp;
+> Parametro 01 ( double X ): valor double do x para calcular;
+> Parametro 02 ( int EXPOENTE ): expoente de x
+> Parametro 03 ( bool PRINT ): se yes ou true printará o resultado;
+> Parametro 04 ( int COMMAS ): quantidade de casas decimais que será printada
+
+- EXEMPLO DE USO: 
+
+```c
+# include "allen.h"
+
+int
+main ( void )
+{   
+ MATTE_ldexp ( 4 , 3 , true , 2 );
+}
+```
+
+- SAÍDA DO CONSOLE: 
+
+```sh
+32.00
+```
+
+<br>
+
+<h2 align="center"> double MATTE_log ( double X , bool PRINT , int COMMAS ) </h2> 
+
+### Essa função retorna um valor do tipo double e possui 3 parâmetros; Sua função é retornar o logaritmo de x na base e;
+> Parametro 01 ( double X ): valor double do x para calcular;
+> Parametro 02 ( bool PRINT ): se yes ou true printará o resultado;
+> Parametro 03 ( int COMMAS ): quantidade de casas decimais que será printada
+
+- EXEMPLO DE USO: 
+
+```c
+# include "allen.h"
+
+int
+main ( void )
+{   
+    MATTE_log ( 2.718 , true , 2 );
+}
+```
+
+- SAÍDA DO CONSOLE: 
+
+```sh
+1.00
+```
+
+<br>
+
+<h2 align="center"> double MATTE_log10 ( double X , bool PRINT , int COMMAS ) </h2> 
+
+### Essa função retorna um valor do tipo double e possui 3 parâmetros; Sua função é retornar o logaritmo de x na base 10;
+> Parametro 01 ( double X ): valor double do x para calcular;
+> Parametro 02 ( bool PRINT ): se yes ou true printará o resultado;
+> Parametro 03 ( int COMMAS ): quantidade de casas decimais que será printada
+
+- EXEMPLO DE USO: 
+
+```c
+# include "allen.h"
+
+int
+main ( void )
+{   
+    MATTE_log10 ( 100 , true , 2 );
+}
+```
+
+- SAÍDA DO CONSOLE: 
+
+```sh
+2.00
+```
+
+<br>
+
+<h2 align="center"> double MATTE_soapartedecimal ( double X , bool PRINT , int COMMAS ) </h2> 
+
+### Essa função retorna um valor do tipo double e possui 3 parâmetros; Sua função é retornar só a parte decimal;
+> Parametro 01 ( double X ): valor double do x para calcular;
+> Parametro 02 ( bool PRINT ): se yes ou true printará o resultado;
+> Parametro 03 ( int COMMAS ): quantidade de casas decimais que será printada
+
+- EXEMPLO DE USO: 
+
+```c
+# include "allen.h"
+
+int
+main ( void )
+{   
+    MATTE_soapartedecimal ( 2.58974 , true , 5 );
+}
+```
+
+- SAÍDA DO CONSOLE: 
+
+```sh
+0.58974
+```
+
+<br>
+
+<h2 align="center"> double MATTE_potencia ( double BASE , double EXPO , bool PRINT , int COMMAS ) </h2> 
+
+### Essa função retorna um valor do tipo double e possui 4 parâmetros; Sua função é retornar BASE^EXPO;
+> Parametro 01 ( double BASE ): valor double de BASE para calcular;
+> Parametro 02 ( double EXOI ): valor double de EXPO para calcular;
+> Parametro 03 ( bool PRINT ): se yes ou true printará o resultado;
+> Parametro 04 ( int COMMAS ): quantidade de casas decimais que será printada
+
+- EXEMPLO DE USO: 
+
+```c
+# include "allen.h"
+
+int
+main ( void )
+{   
+   MATTE_potencia ( 2 , 5 , true , 2 );
+}
+```
+
+- SAÍDA DO CONSOLE: 
+
+```sh
+32.00
+```
+
+<br>
+
+<h2 align="center"> double MATTE_senoemrad ( double ANGULO , bool PRINT , int COMMAS ) </h2> 
+
+### Essa função retorna um valor do tipo double e possui 3 parâmetros; Sua função é retornar o valor do seno do angulo;
+> Parametro 01 ( double ANGULO ): valor double de BASE para calcular;
+> Parametro 02 ( bool PRINT ): se yes ou true printará o resultado;
+> Parametro 03 ( int COMMAS ): quantidade de casas decimais que será printada
+
+- EXEMPLO DE USO: 
+
+```c
+# include "allen.h"
+
+int
+main ( void )
+{   
+   MATTE_senoemrad ( 1.047 , true , 5 );
+}
+```
+
+- SAÍDA DO CONSOLE: 
+
+```sh
+0.866
+```
+
+<br>
+
+<h2 align="center"> double MATTE_senohiperbolico ( double ANGULO , bool PRINT , int COMMAS ) </h2> 
+
+### Essa função retorna um valor do tipo double e possui 3 parâmetros; Sua função é retornar o valor do seno hiperbólico do anglulo;
+> Parametro 01 ( double ANGULO ): valor double de BASE para calcular;
+> Parametro 02 ( bool PRINT ): se yes ou true printará o resultado;
+> Parametro 03 ( int COMMAS ): quantidade de casas decimais que será printada
+
+- EXEMPLO DE USO: 
+
+```c
+# include "allen.h"
+
+int
+main ( void )
+{   
+  MATTE_senohiperbolico ( 3.14 , true, 5 );
+}
+```
+
+- SAÍDA DO CONSOLE: 
+
+```sh
+11.530
+```
+
+<br>
+
+<h2 align="center"> double MATTE_raizquadrada ( double X , bool PRINT , int COMMAS ) </h2> 
+
+### Essa função retorna um valor do tipo double e possui 3 parâmetros; Sua função é retornar o valor da raiz quadrada de X;
+> Parametro 01 ( double X ): valor double de BASE para calcular;
+> Parametro 02 ( bool PRINT ): se yes ou true printará o resultado;
+> Parametro 03 ( int COMMAS ): quantidade de casas decimais que será printada
+
+- EXEMPLO DE USO: 
+
+```c
+# include "allen.h"
+
+int
+main ( void )
+{   
+  MATTE_raizquadrada ( 16 , true , 2 );
+}
+```
+
+- SAÍDA DO CONSOLE: 
+
+```sh
+4.00
+```
+
+<br>
+
+<h2 align="center"> double MATTE_tangenteemrad ( double ANGULO , bool PRINT , int COMMAS ) </h2> 
+
+### Essa função retorna um valor do tipo double e possui 3 parâmetros; Sua função é retornar o valor da tangente do angulo;
+> Parametro 01 ( double ANGULO ): valor double de BASE para calcular;
+> Parametro 02 ( bool PRINT ): se yes ou true printará o resultado;
+> Parametro 03 ( int COMMAS ): quantidade de casas decimais que será printada
+
+- EXEMPLO DE USO: 
+
+```c
+# include "allen.h"
+
+int
+main ( void )
+{   
+  MATTE_tangenteemrad ( 1.047 , true , 4 );
+}
+```
+
+- SAÍDA DO CONSOLE: 
+
+```sh
+1.731
+```
+
+<br>
+
+<h2 align="center"> double MATTE_tangentehiperbolica ( double ANGULO , bool PRINT , int COMMAS ) </h2> 
+
+### Essa função retorna um valor do tipo double e possui 3 parâmetros; Sua função é retornar o valor da tangente hiperbólica do angulo;
+> Parametro 01 ( double ANGULO ): valor double de BASE para calcular;
+> Parametro 02 ( bool PRINT ): se yes ou true printará o resultado;
+> Parametro 03 ( int COMMAS ): quantidade de casas decimais que será printada
+
+- EXEMPLO DE USO: 
+
+```c
+# include "allen.h"
+
+int
+main ( void )
+{   
+  MATTE_tangentehiperbolica ( 5 , true , 2 );
+}
+```
+
+- SAÍDA DO CONSOLE: 
+
+```sh
+1.00
+```
+
+---
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## 09 - LOCH FUNCTIONS 
 
