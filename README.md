@@ -156,7 +156,7 @@ O objetivo da biblioteca é fornecer uma simplificação de código da `linguage
 
 > Esses macros devem ser utilizados somente nas seguintes funções: `allen_SUBSINTARRAY` , `allen_COPYINTARRAY` , `allen_SUBSINTB_ARRAY` , `allen_INTCOPYB_ARRAY` , `GWC_INT` , `GWC_DOUBLE` , `GWC_FLOAT` , `GWC_CHAR` , `getI` , `getF` , `getD`;
 
-##### 3.6 MACROS allen defined
+##### 3.6 MACROS ALLEN DEFINED
 
 | MACRO                                              | Descrição                                                           |
 | :------------------------------------------------- | :------------------------------------------------------------------ |
