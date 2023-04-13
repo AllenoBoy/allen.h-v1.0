@@ -155,7 +155,7 @@ A biblioteca allen.h tem como objetivo a `simplificação dinâmica de código d
 | `notext`                                           | Macro para dizer que não terá nenhum texto em GWC_STRING            |
 | `nosize`                                           | Macro para dizer que não tem limite de tamanho                      |
 | `notoken`                                          | Macro para dizer que não há substiuição                             | 
-| `norchar`                                          | Macro para dizer que não há substiuição de char                     |
+| `norchar`                                          | Macro para dizer que não há char de substiuição                     |
 
 <br>
 
