@@ -284,6 +284,55 @@ O objetivo da biblioteca é fornecer uma simplificação de código da `linguage
 
 <br>
 
+<h2 align="center"> void LOCH_LOCAL ( void ); </h2> 
+
+### Essa função não retorna nada e não possui parâmetros; Sua função é definir o console em português;
+
+- EXEMPLO DE USO: 
+
+```sh
+# include "allen.h"
+
+int
+main ( void )
+{   
+    LOCH_LOCAL ();
+    printf ("Acentuação");
+}
+```
+
+- SAÍDA DO CONSOLE: 
+
+```sh
+Acentuação
+```
+
+<br>
+
+<h2 align="center"> LOCH_SETLOCAL ( char TEXT [] ); </h2> 
+
+### Essa função não retorna nada e possui um parâmetro; Sua função é definir qual idioma o console irá utilizar;
+> Parametro 01 ( char TEXT [] ): Nome de um idioma suportado pela função setlocale
+
+- EXEMPLO DE USO: 
+
+```sh
+# include "allen.h"
+
+int
+main ( void )
+{   
+    LOCH_SETLOCAL ( "portuguese_brazil" );
+    printf ("Acentuação");
+}
+```
+
+- SAÍDA DO CONSOLE: 
+
+```sh
+Acentuação
+```
+
 ---
 
 ## 10 - FLEE_FUNCTIONS 
