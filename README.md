@@ -170,9 +170,37 @@ O objetivo da biblioteca é fornecer uma simplificação de código da `linguage
 | MACRO                                              | Descrição                                                           |
 | :------------------------------------------------- | :------------------------------------------------------------------ |
 | `YES` , ` yes ` , `SIM` , `sim`                    | Serve como uma variável booleana                                    |
-| `NO` , ` no ` , `NAO` , `nao`                    | Serve como uma variável booleana                                    |
+| `NO` , ` no ` , `NAO` , `nao`                      | Serve como uma variável booleana                                    |
+| `se`                                               | if                                                                  | 
+| `e_se`                                             | else if                                                             | 
+| `outro`                                            | else                                                                | 
+| `para`                                             | for                                                                 | 
+| `qubre`                                            | break                                                               | 
+| `caso`                                             | case                                                                | 
+| `caractere`                                        | char                                                                | 
+| `constante`                                        | const                                                               | 
+| `padrao` , `outro_caso`                            | default                                                             | 
+| `faca`                                             | do                                                                  | 
+| `enquanto`                                         | while                                                               | 
+| `real`                                             | float                                                               | 
+| `real_64`                                          | double                                                              | 
+| `inteiro`                                          | int                                                                 |
+| `longo  `                                          | long                                                                |
+| `retorne` , `devolva` , `salve`                    | return                                                              |
+| `curto`                                            | short                                                               |
+| `tamanho_de`                                       | sizeof                                                              |
+| `estatico`                                         | static                                                              |
+| `registro`                                         | struct                                                              |
+| `escolha`                                          | switch                                                              |
+| `tipo_de`                                          | typedef                                                             |
+| `uniao`                                            | union                                                               |
+| `vazio`                                            | void                                                                |
+
 
 > Esses macros podem ser utilizados em qualquer lugar: exemplo `YES` pode ser usado no lugar de uma varíavel do tipo bool;
+
+<br>
+
 ---
 
 ### 4. FUNÇÕES
