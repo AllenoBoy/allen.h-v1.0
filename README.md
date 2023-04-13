@@ -232,6 +232,8 @@ O objetivo da biblioteca é fornecer uma simplificação de código da `linguage
 
 ---
 
+<br>
+
 ## 01 - PR FUNCTIONS 
 
 <br>
