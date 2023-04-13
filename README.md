@@ -242,7 +242,11 @@ O objetivo dessa biblioteca é fornecer uma simplificação de código da `lingu
 
 ---
 
-### 4. FUNÇÕES
+<br>
+
+<h3 align="center"> FUNÇÕES </h3> 
+
+<br>
 
 ---
 
