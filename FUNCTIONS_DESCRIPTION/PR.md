@@ -109,3 +109,57 @@ Feijao e bom tambem!
 
 
 
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void PRS ( int TIMES ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Escreve no console uma quantidade de vezes ' ', definida pelo parâmetro TIMES `;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+         
+       // Irá printar 10 espaços em branco
+       PRS (10);
+       
+       printf ("Arroz e bom!");
+       
+       // Irá printar 2 espaços em branco
+       PRS (2);
+       
+       printf ("Feijao e bom tambem!");
+       
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```ssh
+          Arroz e bom!  Feijao e bom tambem!
+```
+
+
+
