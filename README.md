@@ -203,3 +203,16 @@ O objetivo da biblioteca é fornecer uma simplificação de código da `linguage
 ---
 
 ### 4. FUNÇÕES
+
+
+01 - PR FUNCTIONS 
+02 - CS FUNCTIONS 
+03 - SYS FUNCTIONS 
+04 - PROP FUNCTIONS 
+05 - G FUNCTIONS 
+06 - allen FUNCTIONS 
+07 - SB FUNCTIONS 
+08 - MATTE FUNCTIONS 
+09 - LOCH FUNCTIONS 
+10 - FLEE_FUNCTIONS 
+
