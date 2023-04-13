@@ -6,8 +6,9 @@
 
 ---
 
-BIBLIOTECAS PADRÃO UTILIZADAS:
+### 1. BIBLIOTECAS PADRÃO UTILIZADAS
 
+```sh
 # include <stdio.h>
 # include <stdlib.h>
 # include <math.h>
@@ -29,3 +30,19 @@ BIBLIOTECAS PADRÃO UTILIZADAS:
 # include <sys/stat.h>
 # include <sys/types.h>
 # include <pthread.h>
+```
+
+### 2. OBSERVAÇÕES DA BIBLIOTECA
+
+- A biblioteca possui suporte ao uso de `threads` por causa da biblioteca pthread.h;
+- A biblioteca permite o uso de `variáveis booleanas`;
+- A biblioteca possui macros personalizados, para amantes do pt-br;
+- Caso não queira usar as funções específicas da biblioteca, como o `PR` use as padrões da linguagem c, como o `printf`
+- A estilização do console com as funções `PROP` podem não funcionar no console, por causa da incopatibilidade!
+- A biblioteca possui 10 tipos de variações de funções;
+- A biblioteca foi produzida somente como uma forma de aprendizagem, ou seja, está passível de bugs!
+- A biblioteca possui alguns códigos de padronização de console, para impedir bugs!
+
+### 3. MACROS DA BIBLIOTECA
+
+### 4. FUNÇÕES
