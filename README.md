@@ -199,7 +199,6 @@ O objetivo da biblioteca é fornecer uma simplificação de código da `linguage
 
 > Esses macros podem ser utilizados em qualquer lugar: exemplo se ( x > 12 ) printf("arroz") ;
 
-<br>
 
 ---
 
