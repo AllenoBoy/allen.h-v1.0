@@ -56,17 +56,17 @@ O objetivo da biblioteca é fornecer uma simplificação de código da `linguage
 
 ##### 3.1 MACROS DE REGIÕES DO CONSOLE
 
-| MACRO                                              | Descrição                                                        |
-| :------------------------------------------------- | :--------------------------------------------------------------- |
-| `DEFAULT`                                          | Define o console como o padrão da linguagem C ( sem acentuação)  |
-| `BRAZIL`                                           | Define o console como o nosso pt-br com acentuação               |
-| `LATIN`                                            | Define o console como latino não pt-br, possui alguns caracteres |
-| `CIRILICO`                                         | Define o console como do tipo cirílico ( й , и , к , с )         | 
-| `JAPAN`                                            | Define o console como do tipo japonês ( 日 , 本 , 語 )            |
-| `COREAN`                                           | 
-| `GREGO`                                            |
-| `TURCO`                                            | 
-| `ISO`                                              |
+| MACRO                                              | Descrição                                                         |
+| :------------------------------------------------- | :---------------------------------------------------------------- |
+| `DEFAULT`                                          | Define o console como o padrão da linguagem C ( sem acentuação)   |
+| `BRAZIL`                                           | Define o console como o nosso pt-br com acentuação                |
+| `LATIN`                                            | Define o console como latino não pt-br, possui alguns caracteres  |
+| `CIRILICO`                                         | Define o console como do tipo cirílico ( й , и , к , с )          | 
+| `JAPAN`                                            | Define o console como do tipo japonês ( 日 , 本 , 語 )             |
+| `COREAN`                                           | Define o console como do tipo coreano ( 한 , 글 , 입니다 )         |
+| `GREGO`                                            | Define o console como do tipo grego ( Γ , ε , ι , α , σ , μ , ό ) |
+| `TURCO`                                            | Define o console como do tipo turco ( ö , ş , ğ )                 |
+| `ISO`                                              | Padroniza o console para printar texto de string acentuado        |
 
 
 ---
