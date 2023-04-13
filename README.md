@@ -309,7 +309,7 @@ Acentuação
 
 <br>
 
-<h2 align="center"> LOCH_SETLOCAL ( char TEXT [] ); </h2> 
+<h2 align="center"> void LOCH_SETLOCAL ( char TEXT [] ); </h2> 
 
 ### Essa função não retorna nada e possui um parâmetro; Sua função é definir qual idioma o console irá utilizar;
 > Parametro 01 ( char TEXT [] ): Nome de um idioma suportado pela função setlocale
