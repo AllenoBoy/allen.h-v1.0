@@ -107,18 +107,21 @@ O objetivo da biblioteca é fornecer uma simplificação de código da `linguage
 
 ##### 3.4 MACROS DAS FUNÇÕES DE STRINGS
 
-| MACRO                                              | Descrição                                                         |
-| :------------------------------------------------- | :---------------------------------------------------------------- |
-| `BRIGHT1`                                          | Deixa o texto ou fundo brilhantes                                 |
-| `BRIGHT2`                                          | Deixa o texto ou fundo brilhantes                                 |
-| `UNBRIGHT`                                         | Deixa o texto ou fundo escurecidos                                |
-| `ITALIC`                                           | Deixa o texto escrito na forma itálica                            |
-| `UNDERLINE`                                        | Deixa o texto escrito sublinhado                                  |
-| `BLINKER1`                                         | Deixa o texto ou fundo piscando                                   |
-| `BLINKER2`                                         | Deixa o texto ou fundo piscando                                   |
-| `BACKSET`                                          | Deixa o fundo esbranquiçado                                       |
-| `HIDE`                                             | Deixa o texto escrito escondido                                   |
-| `CUT`                                              | Deixa o texto escrito cortado                                     |
+| MACRO                                              | Descrição                                                           |
+| :------------------------------------------------- | :------------------------------------------------------------------ |
+| `stringSZ`                                         | A função GWC_STRING, lerá uma string com um tamanho máximo          |
+| `stringEQ`                                         | A função GWC_STRING, lerá uma string até que seja diferente de algo |
+| `stringDF`                                         | A função GWC_STRING, lerá uma string até que seja igual a algo      |
+| `stringNR`                                         | A função GWC_STRING, lerá uma string normalmente e PR_STRING printará normalmente                   |
+| `stringIV`                                         | A função PR_STRING, printará a string de forma invertida            |
+| `stringHB`                                         | A função PR_STRING, printará a string em caixa alta ( formatada )   |
+| `stringLB`                                         | A função PR_STRING, printará a string em caixa baixa ( formatada )  |
+| `stringCY`                                         | A função PR_STRING, printará a string criptografada ( formatada )   |
+| `nosubs`                                           | Macro para dizer que não deseja substituições em PR_STRING          |
+| `notext`                                           | Macro para dizer que não terá nenhum texto em GWC_STRING            |
+| `nosize`                                           | Macro para dizer que não tem limite de tamanho                      |
+| `notoken`                                          | Macro para dizer que não há substiuição                             |
+
 
 > Esses macros devem ser utilizados somente nas seguintes funções: `GWC_STRING` e `PR_STRING`;
 
