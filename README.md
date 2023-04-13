@@ -250,7 +250,7 @@ O objetivo dessa biblioteca é fornecer uma simplificação de código da `lingu
 
 <br>
 
-#### <p align="center"> <a href="URL do link"> PR </a> </p>
+#### <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/blob/main/FUNCTIONS_DESCRIPTION/CS.md"> PR </a> </p>
 #### <p align="center"> <a href="URL do link"> CS </a> </p>
 #### <p align="center"> <a href="URL do link"> SYS </a> </p>
 #### <p align="center"> <a href="URL do link"> PROPS </a> </p>
