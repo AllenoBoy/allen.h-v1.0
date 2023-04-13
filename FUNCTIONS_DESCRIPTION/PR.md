@@ -718,3 +718,97 @@ main ( void )
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void PRM_INT ( int REVERSE , int STYLE , int LINES , int COLS , int SPACE , const char LEFT_TEXT [ ] , const char RIGHT_TEXT [ ] ,  int B_ARRAY [ LINES ] [ COLS ] ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Escreve no console uma matriz do tipo int de forma formatada, onde, REVERSE define se a função irá printar o vetor de forma invertida, STYLE a variação de print que vai de 1 até 4 , LINES define a quantidade de linhas da matriz, COLS define a quantidade de colunas da matriz, SPACE define a quantidade de espaços que serão printados depois do valor, LEFT_TEXT define o que será escrito antes do valor e RIGHT_TEXT define o que será escrito após o print do valor e por fim B_ARRAY recebe a matriz que será utilizada na função`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{
+    // Matriz de teste
+    int dorime [] [3] = { { 1 , 2 , 3 } , { 4 , 5 , 6 } , { 7 , 8 , 9 } };
+
+    // Printando a matriz sem inverter no estilo 1
+    printf ("Matriz no estilo 01: ");
+    PRM_INT ( 0 , 1 , 3 , 3 , 1 , "{ " , " }" , dorime );
+    printf ("\n");
+
+    // Printando a matriz invertida no estilo 1
+    printf ("Matriz no estilo 01: ");
+    PRM_INT ( YES , 1 , 3 , 3 , 1 , "{ " , " }" , dorime );
+
+    printf ("\n\n");
+
+    // Printando a matriz normalmente no estilo 3
+    printf ("Matriz no estilo 02:\n");
+    PRM_INT ( 0 , 3 , 3 , 3 , 1 , "{ " , " }" , dorime );
+
+    printf ("\n");
+    printf ("Matriz no estilo 02:\n");
+    // Printando a matriz invertida no estilo 3
+    PRM_INT ( YES , 3 , 3 , 3 , 1 , "{ " , " }" , dorime );
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```ssh
+Matriz no estilo 01: { 1 } { 2 } { 3 } { 4 } { 5 } { 6 } { 7 } { 8 } { 9 }
+Matriz no estilo 01: { 9 } { 8 } { 7 } { 6 } { 5 } { 4 } { 3 } { 2 } { 1 }
+
+Matriz no estilo 02:
+{ 1 } { 2 } { 3 }
+{ 4 } { 5 } { 6 }
+{ 7 } { 8 } { 9 }
+
+Matriz no estilo 02:
+{ 9 } { 8 } { 7 }
+{ 6 } { 5 } { 4 }
+{ 3 } { 2 } { 1 }
+```
+
+
+
+
+
+
+
+
+
+
+
