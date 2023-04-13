@@ -1,4 +1,4 @@
-# ALLEN.H 
+# ALLEN.H - Biblioteca Dinâmica de Simplificação de Código 
 
 ---
 
