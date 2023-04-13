@@ -409,3 +409,80 @@ main ( void )
 ```
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void PR_STRING ( char STRING [ ] , int HOW_TO_PRINT , char REPLACEMENT_CHAR , int NUMBER_OF_REPLACEMENTS , ... ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Escreve no console uma string com formatação \ modificação ( necessário o uso dos macros de strings ), onde: STRING define o texto ou string que será printada no console, HOW_TO_PRINT define o modo de print que será utilizado [ stringNR , stringIV , stringHB , stringLB , stringCY ], REPLACEMENT_CHAR define qual o caractere de substituição na função, caso o HOW_TO_PRINT seja igual o macro stringCY onde também se for verdadeiro se torna necessário dizer quantos valores serão substituidos em NUMBER_OF_REPLACEMENTS, exemplo: desejo substituir 'a' , '*' , '_', então NUMBER_OF_REPLACEMENTS seria = 3, concluindo ... será onde os chars que serão usados para substituição serão colocados, assim como em printf`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    char USERNAME [] = "allen walker";
+    char variable = 'e';
+
+    // Printando usando stringNR: NORMAL
+    PR_STRING ( USERNAME , stringNR , norchar , nosubs );
+    printf ("\n");
+
+    // Printando usando stringIV: INVERSO
+    PR_STRING ( USERNAME , stringIV , norchar , nosubs );
+    printf ("\n");
+
+    // Printando usando stringHB: CAIXA ALTA -> AVISO: ACENTUAÇÃO NÃO FUNCIONA, POIS NÃO É RECONHECIDO
+    PR_STRING ( USERNAME , stringHB , norchar , nosubs );
+    printf ("\n");
+
+    // Printando usando stringLB: CAIXA BAIXA -> AVISO: ACENTUAÇÃO NÃO FUNCIONA, POIS NÃO É RECONHECIDO
+    PR_STRING ( "ALLEN WALKER" , stringLB , norchar , nosubs );
+    printf ("\n");
+
+    // Printando usando stringCY: CRIPTOGRAFADO / SUBSTITUIDO -> AVISO: ACENTUAÇÃO NÃO FUNCIONA, POIS NÃO É RECONHECIDO
+    PR_STRING ( USERNAME , stringCY , '*' , 2 , 'a' , variable );
+    printf ("\n");
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```ssh
+allen walker
+reklaw nella
+ALLEN WALKER
+allen walker
+*ll*n w*lk*r
+```
+
+
