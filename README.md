@@ -169,7 +169,8 @@ O objetivo da biblioteca é fornecer uma simplificação de código da `linguage
 
 | MACRO                                              | Descrição                                                           |
 | :------------------------------------------------- | :------------------------------------------------------------------ |
-| `stringSZ`                                         | A função GWC_STRING, lerá uma string com um tamanho máximo          |
+| `YES` , ` yes ` , `SIM` , `sim`                    | Serve como uma variável booleana                                    |
+| `NO` , ` no ` , `NAO` , `nao`                    | Serve como uma variável booleana                                    |
 
 > Esses macros podem ser utilizados em qualquer lugar: exemplo `YES` pode ser usado no lugar de uma varíavel do tipo bool;
 ---
