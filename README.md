@@ -375,7 +375,7 @@ main ( void )
 
 <br>
 
-<h2 align="center"> MATTE_arcotangente ( double X , double Y , bool PRINT , int COMMAS ) </h2> 
+<h2 align="center"> double MATTE_arcotangente ( double X , double Y , bool PRINT , int COMMAS ) </h2> 
 
 ### Essa função retorna um valor do tipo double e possui 4 parâmetros; Sua função é retornar o arco tangente de y / x em um intervalo; 
 > Parametro 01 ( double X ): Valor double do x para calcular;
@@ -403,7 +403,7 @@ main ( void )
 
 <br>
 
-<h2 align="center"> MATTE_arcotangente ( double X , double Y , bool PRINT , int COMMAS ) </h2> 
+<h2 align="center"> double MATTE_arcotangente ( double X , double Y , bool PRINT , int COMMAS ) </h2> 
 
 ### Essa função retorna um valor do tipo double e possui 4 parâmetros; Sua função é retornar o arco tangente de y / x em um intervalo; 
 > Parametro 01 ( double X ): Valor double do x para calcular;
@@ -429,9 +429,113 @@ main ( void )
 0.7854
 ```
 
----
+<br>
+
+<h2 align="center"> double MATTE_arredondarparamaior ( double X , bool PRINT , int COMMAS ) </h2> 
+
+### Essa função retorna um valor do tipo double e possui 3 parâmetros; Sua função é retornar o maior inteiro menor ou igual a x; 
+> Parametro 01 ( double X ): Valor double do x para calcular;
+> Parametro 02 ( bool PRINT ): se yes ou true printará o resultado;
+> Parametro 03 ( int COMMAS ): quantidade de casas decimais que será printada
+
+- EXEMPLO DE USO: 
+
+```c
+# include "allen.h"
+
+int
+main ( void )
+{   
+   MATTE_arredondarparamaior ( 6.55 , true , 4 );
+}
+```
+
+- SAÍDA DO CONSOLE: 
+
+```sh
+7.0000
+```
 
 <br>
+
+<h2 align="center"> double MATTE_cosemrad ( double ANGULO , bool PRINT , int COMMAS ) </h2> 
+
+### Essa função retorna um valor do tipo double e possui 3 parâmetros; Sua função é retornar o valor do cosseno do ângulo;
+> Parametro 01 ( double ANGULO): alor double do x para calcular;
+> Parametro 02 ( bool PRINT ): se yes ou true printará o resultado;
+> Parametro 03 ( int COMMAS ): quantidade de casas decimais que será printada
+
+- EXEMPLO DE USO: 
+
+```c
+# include "allen.h"
+
+int
+main ( void )
+{   
+   MATTE_cosemrad ( 1.047 , true , 4 );
+}
+```
+
+- SAÍDA DO CONSOLE: 
+
+```sh
+0.5002
+```
+
+<br>
+
+<h2 align="center"> double MATTE_coshiperbolico ( double ANGULO , bool PRINT , int COMMAS ) </h2> 
+
+### Essa função retorna um valor do tipo double e possui 3 parâmetros; Sua função é retornar o cosseno hiperbólico;
+> Parametro 01 ( double ANGULO): alor double do x para calcular;
+> Parametro 02 ( bool PRINT ): se yes ou true printará o resultado;
+> Parametro 03 ( int COMMAS ): quantidade de casas decimais que será printada
+
+- EXEMPLO DE USO: 
+
+```c
+# include "allen.h"
+
+int
+main ( void )
+{   
+  MATTE_coshiperbolico ( 3.14 , true , 3 );
+}
+```
+
+- SAÍDA DO CONSOLE: 
+
+```sh
+11.574
+```
+
+<br>
+
+<h2 align="center"> double MATTE_exp ( double X , bool PRINT , int COMMAS ) </h2> 
+
+### Essa função retorna um valor do tipo double e possui 3 parâmetros; Sua função é retornar o número de euler;
+> Parametro 01 ( double X ): valor double do x para calcular;
+> Parametro 02 ( bool PRINT ): se yes ou true printará o resultado;
+> Parametro 03 ( int COMMAS ): quantidade de casas decimais que será printada
+
+- EXEMPLO DE USO: 
+
+```c
+# include "allen.h"
+
+int
+main ( void )
+{   
+  MATTE_exp ( 1 , true , 3 );
+}
+```
+
+- SAÍDA DO CONSOLE: 
+
+```sh
+2.718
+```
 
 ---
 
