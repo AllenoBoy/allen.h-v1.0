@@ -238,11 +238,15 @@ O objetivo da biblioteca é fornecer uma simplificação de código da `linguage
 
 ---
 
+<br>
+
 ## 02 - CS FUNCTIONS 
 
 <br>
 
 ---
+
+<br>
 
 ## 03 - SYS FUNCTIONS 
 
@@ -250,11 +254,15 @@ O objetivo da biblioteca é fornecer uma simplificação de código da `linguage
 
 ---
 
+<br>
+
 ## 04 - PROP FUNCTIONS 
 
 <br>
 
 ---
+
+<br>
 
 ## 05 - G FUNCTIONS 
 
@@ -262,11 +270,15 @@ O objetivo da biblioteca é fornecer uma simplificação de código da `linguage
 
 ---
 
+<br>
+
 ## 06 - allen FUNCTIONS 
 
 <br>
 
 ---
+
+<br>
 
 ## 07 - SB FUNCTIONS 
 
@@ -274,11 +286,15 @@ O objetivo da biblioteca é fornecer uma simplificação de código da `linguage
 
 ---
 
+<br>
+
 ## 08 - MATTE FUNCTIONS 
 
 <br>
 
 ---
+
+<br>
 
 ## 09 - LOCH FUNCTIONS 
 
@@ -334,6 +350,8 @@ Acentuação
 ```
 
 ---
+
+<br>
 
 ## 10 - FLEE_FUNCTIONS 
 
