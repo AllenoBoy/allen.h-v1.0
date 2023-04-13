@@ -812,3 +812,59 @@ Matriz no estilo 02:
 
 
 
+
+
+
+<br>
+
+<h3 align="center"> void PRM_FLOAT ( int REVERSE , int STYLE , int LINES , int COLS , int SPACE , int COMMA , const char LEFT_TEXT [] , const char RIGHT_TEXT [] ,  float B_ARRAY [ LINES ] [ COLS ] ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Escreve no console uma matriz do tipo float de forma formatada, onde, REVERSE define se a função irá printar o vetor de forma invertida, STYLE a variação de print que vai de 1 até 4 , LINES define a quantidade de linhas da matriz, COLS define a quantidade de colunas da matriz, SPACE define a quantidade de espaços que serão printados depois do valor, COMMA define a quantidade de casas decimais a serem printadas, LEFT_TEXT define o que será escrito antes do valor e RIGHT_TEXT define o que será escrito após o print do valor e por fim B_ARRAY recebe a matriz que será utilizada na função`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{
+    // Matriz de teste
+    float dorime [] [3] = { { 1.3343 , 2.1312 , 3.993 } , { 4.235 , 5.123 , 6.477 } , { 7.1233 , 8.8832 , 9.1255 } };
+
+    // Printando a matriz no estilo 3 normalmente
+    printf ("Matriz no estilo 03 - normalmente:\n");
+    PRM_FLOAT ( no , 3 , 3 , 3 , 1 , 2 , "< " , " >" , dorime );
+
+    printf ("\n");
+
+    // Printando a matriz no estilo 3 invertida
+    printf ("Matriz no estilo 03 - invertida:\n");
+    PRM_FLOAT ( yes , 3 , 3 , 3 , 1 , 2 , "{ " , " }" , dorime );
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```ssh
+Matriz no estilo 03 - normalmente:
+< 1.33 > < 2.13 > < 3.99 >
+< 4.24 > < 5.12 > < 6.48 >
+< 7.12 > < 8.88 > < 9.13 >
+
+Matriz no estilo 03 - invertida:
+{ 9.13 } { 8.88 } { 7.12 }
+{ 6.48 } { 5.12 } { 4.24 }
+{ 3.99 } { 2.13 } { 1.33 }
+```
+
+
