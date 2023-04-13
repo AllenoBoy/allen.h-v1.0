@@ -135,23 +135,23 @@ O objetivo da biblioteca é fornecer uma simplificação de código da `linguage
 | `DF`                                               | DIFERENTE      ( != )                                               |
 | `HE`                                               | MAIOR OU IGUAL ( >= )                                               |
 | `LE`                                               | MENOR OU IGUAL ( <= )                                               |
-| `NRM`                                              | A função PR_STRING, printará a string em caixa baixa ( formatada )  |
-| `CRY`                                              | A função PR_STRING, printará a string criptografada ( formatada )   |
-| `SZE`                                              | Macro para dizer que não deseja substituições em PR_STRING          |
-| `PWD`                                              | Macro para dizer que não terá nenhum texto em GWC_STRING            |
-| `ONS`                                              | Macro para dizer que não tem limite de tamanho                      |
-| `PWS`                                              | Macro para dizer que não há substiuição                             |
-| `ONN`                                              | Macro para dizer que não há substiuição                             |
-| `PWN`                                              | Macro para dizer que não há substiuição                             |
-| `PAR`                                              | Macro para dizer que não há substiuição                             |
-| `IMPAR`                                            | Macro para dizer que não há substiuição                             |
-| `MULTIPLO`                                         | Macro para dizer que não há substiuição                             |
-| `QUADRADO_X_DF_Y`                                  | Macro para dizer que não há substiuição                             |
-| `QUADRADO_X_EQ_Y`                                  | Macro para dizer que não há substiuição                             |
-| `INVERSO`                                          | Macro para dizer que não há substiuição                             |
-| `CRESCENTE`                                        | Macro para dizer que não há substiuição                             |
-| `DECRESCENTE`                                      | Macro para dizer que não há substiuição                             |
-| `NOTMULTIPLO`                                      | Macro para dizer que não há substiuição                             |
+| `NRM`                                              | NORMAL / SEM RESTRIÇÕES                                             |
+| `CRY`                                              | CRIPTOGRAFIA                                                        |
+| `SZE`                                              | TAMANHO                                                             |
+| `PWD`                                              | SENHA / PASSWORD ( COM NÚMEROS )                                    |
+| `ONS`                                              | SOMENTE TEXTO                                                       |
+| `PWS`                                              | SENHA / PASSWORD ( SEM NÚMEROS )                                    |
+| `ONN`                                              | SOMENTE NÚMEROS                                                     |
+| `PWN`                                              | SENHA / PASSWORD ( SÓ NÚMEROS )                                     |
+| `PAR`                                              | SE O VALOR FOR PAR                                                  |
+| `IMPAR`                                            | SE O VALOR FOR IMPAR                                                |
+| `MULTIPLO`                                         | SE O VALOR FOR MÚLTIPLO DO OUTRO                                    |
+| `QUADRADO_X_DF_Y`                                  | x² != y                                                             |
+| `QUADRADO_X_EQ_Y`                                  | x² == y                                                             |
+| `INVERSO`                                          | INVERTE O VETOR OU MATRIZ                                           |
+| `CRESCENTE`                                        | ORGANIZAÇÃO DO VETOR OU MATRIZ DE FORMA CRESCENTE ( BUBBLE SORT )   |
+| `DECRESCENTE`                                      | ORGANIZAÇÃO DO VETOR OU MATRIZ DE FORMA DECRESCENTE ( BUBBLE SORT ) |
+| `NOTMULTIPLO`                                      | SE O VALOR NÃO FOR MÚLTIPLO DO OUTRO                                |
 
 
 > Esses macros devem ser utilizados somente nas seguintes funções: `allen_SUBSINTARRAY` , `allen_COPYINTARRAY` , `allen_SUBSINTB_ARRAY` , `allen_INTCOPYB_ARRAY` , `GWC_INT` , `GWC_DOUBLE` , `GWC_FLOAT` , `GWC_CHAR` , `getI` , `getF` , `getD`;
