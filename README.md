@@ -1002,15 +1002,15 @@ main ( void )
 
 
 
-
+<br>
 
 ## 09 - LOCH FUNCTIONS 
 
-<br>
 
-<h2 align="center"> void LOCH_LOCAL ( void ); </h2> 
+<h3 align="center"> void LOCH_LOCAL ( void ); </h3> 
 
-### Essa função não retorna nada e não possui parâmetros; Sua função é definir o console em português;
+### O que essa função faz: 
+> Define o console como pt-br, usando a biblioteca locale.h;
 
 - EXEMPLO DE USO: 
 
@@ -1033,10 +1033,10 @@ Acentuação
 
 <br>
 
-<h2 align="center"> void LOCH_SETLOCAL ( char TEXT [] ); </h2> 
+<h3 align="center"> void LOCH_SETLOCAL ( char TEXT [] ); </h3> 
 
-### Essa função não retorna nada e possui um parâmetro; Sua função é definir qual idioma o console irá utilizar;
-> Parametro 01 ( char TEXT [] ): Nome de um idioma suportado pela função setlocale
+### O que essa função faz: 
+> Essa função funciona como a função anterior, só que agora permite a definição de outras regiões a partir da substituição do parâmetro `TEXT`;
 
 - EXEMPLO DE USO: 
 
@@ -1056,6 +1056,8 @@ main ( void )
 ```sh
 Acentuação
 ```
+
+<br>
 
 ---
 
