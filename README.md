@@ -204,15 +204,44 @@ O objetivo da biblioteca é fornecer uma simplificação de código da `linguage
 
 ### 4. FUNÇÕES
 
+<br>
 
-01 - PR FUNCTIONS 
-02 - CS FUNCTIONS 
-03 - SYS FUNCTIONS 
-04 - PROP FUNCTIONS 
-05 - G FUNCTIONS 
-06 - allen FUNCTIONS 
-07 - SB FUNCTIONS 
-08 - MATTE FUNCTIONS 
-09 - LOCH FUNCTIONS 
-10 - FLEE_FUNCTIONS 
+## 01 - PR FUNCTIONS 
+
+<br>
+
+## 02 - CS FUNCTIONS 
+
+<br>
+
+## 03 - SYS FUNCTIONS 
+
+<br>
+
+
+## 04 - PROP FUNCTIONS 
+
+<br>
+
+## 05 - G FUNCTIONS 
+
+<br>
+
+## 06 - allen FUNCTIONS 
+
+<br>
+
+## 07 - SB FUNCTIONS 
+
+<br>
+
+## 08 - MATTE FUNCTIONS 
+
+<br>
+
+## 09 - LOCH FUNCTIONS 
+
+<br>
+
+## 10 - FLEE_FUNCTIONS 
 
