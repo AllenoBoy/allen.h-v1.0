@@ -229,3 +229,71 @@ Sua idade nova = 18
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void PR_CHAR ( char VARIABLE , int TIMES ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Escreve no console um valor do tipo char, definido pelo parâmetro VARIABLE uma quantidade de vezes definida por TIMES`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+       char c = '+';
+
+       // Printando sem variável
+       PR_CHAR ( '=' , 10 );
+
+       printf ("\n");
+
+       // Printando com variável
+       PR_CHAR ( c , 10 );       
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```ssh
+==========
+++++++++++
+```
+
+
+
+
