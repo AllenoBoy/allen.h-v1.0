@@ -2,9 +2,11 @@
 
 ---
 
-*O objetivo da biblioteca é fornecer uma simplificação de código da `linguagem c`, onde aqui estarão definidas e explicadas todas as funcionalidades da mesma, com as funções, macros e informações necessárias, em caso de bugs reportar na aba issues, por fim todas as informações necessárias foram divididas em tópicos explicativos e demonstrativos da execução / utilização da biblioteca nesse arquivo readme.*
+O objetivo da biblioteca é fornecer uma simplificação de código da `linguagem c`, onde aqui estarão definidas e explicadas todas as funcionalidades da mesma, com as funções, macros e informações necessárias, em caso de bugs reportar na aba issues, por fim todas as informações necessárias foram divididas em tópicos explicativos e demonstrativos da execução / utilização da biblioteca nesse arquivo readme.
 
-#### <a href="https://www.youtube.com/watch?v=GQ5T6SFGAYY">Download da biblioteca</a>
+#### <p align="center" > <a href="URL do link"> LINK PARA DOWNLOAD DA BIBLIOTECA </a> </p>
+  
+
 
 ---
 
