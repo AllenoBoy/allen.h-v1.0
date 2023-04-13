@@ -246,7 +246,7 @@ O objetivo dessa biblioteca é fornecer uma simplificação de código da `lingu
 
 <h3 align="center"> FUNÇÕES </h3> 
 
-<h4 align="center"> Clique para acessar a documentação das funções </h4>
+<h4 align="center"> CLIQUE PARA ACESSAR A DOCUMENTAÇÃO DAS FUNÇÕES </h4>
 
 <br>
 
