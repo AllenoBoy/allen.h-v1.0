@@ -323,7 +323,7 @@ main ( void )
 
 <h2 align="center"> double MATTE_seno ( double SIN , bool PRINT , int COMMAS ) </h2> 
 
-### Essa função retorna um valor do tipo double e possui 3 parâmetros; Sua função é retornar o ângulo em radianos do seno informado 
+### Essa função retorna um valor do tipo double e possui 3 parâmetros; Sua função é retornar o ângulo em radianos do seno informado;
 > Parametro 01 ( double SIN ): Valor double do sin para calcular;
 > Parametro 02 ( bool PRINT ): se yes ou true printará o resultado;
 > Parametro 03 ( int COMMAS ): quantidade de casas decimais que será printada
@@ -345,6 +345,93 @@ main ( void )
 ```sh
 0.5236
 ```
+
+<br>
+
+<h2 align="center"> double MATTE_tangente ( double TAN , bool PRINT , int COMMAS ) </h2> 
+
+### Essa função retorna um valor do tipo double e possui 3 parâmetros; Sua função é retornar o ângulo em radianos da tangente informada; 
+> Parametro 01 ( double TAN ): Valor double do sin para calcular;
+> Parametro 02 ( bool PRINT ): se yes ou true printará o resultado;
+> Parametro 03 ( int COMMAS ): quantidade de casas decimais que será printada
+
+- EXEMPLO DE USO: 
+
+```c
+# include "allen.h"
+
+int
+main ( void )
+{   
+    MATTE_tangente ( 1 , true , 4 );
+}
+```
+
+- SAÍDA DO CONSOLE: 
+
+```sh
+0.7854
+```
+
+<br>
+
+<h2 align="center"> MATTE_arcotangente ( double X , double Y , bool PRINT , int COMMAS ) </h2> 
+
+### Essa função retorna um valor do tipo double e possui 4 parâmetros; Sua função é retornar o arco tangente de y / x em um intervalo; 
+> Parametro 01 ( double X ): Valor double do x para calcular;
+> Parametro 02 ( double Y ): Valor double do y para calcular;
+> Parametro 03 ( bool PRINT ): se yes ou true printará o resultado;
+> Parametro 04 ( int COMMAS ): quantidade de casas decimais que será printada
+
+- EXEMPLO DE USO: 
+
+```c
+# include "allen.h"
+
+int
+main ( void )
+{   
+   MATTE_arcotangente ( 2 , 2 , true , 4 );
+}
+```
+
+- SAÍDA DO CONSOLE: 
+
+```sh
+0.7854
+```
+
+<br>
+
+<h2 align="center"> MATTE_arcotangente ( double X , double Y , bool PRINT , int COMMAS ) </h2> 
+
+### Essa função retorna um valor do tipo double e possui 4 parâmetros; Sua função é retornar o arco tangente de y / x em um intervalo; 
+> Parametro 01 ( double X ): Valor double do x para calcular;
+> Parametro 02 ( double Y ): Valor double do y para calcular;
+> Parametro 03 ( bool PRINT ): se yes ou true printará o resultado;
+> Parametro 04 ( int COMMAS ): quantidade de casas decimais que será printada
+
+- EXEMPLO DE USO: 
+
+```c
+# include "allen.h"
+
+int
+main ( void )
+{   
+   MATTE_arcotangente ( 2 , 2 , true , 4 );
+}
+```
+
+- SAÍDA DO CONSOLE: 
+
+```sh
+0.7854
+```
+
+---
+
+<br>
 
 ---
 
