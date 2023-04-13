@@ -486,3 +486,94 @@ allen walker
 ```
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void PRV_INT ( int REVERSE , int SIZE , int TYPE , int SPACE , const char * ANY_TEXT , const char * ANY_TEXT2 , int ARRAY [ ] ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Escreve no console um vetor do tipo int de forma formatada, onde, REVERSE define se a função irá printar o vetor de forma invertida, SIZE define o tamanho do vetor que será utilizado, TYPE a variação de print que vai de 1 até 6 , SPACE que define a quantidade de espaços que serão printados depois do valor, ANY_TEXT define o que será escrito antes do valor e ANY-TEXT2 define o que será escrito após o print do valor e por fim ARRAY recebe o vetor que será utilizado na função`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{
+    int allen_ARRAY [5] = { 1 , 2 , 3 , 4 , 5 };
+
+    printf ("SEM REVERSE:\n");
+
+    // Sem Reverse ativado no estilo 1
+    PRV_INT ( no , 5 , 1 , 1 , notext , notext , allen_ARRAY );
+
+    printf ("\n");
+
+    // Sem Reverse ativado no estilo 2
+    PRV_INT ( no , 5 , 2 , 1 , "<" , ">" , allen_ARRAY );
+
+
+
+
+    printf ("\n\nCOM REVERSE:\n");
+
+    // Sem Reverse ativado no estilo 1
+    PRV_INT ( yes , 5 , 1 , 1 , notext , notext , allen_ARRAY );
+
+    printf ("\n");
+
+    // Sem Reverse ativado no estilo 2
+    PRV_INT ( YES , 5 , 2 , 1 , "<" , ">" , allen_ARRAY );
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```ssh
+SEM REVERSE:
+1 2 3 4 5
+<1 <2 <3 <4 <5
+
+COM REVERSE:
+5 4 3 2 1
+<5 <4 <3 <2 <1
+```
+
+
