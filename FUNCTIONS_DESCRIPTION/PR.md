@@ -163,3 +163,69 @@ main ( void )
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void PR_INT ( int VARIABLE ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Escreve no console um valor do tipo inteiro, definido pelo parâmetro VARIABLE`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+       int age = 18;
+
+       printf ("Sua idade antiga = ");
+       
+       // printando sem usar variável
+       PR_INT (12);
+       
+       printf ("\n\nSua idade nova = ");
+       
+       // printando usando uma variável
+       PR_INT (age);
+       
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```ssh
+Sua idade antiga = 12
+Sua idade nova = 18
+```
+
+
+
