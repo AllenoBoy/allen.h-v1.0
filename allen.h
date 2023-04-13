@@ -4,12 +4,21 @@
 
 
 
+/* PADRONIZAÇÃO DO CONSOLE */
+
+# define MAX_PATH_LENGTH PATH_MAX
+# define WM_SETBKCOLOR 0x2001
+# ifndef _WIN32_WINNT
+# define _WIN32_WINNT 0x0500
+# endif
+# define STATIC_TEXT_CLASS_NAME "STATIC"
+# ifndef ENABLE_VIRTUAL_TERMINAL_PROCESSING
+# define ENABLE_VIRTUAL_TERMINAL_PROCESSING  0x0004
+# endif
 
 
 
-
-
-// DEFAULT HEADERS
+/* BIBLIOTECAS PADRÃO DA LINGUAGEM C */
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -34,41 +43,8 @@
 # include <pthread.h>
 
 
-// TERM_OS
 
-# define MAX_PATH_LENGTH PATH_MAX
-# define WM_SETBKCOLOR 0x2001
-# ifndef _WIN32_WINNT
-# define _WIN32_WINNT 0x0500
-# endif
-# define STATIC_TEXT_CLASS_NAME "STATIC"
-# ifndef ENABLE_VIRTUAL_TERMINAL_PROCESSING
-# define ENABLE_VIRTUAL_TERMINAL_PROCESSING  0x0004
-# endif
-
-
-
-
-
-// MACROS
-
-
-/*
-    1. ALLEN DEFINED
-*/
-
-# define YES           1
-# define yes           1
-# define NO            0
-# define no            0
-
-
-
-
-
-/*
-    2. REGIONS
-*/
+/* MACROS DA BIBLIOTECA: Regiões do Console / Códigos de página */
 
 # define DEFAULT     850
 # define BRAZIL     1252
@@ -82,29 +58,7 @@
 
 
 
-
-
-
-/*
-    3. KEYS
-*/
-
-# define UP_KEY       72
-# define DOWN_KEY     80
-# define LEFT_KEY     75
-# define RIGHT_KEY    77
-# define ENTER        13
-# define BACKSPACE     8
-# define EMPTY         0
-# define SPACEBAR     32
-
-
-
-
-
-/*
-    4. TEXT AND BACKGROUND STYLE
-*/
+/* MACROS DA BIBLIOTECA: Estilo do Texto do Console */
 
 # define BRIGHT1       0
 # define BRIGHT2       1
@@ -119,11 +73,7 @@
 
 
 
-
-
-/*
-    5. ALLEN OPERATORS
-*/
+/* MACROS DA BIBLIOTECA: Operadores */
 
 # define HT 989
 # define LT 898
@@ -151,43 +101,68 @@
 
 
 
+/* MACROS DA BIBLIOTECA: GWC_STRING ( ... ) e PR_STRING ( ... ) */
+
+# define stringSZ      92
+# define stringEQ      32
+# define stringDF      23
+# define stringNR      22
+# define stringIV      99
+# define stringHB      88
+# define stringLB      77
+# define stringCY      90
+# define nosubs         0
+# define notext    "@%!*"
+# define nosize         0
+# define notoken   ")123"
 
 
-/*
-    6. GWC_STRING FUNCTION
-*/
 
-# define strSIZE   92
-# define nSIZE      0
-# define strEQT    32
-# define strDFT    23
-# define nTEXT   "@%!*"
+/* MACROS DA BIBLIOTECA: Remake de C */
 
-
-
-
-
-/*
-    7. PR_STRING FUNCTION
-*/
-
-# define string_NORMAL   9
-# define string_INVERTED 99
-# define string_FORMAT_H 88
-# define string_FORMAT_L 77
-# define string_CRYPTO   90
-# define noSUBS 0
-# define noTOKEN ' '
-
-
+# define YES              1
+# define yes              1
+# define SIM              1
+# define sim              1
+# define NO               0
+# define no               0
+# define NAO              0
+# define nao              0
+# define se              if
+# define e_se       else if
+# define outro         else
+# define para           for
+# define quebre       break
+# define caso          case
+# define caractere     char
+# define constante    const
+# define padrao     default
+# define outro_caso default
+# define faca            do
+# define enquanto     while
+# define real         float
+# define real_64     double
+# define inteiro        int
+# define longo         long
+# define retorne     return
+# define devolva     return
+# define salve       return
+# define curto        short
+# define tamanho_de  sizeof
+# define estatico    static
+# define registro    struct
+# define escolha     switch
+# define tipo_de    typedef
+# define uniao        union
+# define vazio         void
 
 # endif /*_ALLEN_*/
 
 
-// GLOBAL FUNCTIONS
 
 
 
+// FUNÇÕES GLOBAIS
 
 
 /*
@@ -195,7 +170,7 @@
 */
 
 
-void PR              ( const char *TEXT );
+void PR              ( const char * TEXT );
 void PRL             ( int TIMES );
 void PRS             ( int TIMES );
 void PR_INT          ( int VARIABLE );
@@ -226,7 +201,7 @@ void PR_charMATRIZ   ( int LINES , int COLS , char B_ARRAY [LINES] [COLS] );
 
 
 /*
-    2. CS FUNCTIONS add a set icon functions
+    2. CS FUNCTIONS
 */
 
 
@@ -263,29 +238,33 @@ void  CLOSECONSOLE                           ( void );
 */
 
 
-void SYS_SETREGION        ( int REGION );
-void SYS_SETSIZE          ( int COLS , int LINES );
-void SYS_SETCOLOR         ( char TEXTCOLOR , char BACKGROUNDCOLOR );
-void SYS_SETTITLE         ( const char* TITLE );
-void SYS_PAUSE            ( int HIDE_ );
-void SYS_GCCVERSION       ( void );
-void SYS_READFILE         ( const char* TITLE );
-void SYS_RESTARTCOMPUTER  ( void );
-void SYS_SETFULLSCREEN    ( void );
-void SYS_POPS             ( const char* COMMAND );
-void SYS_CLEARSCREEN      ( void );
-void SYS_READFILE         ( const char* FILENAME );
-void SYS_LISTDIR          ( void );
-void SYS_MOVETODIR        ( const char* DIR );
-void SYS_CREATEDIR        ( const char* DIR );
-void SYS_REMOVEDIR        ( const char* DIR );
-void SYS_COPYFILE         ( const char* FILE , const char* DIR );
-void SYS_XCOPYFILE        ( const char* FILE , const char* DIR );
-void SYS_MOVEDIR          ( const char* DIR , const char* FINALDIR );
-void SYS_DELETEFILE       ( const char* DIR_OR_FILE );
-void SYS_RENAMEFILE       ( const char* FILE , const char* NEW_NAME );
-void SYS_ECHO             ( const char* TEXT );
-void SYS_PING             ( void );
+void SYS_SETREGION         ( int REGION );
+void SYS_SETSIZE           ( int COLS , int LINES );
+void SYS_SETCOLOR          ( char TEXTCOLOR , char BACKGROUNDCOLOR );
+void SYS_SETTITLE          ( const char* TITLE );
+void SYS_PAUSE             ( int HIDE_ );
+void SYS_GCCVERSION        ( void );
+void SYS_READFILE          ( const char* TITLE );
+void SYS_RESTARTCOMPUTER   ( void );
+void SYS_SETFULLSCREEN     ( void );
+void SYS_POPS              ( const char* COMMAND );
+void SYS_CLEARSCREEN       ( void );
+void SYS_READFILE          ( const char* FILENAME );
+void SYS_LISTDIR           ( void );
+void SYS_MOVETODIR         ( const char* DIR );
+void SYS_CREATEDIR         ( const char* DIR );
+void SYS_REMOVEDIR         ( const char* DIR );
+void SYS_COPYFILE          ( const char* FILE , const char* DIR );
+void SYS_XCOPYFILE         ( const char* FILE , const char* DIR );
+void SYS_MOVEDIR           ( const char* DIR , const char* FINALDIR );
+void SYS_DELETEFILE        ( const char* DIR_OR_FILE );
+void SYS_RENAMEFILE        ( const char* FILE , const char* NEW_NAME );
+void SYS_ECHO              ( const char* TEXT );
+void SYS_PING              ( void );
+void SYS_SHOWSAVEDWIFI     ( void );
+void SYS_SHOWSAVEDWIFIINFO ( const char * WIFI );
+void SYS_INFO              ( void );
+void SYS_WEATHER           ( const char * REGION );
 
 
 
@@ -351,7 +330,7 @@ char               GWC_CHAR   ( char VALUE , int CONDITION , char COMPARATOR , c
 char               GWC_STRING ( const char *QUESTION , char STRING [] , int LINES , int SPACES , int TYPE_OF , int SIZE_LIMITER , char TEXT_COMPARATOR [] , char EXIT_TOKEN [] );
 int                getI       ( const char *QUESTION_TEXT , int LINES , int SPACES , int CONDITION , int COMPARATOR );
 float              getF       ( const char *QUESTION_TEXT , int LINES , int SPACES , int CONDITION , float COMPARATOR );
-float              getD       ( const char *QUESTION_TEXT , int LINES , int SPACES , int CONDITION , double COMPARATOR );
+double             getD       ( const char *QUESTION_TEXT , int LINES , int SPACES , int CONDITION , double COMPARATOR );
 char               getS       ( const char *QUESTION_TEXT , int LINES , int SPACES , int CONDITION , int MAX_SIZE , char STRING [MAX_SIZE] , char TOKEN , int NUMBER_OF_REPLACEMENTS , ... );
 
 
@@ -374,7 +353,7 @@ void allen_CLEARINTARRAY          ( int SIZE , int ARRAY [] );
 int  allen_SUBSINTB_ARRAY         ( int LINES , int COLUNS , int CONDITION , int COMPARATOR , int TOKEN , int B_ARRAY [LINES] [COLUNS] );
 int  allen_INTCOPYB_ARRAY         ( int LINES , int COLUNS , int CONDITION , int COMPARATOR , int B_ARRAY [LINES] [COLUNS] , int NEW_B_ARRAY [LINES] [COLUNS] );
 void allen_CLEARINTB_ARRAY        ( int LINES , int COLUNS , int B_ARRAY [ LINES ] [ COLUNS ] );
-void allen_ADDTOSTRING            ( char * STRING, const char * ADD );
+void allen_ADDTOSTRING            ( char * STRING , char * ADD );
 void allen_REMAKESTRING           ( char * STRING , char * REMAKE );
 
 
@@ -521,7 +500,7 @@ float  FLEE_GETSLfloat           ( const char * FILE_NAME , int WHAT_LINE , int 
 float  FLEE_GETCHfloat           ( const char * FILE_NAME , int WHAT_LINE , int START_COL , int END_COL );
 double FLEE_GETSdouble           ( const char * FILE_NAME , int WHAT_LINE );
 double FLEE_GETSLdouble          ( const char * FILE_NAME , int WHAT_LINE , int COL );
-double  FLEE_GETCHdouble          ( const char * FILE_NAME , int WHAT_LINE , int START_COL , int END_COL );
+double FLEE_GETCHdouble          ( const char * FILE_NAME , int WHAT_LINE , int START_COL , int END_COL );
 char   FLEE_GETCHchar            ( const char * FILE_NAME , int WHAT_LINE , int START_COL , int END_COL );
 char   FLEE_GETSLchar            ( const char * FILE_NAME , int WHAT_LINE , int COL );
 void   FLEE_GETSstring           ( const char * FILE_NAME , char * STRING, int WHAT_LINE );
@@ -537,37 +516,43 @@ void   FLEE_PRINTAREA            ( const char* FILE_NAME , int WHAT_LINE , int S
 // PR
 
 
+// void PR ( não retorna nada )
+// @parametro 01: const char * TEXT { nesse parâmetro, se pode escrever o texto com aspas duplas, ou inserir uma string a ser printada no console }
+
 
 void
-PR ( const char *TEXT )
+PR ( const char * TEXT )
 {
-     printf (TEXT);
+     printf ( TEXT );
 }
 
 
-
+// void PRL ( não retorna nada )
+// @parametro 01: int TIMES { nesse parâmetro, se deve colocar quantas vezes será printada uma quebra de linha no console }
 
 
 void
 PRL ( int TIMES )
 {
-     for (; TIMES > 0 ; TIMES--)
+     for ( ; TIMES > 0 ; TIMES-- )
      printf ("\n");
 }
 
 
-
+// void PRL ( não retorna nada )
+// @parametro 01: int TIMES { nesse parâmetro, se deve colocar quantas vezes será printado um espaço no console }
 
 
 void
 PRS ( int TIMES )
 {
-     for (; TIMES > 0; TIMES--)
+     for ( ; TIMES > 0; TIMES-- )
      printf (" ");
 }
 
 
-
+// void PR_INT ( não retorna nada )
+// @parametro 01: int VARIABLE { nesse parâmetro, se deve colocar um valor do tipo inteiro ( ou uma variável ) para ser printado no console }
 
 
 void
@@ -577,42 +562,67 @@ PR_INT ( int VARIABLE )
 }
 
 
-
+// void PR_CHAR ( não retorna nada )
+// @parametro 01: char VARIABLE { nesse parâmetro, se deve colocar a variável do tipo char ( ou um caractere diretamente 'x' ) }
+// @parametro 02: int  TIMES  { nesse parâmetro, se deve colocar a quantidade de vezes que esse char será printado }
 
 
 void
-PR_CHAR ( char VARIABLE, int TIMES )
+PR_CHAR ( char VARIABLE , int TIMES )
 {
-     for (; TIMES > 0; TIMES--)
+     for ( ; TIMES > 0; TIMES-- )
      printf ("%c", VARIABLE);
 }
 
 
-
+// void PR_FLOAT ( não retorna nada )
+// @parametro 01: float VARIABLE { nesse parâmetro, se deve colocar uma variável ou valor do tipo float }
+// @parametro 02 int COMMAS { nesse parâmetro, se deve colocar quantas casas decimais devem ser consideradas }
 
 
 void
-PR_FLOAT ( float VARIABLE, int COMMAS )
+PR_FLOAT ( float VARIABLE , int COMMAS )
 {
-     printf ("%.*f ", (COMMAS <= 0) ? 0 : COMMAS, VARIABLE);
+     printf ("%.*f ", ( COMMAS <= 0 ) ? 0 : COMMAS , VARIABLE );
 }
 
 
-
+// void PR_DOUBLE ( não retorna nada )
+// @parametro 01: double VARIABLE { nesse parâmetro, se deve colocar uma variável ou valor do tipo double }
+// @parametro 02 int COMMAS { nesse parâmetro, se deve colocar quantas casas decimais devem ser consideradas }
 
 
 void
 PR_DOUBLE ( double VARIABLE, int COMMAS )
 {
-     printf ("%.*lf ", (COMMAS <= 0) ? 0 : COMMAS, VARIABLE);
+     printf ("%.*lf ", ( COMMAS <= 0 ) ? 0 : COMMAS , VARIABLE );
 }
 
 
-
+// void PR_STRING ( não retorna nada )
+// @parametro 01: char STRING [] { nesse parâmetro, se deve colocar a string referida }
+// @parametro 02: int HOW_TO_PRINT { nesse parâmetro, se deve colocar uma dessas formas de print:
+//
+//                                  *stringNR -> DEFINE QUE A FUNÇÃO IRÁ PRINTAR A STRING NORMALMENTE
+//                                  *stringIV -> DEFINE QUE A FUNÇÃO IRÁ PRINTAR A STRING INVERTIDA
+//                                  *stringHB -> DEFINE QUE A FUNÇÃO IRÁ SOFRER A FORMATAÇÃO DE CAIXA BAIXA PARA CAIXA ALTA ( IGNORANDO ACENTUAÇÕES )
+//                                  *stringLB -> DEFINE QUE A FUNÇÃO IRÁ SOFRER A FORMATAÇÃO DE CAIXA ALTA PARA CAIXA BAIXA ( IGNORANDO ACENTUAÇÕES )
+//                                  *stringCY -> DEFINE QUE A FUNÇÃO SERÁ PRINTADA CRIPTOGRAFADA
+//
+//                                 }
+// @parametro 03: char REPLACEMENT_CHAR { nesse parâmetro, se deve colocar qual será o char de criptografia / substituição
+//                                        isso se o parâmetro anterior for igual a stringCY, caso não seja se deve colocar no lugar
+//                                        o seguinte macro [ noprtoken ]
+//                                      }
+// @parametro 04: int NUMBER_OF_REPLACEMENTS { nesse parâmetro, se deve colocar qual será a quantidade de caracteres que serão substituidos
+//                                             exemplo: quero substituir a , x , # , @; então serão 4 substituições }
+// @parametro 05, 06, 07 ... : { nesse parâmetro, funciona como o printf, onde serão inseridos os caracteres que serão substituidos
+//                               exemplo: ... '$' , '@' , 'u' );
+//                             }
 
 
 void
-PR_STRING ( char STRING[] , int HOW_TO_PRINT ,char REPLACEMENT_CHAR , int NUMBER_OF_REPLACEMENTS , ...)
+PR_STRING ( char STRING [ ] , int HOW_TO_PRINT , char REPLACEMENT_CHAR , int NUMBER_OF_REPLACEMENTS , ...)
 {
 
      va_list args;
@@ -626,31 +636,31 @@ PR_STRING ( char STRING[] , int HOW_TO_PRINT ,char REPLACEMENT_CHAR , int NUMBER
 
      switch ( HOW_TO_PRINT )
      {
-              case string_NORMAL:
+              case stringNR:
                                  printf("%s", STRING);
               break;
 
 
 
-              case string_INVERTED:
+              case stringIV:
                                    for ( kaj = strlen ( STRING ) - 1; kaj >= 0; kaj-- ) putchar ( STRING [ kaj ] );
               break;
 
 
 
-              case string_FORMAT_H:
+              case stringHB:
                                    for ( kaj = 0; kaj < strlen(STRING); kaj++ ) putchar ( toupper ( STRING [ kaj ] ) );
               break;
 
 
 
-              case string_FORMAT_L:
+              case stringLB:
                                    for ( kaj = 0; kaj < strlen ( STRING ); kaj++ ) putchar ( tolower ( STRING [ kaj ] ) );
               break;
 
 
 
-              case string_CRYPTO:
+              case stringCY:
 
                                  for ( int i = 0; i < strlen ( STRING ); i++ )
                                  {
@@ -667,11 +677,18 @@ PR_STRING ( char STRING[] , int HOW_TO_PRINT ,char REPLACEMENT_CHAR , int NUMBER
 }
 
 
-
+// void PRV_INT ( não retorna nada )
+// @parametro 01: int REVERSE { nesse parâmetro, se for verdadeiro ( OU SEJA IGUAL A 1 ) irá printar o vetor de forma invertida }
+// @parametro 02: int SIZE { nesse parâmetro, define o tamanho do vetor a ser analizado / utilizado }
+// @parametro 03: int TYPE { nesse parâmetro, define qual o tipo / variação de print será utilizada }
+// @parametro 04: int SPACE { nesse parâmetro, define para a função a quantidade de espaço teremos entre um valor e outro }
+// @parametro 05: const char * ANY_TEXT { nesse parâmetro, dependendo do tipo selecionado será ativado e servirá para escrever algo antes do valor }
+// @parametro 06: const char * ANY_TEXT2 { nesse parâmetro, dependendo do tipo selecionado será ativado e servirá para escrever algo depois do valor }
+// @parametro 07: int ARRAY [] { nesse parâmetro, se é definido o vetor do tipo inteiro a qual essa função usará }
 
 
 void
-PRV_INT ( int REVERSE , int SIZE , int TYPE , int SPACE , const char* ANY_TEXT , const char* ANY_TEXT2, int ARRAY [] )
+PRV_INT ( int REVERSE , int SIZE , int TYPE , int SPACE , const char * ANY_TEXT , const char * ANY_TEXT2 , int ARRAY [ ] )
 {
 
 
@@ -845,7 +862,15 @@ PRV_INT ( int REVERSE , int SIZE , int TYPE , int SPACE , const char* ANY_TEXT ,
 }
 
 
-
+// void PRV_FLOAT ( não retorna nada )
+// @parametro 01: int REVERSE { nesse parâmetro, se for verdadeiro ( OU SEJA IGUAL A 1 ) irá printar o vetor de forma invertida }
+// @parametro 02: int SIZE { nesse parâmetro, define o tamanho do vetor a ser analizado / utilizado }
+// @parametro 03: int TYPE { nesse parâmetro, define qual o tipo / variação de print será utilizada }
+// @parametro 04: int SPACE { nesse parâmetro, define para a função a quantidade de espaço teremos entre um valor e outro }
+// @parametro 05: int COMMA { nesse parâmetro, define para a função a quantidade de casas decimais serão printadas }
+// @parametro 06: const char * ANY_TEXT { nesse parâmetro, dependendo do tipo selecionado será ativado e servirá para escrever algo antes do valor }
+// @parametro 07: const char * ANY_TEXT2 { nesse parâmetro, dependendo do tipo selecionado será ativado e servirá para escrever algo depois do valor }
+// @parametro 08: float ARRAY [] { nesse parâmetro, se é definido o vetor do tipo float a qual essa função usará }
 
 
 void
@@ -1022,7 +1047,15 @@ PRV_FLOAT ( int REVERSE , int SIZE , int TYPE , int SPACE , int COMMA, const cha
 }
 
 
-
+// void PRV_DOUBLE ( não retorna nada )
+// @parametro 01: int REVERSE { nesse parâmetro, se for verdadeiro ( OU SEJA IGUAL A 1 ) irá printar o vetor de forma invertida }
+// @parametro 02: int SIZE { nesse parâmetro, define o tamanho do vetor a ser analizado / utilizado }
+// @parametro 03: int TYPE { nesse parâmetro, define qual o tipo / variação de print será utilizada }
+// @parametro 04: int SPACE { nesse parâmetro, define para a função a quantidade de espaço teremos entre um valor e outro }
+// @parametro 05: int COMMA { nesse parâmetro, define para a função a quantidade de casas decimais serão printadas }
+// @parametro 06: const char * ANY_TEXT { nesse parâmetro, dependendo do tipo selecionado será ativado e servirá para escrever algo antes do valor }
+// @parametro 07: const char * ANY_TEXT2 { nesse parâmetro, dependendo do tipo selecionado será ativado e servirá para escrever algo depois do valor }
+// @parametro 08: double ARRAY [] { nesse parâmetro, se é definido o vetor do tipo double a qual essa função usará }
 
 
 void
@@ -1199,7 +1232,15 @@ PRV_DOUBLE ( int REVERSE , int SIZE , int TYPE , int SPACE , int COMMA, const ch
 }
 
 
-
+// void PRM_int ( não retorna nada )
+// @parametro 01: int REVESE { nesse parâmetro, se for verdadeiro ( OU SEJA IGUAL A 1 ) irá printar o vetor de forma invertida }
+// @parametro 02: int STYLE { nesse parâmetro, define qual o tipo / variação de print será utilizada }
+// @parametro 03: int LINES { nesse parâmetro, define quantas linhas existem no matriz B_ARRAY }
+// @parametro 04: int COLS { nesse parâmetro, define quantas colunas existem na matriz B_ARRAY }
+// @parametro 05: int SPACE { nesse parâmetro, define quantos espaços existem entre cada valor }
+// @parametro 06: const char LEFT_TEXT [] { nesse parâmetro, dependendo do tipo selecionado será ativado e servirá para escrever algo antes do valor }
+// @parametro 07: const char RIGHT_TEXT [] { nesse parâmetro, dependendo do tipo selecionado será ativado e servirá para escrever algo depois do valor }
+// @parametro 08: int B_ARRAY [LINES] [COLS] { nesse parâmetro, será inserido a matriz do tipo inteiro que será utilizada pela função }
 
 
 void
@@ -1387,7 +1428,16 @@ PRM_INT ( int REVERSE , int STYLE , int LINES , int COLS , int SPACE , const cha
 }
 
 
-
+// void PRM_FLOAT ( não retorna nada )
+// @parametro 01: int REVESE { nesse parâmetro, se for verdadeiro ( OU SEJA IGUAL A 1 ) irá printar o vetor de forma invertida }
+// @parametro 02: int STYLE { nesse parâmetro, define qual o tipo / variação de print será utilizada }
+// @parametro 03: int LINES { nesse parâmetro, define quantas linhas existem no matriz B_ARRAY }
+// @parametro 04: int COLS { nesse parâmetro, define quantas colunas existem na matriz B_ARRAY }
+// @parametro 05: int SPACE { nesse parâmetro, define quantos espaços existem entre cada valor }
+// @parametro 06: int COMMA { nesse parâmetro, define quantas casas decimais serão printadas }
+// @parametro 07: const char LEFT_TEXT [] { nesse parâmetro, dependendo do tipo selecionado será ativado e servirá para escrever algo antes do valor }
+// @parametro 08: const char RIGHT_TEXT [] { nesse parâmetro, dependendo do tipo selecionado será ativado e servirá para escrever algo depois do valor }
+// @parametro 09: float B_ARRAY [LINES] [COLS] { nesse parâmetro, será inserido a matriz do tipo float que será utilizada pela função }
 
 
 void
@@ -1492,7 +1542,16 @@ PRM_FLOAT ( int REVERSE , int STYLE , int LINES , int COLS , int SPACE , int COM
 }
 
 
-
+// void PRM_DOUBLE ( não retorna nada )
+// @parametro 01: int REVESE { nesse parâmetro, se for verdadeiro ( OU SEJA IGUAL A 1 ) irá printar o vetor de forma invertida }
+// @parametro 02: int STYLE { nesse parâmetro, define qual o tipo / variação de print será utilizada }
+// @parametro 03: int LINES { nesse parâmetro, define quantas linhas existem no matriz B_ARRAY }
+// @parametro 04: int COLS { nesse parâmetro, define quantas colunas existem na matriz B_ARRAY }
+// @parametro 05: int SPACE { nesse parâmetro, define quantos espaços existem entre cada valor }
+// @parametro 06: int COMMA { nesse parâmetro, define quantas casas decimais serão printadas }
+// @parametro 07: const char LEFT_TEXT [] { nesse parâmetro, dependendo do tipo selecionado será ativado e servirá para escrever algo antes do valor }
+// @parametro 08: const char RIGHT_TEXT [] { nesse parâmetro, dependendo do tipo selecionado será ativado e servirá para escrever algo depois do valor }
+// @parametro 09: double B_ARRAY [LINES] [COLS] { nesse parâmetro, será inserido a matriz do tipo double que será utilizada pela função }
 
 
 void
@@ -1599,7 +1658,16 @@ PRM_DOUBLE ( int REVERSE , int STYLE , int LINES , int COLS , int SPACE , int CO
 }
 
 
-
+// void PRL_INT ( não retorna nada )
+// @parametro 01: int REVERSE { nesse parâmetro, se for verdadeiro ( OU SEJA IGUAL A 1 ) irá printar o vetor de forma invertida }
+// @parametro 02: int LINES { nesse parâmetro, define quantas linhas o vetor de strings existem }
+// @parametro 03: int COLS { nesse parâmetro, define quantas colunas o vetor de strings existem }
+// @parametro 04: int SPACE { nesse parâmetro, define quantos espaços terão entre cada valor }
+// @parametro 05: const char TEXT1 { nesse parâmetro,  dependendo do tipo selecionado será ativado e servirá para escrever algo antes do valor }
+// @parametro 06: const char TEXT2 { nesse parâmetro,  dependendo do tipo selecionado será ativado e servirá para escrever algo depois do valor }
+// @parametro 07: int array { nesse parâmetro,  define o vetor que será printado antes da lista }
+// @parametro 08: char string [LINES] [COLS] { nesse parâmetro,  }
+// @parametro 09: int MORE_SPACE { nesse parâmetro, após o print do valor irá printar duas quebras de linha no fim }
 
 
 void
@@ -1640,7 +1708,17 @@ PRL_INT ( int REVERSE , int LINES , int COLS , int SPACE , const char TEXT1 [] ,
 }
 
 
-
+// void PRL_FLOAT ( não retorna nada )
+// @parametro 01: int REVERSE { nesse parâmetro, se for verdadeiro ( OU SEJA IGUAL A 1 ) irá printar o vetor de forma invertida }
+// @parametro 02: int LINES { nesse parâmetro, define quantas linhas o vetor de strings existem }
+// @parametro 03: int COLS { nesse parâmetro, define quantas colunas o vetor de strings existem }
+// @parametro 04: int SPACE { nesse parâmetro, define o espaço que terá no print de cada valor }
+// @parametro 05: int COMMA { nesse parâmetro, define quantas casas decimais serão printadas }
+// @parametro 06: const char TEXT1 { nesse parâmetro,  dependendo do tipo selecionado será ativado e servirá para escrever algo antes do valor }
+// @parametro 07: const char TEXT2 { nesse parâmetro,  dependendo do tipo selecionado será ativado e servirá para escrever algo depois do valor }
+// @parametro 08: float array { nesse parâmetro, define o vetor que será printado antes da lista  }
+// @parametro 09: char string [LINES] [COLS] { nesse parâmetro,  }
+// @parametro 10: int MORE_SPACE { nesse parâmetro, após o print do valor irá printar duas quebras de linha no fim }
 
 
 void
@@ -1682,7 +1760,17 @@ PRL_FLOAT ( int REVERSE , int LINES , int COLS , int SPACE , int COMMA, const ch
 }
 
 
-
+// void PRL_DOUBLE ( não retorna nada )
+// @parametro 01: int REVERSE { nesse parâmetro, se for verdadeiro ( OU SEJA IGUAL A 1 ) irá printar o vetor de forma invertida }
+// @parametro 02: int LINES { nesse parâmetro, define quantas linhas o vetor de strings existem }
+// @parametro 03: int COLS { nesse parâmetro, define quantas colunas o vetor de strings existem }
+// @parametro 04: int SPACE { nesse parâmetro, define o espaço que terá no print de cada valor }
+// @parametro 05: int COMMA { nesse parâmetro, define quantas casas decimais serão printadas }
+// @parametro 06: const char TEXT1 { nesse parâmetro,  dependendo do tipo selecionado será ativado e servirá para escrever algo antes do valor }
+// @parametro 07: const char TEXT2 { nesse parâmetro,  dependendo do tipo selecionado será ativado e servirá para escrever algo depois do valor }
+// @parametro 08: double array { nesse parâmetro, define o vetor que será printado antes da lista  }
+// @parametro 09: char string [LINES] [COLS] { nesse parâmetro,  }
+// @parametro 10: int MORE_SPACE { nesse parâmetro, após o print do valor irá printar duas quebras de linha no fim }
 
 
 void
@@ -1723,20 +1811,27 @@ PRL_DOUBLE ( int REVERSE , int LINES , int COLS , int SPACE , int COMMA, const c
 }
 
 
+// void PR_intVETOR ( não retorna nada )
+// @parametro 01: int SIZE { nesse parâmetro, define até quanto o vetor será printado }
+// @parametro 02: int ARRAY [] { nesse parâmetro, define qual vetor do tipo inteiro será usado }
 
 
-
-void PR_intVETOR     ( int SIZE , int ARRAY [] )
+void
+PR_intVETOR ( int SIZE , int ARRAY [] )
 {
     int kaj = 0;
     for ( kaj = 0; kaj < SIZE; kaj++ ) printf ("%d ", ARRAY [kaj] );
 }
 
 
+// void PR_intMATRIZ ( não retorna nada )
+// @parametro 01: int LINES { nesse parâmetro, define quantas linhas existem na matriz }
+// @parametro 02: int COLS [] { nesse parâmetro, define quantas colunas existem na matriz }
+// @parametro 03: int B_ARRAYS [] { nesse parâmetro, define qual matriz do tipo inteiro será usada }
 
 
-
-void PR_intMATRIZ    ( int LINES , int COLS , int B_ARRAY [LINES] [COLS] )
+void
+PR_intMATRIZ ( int LINES , int COLS , int B_ARRAY [LINES] [COLS] )
 {
     int kaj = 0, jak = 0;
     for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLS; jak++ )
@@ -1744,10 +1839,15 @@ void PR_intMATRIZ    ( int LINES , int COLS , int B_ARRAY [LINES] [COLS] )
 }
 
 
+// void PR_floatVETOR ( não retorna nada )
+// @parametro 01: int SIZE { nesse parâmetro, define até quanto o vetor será printado }
+// @parametro 02: int COMMA { nesse parâmetro, define quantas casas decimais serão printadas }
+// @parametro 03: float ARRAY { nesse parâmetro, define qual o vetor do tipo float será usado }
 
 
 
-void PR_floatVETOR   ( int SIZE , int COMMA , float ARRAY [] )
+void
+PR_floatVETOR ( int SIZE , int COMMA , float ARRAY [] )
 {
     int kaj = 0;
     for ( kaj = 0; kaj < SIZE; kaj++ )
@@ -1755,10 +1855,15 @@ void PR_floatVETOR   ( int SIZE , int COMMA , float ARRAY [] )
 }
 
 
+// void PR_floatMATRIZ ( não retorna nada )
+// @parametro 01: int LINES { nesse parâmetro, define quantas linhas existem na matriz }
+// @parametro 02: int ARRAY [] { nesse parâmetro, define quantas linhas colunas existem na matriz }
+// @parametro 03: int COMMA { nesse parâmetro, define quantas casas decimais serão printadas }
+// @parametro 04: float B_ARRAY [] [] { nesse parâmetro, define quantas linhas colunas existem na matriz }
 
 
-
-void PR_floatMATRIZ  ( int LINES , int COLS , int COMMA , float B_ARRAY [LINES] [COLS] )
+void
+PR_floatMATRIZ ( int LINES , int COLS , int COMMA , float B_ARRAY [LINES] [COLS] )
 {
     int kaj = 0, jak = 0;
     for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLS; jak++ )
@@ -1766,11 +1871,15 @@ void PR_floatMATRIZ  ( int LINES , int COLS , int COMMA , float B_ARRAY [LINES] 
 }
 
 
+// void PR_doubleVETOR ( não retorna nada )
+// @parametro 01: int SIZE { nesse parâmetro, define até quanto o vetor será printado }
+// @parametro 02: int COMMA { nesse parâmetro, define quantas casas decimais serão printadas }
+// @parametro 03: double ARRAY { nesse parâmetro, define qual o vetor do tipo float será usado }
 
 
 
-
-void PR_doubleVETOR  ( int SIZE , int COMMA , double ARRAY [] )
+void
+PR_doubleVETOR ( int SIZE , int COMMA , double ARRAY [] )
 {
     int kaj = 0;
     for ( kaj = 0; kaj < SIZE; kaj++ )
@@ -1778,10 +1887,15 @@ void PR_doubleVETOR  ( int SIZE , int COMMA , double ARRAY [] )
 }
 
 
+// void PR_doubleMATRIZ ( não retorna nada )
+// @parametro 01: int LINES { nesse parâmetro, define quantas linhas existem na matriz }
+// @parametro 02: int ARRAY [] { nesse parâmetro, define quantas linhas colunas existem na matriz }
+// @parametro 03: int COMMA { nesse parâmetro, define quantas casas decimais serão printadas }
+// @parametro 04: double B_ARRAY [] [] { nesse parâmetro, define quantas linhas colunas existem na matriz }
 
 
-
-void PR_doubleMATRIZ ( int LINES , int COLS , int COMMA , double B_ARRAY [LINES] [COLS] )
+void
+PR_doubleMATRIZ ( int LINES , int COLS , int COMMA , double B_ARRAY [LINES] [COLS] )
 {
     int kaj = 0, jak = 0;
     for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLS; jak++ )
@@ -1789,20 +1903,27 @@ void PR_doubleMATRIZ ( int LINES , int COLS , int COMMA , double B_ARRAY [LINES]
 }
 
 
+// void PR_charVETOR ( não retorna nada )
+// @parametro 01: int SIZE { nesse parâmetro, define qual o tamanho do vetor de char }
+// @parametro 02: char ARRAY [] { nesse parãmetro, define qual o vetor de char será utilizado }
 
 
-
-void PR_charVETOR    ( int SIZE , char ARRAY [] )
+void
+PR_charVETOR ( int SIZE , char ARRAY [] )
 {
     int kaj = 0;
     for ( kaj = 0; kaj < SIZE; kaj++ ) printf ("%c ", ARRAY [kaj] );
 }
 
 
+// void PR_charMATRIZ ( não retorna nada )
+// @parametro 01: int LINES { nesse parâmetro, define quantas linhas o array possui }
+// @parametro 02: int COLS { nesse parãmetro, define quantas colunas o array possui }
+// @parametro 03: char B_ARRAY { nesse parãmetro, define qual a matriz será usada }
 
 
-
-void PR_charMATRIZ   ( int LINES , int COLS , char B_ARRAY [LINES] [COLS] )
+void
+PR_charMATRIZ ( int LINES , int COLS , char B_ARRAY [LINES] [COLS] )
 {
      int kaj = 0, jak = 0;
      for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLS; jak++ )
@@ -1811,11 +1932,10 @@ void PR_charMATRIZ   ( int LINES , int COLS , char B_ARRAY [LINES] [COLS] )
 
 
 
-
-
 // CS
 
-
+// void CS_SETREGION ( não retorna nada )
+// @parametro 01: int REGION { nesse parâmetro, define a página do console }
 
 void
 CS_SETREGION ( int REGION )
@@ -1824,11 +1944,12 @@ CS_SETREGION ( int REGION )
 }
 
 
-
+// void CS_SETTITLE ( não retorna nada )
+// @parametro 01: const char * TITLE { nesse parâmetro, define a página do console }
 
 
 void
-CS_SETTITLE ( const char* TITLE )
+CS_SETTITLE ( const char * TITLE )
 {
      SetConsoleTitle ( TITLE );
 }
@@ -2393,6 +2514,54 @@ SYS_PING ( void )
     system ("IPCONFIG");
     system ("NETSTAT");
 }
+
+
+
+
+
+void
+SYS_SHOWSAVEDWIFI ( void )
+{
+   system ("netsh wlan show profile");
+}
+
+
+
+
+void
+SYS_SHOWSAVEDWIFIINFO ( const char * WIFI )
+{
+    char butterfly [ 100 ];
+
+    sprintf ( butterfly , "netsh wlan show profile ""%s"" key=clear", WIFI );
+
+    system (butterfly);
+}
+
+
+
+
+
+void
+SYS_INFO ( void )
+{
+    system ( "systeminfo" );
+}
+
+
+
+
+
+void
+SYS_WEATHER ( const char * REGION )
+{
+   char butterfly [100];
+
+   sprintf ( butterfly , "curl wttr.in/%s" , REGION );
+
+   system ( butterfly );
+}
+
 
 
 // PROP
@@ -3225,7 +3394,7 @@ GWC_STRING ( const char *QUESTION , char STRING [] , int LINES , int SPACES , in
 
              switch ( TYPE_OF )
              {
-                    case strSIZE:
+                    case stringSZ:
                                  do
                                  {
                                      for ( kaj = 0; kaj < LINES; kaj++ ) printf ("\n");
@@ -3240,7 +3409,7 @@ GWC_STRING ( const char *QUESTION , char STRING [] , int LINES , int SPACES , in
                                  } while ( strlen ( STRING ) > SIZE_LIMITER or strlen ( STRING ) == 0 or STRING [0] == ' ' );
                     break;
 
-                    case strDFT:
+                    case stringDF:
                                  do
                                  {
                                      for ( kaj = 0; kaj < LINES; kaj++ ) printf ("\n");
@@ -3255,7 +3424,7 @@ GWC_STRING ( const char *QUESTION , char STRING [] , int LINES , int SPACES , in
                                  } while ( strcmp ( STRING , TEXT_COMPARATOR ) not_eq 0 );
                     break;
 
-                    case strEQT:
+                    case stringEQ:
                                  do
                                  {
                                      for ( kaj = 0; kaj < LINES; kaj++ ) printf ("\n");
@@ -3270,7 +3439,7 @@ GWC_STRING ( const char *QUESTION , char STRING [] , int LINES , int SPACES , in
                                  } while ( strcmp ( STRING , TEXT_COMPARATOR ) == 0 );
                     break;
 
-                    case NRM:
+                    case stringNR:
                                      for ( kaj = 0; kaj < LINES; kaj++ ) printf ("\n");
                                      for ( kaj = 0; kaj < SPACES; kaj++ ) printf (" ");
 
@@ -3984,7 +4153,7 @@ getF ( const char *QUESTION_TEXT , int LINES , int SPACES , int CONDITION , floa
 
 
 
-float
+double
 getD ( const char *QUESTION_TEXT , int LINES , int SPACES , int CONDITION , double COMPARATOR )
 {
 
@@ -4419,7 +4588,7 @@ getS ( const char *QUESTION_TEXT , int LINES , int SPACES , int CONDITION , int 
 
               /* SPACE */
               else
-              if ( c == SPACEBAR and pos < MAX_SIZE ) { STRING [pos] = ' '; pos++;
+              if ( c == 32 and pos < MAX_SIZE ) { STRING [pos] = ' '; pos++;
                    printf (" ");
               }
 
@@ -4662,7 +4831,7 @@ getS ( const char *QUESTION_TEXT , int LINES , int SPACES , int CONDITION , int 
 
               /* SPACE */
               else
-              if ( c == SPACEBAR and pos < MAX_SIZE ) { STRING [pos] = ' '; pos++;
+              if ( c == 32 and pos < MAX_SIZE ) { STRING [pos] = ' '; pos++;
                    printf (" ");
               }
 
@@ -4909,7 +5078,7 @@ getS ( const char *QUESTION_TEXT , int LINES , int SPACES , int CONDITION , int 
 
               /* SPACE */
               else
-              if ( c == SPACEBAR and pos < MAX_SIZE ) { STRING [pos] = ' '; pos++;
+              if ( c == 32 and pos < MAX_SIZE ) { STRING [pos] = ' '; pos++;
                    printf ("%c", TOKEN);
               }
 
@@ -5153,7 +5322,7 @@ getS ( const char *QUESTION_TEXT , int LINES , int SPACES , int CONDITION , int 
 
               /* SPACE */
               else
-              if ( c == SPACEBAR and pos < MAX_SIZE ) { STRING [pos] = ' '; pos++;
+              if ( c == 32 and pos < MAX_SIZE ) { STRING [pos] = ' '; pos++;
                    printf (" ");
               }
 
@@ -5393,7 +5562,7 @@ getS ( const char *QUESTION_TEXT , int LINES , int SPACES , int CONDITION , int 
 
               /* SPACE */
               else
-              if ( c == SPACEBAR and pos < MAX_SIZE ) { STRING [pos] = ' '; pos++;
+              if ( c == 32 and pos < MAX_SIZE ) { STRING [pos] = ' '; pos++;
                    printf ("%c", TOKEN);
               }
 
@@ -6444,9 +6613,10 @@ allen_CLEARINTB_ARRAY  ( int LINES , int COLUNS , int B_ARRAY [ LINES ] [ COLUNS
 
 
 
-void allen_ADDTOSTRING ( char * STRING , const char * ADD ) 
+void
+allen_ADDTOSTRING ( char * STRING , char * ADD )
 {
-    sprintf ( STRING + strlen ( STRING ) , "%s" , ADD );
+    sprintf ( STRING , "%s%s" , STRING , ADD );
 }
 
 
