@@ -294,6 +294,58 @@ O objetivo da biblioteca é fornecer uma simplificação de código da `linguage
 
 <br>
 
+<h2 align="center"> double MATTE_cosseno ( double COS , bool PRINT , int COMMAS ) </h2> 
+
+### Essa função retorna um valor do tipo double e possui 3 parâmetros; Sua função é retornar o ângulo em radianos do coseno informado;
+> Parametro 01 ( double COS ): Valor double do cos para calcular;
+> Parametro 02 ( bool PRINT ): se yes ou true printará o resultado;
+> Parametro 03 ( int COMMAS ): quantidade de casas decimais que será printada
+
+- EXEMPLO DE USO: 
+
+```c
+# include "allen.h"
+
+int
+main ( void )
+{   
+    MATTE_cosseno ( 0.5 , true , 4 );
+}
+```
+
+- SAÍDA DO CONSOLE: 
+
+```sh
+1.0472
+```
+
+<br>
+
+<h2 align="center"> double MATTE_seno ( double SIN , bool PRINT , int COMMAS ) </h2> 
+
+### Essa função retorna um valor do tipo double e possui 3 parâmetros; Sua função é retornar o ângulo em radianos do seno informado 
+> Parametro 01 ( double SIN ): Valor double do sin para calcular;
+> Parametro 02 ( bool PRINT ): se yes ou true printará o resultado;
+> Parametro 03 ( int COMMAS ): quantidade de casas decimais que será printada
+
+- EXEMPLO DE USO: 
+
+```c
+# include "allen.h"
+
+int
+main ( void )
+{   
+    MATTE_seno ( 0.5 , true , 4 );
+}
+```
+
+- SAÍDA DO CONSOLE: 
+
+```sh
+0.5236
+```
+
 ---
 
 <br>
@@ -308,7 +360,7 @@ O objetivo da biblioteca é fornecer uma simplificação de código da `linguage
 
 - EXEMPLO DE USO: 
 
-```sh
+```c
 # include "allen.h"
 
 int
@@ -334,7 +386,7 @@ Acentuação
 
 - EXEMPLO DE USO: 
 
-```sh
+```c
 # include "allen.h"
 
 int
@@ -357,5 +409,6 @@ Acentuação
 
 ## 10 - FLEE_FUNCTIONS 
 
+<br>
 
 ---
