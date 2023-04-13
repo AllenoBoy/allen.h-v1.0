@@ -238,7 +238,6 @@ A biblioteca allen.h tem como objetivo a `simplificação dinâmica de código d
 > Esses macros podem ser utilizados em qualquer lugar: exemplo `se ( x > 12 ) printf("arroz");`
 
 <br>
-<br>
 
 ---
 
