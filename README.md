@@ -248,6 +248,19 @@ O objetivo dessa biblioteca é fornecer uma simplificação de código da `lingu
 
 <br>
 
+#### <p align="center"> <a href="URL do link"> PR </a> </p>
+#### <p align="center"> <a href="URL do link"> CS </a> </p>
+#### <p align="center"> <a href="URL do link"> SYS </a> </p>
+#### <p align="center"> <a href="URL do link"> PROPS </a> </p>
+#### <p align="center"> <a href="URL do link"> G </a> </p>
+#### <p align="center"> <a href="URL do link"> allen </a> </p>
+#### <p align="center"> <a href="URL do link"> SB </a> </p>
+#### <p align="center"> <a href="URL do link"> MATTE </a> </p>
+#### <p align="center"> <a href="URL do link"> LOCH </a> </p>
+#### <p align="center"> <a href="URL do link"> FLEE </a> </p>
+
+
+
 ---
 
 
