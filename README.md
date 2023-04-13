@@ -69,6 +69,42 @@ O objetivo da biblioteca é fornecer uma simplificação de código da `linguage
 | `ISO`                                              | Padroniza o console para printar texto de string acentuado        |
 
 
+> Esses macros devem ser utilizados somente nas seguintes funções: `SYS_REGION` e `CS_SETREGION`;
+
+##### 3.2 MACROS DE ESTILO DA FUNÇÃO PROP
+
+| MACRO                                              | Descrição                                                         |
+| :------------------------------------------------- | :---------------------------------------------------------------- |
+| `BRIGHT1`                                          | Deixa o texto ou fundo brilhantes                                 |
+| `BRIGHT2`                                          | Deixa o texto ou fundo brilhantes                                 |
+| `UNBRIGHT`                                         | Deixa o texto ou fundo escurecidos                                |
+| `ITALIC`                                           | Deixa o texto escrito na forma itálica                            |
+| `UNDERLINE`                                        | Deixa o texto escrito sublinhado                                  |
+| `BLINKER1`                                         | Deixa o texto ou fundo piscando                                   |
+| `BLINKER2`                                         | Deixa o texto ou fundo piscando                                   |
+| `BACKSET`                                          | Deixa o fundo esbranquiçado                                       |
+| `HIDE`                                             | Deixa o texto escrito escondido                                   |
+| `CUT`                                              | Deixa o texto escrito cortado                                     |
+
+
+> Esses macros devem ser utilizados somente nas seguintes funções: `PROP_TEXTSTYLE` e `PROP_BACKGROUNDSTYLE` quando `ENABLEPROPS` tiver sido chamado;
+
+##### 3.3 MACROS DE COR DA FUNÇÃO PROP
+
+| TEXTO                                              | PLANO DE FUNDO                                                    |
+| :------------------------------------------------- | :---------------------------------------------------------------- |
+| `DEFAULT_TEXT`                                     | `DEFAULT_BACKGROUND`                                              |
+| `BLACK_TEXT`                                       | `RED_BACKGROUND`                                                  |
+| `RED_TEXT`                                         | `GREEN_BACKGROUND`                                                |
+| `GREEN_TEXT`                                       | `YELLOW_BACKGROUND`                                               | 
+| `YELLOW_TEXT`                                      | `BLUE_BACKGROUND`                                                 |
+| `BLUE_TEXT`                                        | `MAGENTA_BACKGROUND`                                              |
+| `MAGENTA_TEXT`                                     | `CYAN_BACKGROUND`                                                 |
+| `CYAN_TEXT`                                        | `WHITE_BACKGROUND`                                                |
+| `WHITE_TEXT`                                       |                                                                   |
+
+> Esses macros devem ser utilizados somente nas seguintes funções: `PROP_TEXTCOLOR` e `PROP_BACKGROUNDCOLOR` quando `ENABLEPROPS` tiver sido chamado;
+
 ---
 
 ### 4. FUNÇÕES
