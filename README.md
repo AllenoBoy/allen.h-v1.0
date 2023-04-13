@@ -206,8 +206,8 @@ O objetivo da biblioteca é fornecer uma simplificação de código da `linguage
 
 ---
 
-Em resumo as funções estão divididas em funcionalidades: 
-
+> Em resumo as funções estão divididas em funcionalidades: 
+> 
 > PR:    *print*
 > 
 > CS:    *controle do console*
@@ -230,42 +230,63 @@ Em resumo as funções estão divididas em funcionalidades:
   
 <br>
 
-## 01 - PR FUNCTIONS (#01)
+---
+
+## 01 - PR FUNCTIONS 
 
 <br>
+
+---
 
 ## 02 - CS FUNCTIONS 
 
 <br>
 
+---
+
 ## 03 - SYS FUNCTIONS 
 
 <br>
 
+---
 
 ## 04 - PROP FUNCTIONS 
 
 <br>
 
+---
+
 ## 05 - G FUNCTIONS 
 
 <br>
+
+---
 
 ## 06 - allen FUNCTIONS 
 
 <br>
 
+---
+
 ## 07 - SB FUNCTIONS 
 
 <br>
+
+---
 
 ## 08 - MATTE FUNCTIONS 
 
 <br>
 
+---
+
 ## 09 - LOCH FUNCTIONS 
 
 <br>
 
+---
+
 ## 10 - FLEE_FUNCTIONS 
 
+
+---
