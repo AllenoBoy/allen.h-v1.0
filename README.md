@@ -228,6 +228,10 @@ O objetivo dessa biblioteca é fornecer uma simplificação de código da `lingu
 | `tipo_de`                                          | typedef                                                             |
 | `uniao`                                            | union                                                               |
 | `vazio`                                            | void                                                                |
+| `vazio`                                            | void                                                                |
+| `open`                                             | (                                                                   |
+| `close`                                            | )                                                                   |
+| `end`                                              | ;                                                                   |
 
 <br>
 
