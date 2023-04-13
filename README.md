@@ -96,7 +96,7 @@ O objetivo dessa biblioteca é fornecer uma simplificação de código da `lingu
 <br>
 <br>
 
-##### 3.2 MACROS DE ESTILO DA FUNÇÃO PROP
+#### ESTILIZAÇÃO DO TEXTO
 
 | MACRO                                              | Descrição                                                         |
 | :------------------------------------------------- | :---------------------------------------------------------------- |
@@ -118,7 +118,7 @@ O objetivo dessa biblioteca é fornecer uma simplificação de código da `lingu
 <br>
 <br>
 
-##### 3.3 MACROS DE COR DA FUNÇÃO PROP
+#### CORES DE ESTILIZAÇÃO DE TEXTO
 
 | TEXTO                                              | PLANO DE FUNDO                                                    |
 | :------------------------------------------------- | :---------------------------------------------------------------- |
@@ -139,7 +139,7 @@ O objetivo dessa biblioteca é fornecer uma simplificação de código da `lingu
 <br>
 <br>
 
-##### 3.4 MACROS DAS FUNÇÕES DE STRINGS
+#### FUNÇÕES DE STRINGS
 
 | MACRO                                              | Descrição                                                           |
 | :------------------------------------------------- | :------------------------------------------------------------------ |
@@ -163,7 +163,7 @@ O objetivo dessa biblioteca é fornecer uma simplificação de código da `lingu
 <br>
 <br>
 
-##### 3.5 MACROS DE OPERADORES
+#### OPERADORES
 
 | MACRO                                              | Descrição                                                           |
 | :------------------------------------------------- | :------------------------------------------------------------------ |
@@ -198,7 +198,7 @@ O objetivo dessa biblioteca é fornecer uma simplificação de código da `lingu
 <br>
 <br>
 
-##### 3.6 MACROS ALLEN DEFINED
+#### ALLEN DEFINEDS
 
 | MACRO                                              | Descrição                                                           |
 | :------------------------------------------------- | :------------------------------------------------------------------ |
