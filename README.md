@@ -2,16 +2,25 @@
 
 ---
 
-O objetivo da biblioteca é fornecer uma simplificação de código da `linguagem c`, onde aqui estarão `definidas e explicadas` todas as `funcionalidades` da mesma, com as funções, macros e informações necessárias, `em caso de bugs reportar na aba issues`, por fim todas as informações necessárias foram divididas em tópicos explicativos e demonstrativos da execução / utilização da biblioteca nesse arquivo readme.
+<br>
+
+O objetivo dessa biblioteca é fornecer uma simplificação de código da `linguagem c`, onde aqui estarão `definidas e explicadas` todas as `funcionalidades` da mesma, com as funções, macros e informações necessárias, `em caso de bugs reportar na aba issues`, por fim todas as informações necessárias foram divididas em tópicos explicativos e demonstrativos da execução / utilização da biblioteca nesse arquivo readme.
+
+<br>
 
 #### <p align="center"> <a href="URL do link"> LINK PARA DOWNLOAD DA BIBLIOTECA </a> </p>
-  
+
+<br>
+
 ---
 
+<br>
 
-### 1. BIBLIOTECAS PADRÃO UTILIZADAS
+<h3 align="center"> BIBLIOTECAS PADRÃO </h3> 
+<br>
+<br>
 
-```sh
+```c
 # include <stdio.h>
 # include <stdlib.h>
 # include <math.h>
@@ -35,9 +44,16 @@ O objetivo da biblioteca é fornecer uma simplificação de código da `linguage
 # include <pthread.h>
 ```
 
+<br> <br>
+
 ---
 
-### 2. OBSERVAÇÕES DA BIBLIOTECA
+<br>
+
+<h3 align="center"> OBSERVAÇÕES E AVISOS </h3> 
+
+<br>
+<br>
 
 - A biblioteca possui suporte ao uso de `threads` por causa da biblioteca pthread.h;
 - A biblioteca foi produzida utilizando o compilador `TDM-GCC` ( caso ocorram erros chequem o compilador );
@@ -49,11 +65,17 @@ O objetivo da biblioteca é fornecer uma simplificação de código da `linguage
 - A biblioteca foi `produzida somente como uma forma de aprendizagem`, ou seja, está passível de bugs!
 - A biblioteca possui alguns `códigos de padronização de console`, para impedir bugs!
 
+<br> <br>
+
 ---
 
-### 3. MACROS DA BIBLIOTECA
+<br>
 
-##### 3.1 MACROS DE REGIÕES DO CONSOLE
+<h3 align="center"> MACROS DA BIBLIOTECA </h3> 
+
+<br>
+
+#### REGIÕES DO CONSOLE / CÓDIGO DE PÁGINA
 
 | MACRO                                              | Descrição                                                         |
 | :------------------------------------------------- | :---------------------------------------------------------------- |
@@ -67,9 +89,11 @@ O objetivo da biblioteca é fornecer uma simplificação de código da `linguage
 | `TURCO`                                            | Define o console como do tipo turco ( ö , ş , ğ )                 |
 | `ISO`                                              | Padroniza o console para printar texto de string acentuado        |
 
+<br>
 
 > Esses macros devem ser utilizados somente nas seguintes funções: `SYS_REGION` e `CS_SETREGION`;
 
+<br>
 <br>
 
 ##### 3.2 MACROS DE ESTILO DA FUNÇÃO PROP
@@ -87,9 +111,11 @@ O objetivo da biblioteca é fornecer uma simplificação de código da `linguage
 | `HIDE`                                             | Deixa o texto escrito escondido                                   |
 | `CUT`                                              | Deixa o texto escrito cortado                                     |
 
+<br>
 
 > Esses macros devem ser utilizados somente nas seguintes funções: `PROP_TEXTSTYLE` e `PROP_BACKGROUNDSTYLE` quando `ENABLEPROPS` tiver sido chamado;
 
+<br>
 <br>
 
 ##### 3.3 MACROS DE COR DA FUNÇÃO PROP
@@ -106,8 +132,11 @@ O objetivo da biblioteca é fornecer uma simplificação de código da `linguage
 | `CYAN_TEXT`                                        | `WHITE_BACKGROUND`                                                |
 | `WHITE_TEXT`                                       |                                                                   |
 
+<br>
+
 > Esses macros devem ser utilizados somente nas seguintes funções: `PROP_TEXTCOLOR` e `PROP_BACKGROUNDCOLOR` quando `ENABLEPROPS` tiver sido chamado;
 
+<br>
 <br>
 
 ##### 3.4 MACROS DAS FUNÇÕES DE STRINGS
@@ -127,9 +156,11 @@ O objetivo da biblioteca é fornecer uma simplificação de código da `linguage
 | `nosize`                                           | Macro para dizer que não tem limite de tamanho                      |
 | `notoken`                                          | Macro para dizer que não há substiuição                             |
 
+<br>
 
 > Esses macros devem ser utilizados somente nas seguintes funções: `GWC_STRING` e `PR_STRING`;
 
+<br>
 <br>
 
 ##### 3.5 MACROS DE OPERADORES
@@ -160,9 +191,11 @@ O objetivo da biblioteca é fornecer uma simplificação de código da `linguage
 | `DECRESCENTE`                                      | ORGANIZAÇÃO DO VETOR OU MATRIZ DE FORMA DECRESCENTE ( BUBBLE SORT ) |
 | `NOTMULTIPLO`                                      | SE O VALOR NÃO FOR MÚLTIPLO DO OUTRO                                |
 
+<br>
 
 > Esses macros devem ser utilizados somente nas seguintes funções: `allen_SUBSINTARRAY` , `allen_COPYINTARRAY` , `allen_SUBSINTB_ARRAY` , `allen_INTCOPYB_ARRAY` , `GWC_INT` , `GWC_DOUBLE` , `GWC_FLOAT` , `GWC_CHAR` , `getI` , `getF` , `getD`;
 
+<br>
 <br>
 
 ##### 3.6 MACROS ALLEN DEFINED
@@ -196,9 +229,12 @@ O objetivo da biblioteca é fornecer uma simplificação de código da `linguage
 | `uniao`                                            | union                                                               |
 | `vazio`                                            | void                                                                |
 
+<br>
 
-> Esses macros podem ser utilizados em qualquer lugar: exemplo se ( x > 12 ) printf("arroz") ;
+> Esses macros podem ser utilizados em qualquer lugar: exemplo `se ( x > 12 ) printf("arroz");`
 
+<br>
+<br>
 
 ---
 
