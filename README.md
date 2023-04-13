@@ -6,9 +6,8 @@ O objetivo da biblioteca é fornecer uma simplificação de código da `linguage
 
 #### <p align="center"> <a href="URL do link"> LINK PARA DOWNLOAD DA BIBLIOTECA </a> </p>
   
-
-
 ---
+
 
 ### 1. BIBLIOTECAS PADRÃO UTILIZADAS
 
@@ -71,6 +70,8 @@ O objetivo da biblioteca é fornecer uma simplificação de código da `linguage
 
 > Esses macros devem ser utilizados somente nas seguintes funções: `SYS_REGION` e `CS_SETREGION`;
 
+<br>
+
 ##### 3.2 MACROS DE ESTILO DA FUNÇÃO PROP
 
 | MACRO                                              | Descrição                                                         |
@@ -89,6 +90,8 @@ O objetivo da biblioteca é fornecer uma simplificação de código da `linguage
 
 > Esses macros devem ser utilizados somente nas seguintes funções: `PROP_TEXTSTYLE` e `PROP_BACKGROUNDSTYLE` quando `ENABLEPROPS` tiver sido chamado;
 
+<br>
+
 ##### 3.3 MACROS DE COR DA FUNÇÃO PROP
 
 | TEXTO                                              | PLANO DE FUNDO                                                    |
@@ -104,6 +107,8 @@ O objetivo da biblioteca é fornecer uma simplificação de código da `linguage
 | `WHITE_TEXT`                                       |                                                                   |
 
 > Esses macros devem ser utilizados somente nas seguintes funções: `PROP_TEXTCOLOR` e `PROP_BACKGROUNDCOLOR` quando `ENABLEPROPS` tiver sido chamado;
+
+<br>
 
 ##### 3.4 MACROS DAS FUNÇÕES DE STRINGS
 
@@ -124,6 +129,8 @@ O objetivo da biblioteca é fornecer uma simplificação de código da `linguage
 
 
 > Esses macros devem ser utilizados somente nas seguintes funções: `GWC_STRING` e `PR_STRING`;
+
+<br>
 
 ##### 3.5 MACROS DE OPERADORES
 
@@ -155,6 +162,8 @@ O objetivo da biblioteca é fornecer uma simplificação de código da `linguage
 
 
 > Esses macros devem ser utilizados somente nas seguintes funções: `allen_SUBSINTARRAY` , `allen_COPYINTARRAY` , `allen_SUBSINTB_ARRAY` , `allen_INTCOPYB_ARRAY` , `GWC_INT` , `GWC_DOUBLE` , `GWC_FLOAT` , `GWC_CHAR` , `getI` , `getF` , `getD`;
+
+<br>
 
 ##### 3.6 MACROS ALLEN DEFINED
 
