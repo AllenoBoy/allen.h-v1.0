@@ -577,3 +577,80 @@ i'm shaking my head, they say i am so humle, they give so much to me
 ```sh
 Discord
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void SYS_READFILE ( const char* FILENAME ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Lê o conteúdo de um arquivo específico diretamente no console, observação todas as funções referentes a arquivos / diretórios quando executadas na IDE levam em consideração a pasta do projeto, mais caso vc exporte o programa ele levará em consideração aquela pasta do executável`;
+
+<br>
+
+#### ARQUIVO DE EXEMPLO:
+
+| arq.txt
+
+```txt
+
+Eu allen walker, gosto de comer chocolate!
+allen anda d+
+the feelings start to rise
+when i get the time
+oohh, forgiving who u are
+
+```
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+      // Printando o conteúdo do arquivo
+      SYS_READFILE ( "arq.txt" );
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```sh
+Eu allen walker, gosto de comer chocolate!
+allen anda d+
+the feelings start to rise
+when i get the time
+oohh, forgiving who u are
+```
