@@ -254,14 +254,12 @@ void SYS_SETFULLSCREEN     ( void );
 void SYS_POPS              ( const char* COMMAND );
 void SYS_CLEARSCREEN       ( void );
 void SYS_READFILE          ( const char* FILENAME );
-void SYS_LISTDIR           ( void );
-void SYS_MOVETODIR         ( const char* DIR );
+void SYS_LISTDIR           ( const char * DIR );
 void SYS_CREATEDIR         ( const char* DIR );
 void SYS_REMOVEDIR         ( const char* DIR );
 void SYS_COPYFILE          ( const char* FILE , const char* DIR );
-void SYS_XCOPYFILE         ( const char* FILE , const char* DIR );
 void SYS_MOVEDIR           ( const char* DIR , const char* FINALDIR );
-void SYS_DELETEFILE        ( const char* DIR_OR_FILE );
+void SYS_DELETEFILE        ( const char* FILE );
 void SYS_RENAMEFILE        ( const char* FILE , const char* NEW_NAME );
 void SYS_ECHO              ( const char* TEXT );
 void SYS_PING              ( void );
@@ -2288,7 +2286,8 @@ SYS_SETFULLSCREEN ( void )
 
 
 // FUNCTION: PRINT THE USER C COMPILER VERSION / INFORMATION
-void SYS_GCCVERSION ( void )
+void
+SYS_GCCVERSION ( void )
 {
      system ("gcc --version");
 }
@@ -2336,25 +2335,15 @@ SYS_READFILE ( const char* FILENAME )
 
 
 // FUNCTION: LIST THE DIRECTORIES
+// @param01: DIR { THE NAME OF THE DIRECTORY }
 void
-SYS_LISTDIR ( void )
-{
-    system ("dir");
-}
-
-
-
-
-
-// FUNCTION: MOVE TO A DIRECTORY
-// @param01: DIR { THE NEW DIRECTORY PLACE }
-void
-SYS_MOVETODIR ( const char* DIR )
+SYS_LISTDIR ( const char * DIR )
 {
     char command [50];
 
-    sprintf ( command , "cd %s" , DIR );
-    system  ( command );
+    sprintf ( command , "dir %s " , DIR );
+
+    system (command);
 }
 
 
@@ -2407,22 +2396,6 @@ SYS_COPYFILE ( const char* FILE , const char* DIR )
 
 
 
-// FUNCTION: COPY SOMETHING TO A DIR AND REMOVE
-// @param01: FILE { THE NAME OF THE FILE }
-// @param02: DIR { THE DIR THAT WILL SAVE }
-void
-SYS_XCOPYFILE ( const char* FILE , const char* DIR )
-{
-    char command [50];
-
-    sprintf ( command , "xcopy %s %s" , FILE , DIR );
-    system  ( command );
-}
-
-
-
-
-
 // FUNCTION: MOVE SOMETHING ( A FOLDER ) TO A NEW DIRECTORY
 // @param01: DIR { THE NAME OF THE FOLDER }
 // @param02: FINALDIR { THE DIR THAT WILL RECEIVE THE MOVED FOLDER }
@@ -2440,13 +2413,13 @@ SYS_MOVEDIR ( const char* DIR , const char* FINALDIR )
 
 
 // FUNCTION: DELETE A FILE
-// @param01: DIR_OR_FILE { DELETES A FILE OR A FOLDER }
+// @param01: FILE { DELETES A FILE OR A FOLDER }
 void
-SYS_DELETEFILE ( const char* DIR_OR_FILE )
+SYS_DELETEFILE ( const char* FILE )
 {
     char command [50];
 
-    sprintf ( command , "del %s" , DIR_OR_FILE );
+    sprintf ( command , "del %s" , FILE );
     system  ( command );
 }
 
@@ -2477,7 +2450,7 @@ SYS_ECHO ( const char* TEXT )
 {
     char command [50];
 
-    sprintf ( command , "ren %s" , TEXT );
+    sprintf ( command , "echo %s" , TEXT );
     system  ( command );
 }
 
@@ -2536,6 +2509,7 @@ SYS_INFO ( void )
 
 
 // FUNCTION: PRINT THE ACTUAL WEATHER INFO
+// @param01: REGION { THE NAME OF VALID REGION }
 void
 SYS_WEATHER ( const char * REGION )
 {
