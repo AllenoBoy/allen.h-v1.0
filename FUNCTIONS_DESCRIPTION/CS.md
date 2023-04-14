@@ -482,3 +482,71 @@ main ( void )
 <p align="center">
   <img src="https://user-images.githubusercontent.com/114815898/232091689-8fd1fb2f-8623-4ad0-a7ed-4707b8ed49e2.png">
 </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void CS_SETTEXTATTRIBUTE ( int VARIATION ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Define a estilização / cor do console`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+       // Loop para mostrar todas as possíveis variações
+       for ( kaj = 0; kaj < 255; kaj++ )
+       {
+            CS_SETTEXTATTRIBUTE ( kaj );
+            printf ("COLOR %d\n", kaj );
+       }
+}
+
+```
+
+<br>
+
+
+
+#### SAÍDA DO CONSOLE:
+
+```sh
+
+OBSERVAÇÃO: PARA SABER CORRETAMENTE QUAL VARIAÇÃO USAR EXECUTE O CÓDIGO ACIMA QUE VOCÊ OBTERÁ A VARIAÇÃO DESEJADA, O VALOR 15 É O PADRÃO DE C
+
+```
