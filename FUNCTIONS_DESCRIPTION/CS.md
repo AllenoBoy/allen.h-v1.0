@@ -17,12 +17,12 @@
 
 <br>
 
-<h3 align="center"> void PR ( const char * TEXT ) </h3> 
+<h3 align="center"> void CS_SETREGION ( int REGION ) </h3> 
 
 <br>
 <br>
 
-- **O QUE ELA FAZ**: `Escreve no console um texto definido por "" ou uma string`;
+- **O QUE ELA FAZ**: `Define a região do texto, usando os macros de regiões do console.`;
 
 <br>
 
@@ -35,14 +35,17 @@
 int 
 main ( void )
 {      
-       char *USERNAME = "allen";
-
-       // Print sem uso de variável
-       PR ("GOSTO DE COMER CHOCOLATE! ");
+       // Definindo o console como português
+       CS_SETREGION (BRAZIL); 
        
-       // Print com uso de variável
-       PR (USERNAME);
+       // Teste
+       printf ("Acentuação\n\n");
        
+       // Definindo o console como a padrão da linguagem c
+       CS_SETREGION (DEFAULT); 
+       
+       // Teste
+       printf ("Acentuação");
 }
 
 ```
@@ -52,5 +55,6 @@ main ( void )
 #### SAÍDA DO CONSOLE:
 
 ```ssh
-GOSTO DE COMER CHOCOLATE! allen
+Acentuação
+AcentuaþÒo
 ```
