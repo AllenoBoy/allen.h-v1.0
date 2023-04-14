@@ -767,7 +767,7 @@ main ( void )
 int 
 main ( void )
 {      
-      // Criando uma pasta ( no diretório do programa )
+    // Criando uma pasta ( no diretório do programa )
     SYS_CREATEDIR ("ALLEN");
 
     /*
@@ -803,6 +803,39 @@ OBSERVAÇÃO: SERÁ CRIADA UMA PASTA COM O NOME DEFINIDO NO DIRETÓRIO DO PROGRA
 
 
 
+<br>
+
+<h3 align="center"> void SYS_REMOVEDIR ( const char* DIR ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Deleta um diretório pelo seu nome que é definido por DIR, AVISO SÓ APAGA PASTAS VAZIAS`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Removendo a pasta criada anteriormente ( ALLEN ) que se encontra vazia
+    SYS_REMOVEDIR ("ALLEN");
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+OBSERVAÇÃO: A PASTA SE ESTIVER VAZIA IRÁ SER REMOVIDA
+```
 
 
 
@@ -820,6 +853,158 @@ OBSERVAÇÃO: SERÁ CRIADA UMA PASTA COM O NOME DEFINIDO NO DIRETÓRIO DO PROGRA
 
 
 
+
+
+
+<br>
+
+<h3 align="center"> void SYS_COPYFILE ( const char* FILE , const char* DIR ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Copia e cola um arquivo ( fornecido por FILE ) em um diretório específicado por DIR`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Copiando um arquivo da pasta dat para a pasta ALLEN
+    SYS_COPYFILE ( "dat\\info.txt" , "ALLEN" );
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+OBSERVAÇÃO: O ARQUIVO SERÁ COPIADO E O CONSOLE IRÁ INFORMAR QUE O ARQUIVO FOI COPIADO ( NÃO TEM COMO DESATIVAR A MENSAGEM )
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void SYS_MOVEDIR ( const char* DIR , const char* FINALDIR ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Move um diretório definido por DIR para outro definido por FINALDIR`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Movendo a pasta ALLEN para a pasta dat
+    SYS_MOVEDIR ( "ALLEN" , "dat" );
+    
+    /*
+     * CASO VOCÊ QUEIRA MOVER UMA PASTA INTERNA: FAÇA ASSIM -> SYS_MOVEDIR ( "ALLEN\\INFO" , "dat" );
+     */
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+OBSERVAÇÃO: A PASTA DEFINIDA SERÁ MOVIDA PARA O NOVO ENDEREÇO
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void SYS_DELETEFILE ( const char* FILE ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Deleta os arquivos de uma pasta definido por FILE`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Removendo o conteúdo da pasta ALLEN
+    SYS_DELETEFILE ("ALLEN");
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+OBSERVAÇÃO: TODO O CONTEÚDO DA PASTA QUE NÃO FOR UM DIRETÓRIO SERÁ REMOVIDO
+```
 
 
 
