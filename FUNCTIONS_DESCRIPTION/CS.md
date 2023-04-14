@@ -316,3 +316,169 @@ main ( void )
 <p align="center">
   <img src="https://user-images.githubusercontent.com/114815898/232089605-07715bde-be36-4cbc-8f5a-08c1f351ea24.png">
 </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void CS_DISABLEALLBUTTONS ( void ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Desativa todos os botões do console`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+       // Desativando todos os botões
+       CS_DISABLEALLBUTTONS ();
+}
+
+```
+
+<br>
+
+
+
+
+#### SAÍDA DO CONSOLE:
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/114815898/232090622-d858672b-b93c-40d9-bf2a-9c3827ae175d.png">
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void CS_DISABLERESIZE ( void ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Desativa a propriedade de resize presente no console`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+       // Agora o console não pode sofrer resize
+       CS_DISABLERESIZE ();
+}
+
+```
+
+<br>
+
+
+
+
+#### SAÍDA DO CONSOLE:
+
+```sh
+
+OBSERVAÇÃO: O CONSOLE SIMPLESMENTE NÃO PODERÁ SOFRER RESIZE!
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void CS_DISABLESCROLLBAR ( void ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Desativa a scrollbar do console se existir`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+       // Desativando a scrollbar
+       CS_DISABLESCROLLBAR ();
+}
+
+```
+
+<br>
+
+
+
+
+#### SAÍDA DO CONSOLE:
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/114815898/232091689-8fd1fb2f-8623-4ad0-a7ed-4707b8ed49e2.png">
+</p>
