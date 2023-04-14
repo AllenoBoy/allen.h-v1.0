@@ -610,3 +610,70 @@ main ( void )
 OBSERVAÇÃO: A POSIÇÃO DO CONSOLE SERÁ DEFINIDA A PARTIR DE X E Y ( CONSIDERANDO O TAMANHO DO CONSOLE TBM e que x e y nunca são negativos ) 
 
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void CS_SETSIZE ( int WIDHT , int HEIGHT ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Define o tamanho do console`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+       // Definindo um novo tamanho para o console
+       CS_SETSIZE ( 50 , 10 );
+}
+
+```
+
+<br>
+
+
+
+
+#### SAÍDA DO CONSOLE:
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/114815898/232095968-43eb685a-4174-4e37-a5c0-001bd10ec9b1.png">
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
