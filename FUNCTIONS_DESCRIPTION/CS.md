@@ -720,20 +720,17 @@ main ( void )
 ```
 
 <br>
-![image]()
-
-
 
 
 #### SAÍDA DO CONSOLE:
 
-##### ANTES
+- ANTES
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/114815898/232099808-46a082ac-9ef2-41cb-8f75-f89f319a6429.png">
 </p>
 
-##### DEPOIS
+- DEPOIS
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/114815898/232099891-9f92f43f-e2db-468e-ac94-34c057f80734.png">
