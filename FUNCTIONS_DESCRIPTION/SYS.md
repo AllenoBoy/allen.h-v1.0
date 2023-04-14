@@ -782,11 +782,7 @@ main ( void )
 #### SAÍDA DO CONSOLE:
 
 ```txt
-
-# include "allen.h"
-
 OBSERVAÇÃO: SERÁ CRIADA UMA PASTA COM O NOME DEFINIDO NO DIRETÓRIO DO PROGRAMA!
-
 ```
 
 
