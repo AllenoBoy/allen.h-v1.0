@@ -760,7 +760,7 @@ main ( void )
 <br>
 <br>
 
-- **O QUE ELA FAZ**: `Salva em uma variável do tipo COORD a posição do cursor`;
+- **O QUE ELA FAZ**: `Salva em uma variável / estrutura do tipo COORD a posição do cursor`;
 
 <br>
 
@@ -832,12 +832,12 @@ fim   -> ( 20 , 0 )
 
 <br>
 
-<h3 align="center"> COORD CS_SETxyCURSOR ( int X , int Y ) </h3> 
+<h3 align="center"> COORD CS_SETCURSORPOSITION ( COORD newPos ) </h3> 
 
 <br>
 <br>
 
-- **O QUE ELA FAZ**: `Salva em uma variável`;
+- **O QUE ELA FAZ**: `Define atráves de uma COORD a nova posição do cursor`;
 
 <br>
 
@@ -850,6 +850,21 @@ fim   -> ( 20 , 0 )
 int 
 main ( void )
 {      
+    // Estrutura COORD para definirmos o lugar onde iremos substituir
+    COORD pos = { 0 , 0 };
+
+    // Texto Inicial de Teste que será substituido
+    printf ("Texto para Teste");
+
+    getch ();
+
+    // Voltando o cursor para a posição 'pos'
+    CS_SETCURSORPOSITION ( pos );
+
+    // Substuindo o texto anterior
+    printf ("Agora o texto foi substituido!");
+
+    getch ();
 }
 
 ```
@@ -860,6 +875,18 @@ main ( void )
 
 #### SAÍDA DO CONSOLE:
 
+- 1 ( Antes de chamar a função )
+
 ```sh
+
+Texto para Teste
+
+```
+
+- 2 ( Depois de chamar a função )
+
+```sh
+
+Agora o texto foi substituido!
 
 ```
