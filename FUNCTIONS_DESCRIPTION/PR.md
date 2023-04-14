@@ -1025,3 +1025,69 @@ main ( void )
 <5> Beneviento
 <6> Chris
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void PRL_FLOAT ( int REVERSE , int HOW_MANY_STRINGS , int SIZE_OF_THESE_STRINGS , int SPACE , int COMMA, const char TEXT1 [] , const char TEXT2 [] ,  float array [] , char string [ HOW_MANY_STRINGS ] [ SIZE_OF_THESE_STRINGS ] , int MORE_SPACE ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Escreve no console uma lista formatada do tipo float / char * ( ou seja antes da string será printado um valor de um vetor ) de forma formatada, onde, REVERSE define se a função printará de forma invertida as informações, HOW_MANY_STRINGS define quantas palavras diferentes existem (no caso o vetor de strings), SPACE define quantos espaços serão printados depois da string ser inserida, COMMA define quantas casas decimais serão printadas (referente ao ARRAY), TEXT1 se refere ao texto que será printado antes do valor do ARRAY, TEXT2 se refere ao texto que será printado depois do valor do ARRAy, ARRAY define o vetor que será utilizado para preencher a lista ( "1 - nome" ), string define o vetor de strings que será utilizado e por fim o MORE_SPACE define se em vez de uma simples quebra de linha tenhamos duas`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{
+      // Lista de nomes
+      char list [] [50] = { "Admnistrador" , "Roberto" , "Shaka" , "Yan" , "Hughie" , "Jill" };
+
+      // Vetor dos valores que ficam antes
+      float reais [] = { 1.33 , 2.41 , 3.82 , 4.45 , 5.312312 , 6.3 };
+
+      // Printando o vetor de string 'list' com os valores do tipo float
+      PRL_FLOAT ( YES , 6 , 50 , 0 , 1 , "<" , "> " , reais , list , no );
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```ssh
+<6.3> Jill
+<5.3> Hughie
+<4.4> Yan
+<3.8> Shaka
+<2.4> Roberto
+<1.3> Administrador
+```
