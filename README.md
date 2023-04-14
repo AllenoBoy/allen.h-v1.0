@@ -233,6 +233,7 @@ A biblioteca allen.h tem como objetivo a ` simplificação dinâmica de código 
 | `open`                                             | (                                                                   |
 | `close`                                            | )                                                                   |
 | `end`                                              | ;                                                                   |
+| `booleana`                                         | bool                                                                |
 
 <br>
 
