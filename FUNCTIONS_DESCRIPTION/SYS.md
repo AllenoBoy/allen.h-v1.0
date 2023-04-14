@@ -1012,3 +1012,115 @@ OBSERVAÇÃO: TODO O CONTEÚDO DA PASTA QUE NÃO FOR UM DIRETÓRIO SERÁ REMOVID
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void SYS_RENAMEFILE ( const char* FILE , const char * NEW_NAME ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Renomeia uma pasta ou arquivo definido por FILE pelo novo nome que é dado por NEW_NAME`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Renomeando o arquivo "alt.txt"
+    SYS_RENAMEFILE ( "ALLEN\\alt.txt" , "robson.txt" );
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+OBSERVAÇÃO: O CONTEÚDO QUE SERÁ RENOMEADO PRECISA DA TERMINAÇÃO DO SEU TIPO
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void SYS_ECHO ( const char* TEXT ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Ecoa / printa no console um texto definido por TEXT, onde o diferencial dessa função é que o print pode ser feito com acentuação sem preocupação alguma`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Printando olá mundo!
+    SYS_ECHO ("olá mundo!");
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+olá mundo!
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
