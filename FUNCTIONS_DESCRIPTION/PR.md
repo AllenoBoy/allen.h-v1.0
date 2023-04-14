@@ -956,3 +956,72 @@ main ( void )
 { 6.48 } { 5.12 } { 4.24 }
 { 3.99 } { 2.13 } { 1.33 }
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void PRL_INT ( int REVERSE , int HOW_MANY_STRINGS , int SIZE_OF_THESE_STRINGS , int SPACE , const char TEXT1 [] , const char TEXT2 [] ,  int array [] , char string [ HOW_MANY_STRINGS ] [ SIZE_OF_THESE_STRINGS ] , int MORE_SPACE ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Escreve no console uma lista formatada do tipo int / char * ( ou seja antes da string será printado um valor de um vetor ) de forma formatada, onde, REVERSE define se a função printará de forma invertida as informações, HOW_MANY_STRINGS define quantas palavras diferentes existem (no caso o vetor de strings), SPACE define quantos espaços serão printados antes da string ser inserida, TEXT1 se refere ao texto que será printado antes do valor do ARRAY, TEXT2 se refere ao texto que será printado depois do valor do ARRAy, ARRAY define o vetor que será utilizado para preencher a lista ( "1 - nome" ), string define o vetor de strings que será utilizado e por fim o MORE_SPACE define se em vez de uma simples quebra de linha tenhamos duas`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{
+      // Lista de nomes
+      char list [] [50] = { "Allen" , "Diana" , "Robson" , "Salvatore" , "Beneviento" , "Chris" };
+      // Valor que fica antes
+      int   num [] = { 1 , 2 , 3 , 4 , 5 , 6 };
+
+      // Printando o vetor de string 'list'
+      PRL_INT ( no , 6 , 50 , 0 , "< " , "> " , num , list , no );
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```ssh
+<1> Allen
+<2> Diana
+<3> Robson
+<4> Salvatore
+<5> Beneviento
+<6> Chris
+```
