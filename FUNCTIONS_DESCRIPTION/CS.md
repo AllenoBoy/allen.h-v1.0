@@ -802,6 +802,14 @@ main ( void )
 
 #### SAÍDA DO CONSOLE:
 
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/114815898/232099891-9f92f43f-e2db-468e-ac94-34c057f80734.png">
-</p>
+```sh
+
+ARROZ GOSTA DE ALLEN
+
+allen: Agora vamos pegar todas as coordenadas que definimos:
+
+teste -> ( 10 , 20 )
+star  -> ( 0 , 0 )
+fim   -> ( 20 , 0 )
+
+```
