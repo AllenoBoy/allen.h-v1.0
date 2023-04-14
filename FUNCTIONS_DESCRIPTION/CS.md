@@ -943,5 +943,5 @@ main ( void )
 ```sh
 
 OBSERVAÇÃO: SE O PARÂMETRO FOR IGUAL A true ESCONDE O CONSOLE E SE FOR IGUAL A false REAPARECE
-  
+
 ```
