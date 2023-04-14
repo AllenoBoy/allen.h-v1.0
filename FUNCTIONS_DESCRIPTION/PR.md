@@ -1156,3 +1156,57 @@ main ( void )
 ( 5.31 ) Alfie
 ( 9.31 ) Mermida
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void PR_intVETOR ( int SIZE , int ARRAY [] ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Escreve uma simples listagem dos valores de um vetor do tipo inteiro definido por ARRAY e por fim SIZE determina até quando será printado os valores do ARRAY`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{
+      // ... Resultado armazenado em um vetor
+      int array [] = { 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10 };
+
+      // Printando essa lista de forma rápida e fácil
+      PR_intVETOR ( 10 , array );
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```ssh
+1 2 3 4 5 6 7 8 9 10
+```
