@@ -106,3 +106,63 @@ main ( void )
   <img src="https://user-images.githubusercontent.com/114815898/232086709-677d30c3-38c3-4b19-830d-cadbdcdff957.png">
 </p>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void CS_SETFULLSCREEN ( void ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Faz com que o console fique em tela cheia`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+       // Programa iniciara em tela cheia
+       CS_SETFULLSCREEN ();
+}
+
+```
+
+<br>
+
+
+
+
+#### SAÍDA DO CONSOLE:
+
+```sh
+
+O CONSOLE FICARÁ EM TELA CHEIA!
+
+```
+
