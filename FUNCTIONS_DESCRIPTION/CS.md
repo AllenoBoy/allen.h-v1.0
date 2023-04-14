@@ -813,3 +813,53 @@ star  -> ( 0 , 0 )
 fim   -> ( 20 , 0 )
 
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> COORD CS_SETxyCURSOR ( int X , int Y ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Salva em uma variável`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+}
+
+```
+
+
+<br>
+
+
+#### SAÍDA DO CONSOLE:
+
+```sh
+
+```
