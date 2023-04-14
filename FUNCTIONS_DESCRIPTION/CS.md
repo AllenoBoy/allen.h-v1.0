@@ -22,7 +22,7 @@
 <br>
 <br>
 
-- **O QUE ELA FAZ**: `Define a região do texto, usando os macros de regiões do console`;
+- **O QUE ELA FAZ**: `Define a região do texto, usando os macros de regiões do console para substituir REGION`;
 
 <br>
 
@@ -76,7 +76,7 @@ main ( void )
 <br>
 <br>
 
-- **O QUE ELA FAZ**: `Define o título do programa que fica no topo console`;
+- **O QUE ELA FAZ**: `Define o título do programa que fica no topo console pela substituição da variável TITLE`;
 
 <br>
 
@@ -516,7 +516,7 @@ main ( void )
 <br>
 <br>
 
-- **O QUE ELA FAZ**: `Define a estilização / cor do console`;
+- **O QUE ELA FAZ**: `Define a estilização / cor do console a partir do uso do parâmetro VARIATION`;
 
 <br>
 
@@ -575,7 +575,7 @@ OBSERVAÇÃO: PARA SABER CORRETAMENTE QUAL VARIAÇÃO USAR EXECUTE O CÓDIGO ACI
 <br>
 <br>
 
-- **O QUE ELA FAZ**: `Define a posição onde o console irá estar`;
+- **O QUE ELA FAZ**: `Define a posição onde o console irá estar, usando os parâmetros X e Y que sempre devem ser positivos`;
 
 <br>
 
@@ -636,7 +636,7 @@ OBSERVAÇÃO: A POSIÇÃO DO CONSOLE SERÁ DEFINIDA A PARTIR DE X E Y ( CONSIDER
 <br>
 <br>
 
-- **O QUE ELA FAZ**: `Define o tamanho do console`;
+- **O QUE ELA FAZ**: `Define o tamanho do console, a partir dos parâmetros WIDTH e HEIGHT`;
 
 <br>
 
