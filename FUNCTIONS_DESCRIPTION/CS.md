@@ -1011,3 +1011,62 @@ main ( void )
 OBSERVAÇÃO: A CRIAÇÃO DO CONSOLE DESTROI O ANTIGO
 
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void CLOSECONSOLE ( void ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Encerra a aplicação`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{     
+    // Encerrando
+    getch ();
+    CLSOECONSOLE ();
+}
+
+```
+
+
+<br>
+
+
+#### SAÍDA DO CONSOLE:
+
+```sh
+
+OBSERVAÇÃO: ENCERRA A APLICAÇÃO DIRETAMENTE / FORÇADAMENTE
+
+```
