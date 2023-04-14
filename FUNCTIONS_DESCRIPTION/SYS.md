@@ -239,3 +239,274 @@ main ( void )
 <p align="center">
   <img src="https://user-images.githubusercontent.com/114815898/232137429-1abf55d0-71c8-4693-8d2e-5da01d2b15a6.png">
 </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void SYS_SETTITLE ( const char* TITLE ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Define o título do console a partir de TITLE`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+       // Definindo o nome do console
+       SYS_SETTITLE ("today");
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/114815898/232137880-eec4f0fd-5d66-4c9f-88de-2abda11a60b5.png">
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void SYS_PAUSE ( int HIDE_ ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Cria um pause no console, de forma visível ou escondida usando a HIDE_`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+       printf ("Olha so    ");
+       
+       // Printando a informação sem esconder
+       SYS_PAUSE ( no );
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```sh
+
+Olha so    Pressione qualquer tecla para continuar...
+
+```
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void SYS_SETFULLSCREEN ( void ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Deixa o console em tela cheia da forma alt+enter`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+       // Deixando em tela cheia
+       SYS_SETFULLSCREEN ();
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```sh
+
+OBSERVAÇÃO: O CONSOLE FICARÁ EM TELA CHEIA NA FORMA ALT+ENTER
+
+```
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void SYS_GCCVERSION ( void ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Printa no console a atual versão do compilador da linguagem c`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+       // Compilador padrão da biblioteca
+       SYS_GCCVERSION ();
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/114815898/232138920-0c61d00a-6d06-4c40-bbcb-b756a284c60d.png">
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void SYS_POPS ( const char* COMMAND ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Funciona como a função system (""), onde você pode executar diversas funções, do sistema`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+       // Exemplo: Comando de Pause
+       SYS_POPS ( "pause" );
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```sh
+Pressione qualquer tecla para continuar...
+```
