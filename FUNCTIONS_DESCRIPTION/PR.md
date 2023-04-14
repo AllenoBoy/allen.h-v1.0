@@ -1493,3 +1493,108 @@ main ( void )
 
 
 
+
+
+
+
+
+<br>
+
+<h3 align="center"> void PR_charVETOR ( int SIZE , char ARRAY [] ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Escreve uma simples listagem dos valores de um vetor do tipo char definido por ARRAY, onde SIZE nada mais é do que o tamanho do vetor`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{
+      // Char de vetor para teste
+      char vogals [] = { 'a' , 'e' , 'i' , 'o' , 'u' };
+      
+      // Print desse vetor
+      PR_charVETOR ( 5 , vogals );
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```ssh
+a e i o u
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void PR_charMATRIZ ( int LINES , int COLS , char B_ARRAY [LINES] [COLS] ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Escreve uma simples listagem dos valores de uma matriz do tipo char definida por B_ARRAY, onde, LINES se refere a quantidade de linhas da matriz, COLS se refere a quantidade de colunas e por fim B_ARRAY se refere a matriz que será utilizada`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{
+      // GRID
+      char grid [] [5] = {
+
+                         { '#' , '#' , '_' , '#' , '#' },
+                         { '#' , '#' , '#' , '#' , '#' },
+                         { '#' , '#' , '_' , '#' , '#' },
+
+                         };
+
+      // Printando esse grid
+      PR_charMATRIZ ( 3 , 5 , grid );
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```ssh
+# # _ # # # # # # # # _ # #
+```
+
+<br>
+
+---
+
