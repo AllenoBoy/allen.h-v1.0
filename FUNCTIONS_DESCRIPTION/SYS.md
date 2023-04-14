@@ -1076,7 +1076,7 @@ OBSERVAÇÃO: O CONTEÚDO QUE SERÁ RENOMEADO PRECISA DA TERMINAÇÃO DO SEU TIP
 
 <br>
 
-<h3 align="center"> void SYS_ECHO ( const char* TEXT ) </h3> 
+<h3 align="center"> void echo ( const char* TEXT ) </h3> 
 
 <br>
 <br>
@@ -1095,7 +1095,7 @@ int
 main ( void )
 {      
     // Printando olá mundo!
-    SYS_ECHO ("olá mundo!");
+    echo ("olá mundo!");
 }
 
 ```
