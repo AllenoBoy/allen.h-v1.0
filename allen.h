@@ -1,10 +1,24 @@
+
+
+
+
+/*
+ * MADE IN:     JATAÍ - GO , IN 2º SEMESTER OF COMPUTER SCIENCE
+ * NAME:        allen.h
+ * DESCRIPTION: DYNAMIC CODE SIMPLIFICATION LIBRARY IN C LANGUAGE
+ * COMPILER:    TDM-GCC
+ * DEVELOPER:   ALLISON DANTAS ROCHA DE SOUZA JÚNIOR
+ * OBJECTIVE:   EASY PROGRAMMING IN C
+ */
+
+
+
+
 # ifndef _ALLEN_
 
 
 
-
-
-/* PADRONIZAÇÃO DO CONSOLE */
+// CONSOLE STANDARDIZATION
 
 # define MAX_PATH_LENGTH PATH_MAX
 # define WM_SETBKCOLOR 0x2001
@@ -18,7 +32,7 @@
 
 
 
-/* BIBLIOTECAS PADRÃO DA LINGUAGEM C */
+// STANDARD LIBRARIES
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -44,7 +58,7 @@
 
 
 
-/* MACROS DA BIBLIOTECA: Regiões do Console / Códigos de página */
+// MACROS: CONSOLE REGIONS / CODE PAGES
 
 # define DEFAULT     850
 # define BRAZIL     1252
@@ -58,7 +72,7 @@
 
 
 
-/* MACROS DA BIBLIOTECA: Estilo do Texto do Console */
+// MACROS: TEXT STYLING
 
 # define BRIGHT1       0
 # define BRIGHT2       1
@@ -73,7 +87,7 @@
 
 
 
-/* MACROS DA BIBLIOTECA: Operadores */
+// MACROS: OPERATORS
 
 # define HT 989
 # define LT 898
@@ -101,7 +115,7 @@
 
 
 
-/* MACROS DA BIBLIOTECA: GWC_STRING ( ... ) e PR_STRING ( ... ) */
+// MACROS: STRING FUNCTIONS ( GWC_STRING | PR_STRING )
 
 # define stringSZ      92
 # define stringEQ      32
@@ -115,10 +129,11 @@
 # define notext    "@%!*"
 # define nosize         0
 # define notoken   ")123"
+# define norchar   '_'
 
 
 
-/* MACROS DA BIBLIOTECA: Remake de C */
+// MACROS: ALLEN DEFINED
 
 # define YES              1
 # define yes              1
@@ -155,39 +170,40 @@
 # define tipo_de    typedef
 # define uniao        union
 # define vazio         void
-
-# endif /*_ALLEN_*/
-
-
-
+# define open             (
+# define close            )
+# define end              ;
 
 
-// FUNÇÕES GLOBAIS
+
+# endif
 
 
-/*
-    1. PR FUNCTIONS
-*/
 
+// GLOBAL FUNCTIONS
+
+
+
+/* 1. PR FUNCTIONS */
 
 void PR              ( const char * TEXT );
 void PRL             ( int TIMES );
 void PRS             ( int TIMES );
 void PR_INT          ( int VARIABLE );
-void PR_CHAR         ( char VARIABLE, int TIMES );
-void PR_FLOAT        ( float VARIABLE, int COMMAS );
-void PR_DOUBLE       ( double VARIABLE, int COMMAS );
-void PR_STRING       ( char STRING[] , int HOW_TO_PRINT ,char REPLACEMENT_CHAR , int NUMBER_OF_REPLACEMENTS , ...);
-void PRV_INT         ( int REVERSE , int SIZE , int TYPE , int SPACE , const char* ANY_TEXT , const char* ANY_TEXT2, int ARRAY [] );
-void PRV_FLOAT       ( int REVERSE , int SIZE , int TYPE , int SPACE , int COMMA, const char ANY_TEXT [] , const char ANY_TEXT2 [], float ARRAY [] );
-void PRV_DOUBLE      ( int REVERSE , int SIZE , int TYPE , int SPACE , int COMMA, const char ANY_TEXT [] , const char ANY_TEXT2 [], double ARRAY [] );
-void PRM_INT         ( int REVERSE , int STYLE , int LINES , int COLS , int SPACE , const char LEFT_TEXT [] , const char RIGHT_TEXT [] ,  int B_ARRAY [LINES] [COLS] );
-void PRM_FLOAT       ( int REVERSE , int STYLE , int LINES , int COLS , int SPACE , int COMMA , const char LEFT_TEXT [] , const char RIGHT_TEXT [] ,  float B_ARRAY [LINES] [COLS] );
-void PRM_DOUBLE      ( int REVERSE , int STYLE , int LINES , int COLS , int SPACE , int COMMA , const char LEFT_TEXT [] , const char RIGHT_TEXT [] ,  double B_ARRAY [LINES] [COLS] );
-void PRL_INT         ( int REVERSE , int LINES , int COLS , int SPACE , const char TEXT1 [] , const char TEXT2 [] ,  int array [] , char string [LINES] [COLS] , int MORE_SPACE );
-void PRL_FLOAT       ( int REVERSE , int LINES , int COLS , int SPACE , int COMMA, const char TEXT1 [] , const char TEXT2 [] ,  float array [] , char string [LINES] [COLS], int MORE_SPACE );
-void PRL_DOUBLE      ( int REVERSE , int LINES , int COLS , int SPACE , int COMMA, const char TEXT1 [] , const char TEXT2 [] ,  double array [] , char string [LINES] [COLS], int MORE_SPACE );
-void PR_intVETOR     ( int SIZE , int ARRAY [] );
+void PR_CHAR         ( char VARIABLE , int TIMES );
+void PR_FLOAT        ( float VARIABLE , int COMMAS );
+void PR_DOUBLE       ( double VARIABLE , int COMMAS );
+void PR_STRING       ( char STRING [ ] , int HOW_TO_PRINT , char REPLACEMENT_CHAR , int NUMBER_OF_REPLACEMENTS , ... );
+void PRV_INT         ( int REVERSE , int SIZE , int TYPE , int SPACE , const char* ANY_TEXT , const char * ANY_TEXT2 , int ARRAY [ ] );
+void PRV_FLOAT       ( int REVERSE , int SIZE , int TYPE , int SPACE , int COMMA, const char ANY_TEXT [ ] , const char ANY_TEXT2 [ ], float ARRAY [ ] );
+void PRV_DOUBLE      ( int REVERSE , int SIZE , int TYPE , int SPACE , int COMMA, const char ANY_TEXT [ ] , const char ANY_TEXT2 [ ], double ARRAY [ ] );
+void PRM_INT         ( int REVERSE , int STYLE , int LINES , int COLS , int SPACE , const char LEFT_TEXT [ ] , const char RIGHT_TEXT [ ] ,  int B_ARRAY [ LINES ] [ COLS ] );
+void PRM_FLOAT       ( int REVERSE , int STYLE , int LINES , int COLS , int SPACE , int COMMA , const char LEFT_TEXT [ ] , const char RIGHT_TEXT [ ] ,  float B_ARRAY [ LINES ] [ COLS ] );
+void PRM_DOUBLE      ( int REVERSE , int STYLE , int LINES , int COLS , int SPACE , int COMMA , const char LEFT_TEXT [ ] , const char RIGHT_TEXT [ ] ,  double B_ARRAY [ LINES ] [ COLS ] );
+void PRL_INT         ( int REVERSE , int HOW_MANY_STRINGS , int SIZE_OF_THESE_STRINGS , int SPACE , const char TEXT1 [] , const char TEXT2 [] ,  int array [] , char string [ HOW_MANY_STRINGS ] [ SIZE_OF_THESE_STRINGS ] , int MORE_SPACE );
+void PRL_FLOAT       ( int REVERSE , int HOW_MANY_STRINGS , int SIZE_OF_THESE_STRINGS , int SPACE , int COMMA, const char TEXT1 [] , const char TEXT2 [] ,  float array [] , char string [HOW_MANY_STRINGS] [SIZE_OF_THESE_STRINGS], int MORE_SPACE );
+void PRL_DOUBLE      ( int REVERSE , int HOW_MANY_STRINGS , int SIZE_OF_THESE_STRINGS , int SPACE , int COMMA, const char TEXT1 [] , const char TEXT2 [] ,  double array [] , char string [ HOW_MANY_STRINGS ] [ SIZE_OF_THESE_STRINGS ] , int MORE_SPACE );
+void PR_intVETOR     ( int SIZE , int ARRAY [ ] );
 void PR_intMATRIZ    ( int LINES , int COLS , int B_ARRAY [LINES] [COLS] );
 void PR_floatVETOR   ( int SIZE , int COMMA , float ARRAY [] );
 void PR_floatMATRIZ  ( int LINES , int COLS , int COMMA , float B_ARRAY [LINES] [COLS] );
@@ -199,44 +215,36 @@ void PR_charMATRIZ   ( int LINES , int COLS , char B_ARRAY [LINES] [COLS] );
 
 
 
+/* 2. CS FUNCTIONS */
 
-/*
-    2. CS FUNCTIONS
-*/
-
-
-void  CS_SETREGION                           ( int REGION );
-void  CS_SETTITLE                            ( const char* TITLE );
-void  CS_SETFULLSCREEN                       ( void );
-void  CS_DISABLEMAXIMIZEBUTTON               ( void );
-void  CS_DISABLEMINIMIZEBUTTON               ( void );
-void  CS_DISABLECLOSEBUTTON                  ( void );
-void  CS_DISABLEALLBUTTONS                   ( void );
-void  CS_DISABLERESIZE                       ( void );
-void  CS_DISABLESCROLLBAR                    ( void );
-void  CS_SETTEXTATTRIBUTE                    ( int VARIATION );
-void  CS_SETPOSITION                         ( int X , int Y );
-void  CS_SETSIZE                             ( int WIDHT , int HEIGHT );
-void  CS_SETFONTSIZE                         ( int SIZE );
-void  CS_SETFONTFAMILY                       ( char* FONTNAME , int FONTWIDTH , int FONTHEIGHT );
-void  CS_SETCURSORATTRIBUTES                 ( bool HIDE_ , bool BOLDCURSOR );
-COORD CS_GETCURSORPOSITION                   ( void );
-int   CS_GETxCURSORPOSITION                  ( void );
-int   CS_GETyCURSORPOSITION                  ( void );
-COORD CS_SETxyCURSOR                         ( int X , int Y );
-void  CS_SETCURSORPOSITION                   ( COORD newPos );
-void  CS_SETVISIBILITY                       ( bool HIDE_ );
-void  NEWCONSOLE                             ( void );
-void  CLOSECONSOLE                           ( void );
+void  CS_SETREGION             ( int REGION );
+void  CS_SETTITLE              ( const char* TITLE );
+void  CS_SETFULLSCREEN         ( void );
+void  CS_DISABLEMAXIMIZEBUTTON ( void );
+void  CS_DISABLEMINIMIZEBUTTON ( void );
+void  CS_DISABLECLOSEBUTTON    ( void );
+void  CS_DISABLEALLBUTTONS     ( void );
+void  CS_DISABLERESIZE         ( void );
+void  CS_DISABLESCROLLBAR      ( void );
+void  CS_SETTEXTATTRIBUTE      ( int VARIATION );
+void  CS_SETPOSITION           ( int X , int Y );
+void  CS_SETSIZE               ( int WIDHT , int HEIGHT );
+void  CS_SETFONTSIZE           ( int SIZE );
+void  CS_SETFONTFAMILY         ( char* FONTNAME , int FONTWIDTH , int FONTHEIGHT );
+void  CS_SETCURSORATTRIBUTES   ( bool HIDE_ , bool BOLDCURSOR );
+COORD CS_GETCURSORPOSITION     ( void );
+int   CS_GETxCURSORPOSITION    ( void );
+int   CS_GETyCURSORPOSITION    ( void );
+COORD CS_SETxyCURSOR           ( int X , int Y );
+void  CS_SETCURSORPOSITION     ( COORD newPos );
+void  CS_SETVISIBILITY         ( bool HIDE_ );
+void  NEWCONSOLE               ( void );
+void  CLOSECONSOLE             ( void );
 
 
 
 
-
-/*
-    3. SYS FUNCTIONS
-*/
-
+/* 3. SYS FUNCTIONS */
 
 void SYS_SETREGION         ( int REGION );
 void SYS_SETSIZE           ( int COLS , int LINES );
@@ -269,21 +277,12 @@ void SYS_WEATHER           ( const char * REGION );
 
 
 
+/* 4. PROPS FUNCTIONS */
 
-
-/*
-    4. PROP FUNCTIONS
-*/
-
-
-// PROPS
 enum   COLORS { DEFAULT_TEXT , BLACK_TEXT = 30 , RED_TEXT , GREEN_TEXT , YELLOW_TEXT , BLUE_TEXT , MAGENTA_TEXT , CYAN_TEXT , WHITE_TEXT , DEFAULT_BACKGROUND = 40 , RED_BACKGROUND , GREEN_BACKGROUND , YELLOW_BACKGROUND , BLUE_BACKGROUND , MAGENTA_BACKGROUND , CYAN_BACKGROUND , WHITE_BACKGROUND };
 enum   CLEARCODES { ClearTheTextFromTheCursorToTheEnd, ClearTheTextFromTheCursorToTheStart, ClearTheScreen };
 static HANDLE stdoutHandle , stdinHandle;
 static DWORD  outModeInit  , inModeInit;
-
-
-// FUNCTIONS
 static inline void ENABLEPROPS                ( void );
 static inline void PROP_RESTORECONSOLE        ( void );
 static inline void PROP_TEXTCOLOR             ( int CODE );
@@ -310,11 +309,7 @@ static inline void PROP_SHOWCURSOR            ( void );
 
 
 
-
-/*
-    5. G FUNCTIONS
-*/
-
+/* 5. G FUNCTIONS */
 
 static inline void BUFFER     ( void );
 char               get        ( void );
@@ -334,10 +329,9 @@ double             getD       ( const char *QUESTION_TEXT , int LINES , int SPAC
 char               getS       ( const char *QUESTION_TEXT , int LINES , int SPACES , int CONDITION , int MAX_SIZE , char STRING [MAX_SIZE] , char TOKEN , int NUMBER_OF_REPLACEMENTS , ... );
 
 
-/*
-    6. allen FUNCTIONS
-*/
 
+
+/* 6. allen FUNCTIONS */
 
 int  allen_GETDIGITS              ( int VARIABLE );
 void allen_GOTOXY                 ( int X , int Y );
@@ -359,25 +353,15 @@ void allen_REMAKESTRING           ( char * STRING , char * REMAKE );
 
 
 
-
-
-
-/*
-    7. SB FUNCTIONS
-*/
-
+/* 7. SB FUNCTIONS */ // sb_playsound -> MB_ICONASTERISK MB_ICONEXCLAMATION 0xFFFFFFFF MB_ICONERROR MB_ICONHAND MB_ICONINFORMATION MB_ICONQUESTION MB_ICONSTOP MB_ICONWARNING MB_OK
 
 int  SB_CREATEBOX ( LPCTSTR BOX_TEXT , LPCTSTR BOX_CAPTION, UINT BOX_TYPE );
-void SB_PLAYSOUND ( UINT SOUND ); // MB_ICONASTERISK MB_ICONEXCLAMATION 0xFFFFFFFF MB_ICONERROR MB_ICONHAND MB_ICONINFORMATION MB_ICONQUESTION MB_ICONSTOP MB_ICONWARNING MB_OK
+void SB_PLAYSOUND ( UINT SOUND );
 
 
 
 
-
-/*
-    8. MATTE FUNCTIONS
-*/
-
+/* 8. MATTE FUNCTIONS */
 
 double MATTE_cosseno             ( double SIN , bool PRINT , int COMMAS );
 double MATTE_cosemrad            ( double ANGULO , bool PRINT , int COMMAS );
@@ -404,11 +388,7 @@ double MATTE_raizquadrada        ( double X , bool PRINT , int COMMAS );
 
 
 
-
-/*
-    9. LOCH FUNCTIONS
-*/
-
+/* 9. LOCH FUNCTIONS */
 
 void LOCH_LOCAL ( void );
 void LOCH_SETLOCAL ( char TEXT [] );
@@ -416,11 +396,7 @@ void LOCH_SETLOCAL ( char TEXT [] );
 
 
 
-
-/*
-    10. FLEE FUNCTIONS
-*/
-
+/* 10. FLEE FUNCTIONS */
 
 void   FLEE_PUTS                 ( const char * FILE_NAME, bool ADD , const char * TEXT , ...  );
 void   FLEE_CREATEAFILE          ( const char * FILE_NAME );
@@ -513,13 +489,14 @@ void   FLEE_PRINTAREA            ( const char* FILE_NAME , int WHAT_LINE , int S
 
 
 
-// PR
+
+/* PR */
 
 
-// void PR ( não retorna nada )
-// @parametro 01: const char * TEXT { nesse parâmetro, se pode escrever o texto com aspas duplas, ou inserir uma string a ser printada no console }
 
 
+// FUNCTION: WRITES A STRING OF TYPE CONST TO THE CONSOLE
+// @param01: TEXT { RECEIVES A STRING OR A "" TEXT }
 void
 PR ( const char * TEXT )
 {
@@ -527,10 +504,11 @@ PR ( const char * TEXT )
 }
 
 
-// void PRL ( não retorna nada )
-// @parametro 01: int TIMES { nesse parâmetro, se deve colocar quantas vezes será printada uma quebra de linha no console }
 
 
+
+// FUNCTION: WRITES ON THE CONSOLE A NUMBER OF LINES
+// @param01: TIMES { HOW MANY TIMES WILL PRINT '\n' ON THE CONSOLE }
 void
 PRL ( int TIMES )
 {
@@ -539,10 +517,11 @@ PRL ( int TIMES )
 }
 
 
-// void PRL ( não retorna nada )
-// @parametro 01: int TIMES { nesse parâmetro, se deve colocar quantas vezes será printado um espaço no console }
 
 
+
+// FUNCTION: WRITES ON THE CONSOLE A NUMBER OF EMPTY SPACES
+// @param01: TIMES { HOW MANY TIMES WILL PRINT ' ' ON THE CONSOLE }
 void
 PRS ( int TIMES )
 {
@@ -551,10 +530,11 @@ PRS ( int TIMES )
 }
 
 
-// void PR_INT ( não retorna nada )
-// @parametro 01: int VARIABLE { nesse parâmetro, se deve colocar um valor do tipo inteiro ( ou uma variável ) para ser printado no console }
 
 
+
+// FUNCTION: WRITES ON THE CONSOLE A INT VALUE OR A INT VARIABLE
+// @param01: VARIABLE { WHAT VALUE WILL BE PRINTED }
 void
 PR_INT ( int VARIABLE )
 {
@@ -562,11 +542,12 @@ PR_INT ( int VARIABLE )
 }
 
 
-// void PR_CHAR ( não retorna nada )
-// @parametro 01: char VARIABLE { nesse parâmetro, se deve colocar a variável do tipo char ( ou um caractere diretamente 'x' ) }
-// @parametro 02: int  TIMES  { nesse parâmetro, se deve colocar a quantidade de vezes que esse char será printado }
 
 
+
+// FUNCTION: WRITES ON THE CONSOLE A CHAR VALUE OR VARIABLE, A N TIMES
+// @param01: VARIABLE { WHAT CHAR WILL BE PRINTED }
+// @param02: TIMES { HOW MANY TIMES THE CHAR WILL BE PRINTED }
 void
 PR_CHAR ( char VARIABLE , int TIMES )
 {
@@ -575,11 +556,12 @@ PR_CHAR ( char VARIABLE , int TIMES )
 }
 
 
-// void PR_FLOAT ( não retorna nada )
-// @parametro 01: float VARIABLE { nesse parâmetro, se deve colocar uma variável ou valor do tipo float }
-// @parametro 02 int COMMAS { nesse parâmetro, se deve colocar quantas casas decimais devem ser consideradas }
 
 
+
+// FUNCTION: WRITES ON THE CONSOLE A FLOAT VALUE OR VARIABLE
+// @param01: VARIABLE { WHAT VALUE WILL BE PRINTED }
+// @param02: COMMAS { HOW MANY DECIMAL HOUSES WILL BE PRINTED }
 void
 PR_FLOAT ( float VARIABLE , int COMMAS )
 {
@@ -587,11 +569,12 @@ PR_FLOAT ( float VARIABLE , int COMMAS )
 }
 
 
-// void PR_DOUBLE ( não retorna nada )
-// @parametro 01: double VARIABLE { nesse parâmetro, se deve colocar uma variável ou valor do tipo double }
-// @parametro 02 int COMMAS { nesse parâmetro, se deve colocar quantas casas decimais devem ser consideradas }
 
 
+
+// FUNCTION: WRITES ON THE CONSOLE A DOUBLE VALUE OR VARIABLE
+// @param01: VARIABLE { WHAT VALUE WILL BE PRINTED }
+// @param02: COMMAS { HOW MANY DECIMAL HOUSES WILL BE PRINTED }
 void
 PR_DOUBLE ( double VARIABLE, int COMMAS )
 {
@@ -599,30 +582,17 @@ PR_DOUBLE ( double VARIABLE, int COMMAS )
 }
 
 
-// void PR_STRING ( não retorna nada )
-// @parametro 01: char STRING [] { nesse parâmetro, se deve colocar a string referida }
-// @parametro 02: int HOW_TO_PRINT { nesse parâmetro, se deve colocar uma dessas formas de print:
-//
-//                                  *stringNR -> DEFINE QUE A FUNÇÃO IRÁ PRINTAR A STRING NORMALMENTE
-//                                  *stringIV -> DEFINE QUE A FUNÇÃO IRÁ PRINTAR A STRING INVERTIDA
-//                                  *stringHB -> DEFINE QUE A FUNÇÃO IRÁ SOFRER A FORMATAÇÃO DE CAIXA BAIXA PARA CAIXA ALTA ( IGNORANDO ACENTUAÇÕES )
-//                                  *stringLB -> DEFINE QUE A FUNÇÃO IRÁ SOFRER A FORMATAÇÃO DE CAIXA ALTA PARA CAIXA BAIXA ( IGNORANDO ACENTUAÇÕES )
-//                                  *stringCY -> DEFINE QUE A FUNÇÃO SERÁ PRINTADA CRIPTOGRAFADA
-//
-//                                 }
-// @parametro 03: char REPLACEMENT_CHAR { nesse parâmetro, se deve colocar qual será o char de criptografia / substituição
-//                                        isso se o parâmetro anterior for igual a stringCY, caso não seja se deve colocar no lugar
-//                                        o seguinte macro [ noprtoken ]
-//                                      }
-// @parametro 04: int NUMBER_OF_REPLACEMENTS { nesse parâmetro, se deve colocar qual será a quantidade de caracteres que serão substituidos
-//                                             exemplo: quero substituir a , x , # , @; então serão 4 substituições }
-// @parametro 05, 06, 07 ... : { nesse parâmetro, funciona como o printf, onde serão inseridos os caracteres que serão substituidos
-//                               exemplo: ... '$' , '@' , 'u' );
-//                             }
 
 
+
+// FUNCTION: WRITES ON THE CONSOLE A FORMATED STRING
+// @param01: STRING { WHAT STRING THE FUNCTION WILL USE }
+// @param02: HOW_TO_PRINT { HOW THIS STRING WILL BE PRINTED ( stringNR , stringIV , stringHB , stringLB , stringCY ) }
+// @param03: REPLACEMENT_CHAR { IF HOW_TO_PRINT = stringCY, A CHAR SHOULD BE PLACED, FOR EXAMPLE '*', IF DON'T HAVE ONE USE nochartoken }
+// @param04: NUMBER_OF_REPLACEMENTS { IF HOW_TO_PRINT = stringCY , AND U WANNA REPLACE 'a' , 'e' , 'i' , '#', SO NUMBER_OF_REPLACEMENTS SHOULD BE = 4 }
+// @param05: ... { HERE IS THE PLACE THAT THE SUBSTITUION CHARS SHOULD BE PUT }
 void
-PR_STRING ( char STRING [ ] , int HOW_TO_PRINT , char REPLACEMENT_CHAR , int NUMBER_OF_REPLACEMENTS , ...)
+PR_STRING ( char STRING [ ] , int HOW_TO_PRINT , char REPLACEMENT_CHAR , int NUMBER_OF_REPLACEMENTS , ... )
 {
 
      va_list args;
@@ -677,16 +647,17 @@ PR_STRING ( char STRING [ ] , int HOW_TO_PRINT , char REPLACEMENT_CHAR , int NUM
 }
 
 
-// void PRV_INT ( não retorna nada )
-// @parametro 01: int REVERSE { nesse parâmetro, se for verdadeiro ( OU SEJA IGUAL A 1 ) irá printar o vetor de forma invertida }
-// @parametro 02: int SIZE { nesse parâmetro, define o tamanho do vetor a ser analizado / utilizado }
-// @parametro 03: int TYPE { nesse parâmetro, define qual o tipo / variação de print será utilizada }
-// @parametro 04: int SPACE { nesse parâmetro, define para a função a quantidade de espaço teremos entre um valor e outro }
-// @parametro 05: const char * ANY_TEXT { nesse parâmetro, dependendo do tipo selecionado será ativado e servirá para escrever algo antes do valor }
-// @parametro 06: const char * ANY_TEXT2 { nesse parâmetro, dependendo do tipo selecionado será ativado e servirá para escrever algo depois do valor }
-// @parametro 07: int ARRAY [] { nesse parâmetro, se é definido o vetor do tipo inteiro a qual essa função usará }
 
 
+
+// FUNCTION: WRITES ON THE CONSOLE A FORMATED INT ARRAY
+// @param01: REVERSE { THE ARRAY WILL BE PRINTED REVERSED? }
+// @param02: SIZE { THE SIZE OF THE ARRAY THAT WILL BE USED }
+// @param03: TYPE { PRINT VARIATION }
+// @param04: SPACE { HOW MANY SPACES WILL BE PRINTED AFTER A VALUE OF THE ARRAY HAVE BEEN PRINTED }
+// @param05: ANY_TEXT { TEXT THAT WILL BE DISPLAYED BEFORE THE VALUE }
+// @param06: ANY_TEXT2 { TEXT THAT WILL BE DISPLAYED AFTER THE VALUE }
+// @param07: ARRAY { THE ARRAY THAT WILL BE USED }
 void
 PRV_INT ( int REVERSE , int SIZE , int TYPE , int SPACE , const char * ANY_TEXT , const char * ANY_TEXT2 , int ARRAY [ ] )
 {
@@ -798,7 +769,7 @@ PRV_INT ( int REVERSE , int SIZE , int TYPE , int SPACE , const char * ANY_TEXT 
        {
             for ( int kaj = SIZE - 1; kaj >= 0; kaj-- )
             {
-                  printf ("%s%d ", ANY_TEXT, ARRAY [kaj]);
+                  printf ("%s%d", ANY_TEXT, ARRAY [kaj]);
                   while ( SPACE > 0 ) { printf(" "); SPACE--; }
                   SPACE = GUARD;
             }
@@ -862,17 +833,18 @@ PRV_INT ( int REVERSE , int SIZE , int TYPE , int SPACE , const char * ANY_TEXT 
 }
 
 
-// void PRV_FLOAT ( não retorna nada )
-// @parametro 01: int REVERSE { nesse parâmetro, se for verdadeiro ( OU SEJA IGUAL A 1 ) irá printar o vetor de forma invertida }
-// @parametro 02: int SIZE { nesse parâmetro, define o tamanho do vetor a ser analizado / utilizado }
-// @parametro 03: int TYPE { nesse parâmetro, define qual o tipo / variação de print será utilizada }
-// @parametro 04: int SPACE { nesse parâmetro, define para a função a quantidade de espaço teremos entre um valor e outro }
-// @parametro 05: int COMMA { nesse parâmetro, define para a função a quantidade de casas decimais serão printadas }
-// @parametro 06: const char * ANY_TEXT { nesse parâmetro, dependendo do tipo selecionado será ativado e servirá para escrever algo antes do valor }
-// @parametro 07: const char * ANY_TEXT2 { nesse parâmetro, dependendo do tipo selecionado será ativado e servirá para escrever algo depois do valor }
-// @parametro 08: float ARRAY [] { nesse parâmetro, se é definido o vetor do tipo float a qual essa função usará }
 
 
+
+// FUNCTION: WRITES ON THE CONSOLE A FORMATED FLOAT ARRAY
+// @param01: REVERSE { THE ARRAY WILL BE PRINTED REVERSED? }
+// @param02: SIZE { THE SIZE OF THE ARRAY THAT WILL BE USED }
+// @param03: TYPE { PRINT VARIATION }
+// @param04: SPACE { HOW MANY SPACES WILL BE PRINTED AFTER A VALUE OF THE ARRAY HAVE BEEN PRINTED }
+// @param05: COMMA { HOW MANY DECIMAL HOUSES WILL BE PRINTED }
+// @param06: ANY_TEXT { TEXT THAT WILL BE DISPLAYED BEFORE THE VALUE }
+// @param07: ANY_TEXT2 { TEXT THAT WILL BE DISPLAYED AFTER THE VALUE }
+// @param08: ARRAY { THE ARRAY THAT WILL BE USED }
 void
 PRV_FLOAT ( int REVERSE , int SIZE , int TYPE , int SPACE , int COMMA, const char ANY_TEXT [] , const char ANY_TEXT2 [], float ARRAY [] )
 {
@@ -1047,17 +1019,18 @@ PRV_FLOAT ( int REVERSE , int SIZE , int TYPE , int SPACE , int COMMA, const cha
 }
 
 
-// void PRV_DOUBLE ( não retorna nada )
-// @parametro 01: int REVERSE { nesse parâmetro, se for verdadeiro ( OU SEJA IGUAL A 1 ) irá printar o vetor de forma invertida }
-// @parametro 02: int SIZE { nesse parâmetro, define o tamanho do vetor a ser analizado / utilizado }
-// @parametro 03: int TYPE { nesse parâmetro, define qual o tipo / variação de print será utilizada }
-// @parametro 04: int SPACE { nesse parâmetro, define para a função a quantidade de espaço teremos entre um valor e outro }
-// @parametro 05: int COMMA { nesse parâmetro, define para a função a quantidade de casas decimais serão printadas }
-// @parametro 06: const char * ANY_TEXT { nesse parâmetro, dependendo do tipo selecionado será ativado e servirá para escrever algo antes do valor }
-// @parametro 07: const char * ANY_TEXT2 { nesse parâmetro, dependendo do tipo selecionado será ativado e servirá para escrever algo depois do valor }
-// @parametro 08: double ARRAY [] { nesse parâmetro, se é definido o vetor do tipo double a qual essa função usará }
 
 
+
+// FUNCTION: WRITES ON THE CONSOLE A FORMATED DOUBLE ARRAY
+// @param01: REVERSE { THE ARRAY WILL BE PRINTED REVERSED? }
+// @param02: SIZE { THE SIZE OF THE ARRAY THAT WILL BE USED }
+// @param03: TYPE { PRINT VARIATION }
+// @param04: SPACE { HOW MANY SPACES WILL BE PRINTED AFTER A VALUE OF THE ARRAY HAVE BEEN PRINTED }
+// @param05: COMMA { HOW MANY DECIMAL HOUSES WILL BE PRINTED }
+// @param06: ANY_TEXT { TEXT THAT WILL BE DISPLAYED BEFORE THE VALUE }
+// @param07: ANY_TEXT2 { TEXT THAT WILL BE DISPLAYED AFTER THE VALUE }
+// @param08: ARRAY { THE ARRAY THAT WILL BE USED }
 void
 PRV_DOUBLE ( int REVERSE , int SIZE , int TYPE , int SPACE , int COMMA, const char ANY_TEXT [] , const char ANY_TEXT2 [], double ARRAY [] )
 {
@@ -1232,17 +1205,18 @@ PRV_DOUBLE ( int REVERSE , int SIZE , int TYPE , int SPACE , int COMMA, const ch
 }
 
 
-// void PRM_int ( não retorna nada )
-// @parametro 01: int REVESE { nesse parâmetro, se for verdadeiro ( OU SEJA IGUAL A 1 ) irá printar o vetor de forma invertida }
-// @parametro 02: int STYLE { nesse parâmetro, define qual o tipo / variação de print será utilizada }
-// @parametro 03: int LINES { nesse parâmetro, define quantas linhas existem no matriz B_ARRAY }
-// @parametro 04: int COLS { nesse parâmetro, define quantas colunas existem na matriz B_ARRAY }
-// @parametro 05: int SPACE { nesse parâmetro, define quantos espaços existem entre cada valor }
-// @parametro 06: const char LEFT_TEXT [] { nesse parâmetro, dependendo do tipo selecionado será ativado e servirá para escrever algo antes do valor }
-// @parametro 07: const char RIGHT_TEXT [] { nesse parâmetro, dependendo do tipo selecionado será ativado e servirá para escrever algo depois do valor }
-// @parametro 08: int B_ARRAY [LINES] [COLS] { nesse parâmetro, será inserido a matriz do tipo inteiro que será utilizada pela função }
 
 
+
+// FUNCTION: WRITES ON THE CONSOLE A FORMATED INT BIDIMENSIONAL ARRAY
+// @param01: REVERSE { THE ARRAY WILL BE PRINTED REVERSED? }
+// @param02: STYLE { THE BIDIMENSIONAL ARRAY PRINT STYLE THAT COMES FROM 1 TO 4 }
+// @param03: LINES { HOW MANY LINES THE BIDIMENSIONAL ARRAY HAVE }
+// @param04: COLS { HOW MANY COLS THE BIDIMENSIONAL ARRAY HAVE }
+// @param05: SPACE { HOW MANY SPACES WILL BE PRINTED AFTER A VALUE OF THE ARRAY HAVE BEEN PRINTED }
+// @param06: LEFT_TEXT { TEXT THAT WILL BE DISPLAYED BEFORE THE VALUE }
+// @param07: RIGHT_TEXT { TEXT THAT WILL BE DISPLAYED AFTER THE VALUE }
+// @param08: B_ARRAY { THE BIDIMENSIONAL ARRAY THAT WILL BE USED }
 void
 PRM_INT ( int REVERSE , int STYLE , int LINES , int COLS , int SPACE , const char LEFT_TEXT [] , const char RIGHT_TEXT [] ,  int B_ARRAY [LINES] [COLS] )
 {
@@ -1428,18 +1402,19 @@ PRM_INT ( int REVERSE , int STYLE , int LINES , int COLS , int SPACE , const cha
 }
 
 
-// void PRM_FLOAT ( não retorna nada )
-// @parametro 01: int REVESE { nesse parâmetro, se for verdadeiro ( OU SEJA IGUAL A 1 ) irá printar o vetor de forma invertida }
-// @parametro 02: int STYLE { nesse parâmetro, define qual o tipo / variação de print será utilizada }
-// @parametro 03: int LINES { nesse parâmetro, define quantas linhas existem no matriz B_ARRAY }
-// @parametro 04: int COLS { nesse parâmetro, define quantas colunas existem na matriz B_ARRAY }
-// @parametro 05: int SPACE { nesse parâmetro, define quantos espaços existem entre cada valor }
-// @parametro 06: int COMMA { nesse parâmetro, define quantas casas decimais serão printadas }
-// @parametro 07: const char LEFT_TEXT [] { nesse parâmetro, dependendo do tipo selecionado será ativado e servirá para escrever algo antes do valor }
-// @parametro 08: const char RIGHT_TEXT [] { nesse parâmetro, dependendo do tipo selecionado será ativado e servirá para escrever algo depois do valor }
-// @parametro 09: float B_ARRAY [LINES] [COLS] { nesse parâmetro, será inserido a matriz do tipo float que será utilizada pela função }
 
 
+
+// FUNCTION: WRITES ON THE CONSOLE A FORMATED FLOAT BIDIMENSIONAL ARRAY
+// @param01: REVERSE { THE ARRAY WILL BE PRINTED REVERSED? }
+// @param02: STYLE { THE BIDIMENSIONAL ARRAY PRINT STYLE THAT COMES FROM 1 TO 4 }
+// @param03: LINES { HOW MANY LINES THE BIDIMENSIONAL ARRAY HAVE }
+// @param04: COLS { HOW MANY COLS THE BIDIMENSIONAL ARRAY HAVE }
+// @param05: SPACE { HOW MANY SPACES WILL BE PRINTED AFTER A VALUE OF THE ARRAY HAVE BEEN PRINTED }
+// @param06: COMMA { HOW MANY DECIMAL HOUSES WILL BE PRINTED }
+// @param07: LEFT_TEXT { TEXT THAT WILL BE DISPLAYED BEFORE THE VALUE }
+// @param08: RIGHT_TEXT { TEXT THAT WILL BE DISPLAYED AFTER THE VALUE }
+// @param09: B_ARRAY { THE BIDIMENSIONAL ARRAY THAT WILL BE USED }
 void
 PRM_FLOAT ( int REVERSE , int STYLE , int LINES , int COLS , int SPACE , int COMMA , const char LEFT_TEXT [] , const char RIGHT_TEXT [] ,  float B_ARRAY [LINES] [COLS] )
 {
@@ -1542,18 +1517,19 @@ PRM_FLOAT ( int REVERSE , int STYLE , int LINES , int COLS , int SPACE , int COM
 }
 
 
-// void PRM_DOUBLE ( não retorna nada )
-// @parametro 01: int REVESE { nesse parâmetro, se for verdadeiro ( OU SEJA IGUAL A 1 ) irá printar o vetor de forma invertida }
-// @parametro 02: int STYLE { nesse parâmetro, define qual o tipo / variação de print será utilizada }
-// @parametro 03: int LINES { nesse parâmetro, define quantas linhas existem no matriz B_ARRAY }
-// @parametro 04: int COLS { nesse parâmetro, define quantas colunas existem na matriz B_ARRAY }
-// @parametro 05: int SPACE { nesse parâmetro, define quantos espaços existem entre cada valor }
-// @parametro 06: int COMMA { nesse parâmetro, define quantas casas decimais serão printadas }
-// @parametro 07: const char LEFT_TEXT [] { nesse parâmetro, dependendo do tipo selecionado será ativado e servirá para escrever algo antes do valor }
-// @parametro 08: const char RIGHT_TEXT [] { nesse parâmetro, dependendo do tipo selecionado será ativado e servirá para escrever algo depois do valor }
-// @parametro 09: double B_ARRAY [LINES] [COLS] { nesse parâmetro, será inserido a matriz do tipo double que será utilizada pela função }
 
 
+
+// FUNCTION: WRITES ON THE CONSOLE A FORMATED DOUBLE BIDIMENSIONAL ARRAY
+// @param01: REVERSE { THE ARRAY WILL BE PRINTED REVERSED? }
+// @param02: STYLE { THE BIDIMENSIONAL ARRAY PRINT STYLE THAT COMES FROM 1 TO 4 }
+// @param03: LINES { HOW MANY LINES THE BIDIMENSIONAL ARRAY HAVE }
+// @param04: COLS { HOW MANY COLS THE BIDIMENSIONAL ARRAY HAVE }
+// @param05: SPACE { HOW MANY SPACES WILL BE PRINTED AFTER A VALUE OF THE ARRAY HAVE BEEN PRINTED }
+// @param06: COMMA { HOW MANY DECIMAL HOUSES WILL BE PRINTED }
+// @param07: LEFT_TEXT { TEXT THAT WILL BE DISPLAYED BEFORE THE VALUE }
+// @param08: RIGHT_TEXT { TEXT THAT WILL BE DISPLAYED AFTER THE VALUE }
+// @param09: B_ARRAY { THE BIDIMENSIONAL ARRAY THAT WILL BE USED }
 void
 PRM_DOUBLE ( int REVERSE , int STYLE , int LINES , int COLS , int SPACE , int COMMA , const char LEFT_TEXT [] , const char RIGHT_TEXT [] ,  double B_ARRAY [LINES] [COLS] )
 {
@@ -1658,49 +1634,49 @@ PRM_DOUBLE ( int REVERSE , int STYLE , int LINES , int COLS , int SPACE , int CO
 }
 
 
-// void PRL_INT ( não retorna nada )
-// @parametro 01: int REVERSE { nesse parâmetro, se for verdadeiro ( OU SEJA IGUAL A 1 ) irá printar o vetor de forma invertida }
-// @parametro 02: int LINES { nesse parâmetro, define quantas linhas o vetor de strings existem }
-// @parametro 03: int COLS { nesse parâmetro, define quantas colunas o vetor de strings existem }
-// @parametro 04: int SPACE { nesse parâmetro, define quantos espaços terão entre cada valor }
-// @parametro 05: const char TEXT1 { nesse parâmetro,  dependendo do tipo selecionado será ativado e servirá para escrever algo antes do valor }
-// @parametro 06: const char TEXT2 { nesse parâmetro,  dependendo do tipo selecionado será ativado e servirá para escrever algo depois do valor }
-// @parametro 07: int array { nesse parâmetro,  define o vetor que será printado antes da lista }
-// @parametro 08: char string [LINES] [COLS] { nesse parâmetro,  }
-// @parametro 09: int MORE_SPACE { nesse parâmetro, após o print do valor irá printar duas quebras de linha no fim }
 
 
+
+// FUNCTION: WRITES ON THE CONSOLE A STRING LIST WITH THE SUPORT OF A INT ARRAY
+// @param01: REVERSE { THE LIST WILL BE PRINTED REVERSED? }
+// @param02: HOW_MANY_STRINGS { THE NUMBER OF WORDS ON THE STRING ARRAY }
+// @param03: SIZE_OF_THESE_STRINGS { THE SIZE OF THE STRINGS ON THE ARRAY }
+// @param04: SPACE { THE SPACE AFTER A LIST VALUE }
+// @param05: TEXT1 { TEXT BEFORE THE STRING PRINT }
+// @param06: TEXT2 { TEXT AFTER THE STRING PRINT }
+// @param06: array { INT ARRAY TO PRINT BEFORE THE LIST }
+// @param07: string { STRING ARRAY THAT WILL BE USED ON THIS FUNCTION }
+// @param08: MORE_SPACE { IF EQUAL 1 PRINTS TWO BREAKLINES }
 void
-PRL_INT ( int REVERSE , int LINES , int COLS , int SPACE , const char TEXT1 [] , const char TEXT2 [] ,  int array [] , char string [LINES] [COLS] , int MORE_SPACE )
+PRL_INT ( int REVERSE , int HOW_MANY_STRINGS , int SIZE_OF_THESE_STRINGS , int SPACE , const char TEXT1 [] , const char TEXT2 [] ,  int array [] , char string [ HOW_MANY_STRINGS ] [ SIZE_OF_THESE_STRINGS ] , int MORE_SPACE )
 {
 
           int guard = SPACE;
 
           if ( REVERSE == 0 )
           {
-               for ( int kaj = 0; kaj < LINES; kaj++ )
+               for ( int kaj = 0; kaj < HOW_MANY_STRINGS; kaj++ )
                {
                      printf ("%s%d%s%s", TEXT1, array[kaj], TEXT2, string [kaj]);
-                     while ( SPACE > 0 ) { printf(" "); SPACE--; }
 
                      if ( MORE_SPACE == 1 ) printf ("\n\n");
-
                      else printf ("\n");
 
+                     while ( SPACE > 0 ) { printf(" "); SPACE--; }
                      SPACE = guard;
                }
           }
 
           if ( REVERSE == 1 )
           {
-               for ( int kaj = LINES - 1; kaj >= 0; kaj-- )
+               for ( int kaj = HOW_MANY_STRINGS - 1; kaj >= 0; kaj-- )
                {
-                     printf ("%s%d%s%s\n", TEXT1, array[kaj], TEXT2, string [kaj]);
-                     while ( SPACE > 0 ) { printf(" "); SPACE--; }
-                     if ( MORE_SPACE == 1 ) printf ("\n\n");
+                     printf ("%s%d%s%s", TEXT1, array[kaj], TEXT2, string [kaj]);
 
+                     if ( MORE_SPACE == 1 ) printf ("\n\n");
                      else printf ("\n");
 
+                     while ( SPACE > 0 ) { printf(" "); SPACE--; }
                      SPACE = guard;
                }
           }
@@ -1708,114 +1684,114 @@ PRL_INT ( int REVERSE , int LINES , int COLS , int SPACE , const char TEXT1 [] ,
 }
 
 
-// void PRL_FLOAT ( não retorna nada )
-// @parametro 01: int REVERSE { nesse parâmetro, se for verdadeiro ( OU SEJA IGUAL A 1 ) irá printar o vetor de forma invertida }
-// @parametro 02: int LINES { nesse parâmetro, define quantas linhas o vetor de strings existem }
-// @parametro 03: int COLS { nesse parâmetro, define quantas colunas o vetor de strings existem }
-// @parametro 04: int SPACE { nesse parâmetro, define o espaço que terá no print de cada valor }
-// @parametro 05: int COMMA { nesse parâmetro, define quantas casas decimais serão printadas }
-// @parametro 06: const char TEXT1 { nesse parâmetro,  dependendo do tipo selecionado será ativado e servirá para escrever algo antes do valor }
-// @parametro 07: const char TEXT2 { nesse parâmetro,  dependendo do tipo selecionado será ativado e servirá para escrever algo depois do valor }
-// @parametro 08: float array { nesse parâmetro, define o vetor que será printado antes da lista  }
-// @parametro 09: char string [LINES] [COLS] { nesse parâmetro,  }
-// @parametro 10: int MORE_SPACE { nesse parâmetro, após o print do valor irá printar duas quebras de linha no fim }
 
 
+
+// FUNCTION: WRITES ON THE CONSOLE A STRING LIST WITH THE SUPORT OF A FLOAT ARRAY
+// @param01: REVERSE { THE LIST WILL BE PRINTED REVERSED? }
+// @param02: HOW_MANY_STRINGS { THE NUMBER OF WORDS ON THE STRING ARRAY }
+// @param03: SIZE_OF_THESE_STRINGS { THE SIZE OF THE STRINGS ON THE ARRAY }
+// @param04: SPACE { THE SPACE AFTER A LIST VALUE }
+// @param05: COMMA { DEFINES HOW MANY DECIMAL HOUSES WILL BE PRINTED }
+// @param06: TEXT1 { TEXT BEFORE THE STRING PRINT }
+// @param07: TEXT2 { TEXT AFTER THE STRING PRINT }
+// @param086: array { FLOAT ARRAY TO PRINT BEFORE THE LIST }
+// @param09: string { STRING ARRAY THAT WILL BE USED ON THIS FUNCTION }
+// @param10: MORE_SPACE { IF EQUAL 1 PRINTS TWO BREAKLINES }
 void
-PRL_FLOAT ( int REVERSE , int LINES , int COLS , int SPACE , int COMMA, const char TEXT1 [] , const char TEXT2 [] ,  float array [] , char string [LINES] [COLS], int MORE_SPACE )
+PRL_FLOAT ( int REVERSE , int HOW_MANY_STRINGS , int SIZE_OF_THESE_STRINGS , int SPACE , int COMMA, const char TEXT1 [] , const char TEXT2 [] ,  float array [] , char string [ HOW_MANY_STRINGS ] [ SIZE_OF_THESE_STRINGS ] , int MORE_SPACE )
 {
 
           int guard = SPACE;
 
           if ( REVERSE == 0 )
           {
-               for ( int kaj = 0; kaj < LINES; kaj++)
+               for ( int kaj = 0; kaj < HOW_MANY_STRINGS; kaj++ )
                {
-                     printf("%s%.*f%s%s", (COMMA <= 0) ? 0 : TEXT1, COMMA, array[kaj], TEXT2, string [kaj]);
-                     while ( SPACE > 0 ) { printf(" "); SPACE--; }
+                     printf("%s%.*f%s%s", ( COMMA <= 0) ? 0 : TEXT1, COMMA, array [ kaj ] , TEXT2 , string [ kaj ] );
 
                      if ( MORE_SPACE == 1 ) printf ("\n\n");
-
                      else printf ("\n");
 
+                     while ( SPACE > 0 ) { printf(" "); SPACE--; }
                      SPACE = guard;
                }
           }
 
           if ( REVERSE == 1 )
           {
-               for ( int kaj = LINES - 1; kaj >= 0; kaj-- )
+               for ( int kaj = HOW_MANY_STRINGS - 1; kaj >= 0; kaj-- )
                {
 
                      printf("%s%.*f%s%s", (COMMA <= 0) ? 0 : TEXT1, COMMA, array[kaj], TEXT2, string [kaj]);
-                     while ( SPACE > 0 ) { printf(" "); SPACE--; }
 
                      if ( MORE_SPACE == 1 ) printf ("\n\n");
-
                      else printf ("\n");
 
+                     while ( SPACE > 0 ) { printf(" "); SPACE--; }
                      SPACE = guard;
                }
           }
 }
 
 
-// void PRL_DOUBLE ( não retorna nada )
-// @parametro 01: int REVERSE { nesse parâmetro, se for verdadeiro ( OU SEJA IGUAL A 1 ) irá printar o vetor de forma invertida }
-// @parametro 02: int LINES { nesse parâmetro, define quantas linhas o vetor de strings existem }
-// @parametro 03: int COLS { nesse parâmetro, define quantas colunas o vetor de strings existem }
-// @parametro 04: int SPACE { nesse parâmetro, define o espaço que terá no print de cada valor }
-// @parametro 05: int COMMA { nesse parâmetro, define quantas casas decimais serão printadas }
-// @parametro 06: const char TEXT1 { nesse parâmetro,  dependendo do tipo selecionado será ativado e servirá para escrever algo antes do valor }
-// @parametro 07: const char TEXT2 { nesse parâmetro,  dependendo do tipo selecionado será ativado e servirá para escrever algo depois do valor }
-// @parametro 08: double array { nesse parâmetro, define o vetor que será printado antes da lista  }
-// @parametro 09: char string [LINES] [COLS] { nesse parâmetro,  }
-// @parametro 10: int MORE_SPACE { nesse parâmetro, após o print do valor irá printar duas quebras de linha no fim }
 
 
+
+// FUNCTION: WRITES ON THE CONSOLE A STRING LIST WITH THE SUPORT OF A DOUBLE ARRAY
+// @param01: REVERSE { THE LIST WILL BE PRINTED REVERSED? }
+// @param02: HOW_MANY_STRINGS { THE NUMBER OF WORDS ON THE STRING ARRAY }
+// @param03: SIZE_OF_THESE_STRINGS { THE SIZE OF THE STRINGS ON THE ARRAY }
+// @param04: SPACE { THE SPACE AFTER A LIST VALUE }
+// @param05: COMMA { DEFINES HOW MANY DECIMAL HOUSES WILL BE PRINTED }
+// @param06: TEXT1 { TEXT BEFORE THE STRING PRINT }
+// @param07: TEXT2 { TEXT AFTER THE STRING PRINT }
+// @param086: array { DOUBLE ARRAY TO PRINT BEFORE THE LIST }
+// @param09: string { STRING ARRAY THAT WILL BE USED ON THIS FUNCTION }
+// @param10: MORE_SPACE { IF EQUAL 1 PRINTS TWO BREAKLINES }
 void
-PRL_DOUBLE ( int REVERSE , int LINES , int COLS , int SPACE , int COMMA, const char TEXT1 [] , const char TEXT2 [] ,  double array [] , char string [LINES] [COLS], int MORE_SPACE )
+PRL_DOUBLE ( int REVERSE , int HOW_MANY_STRINGS , int SIZE_OF_THESE_STRINGS , int SPACE , int COMMA, const char TEXT1 [] , const char TEXT2 [] ,  double array [] , char string [ HOW_MANY_STRINGS ] [ SIZE_OF_THESE_STRINGS ] , int MORE_SPACE )
 {
 
           int guard = SPACE;
 
           if ( REVERSE == 0 )
           {
-               for ( int kaj = 0; kaj < LINES; kaj++)
+               for ( int kaj = 0; kaj < HOW_MANY_STRINGS; kaj++ )
                {
-                     printf("%s%.*lf%s%s", (COMMA <= 0) ? 0 : TEXT1, COMMA, array[kaj], TEXT2, string [kaj]);
-                     while ( SPACE > 0 ) { printf(" "); SPACE--; }
+                     printf("%s%.*lf%s%s", ( COMMA <= 0) ? 0 : TEXT1, COMMA, array [ kaj ] , TEXT2 , string [ kaj ] );
 
                      if ( MORE_SPACE == 1 ) printf ("\n\n");
-
                      else printf ("\n");
 
+                     while ( SPACE > 0 ) { printf(" "); SPACE--; }
                      SPACE = guard;
                }
           }
 
           if ( REVERSE == 1 )
           {
-               for ( int kaj = LINES - 1; kaj >= 0; kaj-- )
+               for ( int kaj = HOW_MANY_STRINGS - 1; kaj >= 0; kaj-- )
                {
+
                      printf("%s%.*lf%s%s", (COMMA <= 0) ? 0 : TEXT1, COMMA, array[kaj], TEXT2, string [kaj]);
-                     while ( SPACE > 0 ) { printf(" "); SPACE--; }
 
                      if ( MORE_SPACE == 1 ) printf ("\n\n");
-
                      else printf ("\n");
 
+                     while ( SPACE > 0 ) { printf(" "); SPACE--; }
                      SPACE = guard;
                }
           }
 }
 
 
-// void PR_intVETOR ( não retorna nada )
-// @parametro 01: int SIZE { nesse parâmetro, define até quanto o vetor será printado }
-// @parametro 02: int ARRAY [] { nesse parâmetro, define qual vetor do tipo inteiro será usado }
 
 
+
+// FUNCTION: WRITES ON THE CONSOLE A SIMPLE PRINT OF A INT ARRAY
+// @param01: SIZE { SIZE OF THE ARRAY THAT WILL BE PRINTED }
+// @param02: ARRAY { THE INT ARRAY THAT WILL BE USED }
 void
 PR_intVETOR ( int SIZE , int ARRAY [] )
 {
@@ -1824,12 +1800,13 @@ PR_intVETOR ( int SIZE , int ARRAY [] )
 }
 
 
-// void PR_intMATRIZ ( não retorna nada )
-// @parametro 01: int LINES { nesse parâmetro, define quantas linhas existem na matriz }
-// @parametro 02: int COLS [] { nesse parâmetro, define quantas colunas existem na matriz }
-// @parametro 03: int B_ARRAYS [] { nesse parâmetro, define qual matriz do tipo inteiro será usada }
 
 
+
+// FUNCTION: WRITES ON THE CONSOLE A SIMPLE PRINT OF A INT BIDIMENSIONAL ARRAY
+// @param01: LINES { LINES OF THE ARRAY THAT WILL BE PRINTED }
+// @param02: COLS { COLS OF  THE ARRAY THAT WILL BE PRINTED }
+// @param03: B_ARRAY { THE BIDIMENISIONAL ARRAY THAT WILL BE USED }
 void
 PR_intMATRIZ ( int LINES , int COLS , int B_ARRAY [LINES] [COLS] )
 {
@@ -1839,13 +1816,13 @@ PR_intMATRIZ ( int LINES , int COLS , int B_ARRAY [LINES] [COLS] )
 }
 
 
-// void PR_floatVETOR ( não retorna nada )
-// @parametro 01: int SIZE { nesse parâmetro, define até quanto o vetor será printado }
-// @parametro 02: int COMMA { nesse parâmetro, define quantas casas decimais serão printadas }
-// @parametro 03: float ARRAY { nesse parâmetro, define qual o vetor do tipo float será usado }
 
 
 
+// FUNCTION: WRITES ON THE CONSOLE A SIMPLE PRINT OF A FLOAT ARRAY
+// @param01: SIZE { SIZE OF THE ARRAY THAT WILL BE PRINTED }
+// @param02: COMMA { SET HOW MANY DECIMAL HOUSES WILL BE PRINTED }
+// @param03: ARRAY { THE INT ARRAY THAT WILL BE USED }
 void
 PR_floatVETOR ( int SIZE , int COMMA , float ARRAY [] )
 {
@@ -1855,13 +1832,14 @@ PR_floatVETOR ( int SIZE , int COMMA , float ARRAY [] )
 }
 
 
-// void PR_floatMATRIZ ( não retorna nada )
-// @parametro 01: int LINES { nesse parâmetro, define quantas linhas existem na matriz }
-// @parametro 02: int ARRAY [] { nesse parâmetro, define quantas linhas colunas existem na matriz }
-// @parametro 03: int COMMA { nesse parâmetro, define quantas casas decimais serão printadas }
-// @parametro 04: float B_ARRAY [] [] { nesse parâmetro, define quantas linhas colunas existem na matriz }
 
 
+
+// FUNCTION: WRITES ON THE CONSOLE A SIMPLE PRINT OF A FLOAT BIDIMENSIONAL ARRAY
+// @param01: LINES { LINES OF THE ARRAY THAT WILL BE PRINTED }
+// @param02: COLS { COLS OF  THE ARRAY THAT WILL BE PRINTED }
+// @param03: COMMA { SET HOW MANY DECIMAL HOUSES WILL BE PRINTED }
+// @param04: B_ARRAY { THE BIDIMENISIONAL ARRAY THAT WILL BE USED }
 void
 PR_floatMATRIZ ( int LINES , int COLS , int COMMA , float B_ARRAY [LINES] [COLS] )
 {
@@ -1871,13 +1849,13 @@ PR_floatMATRIZ ( int LINES , int COLS , int COMMA , float B_ARRAY [LINES] [COLS]
 }
 
 
-// void PR_doubleVETOR ( não retorna nada )
-// @parametro 01: int SIZE { nesse parâmetro, define até quanto o vetor será printado }
-// @parametro 02: int COMMA { nesse parâmetro, define quantas casas decimais serão printadas }
-// @parametro 03: double ARRAY { nesse parâmetro, define qual o vetor do tipo float será usado }
 
 
 
+// FUNCTION: WRITES ON THE CONSOLE A SIMPLE PRINT OF A DOUBLE ARRAY
+// @param01: SIZE { SIZE OF THE ARRAY THAT WILL BE PRINTED }
+// @param02: COMMA { SET HOW MANY DECIMAL HOUSES WILL BE PRINTED }
+// @param03: ARRAY { THE INT ARRAY THAT WILL BE USED }
 void
 PR_doubleVETOR ( int SIZE , int COMMA , double ARRAY [] )
 {
@@ -1887,13 +1865,14 @@ PR_doubleVETOR ( int SIZE , int COMMA , double ARRAY [] )
 }
 
 
-// void PR_doubleMATRIZ ( não retorna nada )
-// @parametro 01: int LINES { nesse parâmetro, define quantas linhas existem na matriz }
-// @parametro 02: int ARRAY [] { nesse parâmetro, define quantas linhas colunas existem na matriz }
-// @parametro 03: int COMMA { nesse parâmetro, define quantas casas decimais serão printadas }
-// @parametro 04: double B_ARRAY [] [] { nesse parâmetro, define quantas linhas colunas existem na matriz }
 
 
+
+// FUNCTION: WRITES ON THE CONSOLE A SIMPLE PRINT OF A DOUBLE BIDIMENSIONAL ARRAY
+// @param01: LINES { LINES OF THE ARRAY THAT WILL BE PRINTED }
+// @param02: COLS { COLS OF  THE ARRAY THAT WILL BE PRINTED }
+// @param03: COMMA { SET HOW MANY DECIMAL HOUSES WILL BE PRINTED }
+// @param04: B_ARRAY { THE BIDIMENISIONAL ARRAY THAT WILL BE USED }
 void
 PR_doubleMATRIZ ( int LINES , int COLS , int COMMA , double B_ARRAY [LINES] [COLS] )
 {
@@ -1903,11 +1882,12 @@ PR_doubleMATRIZ ( int LINES , int COLS , int COMMA , double B_ARRAY [LINES] [COL
 }
 
 
-// void PR_charVETOR ( não retorna nada )
-// @parametro 01: int SIZE { nesse parâmetro, define qual o tamanho do vetor de char }
-// @parametro 02: char ARRAY [] { nesse parãmetro, define qual o vetor de char será utilizado }
 
 
+
+// FUNCTION: WRITES ON THE CONSOLE A SIMPLE PRINT OF A CHAR ARRAY
+// @param01: SIZE { SIZE OF THE ARRAY THAT WILL BE PRINTED }
+// @param02: ARRAY { THE INT ARRAY THAT WILL BE USED }
 void
 PR_charVETOR ( int SIZE , char ARRAY [] )
 {
@@ -1916,12 +1896,13 @@ PR_charVETOR ( int SIZE , char ARRAY [] )
 }
 
 
-// void PR_charMATRIZ ( não retorna nada )
-// @parametro 01: int LINES { nesse parâmetro, define quantas linhas o array possui }
-// @parametro 02: int COLS { nesse parãmetro, define quantas colunas o array possui }
-// @parametro 03: char B_ARRAY { nesse parãmetro, define qual a matriz será usada }
 
 
+
+// FUNCTION: WRITES ON THE CONSOLE A SIMPLE PRINT OF A CHAR BIDIMENSIONAL ARRAY
+// @param01: LINES { LINES OF THE ARRAY THAT WILL BE PRINTED }
+// @param02: COLS { COLS OF  THE ARRAY THAT WILL BE PRINTED }
+// @param03: B_ARRAY { THE BIDIMENISIONAL ARRAY THAT WILL BE USED }
 void
 PR_charMATRIZ ( int LINES , int COLS , char B_ARRAY [LINES] [COLS] )
 {
@@ -1932,10 +1913,11 @@ PR_charMATRIZ ( int LINES , int COLS , char B_ARRAY [LINES] [COLS] )
 
 
 
-// CS
 
-// void CS_SETREGION ( não retorna nada )
-// @parametro 01: int REGION { nesse parâmetro, define a página do console }
+/* CS */
+
+
+
 
 void
 CS_SETREGION ( int REGION )
@@ -1944,8 +1926,6 @@ CS_SETREGION ( int REGION )
 }
 
 
-// void CS_SETTITLE ( não retorna nada )
-// @parametro 01: const char * TITLE { nesse parâmetro, define a página do console }
 
 
 void
@@ -6970,7 +6950,7 @@ MATTE_tangentehiperbolica ( double ANGULO , bool PRINT , int COMMAS )
 void
 LOCH_LOCAL ( void )
 {
-    setlocale ( LC_ALL , "pt_BR.UTF-8" );
+    setlocale ( LC_ALL , "portuguese_brazil" );
 }
 
 
