@@ -753,3 +753,55 @@ main ( void )
 
 
 
+<br>
+
+<h3 align="center"> COORD CS_GETCURSORPOSITION ( void ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Salva em uma variável do tipo COORD a posição do cursor`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    
+    /* ESSE TIPO DE DADO 'COORD' DEVE SER USADO COM AS FUNÇÃO CS_SETCURSORPOSITION */
+    
+    // Exemplo da estrutura COORD
+    COORD teste = { 10 , 20 };
+
+    // Pegando a posição inicial
+    COORD star = CS_GETCURSORPOSITION ();
+
+    printf ("ARROZ GOSTA DE ALLEN");
+
+    // Pegando a posição final
+    COORD fim = CS_GETCURSORPOSITION ();
+
+
+    // PRINTANDO AS COORDENADAS
+    printf ("\n\nallen: Agora vamos pegar todas as coordenadas que definimos: \n\n");
+    printf ("teste -> ( %d , %d ) \n", teste.X , teste.Y );
+    printf ("star  -> ( %d , %d ) \n", star.X , star.Y );
+    printf ("fim   -> ( %d , %d ) \n", fim.X , fim.Y );
+}
+
+```
+
+<br>
+
+
+#### SAÍDA DO CONSOLE:
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/114815898/232099891-9f92f43f-e2db-468e-ac94-34c057f80734.png">
+</p>
