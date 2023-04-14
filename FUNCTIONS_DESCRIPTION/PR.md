@@ -1377,3 +1377,119 @@ main ( void )
 ```ssh
 88.3 12.4 44.1 12.2 33.4 12.3
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void PR_doubleVETOR ( int SIZE , int COMMA , double ARRAY [] ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Escreve uma simples listagem dos valores de um vetor do tipo double definido por ARRAY, onde COMMA se refere a quantidade de casas decimais que serão printadas e SIZE o tamanho do vetor`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{
+      // ... Vetor de teste
+      double array [] = { 99.35454 , 123.43232 , 12.1312312 } end // uso do macro end = ;
+
+      // Printando esse vetor de forma rápida e fácil
+      PR_doubleVETOR ( 3 , 1 , array );
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```ssh
+99.4 123.4 12.1
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void PR_doubleMATRIZ ( int LINES , int COLS , int COMMA , double B_ARRAY [LINES] [COLS] ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Escreve uma simples listagem dos valores de uma matriz do tipo double definida por B_ARRAY, onde, LINES se refere a quantidade de linhas da matriz, COLS se refere a quantidade de colunas, COMMA se refere a quantidade de casas decimais que serão printadas e por fim B_ARRAY se refere a matriz que será utilizada`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{
+      // ... Vetor de teste
+      float double [] [2] = { { 88.3 , 12.44 } , { 44.1 , 12.2 } , { 33.422 , 12.313 } } end // uso do macro end = ;
+
+      // Printando essa matriz de forma rápida e fácil
+      PR_doubleMATRIZ ( 3 , 2 , 1 , array );
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```ssh
+88.3 12.4 44.1 12.2 33.4 12.3
+```
+
+
+
+
+
+
