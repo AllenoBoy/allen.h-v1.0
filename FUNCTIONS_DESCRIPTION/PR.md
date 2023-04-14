@@ -1210,3 +1210,170 @@ main ( void )
 ```ssh
 1 2 3 4 5 6 7 8 9 10
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void PR_intMATRIZ ( int LINES , int COLS , int B_ARRAY [LINES] [COLS] ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Escreve uma simples listagem dos valores de uma matriz do tipo inteiro definida por B_ARRAY, onde, LINES se refere a quantidade de linhas da matriz, COLS se refere a quantidade de colunas e por fim B_ARRAY se refere a matriz que será utilizada`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{
+      // ... Resultado armazenado em uma matriz
+      int array [] [3] = { { 99 , 99 , 99 } , { 88 , 88 , 88 } , { 65 , 65 , 65 } } end // uso do macro end no lugar de ;
+
+      // Printando essa matriz de forma rápida e fácil
+      PR_intMATRIZ ( 3 , 3 , array );
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```ssh
+99 99 99 88 88 88 65 65 65
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void PR_floatVETOR ( int SIZE , int COMMA , float ARRAY [] ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Escreve uma simples listagem dos valores de um vetor do tipo float definido por ARRAY, onde COMMA se refere a quantidade de casas decimais que serão printadas e SIZE o tamanho do vetor`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{
+      // ... Vetor de teste
+      float array [] = { 99.35454 , 123.43232 , 12.1312312 } end // uso do macro end = ;
+
+      // Printando esse vetor de forma rápida e fácil
+      PR_floatVETOR ( 3 , 1 , array );
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```ssh
+99.4 123.4 12.1
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void PR_floatMATRIZ ( int LINES , int COLS , int COMMA , float B_ARRAY [LINES] [COLS] ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Escreve uma simples listagem dos valores de uma matriz do tipo float definida por B_ARRAY, onde, LINES se refere a quantidade de linhas da matriz, COLS se refere a quantidade de colunas, COMMA se refere a quantidade de casas decimais que serão printadas e por fim B_ARRAY se refere a matriz que será utilizada`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{
+      // ... Vetor de teste
+      float array [] [2] = { { 88.3 , 12.44 } , { 44.1 , 12.2 } , { 33.422 , 12.313 } } end // uso do macro end = ;
+
+      // Printando essa matriz de forma rápida e fácil
+      PR_floatMATRIZ ( 3 , 2 , 1 , array );
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```ssh
+88.3 12.4 44.1 12.2 33.4 12.3
+```
