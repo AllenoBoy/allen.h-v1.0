@@ -677,3 +677,82 @@ main ( void )
 
 
 
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void CS_SETCURSORATTRIBUTES ( bool HIDE_ , bool BOLDCURSOR ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Define os atributos do cursor do console, onde HIDE_ definirá se ele estará visível e BOLDCURSOR define se o cursor será do tipo bold ou não`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Antes
+    printf ("\n Texto para checar");
+    getch ();
+
+        system ("CLS");
+
+    // Depois
+    CS_SETCURSORATTRIBUTES ( YES , false );
+    printf ("\n Texto para checar");
+    getch ();
+}
+
+```
+
+<br>
+![image]()
+
+
+
+
+#### SAÍDA DO CONSOLE:
+
+##### ANTES
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/114815898/232099808-46a082ac-9ef2-41cb-8f75-f89f319a6429.png">
+</p>
+
+##### DEPOIS
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/114815898/232099891-9f92f43f-e2db-468e-ac94-34c057f80734.png">
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
