@@ -1153,6 +1153,6 @@ main ( void )
 #### SAÍDA DO CONSOLE:
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/114815898/232154074-9407b9aa-4659-40fe-bddc-0f1b2d1406be.png">
+  <img src="https://user-images.githubusercontent.com/114815898/232154505-b56f4449-cb05-41fb-98e7-cfe40c74fb14.png">
 </p>
 
