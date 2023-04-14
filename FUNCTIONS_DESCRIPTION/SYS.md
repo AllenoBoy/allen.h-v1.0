@@ -62,3 +62,59 @@ Acentuação
 
 AcentuaþÒo
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void SYS_RESTARTCOMPUTER ( void ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Reinicia o pc`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+       // Reiniciando o pc
+       SYS_RESTARTCOMPUTER ();
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```sh
+
+OBSERVAÇÃO: É ESPERADO QUE A FUNÇÃO SÓ REINICIE O COMPUTADOR
+
+```
