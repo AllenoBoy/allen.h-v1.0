@@ -173,6 +173,7 @@
 # define open             (
 # define close            )
 # define end              ;
+# define booleana      bool
 
 
 
@@ -229,13 +230,8 @@ void  CS_DISABLESCROLLBAR      ( void );
 void  CS_SETTEXTATTRIBUTE      ( int VARIATION );
 void  CS_SETPOSITION           ( int X , int Y );
 void  CS_SETSIZE               ( int WIDHT , int HEIGHT );
-void  CS_SETFONTSIZE           ( int SIZE );
-void  CS_SETFONTFAMILY         ( char* FONTNAME , int FONTWIDTH , int FONTHEIGHT );
 void  CS_SETCURSORATTRIBUTES   ( bool HIDE_ , bool BOLDCURSOR );
 COORD CS_GETCURSORPOSITION     ( void );
-int   CS_GETxCURSORPOSITION    ( void );
-int   CS_GETyCURSORPOSITION    ( void );
-COORD CS_SETxyCURSOR           ( int X , int Y );
 void  CS_SETCURSORPOSITION     ( COORD newPos );
 void  CS_SETVISIBILITY         ( bool HIDE_ );
 void  NEWCONSOLE               ( void );
@@ -1904,7 +1900,7 @@ PR_charVETOR ( int SIZE , char ARRAY [] )
 // @param02: COLS { COLS OF  THE ARRAY THAT WILL BE PRINTED }
 // @param03: B_ARRAY { THE BIDIMENISIONAL ARRAY THAT WILL BE USED }
 void
-PR_charMATRIZ ( int LINES , int COLS , char B_ARRAY [LINES] [COLS] )
+PR_charMATRIZ ( int LINES , int COLS , char B_ARRAY [ LINES ] [ COLS ] )
 {
      int kaj = 0, jak = 0;
      for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLS; jak++ )
@@ -1919,6 +1915,8 @@ PR_charMATRIZ ( int LINES , int COLS , char B_ARRAY [LINES] [COLS] )
 
 
 
+// FUNCTION: SET CONSOLE CODE PAGE / SET CONSOLE REGION
+// @param01: REGION { SET THE CONSOLE REGION USING THE REGION MACROS }
 void
 CS_SETREGION ( int REGION )
 {
@@ -1928,6 +1926,9 @@ CS_SETREGION ( int REGION )
 
 
 
+
+// FUNCTION: SET CONSOLE TITLE
+// @param01: TITLE { NAME OF THE CONSOLE TITLE }
 void
 CS_SETTITLE ( const char * TITLE )
 {
@@ -1938,9 +1939,9 @@ CS_SETTITLE ( const char * TITLE )
 
 
 
-
+// FUNCTION: SET CONSOLE TO FULLSCREEN MODE
 void
-CS_SETFULLSCREEN ()
+CS_SETFULLSCREEN ( void )
 {
      HWND co = GetConsoleWindow ();
      ShowWindow ( co , SW_SHOWMAXIMIZED );
@@ -1950,8 +1951,9 @@ CS_SETFULLSCREEN ()
 
 
 
+// FUNCTION: DISABLE THE MAXIMIZE BUTTON ON THE CONSOLE
 void
-CS_DISABLEMAXIMIZEBUTTON ()
+CS_DISABLEMAXIMIZEBUTTON ( void )
 {
      HWND co = GetConsoleWindow ();
      DWORD sty = GetWindowLong ( co , GWL_STYLE );
@@ -1964,8 +1966,9 @@ CS_DISABLEMAXIMIZEBUTTON ()
 
 
 
+// FUNCTION: DISABLE THE MINIMIZE BUTTON ON THE CONSOLE
 void
-CS_DISABLEMINIMIZEBUTTON ()
+CS_DISABLEMINIMIZEBUTTON ( void )
 {
      HWND co = GetConsoleWindow ();
      DWORD sty = GetWindowLong ( co , GWL_STYLE );
@@ -1978,8 +1981,9 @@ CS_DISABLEMINIMIZEBUTTON ()
 
 
 
+// FUNCTION: DISABLE THE CLOSE BUTTON ON THE CONSOLE
 void
-CS_DISABLECLOSEBUTTON ()
+CS_DISABLECLOSEBUTTON ( void )
 {
      HWND hwnd = GetConsoleWindow ();
      HMENU hmenu = GetSystemMenu ( hwnd , FALSE );
@@ -1992,8 +1996,9 @@ CS_DISABLECLOSEBUTTON ()
 
 
 
+// FUNCTION: DISABLE ALL CONSOLE BUTTONS
 void
-CS_DISABLEALLBUTTONS ()
+CS_DISABLEALLBUTTONS ( void )
 {
     HWND co = GetConsoleWindow ();
     DWORD sty = GetWindowLong ( co , GWL_STYLE );
@@ -2006,8 +2011,9 @@ CS_DISABLEALLBUTTONS ()
 
 
 
+// FUNCTION: DISABLE THE RESIZE PROPERTY OF THE CONSOLE
 void
-CS_DISABLERESIZE ()
+CS_DISABLERESIZE ( void )
 {
      HWND co = GetConsoleWindow ();
 
@@ -2021,8 +2027,9 @@ CS_DISABLERESIZE ()
 
 
 
+// FUNCTION: DISABLE THE SCROLLBAR PROPERTY OF THE CONSOLE
 void
-CS_DISABLESCROLLBAR ()
+CS_DISABLESCROLLBAR ( void )
 {
      HANDLE hConsole = GetStdHandle ( STD_OUTPUT_HANDLE );
      CONSOLE_SCREEN_BUFFER_INFO csbi;
@@ -2038,6 +2045,8 @@ CS_DISABLESCROLLBAR ()
 
 
 
+// FUNCTION: SET TEXT COLOR VARIATION
+// @param01: VARIATION { SET THE VARIAITON OF COLOR THAT WINDOWS.H PROVIDES }
 void
 CS_SETTEXTATTRIBUTE ( int VARIATION )
 {
@@ -2048,6 +2057,9 @@ CS_SETTEXTATTRIBUTE ( int VARIATION )
 
 
 
+// FUNCTION: SET THE CONSOLE POSITION
+// @param01: X { SET X POSITION OF THE CONSOLE }
+// @param02: Y { SET Y POSITION OF THE CONSOLE }
 void
 CS_SETPOSITION ( int X , int Y )
 {
@@ -2059,6 +2071,9 @@ CS_SETPOSITION ( int X , int Y )
 
 
 
+// FUNCTION: SET THE CONSOLE SIZE
+// @param01: WIDTH { SET THE CONSOLE WIDTH }
+// @param02: HEIGHT { SET THE CONSOLE HEIGHT }
 void
 CS_SETSIZE ( int WIDHT , int HEIGHT )
 {
@@ -2071,44 +2086,10 @@ CS_SETSIZE ( int WIDHT , int HEIGHT )
 
 
 
-void
-CS_SETFONTSIZE ( int SIZE )
-{
-     HANDLE hConsole = GetStdHandle ( STD_OUTPUT_HANDLE );
-     CONSOLE_FONT_INFOEX font = { sizeof ( CONSOLE_FONT_INFOEX ) };
 
-     GetCurrentConsoleFontEx ( hConsole , FALSE , &font );
-     font.dwFontSize.Y = SIZE;
-     SetCurrentConsoleFontEx ( hConsole , FALSE , &font );
-}
-
-
-
-
-
-void
-CS_SETFONTFAMILY ( char* FONTNAME , int FONTWIDTH , int FONTHEIGHT )
-{
-     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-     CONSOLE_FONT_INFOEX font;
-
-     font.cbSize = sizeof(font);
-     GetCurrentConsoleFontEx(hConsole, FALSE, &font);
-
-     wchar_t wcFontName[LF_FACESIZE];
-     mbstowcs(wcFontName, FONTNAME, LF_FACESIZE);
-     wcscpy_s(font.FaceName, LF_FACESIZE, wcFontName);
-
-     font.dwFontSize.X = FONTWIDTH;
-     font.dwFontSize.Y = FONTHEIGHT;
-
-     SetCurrentConsoleFontEx(hConsole, FALSE, &font);
-}
-
-
-
-
-
+// FUNCTION: SET THE ATRIBUTES OF THE CURSOR USED ON THE CONSOLE
+// @param01: HIDE_ { SET THE CONSOLE CURSOR VISIBILITY }
+// @param02: BOLDCURSOR { SET THE CONSOLE CURSOR BOLDNESS }
 void
 CS_SETCURSORATTRIBUTES ( bool HIDE_ , bool BOLDCURSOR )
 {
@@ -2128,8 +2109,9 @@ CS_SETCURSORATTRIBUTES ( bool HIDE_ , bool BOLDCURSOR )
 
 
 
+// FUNCTION: GET THE CURSOR ACTUAL POSITION
 COORD
-CS_GETCURSORPOSITION ()
+CS_GETCURSORPOSITION ( void )
 {
      HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
      CONSOLE_SCREEN_BUFFER_INFO consoleInfo;
@@ -2144,39 +2126,8 @@ CS_GETCURSORPOSITION ()
 
 
 
-int
-CS_GETxCURSORPOSITION ()
-{
-     COORD cursorPos = CS_GETCURSORPOSITION ();
-     return cursorPos.X;
-}
-
-
-
-
-
-int
-CS_GETyCURSORPOSITION ()
-{
-     COORD cursorPos = CS_GETCURSORPOSITION();
-     return cursorPos.Y;
-}
-
-
-
-
-
-COORD
-CS_SETxyCURSOR ( int X , int Y )
-{
-     COORD newPos = { X , Y };
-     return newPos;
-}
-
-
-
-
-
+// FUNCTION: SET THE NEW CURSOR POSITION ON CONSOLE
+// @param01: newPOS { SET THE NEW CURSOR POSITION }
 void
 CS_SETCURSORPOSITION ( COORD newPos )
 {
@@ -2188,21 +2139,24 @@ CS_SETCURSORPOSITION ( COORD newPos )
 
 
 
+// FUNCTION: SET CONSOLE VISIBILITY ( VISIBLE OR NOT )
+// @param01: HIDE_ { SET THE CONSOLE VISIBILITY }
 void
 CS_SETVISIBILITY ( bool HIDE_ )
 {
      HWND consoleWindow = GetConsoleWindow ();
 
-     if ( HIDE == true  ) ShowWindow ( consoleWindow , SW_HIDE );
-     if ( HIDE == false ) ShowWindow ( consoleWindow , SW_SHOW );
+     if ( HIDE_ == true  ) ShowWindow ( consoleWindow , SW_HIDE );
+     if ( HIDE_ == false ) ShowWindow ( consoleWindow , SW_SHOW );
 }
 
 
 
 
 
+// FUNCTION: DESTROY THE OLD CONSOLE AND OPEN A NEW
 void
-NEWCONSOLE ()
+NEWCONSOLE ( void )
 {
      FreeConsole ();
      AllocConsole ();
@@ -2215,8 +2169,9 @@ NEWCONSOLE ()
 
 
 
+// FUNCTION: END APLICATION
 void
-CLOSECONSOLE ()
+CLOSECONSOLE ( void )
 {
      HWND console_window = GetConsoleWindow ();
      if ( console_window not_eq NULL ) PostMessage ( console_window , WM_CLOSE , 0 , 0 );
@@ -2225,14 +2180,13 @@ CLOSECONSOLE ()
 
 
 
-
-
-
-
-
 // SYS
 
 
+
+
+// FUNCTION: END APLICATION
+// @param01: REGION { SET CONSOLE REGION USING SYSTEM FUNCTION }
 void
 SYS_SETREGION ( int REGION )
 {
@@ -2244,6 +2198,9 @@ SYS_SETREGION ( int REGION )
 
 
 
+
+
+// FUNCTION: RESTART THE COMPUTER
 void SYS_RESTARTCOMPUTER ( void )
 {
      system ("Restart-Computer");
@@ -2251,6 +2208,11 @@ void SYS_RESTARTCOMPUTER ( void )
 
 
 
+
+
+// FUNCTION: SET THE CONSOLE SIZE USING COLS AND LINES
+// @param01: COLS { SET THE CONSOLE WINDOW COLS }
+// @param02: LINES { SET THE CONSOLE WINDOW LINES }
 void
 SYS_SETSIZE ( int COLS , int LINES )
 {
@@ -2267,10 +2229,13 @@ SYS_SETSIZE ( int COLS , int LINES )
 
 
 
+// FUNCTION: SET SYSTEM COLOR
+// @param01: TEXTCOLOR { SET THE TEXT COLOR USING CHAR OF WINDOW SYSTEM COLORS }
+// @param02: BACKGROUNDCOLOR { SET THE BACKGROUND COLOR USING CHAR OF WINDOW SYSTEM COLORS }
 void
 SYS_SETCOLOR ( char TEXTCOLOR , char BACKGROUNDCOLOR )
 {
-     char command [30];
+     char command [ 30 ];
 
      sprintf ( command , "COLOR %c%c" , BACKGROUNDCOLOR , TEXTCOLOR );
      system  ( command );
@@ -2280,6 +2245,8 @@ SYS_SETCOLOR ( char TEXTCOLOR , char BACKGROUNDCOLOR )
 
 
 
+// FUNCTION: SET CONSOLE WINDOW CAPTION
+// @param01: TITLE { SET THE NEW CONSOLE TITLE }
 void
 SYS_SETTITLE ( const char* TITLE )
 {
@@ -2293,18 +2260,20 @@ SYS_SETTITLE ( const char* TITLE )
 
 
 
+// FUNCTION: SET SYSTEM COLOR
+// @param01: HIDE_ { IF HIDE_ = 1 THE PAUSE WILL NOT SHOW THE TEXT ELSE WILL }
 void
 SYS_PAUSE ( int HIDE_ )
 {
-     if ( HIDE == 1 ) system ("PAUSE > NULL");
-     else             system ("PAUSE");
+     if ( HIDE_ == 1 ) system ("PAUSE > NULL");
+     else               system ("PAUSE");
 }
 
 
 
 
 
-
+// FUNCTION: SET THE PROGRAM TO FULLSCREEN LIKE ALT+ENTER
 void
 SYS_SETFULLSCREEN ( void )
 {
@@ -2318,6 +2287,7 @@ SYS_SETFULLSCREEN ( void )
 
 
 
+// FUNCTION: PRINT THE USER C COMPILER VERSION / INFORMATION
 void SYS_GCCVERSION ( void )
 {
      system ("gcc --version");
@@ -2327,6 +2297,8 @@ void SYS_GCCVERSION ( void )
 
 
 
+// FUNCTION: THIS FUNCTION LET THE USER EXEC A SYSTEM COMMAND LIKE system ("")
+// @param01: COMMAND { THE COMMAND THAT WILL BE EXECUTED }
 void
 SYS_POPS ( const char* COMMAND )
 {
@@ -2337,8 +2309,9 @@ SYS_POPS ( const char* COMMAND )
 
 
 
+// FUNCTION: CLEAR SCREEN
 void
-SYS_CLEARSCREEN ()
+SYS_CLEARSCREEN ( void )
 {
      system ("CLS");
 }
@@ -2347,6 +2320,8 @@ SYS_CLEARSCREEN ()
 
 
 
+// FUNCTION: PRINT ALL THE CONTENT OF A READABLE FILE
+// @param01: FILENAME { THE FILE THAT WILL BE READ }
 void
 SYS_READFILE ( const char* FILENAME )
 {
@@ -2360,6 +2335,7 @@ SYS_READFILE ( const char* FILENAME )
 
 
 
+// FUNCTION: LIST THE DIRECTORIES
 void
 SYS_LISTDIR ( void )
 {
@@ -2370,6 +2346,8 @@ SYS_LISTDIR ( void )
 
 
 
+// FUNCTION: MOVE TO A DIRECTORY
+// @param01: DIR { THE NEW DIRECTORY PLACE }
 void
 SYS_MOVETODIR ( const char* DIR )
 {
@@ -2383,6 +2361,8 @@ SYS_MOVETODIR ( const char* DIR )
 
 
 
+// FUNCTION: CREATE A FOLDER / DIRECTORY
+// @param01: DIR { THE NAME OF THE NEW DIRECTORY }
 void
 SYS_CREATEDIR ( const char* DIR )
 {
@@ -2396,6 +2376,8 @@ SYS_CREATEDIR ( const char* DIR )
 
 
 
+// FUNCTION: REMOVE A DIRECTORY
+// @param01: DIR { THE NAME OF THE DIRECTORY THAT WILL BE REMOVED }
 void
 SYS_REMOVEDIR ( const char* DIR )
 {
@@ -2409,6 +2391,9 @@ SYS_REMOVEDIR ( const char* DIR )
 
 
 
+// FUNCTION: COPY SOMETHING TO A DIR
+// @param01: FILE { THE NAME OF THE FILE }
+// @param02: DIR { THE DIR THAT WILL SAVE }
 void
 SYS_COPYFILE ( const char* FILE , const char* DIR )
 {
@@ -2422,7 +2407,9 @@ SYS_COPYFILE ( const char* FILE , const char* DIR )
 
 
 
-
+// FUNCTION: COPY SOMETHING TO A DIR AND REMOVE
+// @param01: FILE { THE NAME OF THE FILE }
+// @param02: DIR { THE DIR THAT WILL SAVE }
 void
 SYS_XCOPYFILE ( const char* FILE , const char* DIR )
 {
@@ -2436,6 +2423,9 @@ SYS_XCOPYFILE ( const char* FILE , const char* DIR )
 
 
 
+// FUNCTION: MOVE SOMETHING ( A FOLDER ) TO A NEW DIRECTORY
+// @param01: DIR { THE NAME OF THE FOLDER }
+// @param02: FINALDIR { THE DIR THAT WILL RECEIVE THE MOVED FOLDER }
 void
 SYS_MOVEDIR ( const char* DIR , const char* FINALDIR )
 {
@@ -2449,6 +2439,8 @@ SYS_MOVEDIR ( const char* DIR , const char* FINALDIR )
 
 
 
+// FUNCTION: DELETE A FILE
+// @param01: DIR_OR_FILE { DELETES A FILE OR A FOLDER }
 void
 SYS_DELETEFILE ( const char* DIR_OR_FILE )
 {
@@ -2462,6 +2454,9 @@ SYS_DELETEFILE ( const char* DIR_OR_FILE )
 
 
 
+// FUNCTION: RENAME SOMETHING
+// @param01: FILE { THE NAME OF THE FILE }
+// @param02: NEW_NAME { THE NEW NAME FOR THIS FILE }
 void
 SYS_RENAMEFILE ( const char* FILE , const char* NEW_NAME )
 {
@@ -2475,6 +2470,8 @@ SYS_RENAMEFILE ( const char* FILE , const char* NEW_NAME )
 
 
 
+// FUNCTION: SYSTEM PRINTF
+// @param01: ECHO { THE TEXT THAT U WANNA PRINT }
 void
 SYS_ECHO ( const char* TEXT )
 {
@@ -2488,6 +2485,7 @@ SYS_ECHO ( const char* TEXT )
 
 
 
+// FUNCTION: PRINT THE USER PING
 void
 SYS_PING ( void )
 {
@@ -2499,6 +2497,7 @@ SYS_PING ( void )
 
 
 
+// FUNCTION: PRINT THE LIST OF AVALIABLE WIFI
 void
 SYS_SHOWSAVEDWIFI ( void )
 {
@@ -2508,6 +2507,9 @@ SYS_SHOWSAVEDWIFI ( void )
 
 
 
+
+// FUNCTION: PRINT THE INFO AVALIABLE OF A SAVED WIFI
+// @param01: WIFI { THE NAME OF WIFI }
 void
 SYS_SHOWSAVEDWIFIINFO ( const char * WIFI )
 {
@@ -2522,6 +2524,7 @@ SYS_SHOWSAVEDWIFIINFO ( const char * WIFI )
 
 
 
+// FUNCTION: PRINT ALL THE AVALIABLE INFO OF YOUR SYSTEM
 void
 SYS_INFO ( void )
 {
@@ -2532,6 +2535,7 @@ SYS_INFO ( void )
 
 
 
+// FUNCTION: PRINT THE ACTUAL WEATHER INFO
 void
 SYS_WEATHER ( const char * REGION )
 {
@@ -2544,8 +2548,8 @@ SYS_WEATHER ( const char * REGION )
 
 
 
-// PROP
 
+// PROP
 
 
 
