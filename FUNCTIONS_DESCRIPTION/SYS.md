@@ -717,5 +717,5 @@ main ( void )
 #### SAÍDA DO CONSOLE:
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/114815898/232145873-aa4da2a5-97fd-4491-a212-5f7957293f52.png">
+  <img src="https://user-images.githubusercontent.com/114815898/232146163-bc7ef16f-ee23-44e4-b9cd-21a991775b87.png">
 </p>
