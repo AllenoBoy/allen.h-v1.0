@@ -510,3 +510,70 @@ main ( void )
 ```sh
 Pressione qualquer tecla para continuar...
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void SYS_CLEARSCREEN ( void ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Limpa no console tudo o que já tiver cido escrito`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+       printf ("i'm shaking my head, they say i am so humle, they give so much to me");
+       getch ();
+       
+       SYS_CLEARSCREEN ();
+       printf ("Discord");
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+- Antes da chamada da função:
+
+```sh
+i'm shaking my head, they say i am so humle, they give so much to me
+```
+
+- Depois da chamada da função:
+
+```sh
+Discord
+```
