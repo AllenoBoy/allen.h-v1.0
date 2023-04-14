@@ -662,3 +662,60 @@ the feelings start to rise
 when i get the time
 oohh, forgiving who u are
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void SYS_LISTDIR ( void ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Lista / Printa no console todas os diretórios presentes na pasta de execução do programa`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+      // Mostrando o conteúdo atual do programa
+      SYS_LISTDIR ();
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/114815898/232145873-aa4da2a5-97fd-4491-a212-5f7957293f52.png">
+</p>
