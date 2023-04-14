@@ -1091,3 +1091,68 @@ main ( void )
 <2.4> Roberto
 <1.3> Administrador
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void PRL_DOUBLE ( int REVERSE , int HOW_MANY_STRINGS , int SIZE_OF_THESE_STRINGS , int SPACE , int COMMA, const char TEXT1 [] , const char TEXT2 [] ,  double array [] , char string [ HOW_MANY_STRINGS ] [ SIZE_OF_THESE_STRINGS ] , int MORE_SPACE ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Escreve no console uma lista formatada do tipo double / char * ( ou seja antes da string será printado um valor de um vetor ) de forma formatada, onde, REVERSE define se a função printará de forma invertida as informações, HOW_MANY_STRINGS define quantas palavras diferentes existem (no caso o vetor de strings), SPACE define quantos espaços serão printados depois da string ser inserida, COMMA define quantas casas decimais serão printadas (referente ao ARRAY), TEXT1 se refere ao texto que será printado antes do valor do ARRAY, TEXT2 se refere ao texto que será printado depois do valor do ARRAy, ARRAY define o vetor que será utilizado para preencher a lista ( "1 - nome" ), string define o vetor de strings que será utilizado e por fim o MORE_SPACE define se em vez de uma simples quebra de linha tenhamos duas`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{
+      // Lista de nomes
+      char listagem_dos_alunos [] [50] = { "Allberto" , "Romero" , "Shion" , "Counter" , "Alfie" , "Mermida" };
+
+      // Vetor dos valores que ficam antes
+      double notc [] = { 8.33323 , 2.44421 , 6.8122 , 4.7465 , 5.312312 , 9.3123323 };
+
+      // Printando o vetor de string 'list' com os valores do tipo float
+      PRL_DOUBLE ( no , 6 , 50 , 0 , 2 , "( " , " ) " , notc , listagem_dos_alunos , NO );
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```ssh
+( 8.33 ) Alberto
+( 2.44 ) Romero
+( 6.81 ) Shion
+( 4.75 ) Counter
+( 5.31 ) Alfie
+( 9.31 ) Mermida
+```
