@@ -162,7 +162,7 @@ main ( void )
 
 ```sh
 
-O CONSOLE FICARÁ EM TELA CHEIA!
+OBSERVAÇÃO: O CONSOLE FICARÁ EM TELA CHEIA!
 
 ```
 
