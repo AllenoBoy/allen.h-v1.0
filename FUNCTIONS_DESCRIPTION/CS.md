@@ -890,3 +890,58 @@ Texto para Teste
 Agora o texto foi substituido!
 
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void CS_SETVISIBILITY ( bool HIDE_ ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Esconde ou mostra o console`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{     
+    // Escondendo o console
+    CS_SETVISIBILITY ( true ); 
+}
+
+```
+
+
+<br>
+
+
+#### SAÍDA DO CONSOLE:
+
+```sh
+
+OBSERVAÇÃO: SE O PARÂMETRO FOR IGUAL A TRUE ESCONDE O CONSOLE E SE FOR IGUAL A FALSE REAPARECE
+  
+```
