@@ -639,6 +639,14 @@ main ( void )
 {      
       // Printando o conteúdo do arquivo
       SYS_READFILE ( "arq.txt" );
+      
+      /*
+       CASO O ARQUIVO ESTEJA DENTRO DE UMA PASTA ESPECÍFICA, A FORMA DE CHAMAR É A SEGUINTE:
+       _suponhamos uma pasta "data" com o arquivo arq.txt, na execução do código ficaria assim
+       
+       SYS_READFILE ( "data\\arq.txt" );
+       
+       */
 }
 
 ```
@@ -647,7 +655,7 @@ main ( void )
 
 #### SAÍDA DO CONSOLE:
 
-```sh
+```txt
 Eu allen walker, gosto de comer chocolate!
 allen anda d+
 the feelings start to rise
