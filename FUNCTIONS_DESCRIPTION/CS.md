@@ -945,3 +945,69 @@ main ( void )
 OBSERVAÇÃO: SE O PARÂMETRO FOR IGUAL A true ESCONDE O CONSOLE E SE FOR IGUAL A false REAPARECE
 
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void NEWCONSOLE ( void ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Cria um novo console ( liberando memória )`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{     
+    // Criando um novo console
+    getch ();
+    NEWCONSOLE ();
+}
+
+```
+
+
+<br>
+
+
+#### SAÍDA DO CONSOLE:
+
+```sh
+
+OBSERVAÇÃO: A CRIAÇÃO DO CONSOLE DESTROI O ANTIGO
+
+```
