@@ -1210,3 +1210,157 @@ main ( void )
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void SYS_SHOWSAVEDWIFIINFO ( void ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Basicamente essa função lista as informações de um wifi específico, e que já foi salvo no pc ( INCLUSIVE A SENHA, QUE FICA EM CONTEÚDO DA CHAVE )`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Mostra as informações gerais de um wifi que já foi salvo no seu pc
+    SYS_SHOWSAVEDWIFIINFO ("wifi_name");
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```sh
+
+OBSERVAÇÃO: O PRINT DAS INFORMAÇÕES DO WIFI SELECIONADO SERÃO PRINTADAS DE FORMA DETALHADA
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void SYS_INFO ( void ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Basicamente essa função printa as informações do seu sistema diretamente no console`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Mostrando as informações do sistema
+    SYS_INFO();
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```sh
+
+OBSERVAÇÃO: O PRINT DAS INFORMAÇÕES DO SISTEMA TERÃO QUE SER PROCESSADAS PRIMEIRO, ASSIM DEMORANDO UM POUCO PARA PRINTAR
+
+```
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void SYS_WEATHER ( const char * REGION ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função gera uma especíe de radar com as informações do clima no local definido por REGION`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Gerando as informações do tempo para jataí
+    SYS_WEATHER ( "Jataí" );
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/114815898/232156511-4e024273-440f-4cbd-80bc-8e06b8820986.png">
+</p>
+
+
+
+
+
+
