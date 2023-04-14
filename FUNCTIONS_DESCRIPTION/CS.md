@@ -52,9 +52,57 @@ main ( void )
 
 <br>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void CS_SETTITLE ( const char * TITLE ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Define o título do programa que fica no topo console.`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+       // Definindo a Caption do programa
+       CS_SETTITLE ("biblioteca allen.h");
+}
+
+```
+
+<br>
+
+
+
+
 #### SAÍDA DO CONSOLE:
 
-```ssh
-Acentuação
-AcentuaþÒo
-```
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/114815898/232086709-677d30c3-38c3-4b19-830d-cadbdcdff957.png">
+</p>
+
