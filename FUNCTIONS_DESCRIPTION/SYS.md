@@ -1122,5 +1122,37 @@ olá mundo!
 
 
 
+<br>
 
+<h3 align="center"> void SYS_PING ( void ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: ``;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Printando as informações de ping do meu pc
+    SYS_PING ();
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/114815898/232153709-6474d915-4c21-4bff-85da-b093ae9b862a.png">
+</p>
 
