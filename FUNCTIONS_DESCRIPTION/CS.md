@@ -550,3 +550,63 @@ main ( void )
 OBSERVAÇÃO: PARA SABER CORRETAMENTE QUAL VARIAÇÃO USAR EXECUTE O CÓDIGO ACIMA QUE VOCÊ OBTERÁ A VARIAÇÃO DESEJADA, O VALOR 15 É O PADRÃO DE C
 
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void CS_SETPOSITION ( int X , int Y ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Define a posição onde o console irá estar`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+       // Definindo a posição inicial do console
+       CS_SETPOSITION ( 0 , 0 );
+
+       getch ();
+
+       // Definindo uma nova posição do console
+       CS_SETPOSITION ( 300 , 50 );
+}
+
+```
+
+<br>
+
+
+
+#### SAÍDA DO CONSOLE:
+
+```sh
+
+OBSERVAÇÃO: A POSIÇÃO DO CONSOLE SERÁ DEFINIDA A PARTIR DE X E Y ( CONSIDERANDO O TAMANHO DO CONSOLE TBM e que x e y nunca são negativos ) 
+
+```
