@@ -20,7 +20,7 @@
 
 <br>
 
-<h3 align="center"> void CS_SETREGION ( int REGION ) </h3> 
+<h3 align="center"> void SYS_SETREGION ( int REGION ) </h3> 
 
 <br>
 <br>
@@ -39,13 +39,13 @@ int
 main ( void )
 {      
        // Definindo o console como português
-       CS_SETREGION (BRAZIL); 
+       SYS_SETREGION (BRAZIL); 
        
        // Teste
        printf ("Acentuação\n\n");
        
        // Definindo o console como a padrão da linguagem c
-       CS_SETREGION (DEFAULT); 
+       SYS_SETREGION (DEFAULT); 
        
        // Teste
        printf ("Acentuação");
@@ -54,3 +54,11 @@ main ( void )
 ```
 
 <br>
+
+#### SAÍDA DO CONSOLE:
+
+```sh
+Acentuação
+
+AcentuaþÒo
+```
