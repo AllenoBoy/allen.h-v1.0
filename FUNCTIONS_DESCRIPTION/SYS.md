@@ -693,7 +693,7 @@ oohh, forgiving who u are
 <br>
 <br>
 
-- **O QUE ELA FAZ**: `Lista / Printa no console todas os diretórios presentes na pasta de execução do programa`;
+- **O QUE ELA FAZ**: `Lista / Printa no console todas os diretórios locais`;
 
 <br>
 
@@ -706,8 +706,12 @@ oohh, forgiving who u are
 int 
 main ( void )
 {      
-      // Mostrando o conteúdo atual do programa
-      SYS_LISTDIR ();
+      // Mostrando todos os diretórios locais
+      SYS_LISTDIR ("");
+      
+      /*
+       * CASO VOCÊ QUEIRA LISTAR O CONTEÚDO DE UMA PASTA: FAÇA ASSIM -> SYS_LISTDIR ( "nome_da_pasta\\nome_da_pasta_2_se_tiver");
+       */
 }
 
 ```
@@ -719,3 +723,111 @@ main ( void )
 <p align="center">
   <img src="https://user-images.githubusercontent.com/114815898/232146163-bc7ef16f-ee23-44e4-b9cd-21a991775b87.png">
 </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void SYS_CREATEDIR ( const char* DIR ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Cria uma pasta usando o parâmetro DIR`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+      // Criando uma pasta ( no diretório do programa )
+    SYS_CREATEDIR ("ALLEN");
+
+    /*
+     * CASO QUEIRA CRIAR UMA PASTA DENTRO DE OUTRA: FAÇA ASSIM -> SYS_CREATEDIR ("ALLEN\\outra_pasta");
+     */
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+
+# include "allen.h"
+
+OBSERVAÇÃO: SERÁ CRIADA UMA PASTA COM O NOME DEFINIDO NO DIRETÓRIO DO PROGRAMA!
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
