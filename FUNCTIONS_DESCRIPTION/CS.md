@@ -52,6 +52,13 @@ main ( void )
 
 <br>
 
+#### SAÍDA DO CONSOLE:
+
+```sh
+Acentuação
+AcentuaþÒo
+```
+
 
 
 
