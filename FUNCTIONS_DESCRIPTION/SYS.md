@@ -1129,7 +1129,7 @@ olá mundo!
 <br>
 <br>
 
-- **O QUE ELA FAZ**: ``;
+- **O QUE ELA FAZ**: `Basicamente essa função faz uma listagem de algumas informações da sua internet que são muito úteis`;
 
 <br>
 
@@ -1155,4 +1155,58 @@ main ( void )
 <p align="center">
   <img src="https://user-images.githubusercontent.com/114815898/232154505-b56f4449-cb05-41fb-98e7-cfe40c74fb14.png">
 </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void SYS_SHOWSAVEDWIFI ( void ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Basicamente essa função faz uma listagem de todos os wifis que seu computador já salvou`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Lista de wifi, salvo no pc
+    SYS_SHOWSAVEDWIFI ();
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/114815898/232155035-7fc36698-f965-4403-888c-891f709a9aab.png">
+</p>
+
+
+
 
