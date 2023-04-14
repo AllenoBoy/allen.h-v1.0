@@ -219,7 +219,7 @@ A biblioteca allen.h tem como objetivo a `simplificação dinâmica de código d
 | `real`                                             | float                                                               | 
 | `real_64`                                          | double                                                              | 
 | `inteiro`                                          | int                                                                 |
-| `longo  `                                          | long                                                                |
+| `longo`                                            | long                                                                |
 | `retorne` , `devolva` , `salve`                    | return                                                              |
 | `curto`                                            | short                                                               |
 | `tamanho_de`                                       | sizeof                                                              |
