@@ -22,7 +22,7 @@
 <br>
 <br>
 
-- **O QUE ELA FAZ**: `Define a região do texto, usando os macros de regiões do console.`;
+- **O QUE ELA FAZ**: `Define a região do texto, usando os macros de regiões do console`;
 
 <br>
 
@@ -76,7 +76,7 @@ main ( void )
 <br>
 <br>
 
-- **O QUE ELA FAZ**: `Define o título do programa que fica no topo console.`;
+- **O QUE ELA FAZ**: `Define o título do programa que fica no topo console`;
 
 <br>
 
