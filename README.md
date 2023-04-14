@@ -8,7 +8,7 @@ A biblioteca allen.h tem como objetivo a `simplificação dinâmica de código d
 
 <br>
 
-#### <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/blob/320614447f1e8ed2f94e59dc92e1dfe85ef9f1ed/allen.h" title="Pastebin da biblioteca."> LINK PARA DOWNLOAD DA BIBLIOTECA </a> </p>
+#### <p align="center"> <a href="https://pastebin.com/KAFTdxL4" title="Pastebin da biblioteca."> LINK PARA DOWNLOAD DA BIBLIOTECA </a> </p>
 
 <br>
 
