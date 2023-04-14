@@ -166,3 +166,153 @@ OBSERVAÇÃO: O CONSOLE FICARÁ EM TELA CHEIA!
 
 ```
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void CS_DISABLEMAXIMIZEBUTTON ( void ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Desativa o botão de maximizar do console`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+       // Desativando o botão de maximizar
+       CS_DISABLEMAXIMIZEBUTTON ();
+}
+
+```
+
+<br>
+
+
+
+
+#### SAÍDA DO CONSOLE:
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/114815898/232088894-39bed794-2903-4d03-bce1-b49e4c3b9d45.png">
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void CS_DISABLEMINIMIZEBUTTON ( void ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Desativa o botão de minimizar do console`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+       // Desativando o botão de minimizar
+       CS_DISABLEMINIMIZEBUTTON ();
+}
+
+```
+
+<br>
+
+
+
+
+#### SAÍDA DO CONSOLE:
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/114815898/232089300-2523e06c-a216-4bef-bb7f-bbb5f12790c4.png">
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void CS_DISABLECLOSEBUTTON ( void ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Desativa o botão de fechar do console`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+       // Desativando o botão de fechar
+       CS_DISABLECLOSEBUTTON ();
+}
+
+```
+
+<br>
+
+
+
+
+#### SAÍDA DO CONSOLE:
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/114815898/232089605-07715bde-be36-4cbc-8f5a-08c1f351ea24.png">
+</p>
