@@ -55,6 +55,7 @@
 # include <sys/stat.h>
 # include <sys/types.h>
 # include <pthread.h>
+# include <limits.h>
 
 
 
@@ -327,19 +328,19 @@ char               getS       ( const char *QUESTION_TEXT , int LINES , int SPAC
 /* 6. allen FUNCTIONS */
 
 int  allen_GETDIGITS              ( int VARIABLE );
-void allen_GOTOXY                 ( int X , int Y );
+void gotoxy                       ( int X , int Y );
 void allen_TESTCODEPAGE           ( int CODE_PAGE );
 void allen_CLEARSTRING            ( char *STRING );
-int  allen_HIGHERVALUEOF_ARRAY    ( int SIZE , int ARRAY [] );
-int  allen_HIGHERVALUEOFA_B_ARRAY ( int LINES , int COLUNS , int B_ARRAY [LINES] [COLUNS] );
-int  allen_LOWERVALUEOF_ARRAY     ( int SIZE , int ARRAY [] );
-int  allen_LOWERVALUEOFA_B_ARRAY  ( int LINES , int COLUNS , int B_ARRAY [LINES] [COLUNS] );
+int  allen_HIGHERARRAYint         ( int SIZE , int ARRAY [] );
+int  allen_HIGHERBARRAYint        ( int LINES , int COLUNS , int B_ARRAY [LINES] [COLUNS] );
+int  allen_LOWERARRAYint          ( int SIZE , int ARRAY [] );
+int  allen_LOWERBARRAYint         ( int LINES , int COLUNS , int B_ARRAY [LINES] [COLUNS] );
 int  allen_SUBSINTARRAY           ( int SIZE , int ARRAY [] , int CONDITION , int COMPARATOR , int TOKEN );
 int  allen_COPYINTARRAY           ( int SIZE , int ARRAY [] , int CONDITION , int COMPARATOR , int NEW_ARRAY [] );
 void allen_CLEARINTARRAY          ( int SIZE , int ARRAY [] );
-int  allen_SUBSINTB_ARRAY         ( int LINES , int COLUNS , int CONDITION , int COMPARATOR , int TOKEN , int B_ARRAY [LINES] [COLUNS] );
-int  allen_INTCOPYB_ARRAY         ( int LINES , int COLUNS , int CONDITION , int COMPARATOR , int B_ARRAY [LINES] [COLUNS] , int NEW_B_ARRAY [LINES] [COLUNS] );
-void allen_CLEARINTB_ARRAY        ( int LINES , int COLUNS , int B_ARRAY [ LINES ] [ COLUNS ] );
+int  allen_SUBSINTBARRAY          ( int LINES , int COLUNS , int CONDITION , int COMPARATOR , int TOKEN , int B_ARRAY [LINES] [COLUNS] );
+int  allen_COPYINTBARRAY          ( int LINES , int COLUNS , int CONDITION , int COMPARATOR , int B_ARRAY [LINES] [COLUNS] , int NEW_B_ARRAY [LINES] [COLUNS] );
+void allen_CLEARINTBARRAY         ( int LINES , int COLUNS , int B_ARRAY [ LINES ] [ COLUNS ] );
 void allen_ADDTOSTRING            ( char STRING [] , char ADD [] );
 void allen_REMAKESTRING           ( char STRING [] , char REMAKE [] );
 
@@ -5882,7 +5883,7 @@ allen_GETDIGITS ( int VARIABLE )
 // @param01: X { SET X CURSOR POSITION }
 // @param02: Y { SET Y CURSOR POSITION }
 void
-allen_GOTOXY ( int X , int Y )
+gotoxy ( int X , int Y )
 {
      COORD coord;
      coord.X = X;
@@ -5925,7 +5926,7 @@ allen_CLEARSTRING ( char * STRING )
 // @param01: SIZE { THE SIZE OF THE ARRAY }
 // @param02: ARRAY { THE ARRAY ITSELF }
 int
-allen_HIGHERVALUEOF_ARRAY ( int SIZE , int ARRAY [] )
+allen_HIGHERARRAYint ( int SIZE , int ARRAY [] )
 {
                    int HIGHER = ARRAY [0];
 
@@ -5944,13 +5945,15 @@ allen_HIGHERVALUEOF_ARRAY ( int SIZE , int ARRAY [] )
 // @param02: COLUNS { HOW MANY COLS THIS B. ARRAY HAVE }
 // @param03: B_ARRAY { THE B_ARRAY ITSELF }
 int
-allen_HIGHERVALUEOFA_B_ARRAY ( int LINES , int COLUNS , int B_ARRAY [LINES] [COLUNS] )
+allen_HIGHERBARRAYint ( int LINES , int COLUNS , int B_ARRAY [LINES] [COLUNS] )
 {
                    int HIGHER = B_ARRAY [0] [0];
                    int l = 0, c = 0;
 
-  for ( l = 1; l < LINES; l++ ) for ( c = 1; c < COLUNS; c++ )
-     if ( B_ARRAY [l] [c] > HIGHER ) HIGHER = B_ARRAY [l] [c];
+  for ( l = 0; l < LINES; l++ )
+        for ( c = 0; c < COLUNS; c++ )
+            if ( B_ARRAY [l] [c] > HIGHER )
+                HIGHER = B_ARRAY [l] [c];
 
   return HIGHER;
 }
@@ -5963,7 +5966,7 @@ allen_HIGHERVALUEOFA_B_ARRAY ( int LINES , int COLUNS , int B_ARRAY [LINES] [COL
 // @param01: SIZE { THE LENGTH OF THE ARRAY }
 // @param02: ARRAY { THE ARRAY ITSELF }
 int
-allen_LOWERVALUEOF_ARRAY ( int SIZE , int ARRAY [] )
+allen_LOWERARRAYint ( int SIZE , int ARRAY [] )
 {
                    int LOWER = ARRAY [0];
                    int i = 0;
@@ -5983,13 +5986,15 @@ allen_LOWERVALUEOF_ARRAY ( int SIZE , int ARRAY [] )
 // @param02: COLUNS { THE COLUNS OF THE B_ARRAY }
 // @param03: B_ARRAY { THE B_ARRAY ITSELF }
 int
-allen_LOWERVALUEOFA_B_ARRAY ( int LINES , int COLUNS , int B_ARRAY [LINES] [COLUNS] )
+allen_LOWERBARRAYint ( int LINES , int COLUNS , int B_ARRAY [LINES] [COLUNS] )
 {
-                   int LOWER = B_ARRAY [0] [0];
+                   int LOWER = INT_MAX;
                    int l = 0, c = 0;
 
-  for ( l = 1; l < LINES; l++ ) for ( c = 1; c < COLUNS; c++ )
-     if ( B_ARRAY [l] [c] < LOWER ) LOWER = B_ARRAY [l] [c];
+  for ( l = 0; l < LINES; l++ )
+        for ( c = 0; c < COLUNS; c++ )
+            if ( B_ARRAY [l] [c] < LOWER )
+                LOWER = B_ARRAY [l] [c];
 
   return LOWER;
 }
@@ -6297,7 +6302,7 @@ allen_CLEARINTARRAY  ( int SIZE , int ARRAY [] )
 // @param04: COMPARATOR { THE COMPARATOR TO EVALIDATE }
 // @param05: B_ARRAY { THE B_ARRAY ITSELF }
 int
-allen_SUBSINTB_ARRAY ( int LINES , int COLUNS , int CONDITION , int COMPARATOR , int TOKEN , int B_ARRAY [LINES] [COLUNS] )
+allen_SUBSINTBARRAY ( int LINES , int COLUNS , int CONDITION , int COMPARATOR , int TOKEN , int B_ARRAY [LINES] [COLUNS] )
 {
     int pos = 0 , kaj = 0, jak = 0, low_1 = 0, low_2 = 0, COPYA [LINES] [COLUNS], SIZE = LINES * COLUNS , VET [SIZE];
 
@@ -6465,22 +6470,22 @@ allen_SUBSINTB_ARRAY ( int LINES , int COLUNS , int CONDITION , int COMPARATOR ,
 // @param05: B_ARRAY { THE ARRAY ITSELF }
 // @param06: NEW_B_ARRAY { THE NEW ARRAY }
 int
-allen_INTCOPYB_ARRAY ( int LINES , int COLUNS , int CONDITION , int COMPARATOR , int B_ARRAY [LINES] [COLUNS] , int NEW_B_ARRAY [LINES] [COLUNS] )
+allen_COPYINTBARRAY ( int LINES , int COLUNS , int CONDITION , int COMPARATOR , int B_ARRAY [LINES] [COLUNS] , int NEW_B_ARRAY [LINES] [COLUNS] )
 {
-    int pos = 0 , kaj = 0, jak = 0, low_1 = 0, low_2 = 0, COPYA [LINES] [COLUNS], SIZE = LINES * COLUNS , VET [SIZE];
+    int pos = 0 , kaj = 0, jak = 0, low_1 = 0, low_2 = 0, COPYA [LINES] [COLUNS], SIZE = LINES * COLUNS , VET [SIZE], i = 0, j = 0;
 
     switch ( CONDITION )
      {
      case HT:
              for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
-                   if ( B_ARRAY [kaj] [jak] > COMPARATOR ) { NEW_B_ARRAY [kaj] [jak] = B_ARRAY [kaj] [jak];  pos++; }
+                   if ( B_ARRAY [kaj] [jak] > COMPARATOR ) { NEW_B_ARRAY [i] [j] = B_ARRAY [kaj] [jak];  pos++; j++; if ( j == COLUNS ) i++; }
      return pos;
      break;
 
 
      case LT:
              for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
-                   if ( B_ARRAY [kaj] [jak] < COMPARATOR ) { NEW_B_ARRAY [kaj] [jak] = B_ARRAY [kaj] [jak];  pos++; }
+                   if ( B_ARRAY [kaj] [jak] < COMPARATOR ) { NEW_B_ARRAY [i] [j] = B_ARRAY [kaj] [jak];  pos++; j++; if ( j == COLUNS ) i++; }
      return pos;
      break;
 
@@ -6488,7 +6493,7 @@ allen_INTCOPYB_ARRAY ( int LINES , int COLUNS , int CONDITION , int COMPARATOR ,
 
      case EQ:
             for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
-                   if ( B_ARRAY [kaj] [jak] == COMPARATOR ) { NEW_B_ARRAY [kaj] [jak] = B_ARRAY [kaj] [jak];  pos++; }
+                   if ( B_ARRAY [kaj] [jak] == COMPARATOR ) { NEW_B_ARRAY [i] [j] = B_ARRAY [kaj] [jak];  pos++; j++; if ( j == COLUNS ) i++;  }
      return pos;
      break;
 
@@ -6496,7 +6501,7 @@ allen_INTCOPYB_ARRAY ( int LINES , int COLUNS , int CONDITION , int COMPARATOR ,
 
      case DF:
              for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
-                   if ( B_ARRAY [kaj] [jak] not_eq COMPARATOR ) { NEW_B_ARRAY [kaj] [jak] = B_ARRAY [kaj] [jak];  pos++; }
+                   if ( B_ARRAY [kaj] [jak] not_eq COMPARATOR ) { NEW_B_ARRAY [i] [j] = B_ARRAY [kaj] [jak];  pos++; j++; if ( j == COLUNS ) i++; }
      return pos;
      break;
 
@@ -6504,7 +6509,7 @@ allen_INTCOPYB_ARRAY ( int LINES , int COLUNS , int CONDITION , int COMPARATOR ,
 
      case HE:
              for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
-                   if ( B_ARRAY [kaj] [jak] >= COMPARATOR ) { NEW_B_ARRAY [kaj] [jak] = B_ARRAY [kaj] [jak];  pos++; }
+                   if ( B_ARRAY [kaj] [jak] >= COMPARATOR ) { NEW_B_ARRAY [i] [j] = B_ARRAY [kaj] [jak];  pos++; j++; if ( j == COLUNS ) i++; }
      return pos;
      break;
 
@@ -6512,7 +6517,7 @@ allen_INTCOPYB_ARRAY ( int LINES , int COLUNS , int CONDITION , int COMPARATOR ,
 
      case LE:
              for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
-                   if ( B_ARRAY [kaj] [jak] <= COMPARATOR ) { NEW_B_ARRAY [kaj] [jak] = B_ARRAY [kaj] [jak];  pos++; }
+                   if ( B_ARRAY [kaj] [jak] <= COMPARATOR ) { NEW_B_ARRAY [i] [j] = B_ARRAY [kaj] [jak];  pos++; j++; if ( j == COLUNS ) i++; }
      return pos;
      break;
 
@@ -6520,7 +6525,7 @@ allen_INTCOPYB_ARRAY ( int LINES , int COLUNS , int CONDITION , int COMPARATOR ,
 
      case PAR:
               for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
-                   if ( B_ARRAY [kaj] [jak] % 2 == 0 ) { NEW_B_ARRAY [kaj] [jak] = B_ARRAY [kaj] [jak];  pos++; }
+                   if ( B_ARRAY [kaj] [jak] % 2 == 0 ) { NEW_B_ARRAY [i] [j] = B_ARRAY [kaj] [jak];  pos++; j++; if ( j == COLUNS ) i++;  }
      return pos;
      break;
 
@@ -6528,7 +6533,7 @@ allen_INTCOPYB_ARRAY ( int LINES , int COLUNS , int CONDITION , int COMPARATOR ,
 
      case IMPAR:
                 for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
-                   if ( B_ARRAY [kaj] [jak] % 2 not_eq 0 ) { NEW_B_ARRAY [kaj] [jak] = B_ARRAY [kaj] [jak];  pos++; }
+                   if ( B_ARRAY [kaj] [jak] % 2 not_eq 0 ) { NEW_B_ARRAY [i] [j] = B_ARRAY [kaj] [jak];  pos++; j++; if ( j == COLUNS ) i++; }
      return pos;
      break;
 
@@ -6536,7 +6541,7 @@ allen_INTCOPYB_ARRAY ( int LINES , int COLUNS , int CONDITION , int COMPARATOR ,
 
      case MULTIPLO:
                    for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
-                         if ( B_ARRAY [kaj] [jak] % COMPARATOR == 0 ) { NEW_B_ARRAY [kaj] [jak] = B_ARRAY [kaj] [jak];  pos++; }
+                         if ( B_ARRAY [kaj] [jak] % COMPARATOR == 0 ) { NEW_B_ARRAY [i] [j] = B_ARRAY [kaj] [jak];  pos++; j++; if ( j == COLUNS ) i++; }
      return pos;
      break;
 
@@ -6544,7 +6549,7 @@ allen_INTCOPYB_ARRAY ( int LINES , int COLUNS , int CONDITION , int COMPARATOR ,
 
      case NOTMULTIPLO:
                       for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
-                         if ( B_ARRAY [kaj] [jak] % COMPARATOR not_eq 0 ) { NEW_B_ARRAY [kaj] [jak] = B_ARRAY [kaj] [jak];  pos++; }
+                         if ( B_ARRAY [kaj] [jak] % COMPARATOR not_eq 0 ) { NEW_B_ARRAY [i] [j] = B_ARRAY [kaj] [jak];  pos++; j++; if ( j == COLUNS ) i++; }
      return pos;
      break;
 
@@ -6552,7 +6557,7 @@ allen_INTCOPYB_ARRAY ( int LINES , int COLUNS , int CONDITION , int COMPARATOR ,
 
      case QUADRADO_X_EQ_Y:
                           for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
-                             if ( pow ( B_ARRAY [kaj] [jak] , 2 ) == COMPARATOR ) { NEW_B_ARRAY [kaj] [jak] = B_ARRAY [kaj] [jak];  pos++; }
+                             if ( pow ( B_ARRAY [kaj] [jak] , 2 ) == COMPARATOR ) { NEW_B_ARRAY [i] [j] = B_ARRAY [kaj] [jak];  pos++; j++; if ( j == COLUNS ) i++; }
      return pos;
      break;
 
@@ -6560,7 +6565,7 @@ allen_INTCOPYB_ARRAY ( int LINES , int COLUNS , int CONDITION , int COMPARATOR ,
 
      case QUADRADO_X_DF_Y:
                           for ( kaj = 0; kaj < LINES; kaj++ ) for ( jak = 0; jak < COLUNS; jak++ )
-                             if ( pow ( B_ARRAY [kaj] [jak] , 2 ) not_eq COMPARATOR ) { NEW_B_ARRAY [kaj] [jak] = B_ARRAY [kaj] [jak];  pos++; }
+                             if ( pow ( B_ARRAY [kaj] [jak] , 2 ) not_eq COMPARATOR ) { NEW_B_ARRAY [i] [j] = B_ARRAY [kaj] [jak];  pos++; j++; if ( j == COLUNS ) i++; }
      return pos;
      break;
 
@@ -6654,7 +6659,7 @@ allen_INTCOPYB_ARRAY ( int LINES , int COLUNS , int CONDITION , int COMPARATOR ,
 // @param02: COLUNS { THE COLUNS OF THE B_ARRAY }
 // @param05: B_ARRAY { THE ARRAY ITSELF }
 void
-allen_CLEARINTB_ARRAY  ( int LINES , int COLUNS , int B_ARRAY [ LINES ] [ COLUNS ] )
+allen_CLEARINTBARRAY  ( int LINES , int COLUNS , int B_ARRAY [ LINES ] [ COLUNS ] )
 {
       int allen, llen;
 
