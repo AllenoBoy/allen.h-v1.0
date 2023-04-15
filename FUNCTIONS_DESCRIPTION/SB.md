@@ -73,6 +73,26 @@ main ( void )
 
 <br>
 
+#### 
+
+```txt
+Listagem dos MACROS da api do windows que podem ser usados em UINT SOUND:
+
+MB_OK:              Som de aviso padrão. Valor padrão.
+MB_ICONASTERISK:    Som de asterisco (usado no Windows XP e versões anteriores).
+MB_ICONEXCLAMATION: Som de ponto de exclamação.
+MB_ICONHAND:        Som de mão (usado no Windows XP e versões anteriores).
+MB_ICONQUESTION:    Som de ponto de interrogação.
+MB_ICONERROR:       Som de erro.
+MB_ICONINFORMATION: Som de informação.
+MB_ICONWARNING:     Som de aviso.
+MB_ICONSTOP:        Som de parada.
+
+OBS.: Esses macros podem ser chamados sozinhos ou com mais de um -> SB_PLAYSOUND ( MB_ICONQUESTION  | MB_OK ); 
+```
+
+<br>
+
 #### CÓDIGO DE EXEMPLO:
 
 ```c
@@ -81,7 +101,13 @@ main ( void )
 
 int 
 main ( void )
-{      
+{
+    PR ("Aperte qualquer tecla para reproduzir o som\n");
+    getch ();
+
+    SB_PLAYSOUND ( MB_ICONSTOP | MB_ICONWARNING );
+
+    PR ("Som reproduzido");
 }
 
 ```
@@ -90,5 +116,16 @@ main ( void )
 
 #### SAÍDA DO CONSOLE:
 
+- Antes da função:
+
 ```txt
+Aperte qualquer tecla para reproduzir o som
+_ <- Sinal do getch
+```
+
+- Após a função:
+
+```txt
+Aperte qualquer tecla para reproduzir o som
+Som reproduzido! 
 ```
