@@ -707,5 +707,374 @@ OBSERVAÇÃO: FUNÇÃO QUE LIMPA NO CONSOLE TUDO DA ATUAL POSIÇÃO DO CURSOR PA
 
 
 
+<br>
+
+<h3 align="center"> static inline void PROP_MOVEUP ( int POSITION ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Sobe o cursor a quantidade de vezes definida por POSITION`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{     
+    // Ativando os props
+    ENABLEPROPS ();
+
+    echo ("Texto 01");
+    echo ("Texto 02");
+
+    getch ();
+
+    // Substituindo o texto 01
+    PROP_MOVEUP ( 2 );
+    echo ("U tried! my son!");
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+- Antes da função:
+
+```sh
+Texto 01
+Texto 02
+```
+
+- Depois da função:
+
+```sh
+U tried! my son!
+Texto 02
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> static inline void PROP_MOVEDOWN ( int POSITION ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `desce o cursor a quantidade de vezes definida por POSITION`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{     
+    // Ativando os props
+    ENABLEPROPS ();
+
+    echo ("Texto 01");
+    echo ("Texto 02");
+
+    getch ();
+
+    // Subindo o texto 01
+    PROP_MOVEUP ( 2 );
+    echo ("U tried! my son!");
+
+    // Descendo
+    PROP_MOVEDOWN ( 2 );
+    echo ("Desci");
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+- Antes da função:
+
+```sh
+Texto 01
+Texto 02
+```
+
+- Depois da função:
+
+```sh
+U tried! my son!
+Texto 02
+
+Desci
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> static inline void PROP_MOVERIGHT ( int POSITION ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `move para a direita o cursor a quantidade de vezes definida por POSITION`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{     
+    // Ativando os props
+    ENABLEPROPS ();
+
+    echo ("Texto 01");
+    echo ("Texto 02");
+
+    getch ();
+
+    // Subindo o texto 01
+    PROP_MOVEUP ( 2 );
+    echo ("U tried! my son!");
+
+    // Descendo
+    PROP_MOVEDOWN ( 2 );
+    PR ("Desci");
+
+    // Movendo para a direita
+    PROP_MOVERIGHT ( 10 );
+    PR ("Aqui!");
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+- Antes da função:
+
+```sh
+Texto 01
+Texto 02
+```
+
+- Depois da função:
+
+```sh
+U tried! my son!
+Texto 02
+
+Desci          Aqui!
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> static inline void PROP_MOVELEFT ( int POSITION ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `move para a esquerda o cursor a quantidade de vezes definida por POSITION`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{     
+    // Ativando os props
+    ENABLEPROPS ();
+
+    echo ("Texto 01");
+    echo ("Texto 02");
+
+    getch ();
+
+    // Subindo o texto 01
+    PROP_MOVEUP ( 2 );
+    echo ("U tried! my son!");
+
+    // Descendo
+    PROP_MOVEDOWN ( 2 );
+    PR ("Desci");
+
+    // Movendo para a direita
+    PROP_MOVERIGHT ( 10 );
+    PR ("Aqui!");
+
+    // Movendo para a esquerda
+    PROP_MOVELEFT ( 12 );
+    PR ("HELLO");
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+- Antes da função:
+
+```sh
+Texto 01
+Texto 02
+```
+
+- Depois da função:
+
+```sh
+U tried! my son!
+Texto 02
+
+Desci   HELLO  Aqui!
+```
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> static inline void PROP_MOVECURSOR ( int X , int Y ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Move o cursor para uma posição específica do console ( X , Y )`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{     
+    // Ativando os props
+    ENABLEPROPS ();
+
+    echo ("ufa! amor ainda bem que estava enganado!");
+    echo ("larguei mais cedo do trabalho!");
+    echo ("e desci te fazer uma surpresa");
+
+    getch ();
+
+    // Escrevendo na frente da linha 01
+    PROP_MOVECURSOR ( 41 , 1 ); PR (" - linha 01 da musica.");
+
+    // Escrevendo na frente da linha 02
+    PROP_MOVECURSOR ( 41 , 2 ); PR (" - linha 02 da musica.");
+
+    // Escrevendo na frente da linha 03
+    PROP_MOVECURSOR ( 41 , 3 ); PR (" - linha 03 da musica."); PRL (1);
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+- Antes da função:
+
+```sh
+ufa! amor ainda bem que estava enganado!
+larguei mais cedo do trabalho!
+e desci te fazer uma surpresa
+```
+
+- Depois da função:
+
+```sh
+ufa! amor ainda bem que estava enganado! - linha 01 da musica.
+larguei mais cedo do trabalho!           - linha 02 da musica.
+e desci te fazer uma surpresa            - linha 03 da musica.
+```
+
+
+
+
+
 
 
