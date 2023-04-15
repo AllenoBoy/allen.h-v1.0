@@ -56,14 +56,6 @@ A biblioteca allen.h tem como objetivo a ` simplificação dinâmica de código 
 <br>
 
 - A biblioteca possui suporte ao uso de `threads` por causa da biblioteca pthread.h;
-- A biblioteca foi produzida utilizando o compilador `TDM-GCC` ( caso ocorram erros chequem o compilador );
-- A biblioteca permite o uso de `variáveis booleanas`;
-- A biblioteca possui macros personalizados, para amantes de `portugol`;
-- Caso não queira usar as funções específicas da biblioteca, como o `PR` use as padrões da linguagem c, como o `printf`
-- A estilização do console com as funções `PROP` podem não funcionar no console, por causa da incopatibilidade!
-- A biblioteca possui `10 tipos de variações de funções`;
-- A biblioteca foi `produzida somente como uma forma de aprendizagem`, ou seja, está passível de bugs!
-- A biblioteca possui alguns `códigos de padronização de console`, para impedir bugs!
 
 <br> <br>
 
