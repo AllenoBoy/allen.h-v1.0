@@ -578,14 +578,14 @@ main ( void )
     int array [] = { 0 , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 };
     int new_array [10];
 
-    // Printando o vetor antes da substituição
+    // Printando o vetor antes da copia
     PR ("Antes: ");
     PR_intVETOR ( 10 , array );
 
     PRL (2);
     int size = allen_COPYINTARRAY ( 10 , array , PAR , 0 , new_array );
 
-    // Printando o vetor após a substituição
+    // Printando o vetor após a copia
     PR ("Depois: ");
     PR_intVETOR ( size , new_array );
 }
@@ -600,6 +600,77 @@ main ( void )
 Antes: 0 1 2 3 4 5 6 7 8 9 
 
 Depois: 0 2 4 6 8
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void allen_CLEARINTARRAY ( int SIZE , int ARRAY [] ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função basicamente limpa todo o int array removendo todos os valores existentes `;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{  
+    int array [] = { 0 , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 };
+
+    // Printando o vetor antes da limpeza
+    PR ("Antes: ");
+    PR_intVETOR ( 10 , array );
+
+    PRL (2);
+    allen_CLEARINTARRAY ( 10 , array );
+
+    // Printando o vetor após a limpeza
+    PR ("Depois: ");
+    PR_intVETOR ( 10 , array );
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+Antes: 0 1 2 3 4 5 6 7 8 9 
+
+Depois: 0 0 0 0 0 0 0 0 0 0
 ```
 
 
