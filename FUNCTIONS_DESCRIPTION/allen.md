@@ -2,7 +2,7 @@
 
 ---
 
-#### As funções do tipo ` allen `, servem para realizar algumas funções aleatórias e específicas, comumente para vetores. 
+#### As funções do tipo ` allen `, servem para realizar algumas funções aleatórias e específicas, comumente para vetores, basicamente são funções adicionais que achei interessantes de adicionar. 
 
 #### <p align="center"> <a href="https://github.com/AllenoBoy/allen.h" title="Retornar a documentação."> VOLTAR PARA O DOCUMENTO PRINCIPAL</a> </p>
 
@@ -270,7 +270,7 @@ allen walker
 
 <br>
 
-<h3 align="center"> void allen_HIGHERARRAYint ( int SIZE , int ARRAY [] ) </h3> 
+<h3 align="center"> int allen_HIGHERARRAYint ( int SIZE , int ARRAY [] ) </h3> 
 
 <br>
 <br>
@@ -324,7 +324,7 @@ main ( void )
 
 <br>
 
-<h3 align="center"> void allen_HIGHERBARRAYint ( int LINES , int COLUNS , int B_ARRAY [LINES] [COLUNS] ) </h3> 
+<h3 align="center"> int allen_HIGHERBARRAYint ( int LINES , int COLUNS , int B_ARRAY [LINES] [COLUNS] ) </h3> 
 
 <br>
 <br>
@@ -386,7 +386,7 @@ main ( void )
 
 <br>
 
-<h3 align="center"> void allen_LOWERARRAYint ( int SIZE , int ARRAY [] ) </h3> 
+<h3 align="center"> int allen_LOWERARRAYint ( int SIZE , int ARRAY [] ) </h3> 
 
 <br>
 <br>
@@ -437,7 +437,7 @@ main ( void )
 
 <br>
 
-<h3 align="center"> void allen_LOWERBARRAYint ( int LINES , int COLUNS , int B_ARRAY [LINES] [COLUNS] ) </h3> 
+<h3 align="center"> int allen_LOWERBARRAYint ( int LINES , int COLUNS , int B_ARRAY [LINES] [COLUNS] ) </h3> 
 
 <br>
 <br>
@@ -494,7 +494,7 @@ main ( void )
 
 <br>
 
-<h3 align="center"> void allen_SUBSINTARRAY ( int SIZE , int ARRAY [] , int CONDITION , int COMPARATOR , int TOKEN ) </h3> 
+<h3 align="center"> int allen_SUBSINTARRAY ( int SIZE , int ARRAY [] , int CONDITION , int COMPARATOR , int TOKEN ) </h3> 
 
 <br>
 <br>
@@ -557,7 +557,7 @@ Depois: 0 1 0 3 0 5 0 7 0 9
 
 <br>
 
-<h3 align="center"> void allen_SUBSINTARRAY ( int SIZE , int ARRAY [] , int CONDITION , int COMPARATOR , int TOKEN ) </h3> 
+<h3 align="center"> int allen_COPYINTARRAY ( int SIZE , int ARRAY [] , int CONDITION , int COMPARATOR , int NEW_ARRAY [] ) </h3> 
 
 <br>
 <br>
@@ -679,3 +679,181 @@ Depois: 0 0 0 0 0 0 0 0 0 0
 
 
 
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> int allen_SUBSINTBARRAY ( int LINES , int COLUNS , int CONDITION , int COMPARATOR , int TOKEN , int B_ARRAY [LINES] [COLUNS] ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função basicamente substitui em uma matriz valores que atendam os requsitos definidos por CONDITION ( HT , LT , EQ , DF , HE , LE , PAR , IMPAR , MULTIPLO , NOTMULTIPLO , QUADRADO_X_EQ_Y , QUADRADO_X_DF_Y , INVERSO , CRESCENTE , DECRESCENTE ). Os parâmetros são os seguintes: LINES a qunatidade de linhas da matriz, COLUNS a quantidade de colunas na matriz, CONDITION um dos macros, COMPARATOR valor para servir como comparador seguindo o macro utilizado anteriormente, TOKEN é pelo que os números que atendam as condições serão alterados e por fim B_ARRAY é nome da matriz que será utilizada`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{  
+    int jill_valentine [] [3] = { { 1 , 2 , 3 } , { 6 , 7 , 8 } };
+
+    // Printando antes das substituições
+    PR ("Antes de substituir: ");
+    PR_intMATRIZ ( 2 , 3 , jill_valentine );
+    PRL (2);
+
+    allen_SUBSINTBARRAY ( 2 , 3 , DECRESCENTE , no , no , jill_valentine );
+
+    // Printando após as substituições
+    PR ("Apos a substituicao: ");
+    PR_intMATRIZ ( 2 , 3 , jill_valentine );
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+Antes de substituir: 1 2 3 6 7 8
+
+Apos a substituicao: 8 7 6 3 2 1
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> int allen_COPYINTBARRAY (  int LINES , int COLUNS , int CONDITION , int COMPARATOR , int B_ARRAY [LINES] [COLUNS] , int NEW_B_ARRAY [LINES] [COLUNS] ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função basicamente copai de uma matriz valores que atendam os requsitos definidos por CONDITION ( HT , LT , EQ , DF , HE , LE , PAR , IMPAR , MULTIPLO , NOTMULTIPLO , QUADRADO_X_EQ_Y , QUADRADO_X_DF_Y , INVERSO , CRESCENTE , DECRESCENTE ) e o salva em outra matriz. Os parâmetros são os seguintes: LINES a qunatidade de linhas da matriz, COLUNS a quantidade de colunas na matriz, CONDITION um dos macros, COMPARATOR valor para servir como comparador seguindo o macro utilizado anteriormente, B_ARRAY é nome da matriz que será utilizada e por fim NEW_B_ARRAY é a matriz que receberá os valores que atenderam os requisitos`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{  
+    int jill_valentine [] [3] = { { 1 , 2 , 3 } , { 6 , 7 , 8 } };
+    int leon_kennedy  [2] [3] = { { 0 , 0 , 0 } , { 0 , 0 , 0 } };
+
+    // Printando antes da copia
+    PR ("Antes de substituir: ");
+    PR_intMATRIZ ( 2 , 3 , jill_valentine );
+    PRL (2);
+
+    int x = allen_COPYINTBARRAY ( 2 , 3 , PAR , no , jill_valentine , leon_kennedy );
+
+    // Printando após as substituições
+    PR ("Apos a substituicao: ");
+    PR_intMATRIZ ( 2 , 3 , leon_kennedy );
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+Antes de substituir: 1 2 3 6 7 8
+
+Apos a substituicao: 2 6 8 0 0 0
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void allen_CLEARINTBARRAY ( int LINES , int COLUNS , int B_ARRAY [ LINES ] [ COLUNS ] ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função limpa todos os valores presente em uma matriz, onde, LINES se refere a quantidade de linhas da matriz, COLUNS se refere a quantidade de colunas presentes na matriz, B_ARRAY é a matriz em si `;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{  
+    int jill_valentine [] [3] = { { 1 , 2 , 3 } , { 6 , 7 , 8 } };
+
+    // Printando antes da limpeza
+    PR ("Antes de limpar: ");
+    PR_intMATRIZ ( 2 , 3 , jill_valentine );
+    PRL (2);
+
+    allen_CLEARINTBARRAY ( 2 , 3 , jill_valentine );
+
+    // Printando após as substituições
+    PR ("Apos a limpeza: ");
+    PR_intMATRIZ ( 2 , 3 , jill_valentine );
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+Antes de limpar: 1 2 3 6 7 8
+
+Apos a limpeza: 0 0 0 0 0 0
+```
