@@ -261,7 +261,7 @@ void SYS_COPYFILE          ( const char* FILE , const char* DIR );
 void SYS_MOVEDIR           ( const char* DIR , const char* FINALDIR );
 void SYS_DELETEFILE        ( const char* FILE );
 void SYS_RENAMEFILE        ( const char* FILE , const char* NEW_NAME );
-void SYS_ECHO              ( const char* TEXT );
+void echo                 ( const char* TEXT );
 void SYS_PING              ( void );
 void SYS_SHOWSAVEDWIFI     ( void );
 void SYS_SHOWSAVEDWIFIINFO ( const char * WIFI );
@@ -280,23 +280,22 @@ static DWORD  outModeInit  , inModeInit;
 static inline void ENABLEPROPS                ( void );
 static inline void PROP_RESTORECONSOLE        ( void );
 static inline void PROP_TEXTCOLOR             ( int CODE );
-static inline void PROP_TEXTSTYLE             ( int CODE );
+static inline void PROP_STYLE                 ( int CODE );
 static inline void PROP_BACKGROUNDCOLOR       ( int CODE );
-static inline void PROP_BACKGROUNDSTYLE       ( int CODE );
 static inline void PROP_RESETCOLOR            ( void );
-static inline void PROP_CLS                   ( void );
-static inline void PROP_CLsAFTER              ( void );
-static inline void PROP_ClsBEFORE             ( void );
+static inline void PROP_CLEARSCREEN           ( void );
+static inline void PROP_CLEARBELOW            ( void );
+static inline void PROP_CLEARABOVE            ( void );
 static inline void PROP_CLEARLINE             ( void );
-static inline void PROP_CLEARLINEtoRIGHT      ( void );
-static inline void PROP_CLEARLINEtoLEFT       ( void );
-static inline void PROP_MOVECURSORup          ( int POSITION );
-static inline void PROP_MOVECURSORdown        ( int POSITION );
-static inline void PROP_MOVECURSORright       ( int POSITION );
-static inline void PROP_MOVECURSORleft        ( int POSITION );
-static inline void PROP_MOVECURSORto          ( int ROW , int COL );
-static inline void PROP_SAVECURSORPOSITION    ( void );
-static inline void PROP_RESTORECURSORPOSITION ( void );
+static inline void PROP_CLEARLEFT             ( void );
+static inline void PROP_CLEARRIGHT            ( void );
+static inline void PROP_MOVEUP                ( int POSITION );
+static inline void PROP_MOVEDOWN              ( int POSITION );
+static inline void PROP_MOVERIGHT             ( int POSITION );
+static inline void PROP_MOVELEFT              ( int POSITION );
+static inline void PROP_MOVECURSOR            ( int X , int Y );
+static inline void PROP_SAVECURSOR            ( void );
+static inline void PROP_LOADCURSOR            ( void );
 static inline void PROP_HIDECURSOR            ( void );
 static inline void PROP_SHOWCURSOR            ( void );
 
@@ -311,7 +310,7 @@ int                G_INT      ( void );
 char               G_CHAR     ( void );
 float              G_FLOAT    ( void );
 double             G_DOUBLE   ( void );
-static inline char G_STRING   ( char STRING [] );
+void               G_STRING   ( char STRING [] );
 int                GWC_INT    ( int VALUE , int CONDITION , int COMPARATOR , const char* TEXT , int LINE , int SPACES );
 float              GWC_FLOAT  ( float VALUE , int CONDITION , float COMPARATOR , const char* TEXT , int LINE , int SPACES );
 double             GWC_DOUBLE ( double VALUE , int CONDITION , double COMPARATOR , const char* TEXT , int LINE , int SPACES );
@@ -341,8 +340,8 @@ void allen_CLEARINTARRAY          ( int SIZE , int ARRAY [] );
 int  allen_SUBSINTB_ARRAY         ( int LINES , int COLUNS , int CONDITION , int COMPARATOR , int TOKEN , int B_ARRAY [LINES] [COLUNS] );
 int  allen_INTCOPYB_ARRAY         ( int LINES , int COLUNS , int CONDITION , int COMPARATOR , int B_ARRAY [LINES] [COLUNS] , int NEW_B_ARRAY [LINES] [COLUNS] );
 void allen_CLEARINTB_ARRAY        ( int LINES , int COLUNS , int B_ARRAY [ LINES ] [ COLUNS ] );
-void allen_ADDTOSTRING            ( char * STRING , char * ADD );
-void allen_REMAKESTRING           ( char * STRING , char * REMAKE );
+void allen_ADDTOSTRING            ( char STRING [] , char ADD [] );
+void allen_REMAKESTRING           ( char STRING [] , char REMAKE [] );
 
 
 
@@ -2446,7 +2445,7 @@ SYS_RENAMEFILE ( const char* FILE , const char* NEW_NAME )
 // FUNCTION: SYSTEM PRINTF
 // @param01: ECHO { THE TEXT THAT U WANNA PRINT }
 void
-SYS_ECHO ( const char* TEXT )
+echo ( const char* TEXT )
 {
     char command [50];
 
@@ -2528,6 +2527,7 @@ SYS_WEATHER ( const char * REGION )
 
 
 
+// FUNCTION: ENABLE THE PROPS, TO USE THESE PROPS VARIATIONS
 static inline
 void
 ENABLEPROPS ( void )
@@ -2554,6 +2554,7 @@ ENABLEPROPS ( void )
 
 
 
+// FUNCTION: RETURN THE CONSOLE TO THE DEFAULT CONFIGURATIONS
 static inline
 void
 PROP_RESTORECONSOLE ( void )
@@ -2567,6 +2568,8 @@ PROP_RESTORECONSOLE ( void )
 
 
 
+// FUNCTION: SET THE TEXT COLOR
+// @param01: CODE { USING THE COLOR MACROS SET THE TEXT COLOR }
 static inline
 void
 PROP_TEXTCOLOR ( int CODE )
@@ -2578,9 +2581,11 @@ PROP_TEXTCOLOR ( int CODE )
 
 
 
+// FUNCTION: SET THE TEXT STYLE
+// @param01: CODE { USING THE STYLE MACROS SET THE TEXT STYLE }
 static inline
 void
-PROP_TEXTSTYLE ( int CODE )
+PROP_STYLE ( int CODE )
 {
      printf ("\x1b[%d;1m" , CODE );
 }
@@ -2589,6 +2594,8 @@ PROP_TEXTSTYLE ( int CODE )
 
 
 
+// FUNCTION: SET THE BACKGROUND COLOR
+// @param01: CODE { USING THE COLOR MACROS SET THE TEXT COLOR }
 static inline
 void
 PROP_BACKGROUNDCOLOR ( int CODE )
@@ -2600,17 +2607,7 @@ PROP_BACKGROUNDCOLOR ( int CODE )
 
 
 
-static inline
-void
-PROP_BACKGROUNDSTYLE ( int CODE )
-{
-     printf ("\x1b[%d;1m" , CODE );
-}
-
-
-
-
-
+// FUNCTION: RESET ANY ALTERATION MADE IN THE CONSOLE AFTER THE THIS FUNCTION CALL
 static inline
 void
 PROP_RESETCOLOR ( void )
@@ -2622,9 +2619,10 @@ PROP_RESETCOLOR ( void )
 
 
 
+// FUNCTION: CLEAR ALL THE SCREEN
 static inline
 void
-PROP_CLS ( void )
+PROP_CLEARSCREEN ( void )
 {
      printf ("\x1b[%dJ" , ClearTheScreen );
 }
@@ -2633,9 +2631,10 @@ PROP_CLS ( void )
 
 
 
+// FUNCTION: CLEAR BELOW THE CALL LINE OF THIS FUNCTION
 static inline
 void
-PROP_CLsAFTER ( void )
+PROP_CLEARBELOW ( void )
 {
      printf ("\x1b[%dJ" , ClearTheTextFromTheCursorToTheEnd );
 }
@@ -2644,9 +2643,10 @@ PROP_CLsAFTER ( void )
 
 
 
+// FUNCTION: CLEAR ABOVE THE CALL LINE OF THIS FUNCTION
 static inline
 void
-PROP_ClsBEFORE ( void )
+PROP_CLEARABOVE ( void )
 {
      printf ("\x1b[%dJ" , ClearTheTextFromTheCursorToTheStart );
 }
@@ -2655,6 +2655,7 @@ PROP_ClsBEFORE ( void )
 
 
 
+// FUNCTION: CLEAR THE CONTENT OF THE LINE
 static inline
 void
 PROP_CLEARLINE ( void )
@@ -2666,9 +2667,10 @@ PROP_CLEARLINE ( void )
 
 
 
+// FUNCTION: CLEAR FROM THE CURSOR TO THE RIGHT
 static inline
 void
-PROP_CLEARLINEtoRIGHT ( void )
+PROP_CLEARRIGHT ( void )
 {
      printf ("\x1b[%dK" , ClearTheTextFromTheCursorToTheEnd );
 }
@@ -2677,9 +2679,10 @@ PROP_CLEARLINEtoRIGHT ( void )
 
 
 
+// FUNCTION: CLEAR FROM THE CURSOR TO THE LEFT
 static inline
 void
-PROP_CLEARLINEtoLEFT ( void )
+PROP_CLEARLEFT ( void )
 {
      printf ("\x1b[%dK" , ClearTheTextFromTheCursorToTheStart );
 }
@@ -2688,9 +2691,11 @@ PROP_CLEARLINEtoLEFT ( void )
 
 
 
+// FUNCTION: MOVE THE CURSOR UPWARD Nº TIMES
+// @param01: POSITION { THE TIMES THAT THE CURSOR WILL GO UP }
 static inline
 void
-PROP_MOVECURSORup ( int POSITION )
+PROP_MOVEUP ( int POSITION )
 {
      printf ("\x1b[%dA" , POSITION);
 }
@@ -2699,9 +2704,11 @@ PROP_MOVECURSORup ( int POSITION )
 
 
 
+// FUNCTION: MOVE THE CURSOR DOWNWARD Nº TIMES
+// @param01: POSITION { THE TIMES THAT THE CURSOR WILL GO DOWN }
 static inline
 void
-PROP_MOVECURSORdown ( int POSITION )
+PROP_MOVEDOWN ( int POSITION )
 {
      printf ("\x1b[%dB" , POSITION );
 }
@@ -2710,9 +2717,11 @@ PROP_MOVECURSORdown ( int POSITION )
 
 
 
+// FUNCTION: MOVE THE CURSOR RIGHTWARD Nº TIMES
+// @param01: POSITION { THE TIMES THAT THE CURSOR WILL GO RIGHT }
 static inline
 void
-PROP_MOVECURSORright ( int POSITION )
+PROP_MOVERIGHT ( int POSITION )
 {
      printf ("\x1b[%dC" , POSITION );
 }
@@ -2721,9 +2730,11 @@ PROP_MOVECURSORright ( int POSITION )
 
 
 
+// FUNCTION: MOVE THE CURSOR LEFTWARD Nº TIMES
+// @param01: POSITION { THE TIMES THAT THE CURSOR WILL GO LEFT }
 static inline
 void
-PROP_MOVECURSORleft ( int POSITION )
+PROP_MOVELEFT ( int POSITION )
 {
      printf ("\x1b[%dD" , POSITION );
 }
@@ -2732,20 +2743,24 @@ PROP_MOVECURSORleft ( int POSITION )
 
 
 
+// FUNCTION: MOVE THE CURSOR TO A ESPECIFIC POSITION
+// @param01: ROW { THE NEW LINE TO THE CURSOR }
+// @param02: COL { THE NEW COL TO THE CURSOR }
 static inline
 void
-PROP_MOVECURSORto ( int ROW , int COL )
+PROP_MOVECURSOR ( int X , int Y )
 {
-     printf ("\x1b[%d;%df" , ROW , COL );
+     printf ("\x1b[%d;%df" , Y , X );
 }
 
 
 
 
 
+// FUNCTION: SAVE THE CURSOR ACTUAL POSITION
 static inline
 void
-PROP_SAVECURSORPOSITION ( void )
+PROP_SAVECURSOR ( void )
 {
      printf ("\x1b%d" , 7 );
 }
@@ -2754,9 +2769,10 @@ PROP_SAVECURSORPOSITION ( void )
 
 
 
+// FUNCTION: LOAD THE SAVED CURSOR POSITION
 static inline
 void
-PROP_RESTORECURSORPOSITION ( void )
+PROP_LOADCURSOR ( void )
 {
      printf ("\x1b%d" , 8 );
 }
@@ -2765,6 +2781,7 @@ PROP_RESTORECURSORPOSITION ( void )
 
 
 
+// FUNCTION: HIDE THE CURSOR
 static inline
 void
 PROP_HIDECURSOR ( void )
@@ -2776,6 +2793,7 @@ PROP_HIDECURSOR ( void )
 
 
 
+// FUNCTION: SHOW THE CURSOR
 static inline
 void
 PROP_SHOWCURSOR ( void )
@@ -2784,10 +2802,14 @@ PROP_SHOWCURSOR ( void )
 }
 
 
-// GET
+
+
+// G
 
 
 
+
+// FUNCTION: CLEAR THE STDIN AND STDOUT
 static inline
 void
 BUFFER ( void )
@@ -2802,6 +2824,7 @@ BUFFER ( void )
 
 
 
+// FUNCTION: GET A INT VALUE FROM USER
 int
 G_INT ( void )
 {
@@ -2817,6 +2840,7 @@ G_INT ( void )
 
 
 
+// FUNCTION: GET A CHAR VALUE FROM USER
 char
 G_CHAR ( void )
 {
@@ -2832,6 +2856,7 @@ G_CHAR ( void )
 
 
 
+// FUNCTION: GET A FLOAT VALUE FROM USER
 float
 G_FLOAT ( void )
 {
@@ -2847,6 +2872,7 @@ G_FLOAT ( void )
 
 
 
+// FUNCTION: GET A DOUBLE VALUE FROM USER
 double
 G_DOUBLE ( void )
 {
@@ -2862,20 +2888,26 @@ G_DOUBLE ( void )
 
 
 
-static inline
-char
+// FUNCTION: GET A STRING FROM USER
+// @param01: STRING { THIS IS THE STRING THAT WILL SAVE THE USER INPUT }
+void
 G_STRING ( char STRING [] )
 {
     scanf ("%[^\n]", STRING );
     setbuf ( stdin , NULL );
-
-    return *STRING;
 }
 
 
 
 
 
+// FUNCTION: GET A INT VALUE FROM USER WITH CONDITIONS
+// @param01: VALUE { VARIABLE THAT WILL BE USED TO COMPARE WITH COMPARATOR }
+// @param02: CONDITION { USE THE OPERATORS MACROS }
+// @param03: COMPARATOR { THIS IS THE INT VALUE THAT WILL BE USED WITH VALUE }
+// @param04: TEXT { PRINT OF THE QUESTION TO THE USER }
+// @param05: LINE { HOW MANY LINES WILL JUMP }
+// @param05: SPACES { HOW MANY LINES WILL PRINT }
 int
 GWC_INT ( int VALUE , int CONDITION , int COMPARATOR , const char* TEXT , int LINE , int SPACES )
 {
@@ -2993,6 +3025,13 @@ return VALUE;
 
 
 
+// FUNCTION: GET A FLOAT VALUE FROM USER WITH CONDITIONS
+// @param01: VALUE { VARIABLE THAT WILL BE USED TO COMPARE WITH COMPARATOR }
+// @param02: CONDITION { USE THE OPERATORS MACROS }
+// @param03: COMPARATOR { THIS IS THE INT VALUE THAT WILL BE USED WITH VALUE }
+// @param04: TEXT { PRINT OF THE QUESTION TO THE USER }
+// @param05: LINE { HOW MANY LINES WILL JUMP }
+// @param05: SPACES { HOW MANY LINES WILL PRINT }
 float
 GWC_FLOAT ( float VALUE , int CONDITION , float COMPARATOR , const char* TEXT , int LINE , int SPACES )
 {
@@ -3110,6 +3149,13 @@ return VALUE;
 
 
 
+// FUNCTION: GET A DOUBLE VALUE FROM USER WITH CONDITIONS
+// @param01: VALUE { VARIABLE THAT WILL BE USED TO COMPARE WITH COMPARATOR }
+// @param02: CONDITION { USE THE OPERATORS MACROS }
+// @param03: COMPARATOR { THIS IS THE INT VALUE THAT WILL BE USED WITH VALUE }
+// @param04: TEXT { PRINT OF THE QUESTION TO THE USER }
+// @param05: LINE { HOW MANY LINES WILL JUMP }
+// @param05: SPACES { HOW MANY LINES WILL PRINT }
 double
 GWC_DOUBLE ( double VALUE , int CONDITION , double COMPARATOR , const char* TEXT , int LINE , int SPACES )
 {
@@ -3227,72 +3273,19 @@ return VALUE;
 
 
 
+// FUNCTION: GET A CHAR VALUE FROM USER WITH CONDITIONS
+// @param01: VALUE { VARIABLE THAT WILL BE USED TO COMPARE WITH COMPARATOR }
+// @param02: CONDITION { USE THE OPERATORS MACROS }
+// @param03: COMPARATOR { THIS IS THE INT VALUE THAT WILL BE USED WITH VALUE }
+// @param04: TEXT { PRINT OF THE QUESTION TO THE USER }
+// @param05: LINE { HOW MANY LINES WILL JUMP }
+// @param05: SPACES { HOW MANY LINES WILL PRINT }
 char
 GWC_CHAR ( char VALUE , int CONDITION , char COMPARATOR , const char* TEXT , int LINE , int SPACES )
 {
 
           switch ( CONDITION )
           {
-
-          case HT:
-
-                  do
-                  {
-                    for (int kaj = 0; kaj < LINE; kaj++ ) printf ("\n");
-                    for (int kaj = 0; kaj < SPACES; kaj++ ) printf (" ");
-
-                    printf ("%s", TEXT);
-                    scanf ("%c", &VALUE);
-                    setbuf (stdin, NULL);
-
-                  } while ( VALUE > COMPARATOR );
-
-          break;
-
-          case LT:
-
-                  do
-                  {
-                    for (int kaj = 0; kaj < LINE; kaj++ ) printf ("\n");
-                    for (int kaj = 0; kaj < SPACES; kaj++ ) printf (" ");
-
-                    printf ("%s", TEXT);
-                    scanf ("%c", &VALUE);
-                    setbuf (stdin, NULL);
-
-                  } while ( VALUE < COMPARATOR );
-
-          break;
-
-          case HE:
-
-                  do
-                  {
-                    for (int kaj = 0; kaj < LINE; kaj++ ) printf ("\n");
-                    for (int kaj = 0; kaj < SPACES; kaj++ ) printf (" ");
-
-                    printf ("%s", TEXT);
-                    scanf ("%c", &VALUE);
-                    setbuf (stdin, NULL);
-
-                  } while ( VALUE >= COMPARATOR );
-
-          break;
-
-          case LE:
-
-                  do
-                  {
-                    for (int kaj = 0; kaj < LINE; kaj++ ) printf ("\n");
-                    for (int kaj = 0; kaj < SPACES; kaj++ ) printf (" ");
-
-                    printf ("%s", TEXT);
-                    scanf ("%c", &VALUE);
-                    setbuf (stdin, NULL);
-
-                  } while ( VALUE <= COMPARATOR );
-
-          break;
 
           case EQ:
 
@@ -3344,8 +3337,17 @@ return VALUE;
 
 
 
+// FUNCTION: GET A STRING VALUE FROM USER WITH CONDITIONS
+// @param01: QUESTION { THE TEXT THAT WILL PRINT BEFORE THE USER INPUT }
+// @param02: STRING { THE STRING THAT WILL USED TO COMPARE  }
+// @param03: LINES { HOW MANY LINES WILL BE PRINTED BEFORE THE INPUT }
+// @param04: SPACES { HOW MANY SPACES WILL BE PRINTED BEFORE THE INPUT }
+// @param05: TYPE_OF { USING THE STRING MACROS SET THE TIPE OF CONDITIONATOR }
+// @param05: SIZE_LIMITER { IF THE MACRO IS "stringSZ" WILL REPEAT THE INPUT UNTIL THE USER STRING GET THE SAME SIZE OR LOWER  }
+// @param05: TEXT_COMPARATOR { IT'S THE TEXT THAT WILL BE COMPARED WITH THE STRING }
+// @param05: EXIT_TOKEN { IT'S A EXIT TOKEN, THAT MEANS IF U WANT THE USER DO BREAK FROM THE LOOP U USE THIS }
 char
-GWC_STRING ( const char *QUESTION , char STRING [] , int LINES , int SPACES , int TYPE_OF , int SIZE_LIMITER , char TEXT_COMPARATOR [] , char EXIT_TOKEN [] )
+GWC_STRING ( const char * QUESTION , char STRING [] , int LINES , int SPACES , int TYPE_OF , int SIZE_LIMITER , char TEXT_COMPARATOR [] , char EXIT_TOKEN [] )
 {
 
     int kaj = 0;
@@ -3408,15 +3410,21 @@ GWC_STRING ( const char *QUESTION , char STRING [] , int LINES , int SPACES , in
              }
 
 
-             return *STRING;
+             return * STRING;
 }
 
 
 
 
 
+// FUNCTION: GET A INT VALUE USING allen STYLE
+// @param01: QUESTION_TEXT { THIS IS THE TEXT THAT WILL APPEAR BEFORE THE INPUT }
+// @param02: LINES { HOW MANY LINES WILL BE PRINTED }
+// @param03: SPACES { HOW MANY SPACES WILL BE PRINTED }
+// @param04: CONDITION { USING THE OPERATORS MACRO SET THE WAY THAT WILL BE VALIDATED THE INPUT }
+// @param05: COMPARATOR { IT'S A INT VALUE THAT WILL BE USED TO COMPARE WITH THE INPUT  }
 int
-getI ( const char *QUESTION_TEXT , int LINES , int SPACES , int CONDITION , int COMPARATOR )
+getI ( const char * QUESTION_TEXT , int LINES , int SPACES , int CONDITION , int COMPARATOR )
 {
 
     int RESULT = 0;
@@ -3717,8 +3725,14 @@ getI ( const char *QUESTION_TEXT , int LINES , int SPACES , int CONDITION , int 
 
 
 
+// FUNCTION: GET A FLOAT VALUE USING allen STYLE
+// @param01: QUESTION_TEXT { THIS IS THE TEXT THAT WILL APPEAR BEFORE THE INPUT }
+// @param02: LINES { HOW MANY LINES WILL BE PRINTED }
+// @param03: SPACES { HOW MANY SPACES WILL BE PRINTED }
+// @param04: CONDITION { USING THE OPERATORS MACRO SET THE WAY THAT WILL BE VALIDATED THE INPUT }
+// @param05: COMPARATOR { IT'S A INT VALUE THAT WILL BE USED TO COMPARE WITH THE INPUT  }
 float
-getF ( const char *QUESTION_TEXT , int LINES , int SPACES , int CONDITION , float COMPARATOR )
+getF ( const char * QUESTION_TEXT , int LINES , int SPACES , int CONDITION , float COMPARATOR )
 {
 
     float RESULT = 0;
@@ -4111,8 +4125,14 @@ getF ( const char *QUESTION_TEXT , int LINES , int SPACES , int CONDITION , floa
 
 
 
+// FUNCTION: GET A DOUBLE VALUE USING allen STYLE
+// @param01: QUESTION_TEXT { THIS IS THE TEXT THAT WILL APPEAR BEFORE THE INPUT }
+// @param02: LINES { HOW MANY LINES WILL BE PRINTED }
+// @param03: SPACES { HOW MANY SPACES WILL BE PRINTED }
+// @param04: CONDITION { USING THE OPERATORS MACRO SET THE WAY THAT WILL BE VALIDATED THE INPUT }
+// @param05: COMPARATOR { IT'S A INT VALUE THAT WILL BE USED TO COMPARE WITH THE INPUT  }
 double
-getD ( const char *QUESTION_TEXT , int LINES , int SPACES , int CONDITION , double COMPARATOR )
+getD ( const char * QUESTION_TEXT , int LINES , int SPACES , int CONDITION , double COMPARATOR )
 {
 
     double RESULT = 0;
@@ -4505,8 +4525,17 @@ getD ( const char *QUESTION_TEXT , int LINES , int SPACES , int CONDITION , doub
 
 
 
+// FUNCTION: GET A STRING VALUE USING allen STYLE
+// @param01: QUESTION_TEXT { TEXT THAT WILL BE PRINTED BEFORE THE INPUT }
+// @param02: LINES { HOW MANY PRINT OF \N }
+// @param03: SPACES { HOW MANY PRINT OF ' ' }
+// @param04: CONDITION { THE OPERATOR MACROS }
+// @param05: MAX_SIZE { IF THE COMPARATOR USED IS SZE WILL LIMIT THE PRINT OF A VALUE }
+// @param06: STRING { THE STRING VALUE THAT WILL BE SAVED }
+// @param07: TOKEN { IT'S A CHAR THAT WILL REPLACE SOMETHING IF THE MACRO USED IS CRY }
+// @param08: NUMBER_OF_REPLACEMENTS { THE QUANTITY OF REPLACEMENTS }
 char
-getS ( const char *QUESTION_TEXT , int LINES , int SPACES , int CONDITION , int MAX_SIZE , char STRING [MAX_SIZE] , char TOKEN , int NUMBER_OF_REPLACEMENTS , ... )
+getS ( const char * QUESTION_TEXT , int LINES , int SPACES , int CONDITION , int MAX_SIZE , char STRING [MAX_SIZE] , char TOKEN , int NUMBER_OF_REPLACEMENTS , ... )
 {
 
     va_list args;
@@ -5823,8 +5852,14 @@ getS ( const char *QUESTION_TEXT , int LINES , int SPACES , int CONDITION , int 
 
 
 
-// allen Functions
 
+// allen
+
+
+
+
+// FUNCTION: COUNTS AND RETURN THE LENGHT OF A INT VALUE
+// @param01: VARIABLE { IT'S A INT VALUE THAT WILL COUNT THE QUANTITY OF HOUSES }
 int
 allen_GETDIGITS ( int VARIABLE )
 {
@@ -5843,6 +5878,9 @@ allen_GETDIGITS ( int VARIABLE )
 
 
 
+// FUNCTION: SET THE CURSOR POSITION X AND Y
+// @param01: X { SET X CURSOR POSITION }
+// @param02: Y { SET Y CURSOR POSITION }
 void
 allen_GOTOXY ( int X , int Y )
 {
@@ -5856,6 +5894,8 @@ allen_GOTOXY ( int X , int Y )
 
 
 
+// FUNCTION: PRINT ALL THE AVALIABE ASCII CODE OF A PAGE
+// @param01: CODE_PAGE { THE CODE PAGE TO USE TO PRINT }
 void
 allen_TESTCODEPAGE ( int CODE_PAGE )
 {
@@ -5869,8 +5909,10 @@ allen_TESTCODEPAGE ( int CODE_PAGE )
 
 
 
+// FUNCTION: THIS FUNCTION WILL CLEAR ALL THE STRING
+// @param01: STRING { THE STRING THAT WILL BE CLEANED }
 void
-allen_CLEARSTRING ( char *STRING )
+allen_CLEARSTRING ( char * STRING )
 {
     memset ( STRING , 0, strlen ( STRING ) );
 }
@@ -5879,6 +5921,9 @@ allen_CLEARSTRING ( char *STRING )
 
 
 
+// FUNCTION: RETURNS THE HIGHER VALUE OF A INT ARRAY
+// @param01: SIZE { THE SIZE OF THE ARRAY }
+// @param02: ARRAY { THE ARRAY ITSELF }
 int
 allen_HIGHERVALUEOF_ARRAY ( int SIZE , int ARRAY [] )
 {
@@ -5894,6 +5939,10 @@ allen_HIGHERVALUEOF_ARRAY ( int SIZE , int ARRAY [] )
 
 
 
+// FUNCTION: RETURNS THE HIGHER VALUE OF A BIDIMENSIONAL INT ARRAY
+// @param01: LINES { HOW MANY LINES THIS B. ARRAY HAVE }
+// @param02: COLUNS { HOW MANY COLS THIS B. ARRAY HAVE }
+// @param03: B_ARRAY { THE B_ARRAY ITSELF }
 int
 allen_HIGHERVALUEOFA_B_ARRAY ( int LINES , int COLUNS , int B_ARRAY [LINES] [COLUNS] )
 {
@@ -5910,6 +5959,9 @@ allen_HIGHERVALUEOFA_B_ARRAY ( int LINES , int COLUNS , int B_ARRAY [LINES] [COL
 
 
 
+// FUNCTION: RETURNS THE LOWER INT VALUE OF A ARRAY
+// @param01: SIZE { THE LENGTH OF THE ARRAY }
+// @param02: ARRAY { THE ARRAY ITSELF }
 int
 allen_LOWERVALUEOF_ARRAY ( int SIZE , int ARRAY [] )
 {
@@ -5926,6 +5978,10 @@ allen_LOWERVALUEOF_ARRAY ( int SIZE , int ARRAY [] )
 
 
 
+// FUNCTION: RETURNS THE LOWER INT VALUE OF A BIDIMENSIONAL ARRAY
+// @param01: LINES { THE LINES OF THE B_ARRAY }
+// @param02: COLUNS { THE COLUNS OF THE B_ARRAY }
+// @param03: B_ARRAY { THE B_ARRAY ITSELF }
 int
 allen_LOWERVALUEOFA_B_ARRAY ( int LINES , int COLUNS , int B_ARRAY [LINES] [COLUNS] )
 {
@@ -5942,6 +5998,12 @@ allen_LOWERVALUEOFA_B_ARRAY ( int LINES , int COLUNS , int B_ARRAY [LINES] [COLU
 
 
 
+// FUNCTION: CHANGE SOMETHING FROM THE ARRAY
+// @param01: SIZE { THE LENGTH OF THE ARRAY }
+// @param02: ARRAY { THE ARRAY ITSELF }
+// @param03: CONDITION { THE CONDITION TO CHANGE }
+// @param04: COMPARATOR { THE COMPARATOR TO EVALIDATE }
+// @param05: TOKEN { CHANGE FOR THIS }
 int
 allen_SUBSINTARRAY ( int SIZE , int ARRAY [] , int CONDITION , int COMPARATOR , int TOKEN )
 {
@@ -6069,6 +6131,15 @@ allen_SUBSINTARRAY ( int SIZE , int ARRAY [] , int CONDITION , int COMPARATOR , 
 }
 
 
+
+
+
+// FUNCTION: COPY THE CONTENT OF A ARRAY TO A NEW ONE
+// @param01: SIZE { THE LENGTH OF THE ARRAY }
+// @param02: ARRAY { THE ARRAY ITSELF }
+// @param03: CONDITION { THE CONDITION TO CHANGE }
+// @param04: COMPARATOR { THE COMPARATOR TO EVALIDATE }
+// @param05: NEW_ARRAY { THE NEW ARRAY THAT WILL RECEIVE }
 int
 allen_COPYINTARRAY ( int SIZE , int ARRAY [] , int CONDITION , int COMPARATOR , int NEW_ARRAY [] )
 {
@@ -6201,6 +6272,12 @@ allen_COPYINTARRAY ( int SIZE , int ARRAY [] , int CONDITION , int COMPARATOR , 
 }
 
 
+
+
+
+// FUNCTION: CLEAR A INT ARRAY
+// @param01: SIZE { THE LENGTH OF THE ARRAY }
+// @param02: ARRAY { THE ARRAY ITSELF }
 void
 allen_CLEARINTARRAY  ( int SIZE , int ARRAY [] )
 {
@@ -6213,6 +6290,12 @@ allen_CLEARINTARRAY  ( int SIZE , int ARRAY [] )
 
 
 
+// FUNCTION: CHANGE SOMETHING IN THE INT B_ARRAY
+// @param01: LINES { THE LINES OF THE B_ARRAY }
+// @param02: COLUNS { THE COLUNS OF THE B_ARRAY }
+// @param03: CONDITION { THE CONDITION TO CHANGE }
+// @param04: COMPARATOR { THE COMPARATOR TO EVALIDATE }
+// @param05: B_ARRAY { THE B_ARRAY ITSELF }
 int
 allen_SUBSINTB_ARRAY ( int LINES , int COLUNS , int CONDITION , int COMPARATOR , int TOKEN , int B_ARRAY [LINES] [COLUNS] )
 {
@@ -6374,6 +6457,13 @@ allen_SUBSINTB_ARRAY ( int LINES , int COLUNS , int CONDITION , int COMPARATOR ,
 
 
 
+// FUNCTION: COPY THE CONTENT OF A B_ARRAY TO A NEW ONE
+// @param01: LINES { THE LINES OF THE B_ARRAY }
+// @param02: COLUNS { THE COLUNS OF THE B_ARRAY }
+// @param03: CONDITION { THE CONDITION TO CHANGE }
+// @param04: COMPARATOR { THE COMPARATOR TO EVALIDATE }
+// @param05: B_ARRAY { THE ARRAY ITSELF }
+// @param06: NEW_B_ARRAY { THE NEW ARRAY }
 int
 allen_INTCOPYB_ARRAY ( int LINES , int COLUNS , int CONDITION , int COMPARATOR , int B_ARRAY [LINES] [COLUNS] , int NEW_B_ARRAY [LINES] [COLUNS] )
 {
@@ -6559,6 +6649,10 @@ allen_INTCOPYB_ARRAY ( int LINES , int COLUNS , int CONDITION , int COMPARATOR ,
 
 
 
+// FUNCTION: CLEAR A INT B_ARRAY
+// @param01: LINES { THE LINES OF THE B_ARRAY }
+// @param02: COLUNS { THE COLUNS OF THE B_ARRAY }
+// @param05: B_ARRAY { THE ARRAY ITSELF }
 void
 allen_CLEARINTB_ARRAY  ( int LINES , int COLUNS , int B_ARRAY [ LINES ] [ COLUNS ] )
 {
@@ -6571,8 +6665,11 @@ allen_CLEARINTB_ARRAY  ( int LINES , int COLUNS , int B_ARRAY [ LINES ] [ COLUNS
 
 
 
+// FUNCTION: ADD TO A EXISTING STRING ANOTHER CONTENT
+// @param01: STRING { THE STRING THAT WILL RECEIVE }
+// @param02: ADD { THE NEW CONTENT THAT WILL BE ADDED TO THE STRING }
 void
-allen_ADDTOSTRING ( char * STRING , char * ADD )
+allen_ADDTOSTRING ( char STRING [] , char ADD [] )
 {
     sprintf ( STRING , "%s%s" , STRING , ADD );
 }
@@ -6581,8 +6678,11 @@ allen_ADDTOSTRING ( char * STRING , char * ADD )
 
 
 
+// FUNCTION: REMAKE THE STRING IF WAS "ROBSON" AFTER THE USE OF THIS FUNCTION WILL BE THE NEW %s
+// @param01: STRING { THE STRING THAT WILL RECEIVE }
+// @param02: REMAKE { THE NEW STRING THAT WILL REPLACE STRING }
 void
-allen_REMAKESTRING ( char * STRING , char * REMAKE )
+allen_REMAKESTRING ( char STRING [] , char REMAKE [] )
 {
      sprintf ( STRING , "%s" , REMAKE );
 }
@@ -6590,8 +6690,8 @@ allen_REMAKESTRING ( char * STRING , char * REMAKE )
 
 
 
+// SB
 
-// SIMPLE BOX
 
 
 
