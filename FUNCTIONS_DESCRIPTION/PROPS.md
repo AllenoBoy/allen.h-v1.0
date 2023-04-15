@@ -1078,3 +1078,106 @@ e desci te fazer uma surpresa            - linha 03 da musica.
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> static inline void PROP_SAVECURSOR ( void ) e static inline void PROP_LOADCURSOR ( void ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `A função "PROP_SAVECURSOR" salva a última posição do cursor quando chamada, e a função "PROP_LOADCURSOR" volta para a última posição`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{     
+    // Ativando os props
+    ENABLEPROPS ();
+
+    echo ("ufa! amor ainda bem que estava enganado!");
+    echo ("larguei mais cedo do trabalho!");
+    echo ("e desci te fazer uma surpresa");
+
+    // Salvando a posição do cursor
+    PROP_SAVECURSOR ();
+
+    getch ();
+
+    PROP_MOVEUP ( 3 ); PR ("OLHA O QUE ESTOU SUBSTITUINDO NESSA LINHA DETALHADA ");
+
+    // Carregando a posição do cursor
+
+    // Retornando para a posição salva
+    PROP_LOADCURSOR (); PR ("\nOLHA AGORA QUE CHICK!");
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+- Antes da função:
+
+```txt
+ufa! amor ainda bem que estava enganado!
+larguei mais cedo do trabalho!
+e desci te fazer uma surpresa
+```
+
+- Depois de getch:
+
+```txt
+OLHA O QUE ESTOU SUBSTITUINDO NESSA LINHA DETALHADA 
+larguei mais cedo do trabalho!
+e desci te fazer uma surpresa
+```
+
+- Depois da função PROP_LOADCURSOR:
+
+```txt
+OLHA O QUE ESTOU SUBSTITUINDO NESSA LINHA DETALHADA 
+larguei mais cedo do trabalho!
+e desci te fazer uma surpresa
+
+OLHA AGORA QUE CHICK!
+```
+
+
+
+
+
+
+
