@@ -857,3 +857,142 @@ Antes de limpar: 1 2 3 6 7 8
 
 Apos a limpeza: 0 0 0 0 0 0
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void allen_ADDTOSTRING ( char STRING [] , char ADD [] ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função adiciona um texto em uma string já criada usando o parâmetro ADD`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{  
+    char RESIDENT [200] = "You rescued me!!! U saved me from a tragic tragedy!";
+
+    // Antes de adicionar
+    PR (RESIDENT);
+
+    PRL (2);
+    allen_ADDTOSTRING ( RESIDENT , " ( A-TRAIN SONG! )" );
+
+    // Depois de adicionar
+    PR (RESIDENT);
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+You rescued me!!! U saved me from a tragic tragedy!
+
+You rescued me!!! U saved me from a tragic tragedy! ( A-TRAIN SONG! )
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void allen_REMAKESTRING ( char STRING [] , char REMAKE [] ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função refaz uma string já criada usando o parâmetro REMAKE`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{  
+    char user_NAME [50] = "allen.1252";
+
+    // Printando antes de refazer
+    PR (user_NAME);
+
+    allen_REMAKESTRING ( user_NAME , "*DELETED_USER*" );
+
+    PRL (2);
+
+    // Printando após refazer
+    PR (user_NAME);
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+allen.1252
+
+*DELETED_USER*
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
