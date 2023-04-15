@@ -43,7 +43,7 @@
 # include <signal.h>
 # include <locale.h>
 # include <string.h>
-# include <windows.h>
+# include <Windows.h>
 # include <stdarg.h>
 # include <commctrl.h>
 # include <iso646.h>
@@ -347,7 +347,7 @@ void allen_REMAKESTRING           ( char STRING [] , char REMAKE [] );
 
 
 
-/* 7. SB FUNCTIONS */ // sb_playsound -> MB_ICONASTERISK MB_ICONEXCLAMATION 0xFFFFFFFF MB_ICONERROR MB_ICONHAND MB_ICONINFORMATION MB_ICONQUESTION MB_ICONSTOP MB_ICONWARNING MB_OK
+/* 7. SB FUNCTIONS */
 
 int  SB_CREATEBOX ( LPCTSTR BOX_TEXT , LPCTSTR BOX_CAPTION, UINT BOX_TYPE );
 void SB_PLAYSOUND ( UINT SOUND );
@@ -6700,6 +6700,10 @@ allen_REMAKESTRING ( char STRING [] , char REMAKE [] )
 
 
 
+// FUNCTION: CREATE A MESSAGE BOX
+// @param01: BOX_TEXT { THE TEXT THAT WILL BE PRINTED INSIDE THE BOX }
+// @param02: BOX_CAPTION { THE BOX CAPTION }
+// @param02: BOX_TYPE { THE BOX STYLE | ESPECIFICATIONS }
 int
 SB_CREATEBOX ( LPCTSTR BOX_TEXT , LPCTSTR BOX_CAPTION, UINT BOX_TYPE )
 {
@@ -6710,6 +6714,8 @@ SB_CREATEBOX ( LPCTSTR BOX_TEXT , LPCTSTR BOX_CAPTION, UINT BOX_TYPE )
 
 
 
+// FUNCTION: PLAY A SYSTEM SOUND
+// @param01: SOUND { PLAY A SYSTEM SOUND }
 void
 SB_PLAYSOUND ( UINT SOUND )
 {
@@ -6719,11 +6725,15 @@ SB_PLAYSOUND ( UINT SOUND )
 
 
 
-
-
 // MATTE FUNCTIONS
 
 
+
+
+// FUNCTION: PLAY A SYSTEM SOUND
+// @param01: COS { PLAY A SYSTEM SOUND }
+// @param02: PRINT { PLAY A SYSTEM SOUND }
+// @param03: COMMAS { PLAY A SYSTEM SOUND }
 double
 MATTE_cosseno ( double COS , bool PRINT , int COMMAS )
 {
