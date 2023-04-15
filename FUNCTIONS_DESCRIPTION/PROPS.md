@@ -340,19 +340,14 @@ main ( void )
 
 
 
-
-
-
-
-
 <br>
 
-<h3 align="center"> static inline void PROP_RESETCOLOR ( void ) </h3> 
+<h3 align="center"> static inline void PROP_CLEARSCREEN ( void ) </h3> 
 
 <br>
 <br>
 
-- **O QUE ELA FAZ**: `A partir da chamada dessa função, é alterada qualquer estilo ou cor para o padrão ignorando o que já foi printado`;
+- **O QUE ELA FAZ**: `A função limpa toda a tela quando chamada, mas não faz com que o cursor volte para a posição ( 0 , 0 ) ou seja não funciona como a função "system("CLS");"`;
 
 <br>
 
@@ -368,13 +363,13 @@ main ( void )
     // Ativando os props
     ENABLEPROPS ();
 
-    // Definindo a cor do plano de fundo
-    PROP_BACKGROUNDCOLOR ( RED_BACKGROUND );
-    echo ("Texto de suporte");
+    echo ("Você gosta de mulher?");
+    getch ();
 
-    // Cancelando a alteração da cor de fundo
-    PROP_RESETCOLOR ();
-    echo ("Texto de suporte");
+    // Apagando o texto escrito
+    PROP_CLEARSCREEN ();
+
+    echo ("This is a new echo");
 }
 
 ```
@@ -383,7 +378,217 @@ main ( void )
 
 #### SAÍDA DO CONSOLE:
 
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/114815898/232173750-f3238a9d-a163-4e62-af24-c3ee426fe795.png">
-</p>
+- Antes da função:
+
+```txt
+Você gosta de mulher?
+_ <- sinal do getch
+```
+
+- Após a função:
+
+```txt
+
+This is a new echo
+```
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> static inline void PROP_CLEARBELOW ( void ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Quando chamada, tudo que estiver abaixo do cursor será deletado`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{     
+    // Ativando os props
+    ENABLEPROPS ();
+
+    // ... CÓDIGO QUE UTILIZA O MOVIMENTO DO CURSOR
+
+    // Limpando o que foi printado abaixo do cursor
+    PROP_CLEARBELOW ();
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```sh
+OBSERVAÇÃO: FUNÇÃO QUE LIMPA NO CONSOLE TUDO QUE FOI PRINTADO ABAIXO DA ATUAL POSIÇÃO DO CURSOR ( PESQUISE SOBRE A FUNÇÃO GOTOXY )
+```
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> static inline void PROP_CLEARABOVE ( void ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Quando chamada, tudo que estiver acima do cursor será deletado`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{     
+    // Ativando os props
+    ENABLEPROPS ();
+
+    // ... CÓDIGO QUE UTILIZA O MOVIMENTO DO CURSOR
+
+    // Limpando o que foi printado acima do cursor
+    PROP_CLEARABOVE ();
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```sh
+OBSERVAÇÃO: FUNÇÃO QUE LIMPA NO CONSOLE TUDO QUE FOI PRINTADO ACIMA DA ATUAL POSIÇÃO DO CURSOR ( PESQUISE SOBRE A FUNÇÃO GOTOXY )
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> static inline void PROP_CLEARLINE ( void ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Quando chamada, limpa a última linha, mais o texto não substitui a antiga posição do texto removido`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{     
+    // Ativando os props
+    ENABLEPROPS ();
+
+    // Textos para teste
+    PR ("Texto de suporte");
+
+    PRL (1);
+
+    PR ("Texto de suporte");
+    getch ();
+
+    // Limpando o que foi printado abaixo do cursor
+    PROP_CLEARLINE ();
+
+    echo ("Acentuação");
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+
+- Antes da função:
+
+
+```sh
+Texto de suporte
+Texto de suporte
+```
+
+- Depois da função:
+
+
+```sh
+Texto de suporte
+                Acentuação
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
