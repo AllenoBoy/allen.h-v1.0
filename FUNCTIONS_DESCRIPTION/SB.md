@@ -50,7 +50,6 @@ IDICONSTOP ou IDICONERROR:  Ícone de erro (X vermelho)
 IDICONQUESTION:             Ícone de interrogação (?)
 IDICONEXCLAMATION:          Ícone de exclamação (!)
 IDICONINFORMATION:          Ícone de informação (i)
-MB_USERICON:                Exibe um ícone personalizado. < EXEMPLO DE USO NO FIM DESSE DOCUMENTO >
 
 > DEFINIÇÕES:
 
