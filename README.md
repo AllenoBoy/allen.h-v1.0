@@ -244,6 +244,8 @@ A biblioteca allen.h tem como objetivo a ` simplificação dinâmica de código 
 
 <br>
 
+### <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/blob/main/FUNCTIONS_DESCRIPTION/PR.md" title="Listagem Rápida de Funções."> Descrição Resumida </a> </p>
+
 ### <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/blob/main/FUNCTIONS_DESCRIPTION/PR.md" title="Funções de print formatado."> 1. PR </a> </p>
 ### <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/blob/main/FUNCTIONS_DESCRIPTION/CS.md" title="Funções de controle do console."> 2. CS </a> </p>
 ### <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/blob/main/FUNCTIONS_DESCRIPTION/SYS.md" title="Funções de controle do sistema."> 3. SYS </a> </p>
@@ -255,7 +257,7 @@ A biblioteca allen.h tem como objetivo a ` simplificação dinâmica de código 
 ### <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/blob/main/FUNCTIONS_DESCRIPTION/LOCH.md" title="Funções do setlocale."> 9. LOCH </a> </p>
 ### <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/blob/main/FUNCTIONS_DESCRIPTION/FLEE.md" title="Funções para controle total sobre arquivos."> 10. FLEE </a> </p>
 
-### <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/blob/main/FUNCTIONS_DESCRIPTION/PR.md" title="Listagem Rápida de Funções."> Resumo </a> </p>
+
 
 <br>
 
