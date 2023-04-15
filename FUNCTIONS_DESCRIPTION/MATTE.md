@@ -942,7 +942,162 @@ main ( void )
 
 
 
+<br>
 
+<h3 align="center"> double MATTE_raizquadrada ( double X , bool PRINT , int COMMAS ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função recebe um valor do tipo double para retornar a sua raiz quadrada, caso PRINT seja verdadeiro esse valor será printado diretamente no console com o auxílio de COMMAS que define a quantidade de casas decimais que serão printadas`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Calculando ...
+    double x = MATTE_raizquadrada ( 16 , no , no );
+    
+    // Printando
+    PR_DOUBLE ( x , 2 );
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+4.00
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> double MATTE_tangenteemrad ( double ANGULO , bool PRINT , int COMMAS ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função recebe um valor do tipo double para retornar o valor da tangente do ângulo desse valor, caso PRINT seja verdadeiro esse valor será printado diretamente no console com o auxílio de COMMAS que define a quantidade de casas decimais que serão printadas`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Calculando ...
+    double x = MATTE_tangenteemrad ( 1.047 , no , no );
+    
+    // Printando
+    PR_DOUBLE ( x , 3 );
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+1.731
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> double MATTE_tangentehiperbolica ( double ANGULO , bool PRINT , int COMMAS ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função recebe um valor do tipo double para retornar o valor da tangente hiperbólica do ângulo desse valor, caso PRINT seja verdadeiro esse valor será printado diretamente no console com o auxílio de COMMAS que define a quantidade de casas decimais que serão printadas`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Calculando ...
+    double x = MATTE_tangentehiperbolica ( 5 , no , no );
+    
+    // Printando
+    PR_DOUBLE ( x , 3 );
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+1.000
+```
 
 
 
