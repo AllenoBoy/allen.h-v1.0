@@ -100,6 +100,12 @@ if ( x = IDOK ) printf ("Olá mundo");
 int 
 main ( void )
 {      
+    // Criando uma Simple box
+    int action = SB_CREATEBOX ( "Confirme a sua presença clicando em ok!" , "Inscrição Anual" , MB_OKCANCEL | MB_ICONINFORMATION | MB_DEFBUTTON2  );
+
+    // Executando ações
+    if ( action == IDCANCEL ) echo ("Que pena que você não quis participar!");
+    if ( action == IDOK )     echo ("Muito obrigado, por confirmar, segue seu codigo: 1232323");
 }
 
 ```
@@ -108,7 +114,20 @@ main ( void )
 
 #### SAÍDA DO CONSOLE:
 
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/114815898/232237311-1ba382e0-f7cc-4be7-98c6-9b1cb4c187d8.png">
+</p>
+
+- Caso clique em cancelar: 
+
 ```txt
+Que pena que você não quis participar!
+```
+
+- Caso clique em ok: 
+
+```txt
+Muito obrigado, por confirmar, segue seu codigo: 1232323
 ```
 
 
