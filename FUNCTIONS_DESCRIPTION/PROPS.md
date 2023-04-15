@@ -126,9 +126,9 @@ main ( void )
 
     // ... códigos
      
-    /* UMA OBSERVAÇÃO: PROP_RESTORECONSOLE -> Reseta os estilo */
+    /* UMA OBSERVAÇÃO: PROP_RESTORECONSOLE -> Reseta os estilos */
      
-    // Restaurando o console para o padrão ( Removendo alguns estilos e retornando a cor para a padrão do console )
+    // Restaurando o console para o padrão ( Remove todos os estilos do console, e a partir daqui volta para a cor padrão do console )
     PROP_RESTORECONSOLE ();
 }
 
@@ -323,3 +323,67 @@ main ( void )
 <p align="center">
   <img src="https://user-images.githubusercontent.com/114815898/232173502-a0e18739-024b-43f3-95ab-f017711ef469.png">
 </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> static inline void PROP_RESETCOLOR ( void ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `A partir da chamada dessa função, é alterada qualquer estilo ou cor para o padrão ignorando o que já foi printado`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Ativando os props
+    ENABLEPROPS ();
+
+    // Definindo a cor do plano de fundo
+    PROP_BACKGROUNDCOLOR ( RED_BACKGROUND );
+    echo ("Texto de suporte");
+
+    // Cancelando a alteração da cor de fundo
+    PROP_RESETCOLOR ();
+    echo ("Texto de suporte");
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/114815898/232173750-f3238a9d-a163-4e62-af24-c3ee426fe795.png">
+</p>
+
