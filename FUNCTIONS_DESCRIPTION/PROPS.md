@@ -220,7 +220,7 @@ main ( void )
 
 <br>
 
-<h3 align="center"> static inline void PROP_TEXTSTYLE ( int CODE ) </h3> 
+<h3 align="center"> static inline void PROP_STYLE ( int CODE ) </h3> 
 
 <br>
 <br>
@@ -248,11 +248,11 @@ main ( void )
     PRL (1);
     
     // Estilizando o texto para itálico
-    PROP_TEXTSTYLE ( ITALIC );
+    PROP_STYLE ( ITALIC );
     echo ("texto normal"); PRL (1);
 
     // Estilizando o texto para sublinhado
-    PROP_TEXTSTYLE ( UNDERLINE );
+    PROP_STYLE ( UNDERLINE );
     echo ("texto normal"); PRL (1);
 }
 
@@ -270,3 +270,56 @@ main ( void )
 
 
 
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> static inline void PROP_BACKGROUNDCOLOR ( int CODE ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função funciona assim como a "PROP_TEXTCOLOR" só que altera a cor de fundo`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Ativando os props
+    ENABLEPROPS ();
+
+    // Definindo a cor do plano de fundo
+    PROP_BACKGROUNDCOLOR ( CYAN_BACKGROUND );
+    echo ("Texto de suporte");
+
+    PROP_BACKGROUNDCOLOR ( MAGENTA_BACKGROUND );
+    echo ("Texto de suporte");
+
+    // Redefinindo o console
+    PROP_RESTORECONSOLE ();
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/114815898/232173502-a0e18739-024b-43f3-95ab-f017711ef469.png">
+</p>
