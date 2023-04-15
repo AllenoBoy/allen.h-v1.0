@@ -125,8 +125,10 @@ main ( void )
     ENABLEPROPS ();
 
     // ... códigos
-    
-    // Restaurando o console para o padrão ( Removendo cores, estilos ... )
+     
+    /* UMA OBSERVAÇÃO: PROP_RESTORECONSOLE -> Reseta os estilo */
+     
+    // Restaurando o console para o padrão ( Removendo alguns estilos e retornando a cor para a padrão do console )
     PROP_RESTORECONSOLE ();
 }
 
@@ -164,7 +166,7 @@ OBSERVAÇÃO: O CONSOLE RETORNA AS CONFIGURAÇÕES PADRÃO
 <br>
 <br>
 
-- **O QUE ELA FAZ**: `Essa função define a cor do texto usando os macros "CORES DE ESTILIZAÇÃO DE TEXTO" para definir a cor do texto a partir da chamada da função, onde o macro utilizado deve ser usado em CODE`;
+- **O QUE ELA FAZ**: `Essa função define a cor do texto usando os macros de "CORES DE ESTILIZAÇÃO DE TEXTO" para definir a cor do texto a partir da chamada da função, onde o macro utilizado deve ser usado em CODE`;
 
 <br>
 
@@ -200,6 +202,69 @@ main ( void )
   <img src="https://user-images.githubusercontent.com/114815898/232172410-6c170dfc-8957-469b-a473-634864874976.png">
 </p>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> static inline void PROP_TEXTSTYLE ( int CODE ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função define o estilo do texto usando os macros de "ESTILIZAÇÃO DO TEXTO" para definir um estilo ao texto a partir da chamada da função, onde o macro utilizado deve ser usado em CODE`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Ativando os props
+    ENABLEPROPS ();
+
+    // Uso do echo por ser melhor que o printf
+    echo ("texto normal");
+
+    // Quebra de linha
+    PRL (1);
+    
+    // Estilizando o texto para itálico
+    PROP_TEXTSTYLE ( ITALIC );
+    echo ("texto normal"); PRL (1);
+
+    // Estilizando o texto para sublinhado
+    PROP_TEXTSTYLE ( UNDERLINE );
+    echo ("texto normal"); PRL (1);
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/114815898/232172880-59e5ed1e-a32c-4a14-91e2-a9101d9c61ba.png">
+</p>
 
 
 
