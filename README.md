@@ -255,6 +255,8 @@ A biblioteca allen.h tem como objetivo a ` simplificação dinâmica de código 
 ### <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/blob/main/FUNCTIONS_DESCRIPTION/LOCH.md" title="Funções do setlocale."> 9. LOCH </a> </p>
 ### <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/blob/main/FUNCTIONS_DESCRIPTION/FLEE.md" title="Funções para controle total sobre arquivos."> 10. FLEE </a> </p>
 
+### <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/blob/main/FUNCTIONS_DESCRIPTION/PR.md" title="Listagem Rápida de Funções."> Resumo </a> </p>
+
 <br>
 
 ---
