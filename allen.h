@@ -371,7 +371,6 @@ double MATTE_arredondarparamaior ( double X , bool PRINT , int COMMAS );
 double MATTE_arredondarparamenor ( double X , bool PRINT , int COMMAS );
 double MATTE_exp                 ( double X , bool PRINT , int COMMAS );
 double MATTE_modulo              ( double X , bool PRINT , int COMMAS );
-double MATTE_mantissa            ( double X , bool PRINT , int COMMAS );
 double MATTE_ldexp               ( double X , int EXPOENTE , bool PRINT , int COMMAS );
 double MATTE_log                 ( double X , bool PRINT , int COMMAS );
 double MATTE_log10               ( double X , bool PRINT , int COMMAS );
@@ -6730,10 +6729,10 @@ SB_PLAYSOUND ( UINT SOUND )
 
 
 
-// FUNCTION: PLAY A SYSTEM SOUND
-// @param01: COS { PLAY A SYSTEM SOUND }
-// @param02: PRINT { PLAY A SYSTEM SOUND }
-// @param03: COMMAS { PLAY A SYSTEM SOUND }
+// FUNCTION: RETURNS THE COSINE RADIAN ANGLE
+// @param01: COS { THE COSINE OF A ANGLE }
+// @param02: PRINT { IF TRUE PRINTS THE RESULT }
+// @param03: COMMAS { SET HOW MANY COMMAS WILL BE PRINTED }
 double
 MATTE_cosseno ( double COS , bool PRINT , int COMMAS )
 {
@@ -6748,6 +6747,10 @@ MATTE_cosseno ( double COS , bool PRINT , int COMMAS )
 
 
 
+// FUNCTION: RETURNS THE SINE RADIAN ANGLE
+// @param01: SIN { THE SIN OF A ANGLE }
+// @param02: PRINT { IF TRUE PRINTS THE RESULT }
+// @param03: COMMAS { SET HOW MANY COMMAS WILL BE PRINTED }
 double
 MATTE_seno ( double SIN , bool PRINT , int COMMAS )
 {
@@ -6762,6 +6765,10 @@ MATTE_seno ( double SIN , bool PRINT , int COMMAS )
 
 
 
+// FUNCTION: RETURNS THE TANGENT RADIAN ANGLE
+// @param01: TAN { THE TANGENT OF A ANGLE }
+// @param02: PRINT { IF TRUE PRINTS THE RESULT }
+// @param03: COMMAS { SET HOW MANY COMMAS WILL BE PRINTED }
 double
 MATTE_tangente ( double TAN , bool PRINT , int COMMAS )
 {
@@ -6776,6 +6783,11 @@ MATTE_tangente ( double TAN , bool PRINT , int COMMAS )
 
 
 
+// FUNCTION: RETURNS THE TANGENT RADIAN ANGLE
+// @param01: X { THE X COORDINATE }
+// @param02: Y { THE Y COORDINATE }
+// @param03: PRINT { IF TRUE PRINTS THE RESULT }
+// @param04: COMMAS { SET HOW MANY COMMAS WILL BE PRINTED }
 double
 MATTE_arcotangente ( double X , double Y , bool PRINT , int COMMAS )
 {
@@ -6792,6 +6804,10 @@ MATTE_arcotangente ( double X , double Y , bool PRINT , int COMMAS )
 
 
 
+// FUNCTION: ROUNDS A DOUBLE VALUE TO A HIGHER VALUE AND RETURN
+// @param01: X { THE VALUE THAT WILL BE USED }
+// @param02: PRINT { IF TRUE PRINTS THE RESULT }
+// @param03: COMMAS { SET HOW MANY COMMAS WILL BE PRINTED }
 double
 MATTE_arredondarparamaior ( double X , bool PRINT , int COMMAS )
 {
@@ -6806,6 +6822,10 @@ MATTE_arredondarparamaior ( double X , bool PRINT , int COMMAS )
 
 
 
+// FUNCTION: RETURNS THE COSINE OF THE INFORMED ANGLE
+// @param01: ANGULO { THE ANGLE VALUE THAT WILL BE USED }
+// @param02: PRINT { IF TRUE PRINTS THE RESULT }
+// @param03: COMMAS { SET HOW MANY COMMAS WILL BE PRINTED }
 double
 MATTE_cosemrad ( double ANGULO , bool PRINT , int COMMAS )
 {
@@ -6820,6 +6840,10 @@ MATTE_cosemrad ( double ANGULO , bool PRINT , int COMMAS )
 
 
 
+// FUNCTION: RETURNS THE HYPERBOLIC COSINE OF THE ANGLE
+// @param01: ANGULO { THE ANGLE VALUE THAT WILL BE USED }
+// @param02: PRINT { IF TRUE PRINTS THE RESULT }
+// @param03: COMMAS { SET HOW MANY COMMAS WILL BE PRINTED }
 double
 MATTE_coshiperbolico ( double ANGULO , bool PRINT , int COMMAS )
 {
@@ -6834,6 +6858,10 @@ MATTE_coshiperbolico ( double ANGULO , bool PRINT , int COMMAS )
 
 
 
+// FUNCTION: RETURNS THE EULER NUMBER (~2.71) RAISED TO X
+// @param01: X { A DOUBLE VALUE }
+// @param02: PRINT { IF TRUE PRINTS THE RESULT }
+// @param03: COMMAS { SET HOW MANY COMMAS WILL BE PRINTED }
 double
 MATTE_exp ( double X , bool PRINT , int COMMAS )
 {
@@ -6848,6 +6876,10 @@ MATTE_exp ( double X , bool PRINT , int COMMAS )
 
 
 
+// FUNCTION: RETURNS THE MODULUS OF A DOUBLE NUMBER
+// @param01: X { A DOUBLE VALUE }
+// @param02: PRINT { IF TRUE PRINTS THE RESULT }
+// @param03: COMMAS { SET HOW MANY COMMAS WILL BE PRINTED }
 double
 MATTE_modulo ( double X , bool PRINT , int COMMAS )
 {
@@ -6862,6 +6894,10 @@ MATTE_modulo ( double X , bool PRINT , int COMMAS )
 
 
 
+// FUNCTION: RETURNS THE SMALLEST INT VALUE
+// @param01: X { A DOUBLE VALUE }
+// @param02: PRINT { IF TRUE PRINTS THE RESULT }
+// @param03: COMMAS { SET HOW MANY COMMAS WILL BE PRINTED }
 double
 MATTE_arredondarparamenor ( double X , bool PRINT , int COMMAS )
 {
@@ -6876,22 +6912,11 @@ MATTE_arredondarparamenor ( double X , bool PRINT , int COMMAS )
 
 
 
-double
-MATTE_mantissa ( double X , bool PRINT , int COMMAS )
-{
-                 int EXPOENTE;
-
-                 X = frexp ( X , &EXPOENTE );
-
-                 if ( PRINT == true ) printf ("%.*lf", (COMMAS <= 0) ? 0 : COMMAS, X);
-
-                 return X;
-}
-
-
-
-
-
+// FUNCTION: RETURNS THE X * EXPOENTE ^ exp
+// @param01: X { A DOUBLE VALUE }
+// @param02: EXPOENTE { A INT VALUE }
+// @param03: PRINT { IF TRUE PRINTS THE RESULT }
+// @param04: COMMAS { SET HOW MANY COMMAS WILL BE PRINTED }
 double
 MATTE_ldexp ( double X , int EXPOENTE , bool PRINT , int COMMAS )
 {
@@ -6906,6 +6931,10 @@ MATTE_ldexp ( double X , int EXPOENTE , bool PRINT , int COMMAS )
 
 
 
+// FUNCTION: RETURNS THE LOGARITHM OF X IN THE e BASE
+// @param01: X { A DOUBLE VALUE }
+// @param02: PRINT { IF TRUE PRINTS THE RESULT }
+// @param03: COMMAS { SET HOW MANY COMMAS WILL BE PRINTED }
 double
 MATTE_log ( double X , bool PRINT , int COMMAS )
 {
@@ -6920,6 +6949,10 @@ MATTE_log ( double X , bool PRINT , int COMMAS )
 
 
 
+// FUNCTION: RETURNS THE LOGARITHM OF X IN THE 10 BASE
+// @param01: X { A DOUBLE VALUE }
+// @param02: PRINT { IF TRUE PRINTS THE RESULT }
+// @param03: COMMAS { SET HOW MANY COMMAS WILL BE PRINTED }
 double
 MATTE_log10 ( double X , bool PRINT , int COMMAS )
 {
@@ -6934,6 +6967,10 @@ MATTE_log10 ( double X , bool PRINT , int COMMAS )
 
 
 
+// FUNCTION: RETURNS ONLY THE DECIMAL PART OF THE X
+// @param01: X { A DOUBLE VALUE }
+// @param02: PRINT { IF TRUE PRINTS THE RESULT }
+// @param03: COMMAS { SET HOW MANY COMMAS WILL BE PRINTED }
 double
 MATTE_soapartedecimal ( double X , bool PRINT , int COMMAS )
 {
@@ -6950,6 +6987,11 @@ MATTE_soapartedecimal ( double X , bool PRINT , int COMMAS )
 
 
 
+// FUNCTION: RETURNS BASE ^ EXPO
+// @param01: BASE { A DOUBLE VALUE }
+// @param02: EXPO { A DOUBLE VALUE }
+// @param03: PRINT { IF TRUE PRINTS THE RESULT }
+// @param04: COMMAS { SET HOW MANY COMMAS WILL BE PRINTED }
 double
 MATTE_potencia ( double BASE , double EXPO , bool PRINT , int COMMAS )
 {
@@ -6966,6 +7008,10 @@ MATTE_potencia ( double BASE , double EXPO , bool PRINT , int COMMAS )
 
 
 
+// FUNCTION: RETURNS THE SINE ANGLE
+// @param01: ANGULO { A DOUBLE VALUE }
+// @param02: PRINT { IF TRUE PRINTS THE RESULT }
+// @param03: COMMAS { SET HOW MANY COMMAS WILL BE PRINTED }
 double
 MATTE_senoemrad ( double ANGULO , bool PRINT , int COMMAS )
 {
@@ -6980,7 +7026,10 @@ MATTE_senoemrad ( double ANGULO , bool PRINT , int COMMAS )
 
 
 
-
+// FUNCTION: RETURNS THE HIPERBOLIC SINE ANGLE
+// @param01: ANGULO { A DOUBLE VALUE }
+// @param02: PRINT { IF TRUE PRINTS THE RESULT }
+// @param03: COMMAS { SET HOW MANY COMMAS WILL BE PRINTED }
 double
 MATTE_senohiperbolico ( double ANGULO , bool PRINT , int COMMAS )
 {
@@ -6995,6 +7044,10 @@ MATTE_senohiperbolico ( double ANGULO , bool PRINT , int COMMAS )
 
 
 
+// FUNCTION: RETURNS THE SQUARE ROT OF X
+// @param01: X { A DOUBLE VALUE }
+// @param02: PRINT { IF TRUE PRINTS THE RESULT }
+// @param03: COMMAS { SET HOW MANY COMMAS WILL BE PRINTED }
 double
 MATTE_raizquadrada ( double X , bool PRINT , int COMMAS )
 {
@@ -7009,6 +7062,10 @@ MATTE_raizquadrada ( double X , bool PRINT , int COMMAS )
 
 
 
+// FUNCTION: RETURNS THE ANGLE TANGENT
+// @param01: ANGULO { A DOUBLE VALUE }
+// @param02: PRINT { IF TRUE PRINTS THE RESULT }
+// @param03: COMMAS { SET HOW MANY COMMAS WILL BE PRINTED }
 double
 MATTE_tangenteemrad ( double ANGULO , bool PRINT , int COMMAS )
 {
@@ -7023,6 +7080,10 @@ MATTE_tangenteemrad ( double ANGULO , bool PRINT , int COMMAS )
 
 
 
+// FUNCTION: RETURNS THE HIPERBOLIC ANGLE TANGENT
+// @param01: ANGULO { A DOUBLE VALUE }
+// @param02: PRINT { IF TRUE PRINTS THE RESULT }
+// @param03: COMMAS { SET HOW MANY COMMAS WILL BE PRINTED }
 double
 MATTE_tangentehiperbolica ( double ANGULO , bool PRINT , int COMMAS )
 {
@@ -7036,7 +7097,8 @@ MATTE_tangentehiperbolica ( double ANGULO , bool PRINT , int COMMAS )
 
 
 
-// LOCH FUNCTIONS
+// LOCH
+
 
 
 
