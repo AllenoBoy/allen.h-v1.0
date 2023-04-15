@@ -101,6 +101,12 @@ int
 main ( void )
 {      
     // Criando uma Simple box
+    
+    // action = Defininindo que ela retorna na variável int o clique do usuário
+    // BOX_TEXT = Que o texto que irá aparecer dentro dela ira ser -> Confirme a sua presença clicando em ok!
+    // BOX_CAPTION = Que o título da simple box será -> Inscrição Anual
+    // BOX_TYPE = TERÁ DOIS BOTÕES ( OK E CANCELAR ) | TERÁ O ICONE DE INFORMATION | O BOTÃO PADRÃO É O SEGUNDO -> MB_OKCANCEL | MB_ICONINFORMATION | MB_DEFBUTTON2
+    
     int action = SB_CREATEBOX ( "Confirme a sua presença clicando em ok!" , "Inscrição Anual" , MB_OKCANCEL | MB_ICONINFORMATION | MB_DEFBUTTON2  );
 
     // Executando ações
