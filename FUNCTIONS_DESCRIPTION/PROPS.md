@@ -1181,3 +1181,56 @@ OLHA AGORA QUE CHICK!
 
 
 
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> static inline void PROP_SAVECURSOR ( void ) e static inline void PROP_LOADCURSOR ( void ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `A função "PROP_SAVECURSOR" salva a última posição do cursor quando chamada, e a função "PROP_LOADCURSOR" volta para a última posição`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{     
+    // Ativando os props
+    ENABLEPROPS ();
+
+    // Escondendo o cursor
+    PROP_HIDECURSOR ();
+
+    //... "Printei no console agora vou receber um valor do user"
+    PROP_SHOWCURSOR ();
+
+    // ... stdin = entrada do usuário e stdout = entrada do sistema
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+OBSERVAÇÃO: QUANDO CHAMADA A FUNÇÃO PROP_SHOWCURSOR O CURSOR É EXIBIDO E A PROP_HIDECURSOR FAZ COM QUE ELE SEJA ESCONDIDO
+```
+
+
+
+
