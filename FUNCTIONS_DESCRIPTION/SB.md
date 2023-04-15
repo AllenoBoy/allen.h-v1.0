@@ -42,11 +42,15 @@ MB_RETRYCANCEL:      Exibe os botões "Repetir" e "Cancelar".
 
 > ICONES DA MESSAGEBOX:
 
-MB_ICONHAND:        Exibe um ícone de mão com um "X" vermelho.
-MB_ICONQUESTION:    Exibe um ícone de ponto de interrogação.
-MB_ICONEXCLAMATION: Exibe um ícone de ponto de exclamação.
-MB_ICONASTERISK:    Exibe um ícone de asterisco.
-MB_USERICON:        Exibe um ícone personalizado. < EXEMPLO DE USO NO FIM DESSE DOCUMENTO >
+MB_ICONHAND:                Exibe um ícone de mão com um "X" vermelho.
+MB_ICONQUESTION:            Exibe um ícone de ponto de interrogação.
+MB_ICONEXCLAMATION:         Exibe um ícone de ponto de exclamação.
+MB_ICONASTERISK:            Exibe um ícone de asterisco.
+IDICONSTOP ou IDICONERROR:  Ícone de erro (X vermelho)
+IDICONQUESTION:             Ícone de interrogação (?)
+IDICONEXCLAMATION:          Ícone de exclamação (!)
+IDICONINFORMATION:          Ícone de informação (i)
+MB_USERICON:                Exibe um ícone personalizado. < EXEMPLO DE USO NO FIM DESSE DOCUMENTO >
 
 > DEFINIÇÕES:
 
@@ -59,6 +63,30 @@ MB_SYSTEMMODAL: Especifica que a caixa de mensagem deve ser modal para todo o si
 MB_TASKMODAL:   Especifica que a caixa de mensagem deve ser modal apenas para a janela atual.
 
 OBS.: Esses macros podem ser chamados sozinhos ou com mais de um assim: MACRO | MACRO2 | MACRO 3
+```
+
+<br>
+
+#### IDS DE CONTROLE PARA ESSA FUNÇÃO:
+
+```txt
+Listagem dos IDS da api do windows que podem ser usados nessa função, para controlar ações:
+
+IDOK -     Botão "OK"
+IDCANCEL - Botão "Cancelar"
+IDABORT -  Botão "Abortar"
+IDRETRY -  Botão "Tentar novamente"
+IDIGNORE - Botão "Ignorar"
+IDYES -    Botão "Sim"
+IDNO -     Botão "Não
+
+
+OBS.: Esses ids servem para o seguinte:
+
+/ int x = SB_CREATEBOX (...);
+
+if ( x = IDOK ) printf ("Olá mundo");
+
 ```
 
 <br>
