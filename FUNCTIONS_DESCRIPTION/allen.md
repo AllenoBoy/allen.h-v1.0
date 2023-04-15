@@ -10,18 +10,6 @@
 
 
 
-<br>
-
-> OBSERVAÇÃO: *Para usar qualquer função apresentada nesse documento, no início do seu programa deve ser inserida a função ENABLEPROPS, caso opte por não colocar nenhuma função irá funcionar, e caso funcione pode gerar erros no código ou no próprio programa.*
-
-<br>
-
----
-
-
-
-
-
 
 
 
