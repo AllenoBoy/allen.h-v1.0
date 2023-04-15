@@ -22,12 +22,12 @@
 
 <br>
 
-<h3 align="center"> static inline void ENABLEPROPS ( void ) </h3> 
+<h3 align="center"> int allen_GETDIGITS ( int VARIABLE ) </h3> 
 
 <br>
 <br>
 
-- **O QUE ELA FAZ**: `Essa função permite que as funções do tipo PROPS sejam executadas no seu console, lembrando que, em alguns computadores algumas funções não irão funcionar corretamente, um exemplo é o uso da função que serve para definir o estilo do texto, que não consegue definir nenhum dos macros de estilo ( ITALIC, CUT , BLINKER1 ... )`;
+- **O QUE ELA FAZ**: `Essa função retorna quantas casas existem no inteiro definido em VARIABLE`;
 
 <br>
 
@@ -40,10 +40,11 @@
 int 
 main ( void )
 {      
-    // Ativando os props
-    ENABLEPROPS ();
+    // Salvando em quant a quantidade de casas
+    int quant = allen_GETDIGITS (123456);
     
-    // ...
+    // Printando a quantidade
+    PR_INT (quant);
 }
 
 ```
@@ -52,8 +53,6 @@ main ( void )
 
 #### SAÍDA DO CONSOLE:
 
-```sh
-
-OBSERVAÇÃO: O CONSOLE ATIVOU OS PROPS
-
+```txt
+6
 ```
