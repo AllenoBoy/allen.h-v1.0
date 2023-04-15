@@ -592,3 +592,119 @@ Texto de suporte
 
 
 
+
+<br>
+
+<h3 align="center"> static inline void PROP_CLEARRIGHT ( void ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Quando chamada, limpa do cursor para a frente`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{     
+    // Ativando os props
+    ENABLEPROPS ();
+
+    // ... CÓDIGO QUE UTILIZA O MOVIMENTO DO CURSOR
+
+    // Limpando o que foi printado partindo do cursor até o fim da direita
+    PROP_CLEARRIGHT ();
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```sh
+OBSERVAÇÃO: FUNÇÃO QUE LIMPA NO CONSOLE TUDO DA ATUAL POSIÇÃO DO CURSOR PARA A DIREITA ( PESQUISE SOBRE A FUNÇÃO GOTOXY )
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> static inline void PROP_CLEARLEFT ( void ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Quando chamada, limpa do cursor para o inicio`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{     
+    // Ativando os props
+    ENABLEPROPS ();
+
+    // ... CÓDIGO QUE UTILIZA O MOVIMENTO DO CURSOR
+
+    // Limpando o que foi printado partindo do cursor até o inicio que fica na esquerda
+    PROP_CLEARLEFT ();
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```sh
+OBSERVAÇÃO: FUNÇÃO QUE LIMPA NO CONSOLE TUDO DA ATUAL POSIÇÃO DO CURSOR PARA A ESQUERDA ( PESQUISE SOBRE A FUNÇÃO GOTOXY )
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
