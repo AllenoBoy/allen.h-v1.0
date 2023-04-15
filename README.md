@@ -56,7 +56,7 @@ A biblioteca allen.h tem como objetivo a ` simplificação dinâmica de código 
 <br>
 <br>
 
-- Como funciona um projeto no code::blocks, <a href="https://pastebin.com/KAFTdxL4" title="Ajuda de como funciona o projeto"> veja aqui </a>;
+- Como funciona um projeto no `Code::Blocks`, <a href="https://pastebin.com/KAFTdxL4" title="Ajuda de como funciona o projeto"> veja aqui </a>;
 - A biblioteca possui suporte ao uso de `threads` por causa da biblioteca pthread.h;
 
 <br> <br>
