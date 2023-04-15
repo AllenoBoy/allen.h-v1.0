@@ -748,14 +748,14 @@ main ( void )
 
 - Antes da função:
 
-```sh
+```txt
 Texto 01
 Texto 02
 ```
 
 - Depois da função:
 
-```sh
+```txt
 U tried! my son!
 Texto 02
 ```
@@ -828,14 +828,14 @@ main ( void )
 
 - Antes da função:
 
-```sh
+```txt
 Texto 01
 Texto 02
 ```
 
 - Depois da função:
 
-```sh
+```txt
 U tried! my son!
 Texto 02
 
@@ -908,14 +908,14 @@ main ( void )
 
 - Antes da função:
 
-```sh
+```txt
 Texto 01
 Texto 02
 ```
 
 - Depois da função:
 
-```sh
+```txt
 U tried! my son!
 Texto 02
 
@@ -987,14 +987,14 @@ main ( void )
 
 - Antes da função:
 
-```sh
+```txt
 Texto 01
 Texto 02
 ```
 
 - Depois da função:
 
-```sh
+```txt
 U tried! my son!
 Texto 02
 
@@ -1058,7 +1058,7 @@ main ( void )
 
 - Antes da função:
 
-```sh
+```txt
 ufa! amor ainda bem que estava enganado!
 larguei mais cedo do trabalho!
 e desci te fazer uma surpresa
@@ -1066,7 +1066,7 @@ e desci te fazer uma surpresa
 
 - Depois da função:
 
-```sh
+```txt
 ufa! amor ainda bem que estava enganado! - linha 01 da musica.
 larguei mais cedo do trabalho!           - linha 02 da musica.
 e desci te fazer uma surpresa            - linha 03 da musica.
