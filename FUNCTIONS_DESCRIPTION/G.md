@@ -495,7 +495,7 @@ main ( void )
 
 <br>
 
-<h3 align="center"> double GWC_DOUBLE ( float VALUE , int CONDITION , float COMPARATOR , const char* TEXT , int LINE , int SPACES ) </h3> 
+<h3 align="center"> double GWC_DOUBLE ( double VALUE , int CONDITION , double COMPARATOR , const char* TEXT , int LINE , int SPACES ) </h3> 
 
 <br>
 <br>
@@ -557,7 +557,7 @@ main ( void )
 
 <br>
 
-<h3 align="center"> char GWC_CHAR ( float VALUE , int CONDITION , float COMPARATOR , const char* TEXT , int LINE , int SPACES ) </h3> 
+<h3 align="center"> char GWC_CHAR ( char VALUE , int CONDITION , char COMPARATOR , const char* TEXT , int LINE , int SPACES ) </h3> 
 
 <br>
 <br>
@@ -677,12 +677,12 @@ allen
 
 <br>
 
-<h3 align="center"> int GWC_STRING ( const char * QUESTION , char STRING [] , int LINES , int SPACES , int TYPE_OF , int SIZE_LIMITER , char TEXT_COMPARATOR [] , char EXIT_TOKEN [] ) </h3> 
+<h3 align="center"> int getI ( const char * QUESTION_TEXT , int LINES , int SPACES , int CONDITION , int COMPARATOR ) </h3> 
 
 <br>
 <br>
 
-- **O QUE ELA FAZ**: `Essa função `;
+- **O QUE ELA FAZ**: `Essa função possui um estilo de recebimento de input diferente ( allen style XD ), onde esse estilo basicamente consiste em limitar o input do usuário, nessa função em específico o usuário está limitado a digitar somente números. Os parâmetros são definidos assim, QUESTION_TEXT se refere a informação / texto que será printado toda vez que for requisitado o input, LINES a quantidade de print de quebra de linhas, SPACES a quantidade de prints de ' ' , CONDITION se refere de que forma será feita a validação usando os macros OPERADORES ( HT , LT , EQ , DF , HE , LE , NRM  ) para serem comparados com COMPARATOR`
 
 <br>
 
@@ -694,13 +694,15 @@ allen
 
 int 
 main ( void )
-{   
-       char username [50];
+{ 
+       int random_value;
 
-       // Pegando um username, usando o tamanho máximo de 20, e com o exit token -> :q!
-       GWC_STRING ( "Insira seu nome: " , username , 0 , 10 , stringSZ , 20 , notext , ":q!" );
-       
-       PR ( username );
+       // Pegando um int aleatório sem limitações
+       random_value = getI ( "Insira algum valor do tipo inteiro: " , 1 , 2 , NRM , 0 );
+
+       // Printando
+       PRL (1);
+       PR_INT ( random_value );
 }
 
 ```
@@ -710,9 +712,8 @@ main ( void )
 #### SAÍDA DO CONSOLE:
 
 ```txt
-          Insira seu nome: abcdefghijklmnopqrs
-          Insira seu nome: allen
-allen
+  Insira algum valor do tipo inteiro: 12
+12
 ```
 
 
@@ -720,6 +721,192 @@ allen
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> float getF ( const char * QUESTION_TEXT , int LINES , int SPACES , int CONDITION , float COMPARATOR ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Mesma funcionalidade de getI, só que para float. Os parâmetros dessa função são definidos assim, QUESTION_TEXT se refere a informação / texto que será printado toda vez que for requisitado o input, LINES a quantidade de print de quebra de linhas, SPACES a quantidade de prints de ' ' , CONDITION se refere de que forma será feita a validação usando os macros OPERADORES ( HT , LT , EQ , DF , HE , LE , NRM  ) para serem comparados com COMPARATOR`
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{ 
+       float grade;
+
+       // Recebendo o input do usuário
+       grade = getF ( "Insira sua nota: " , 1 , 10 , NRM , 0 );
+
+       // Printando o valor
+       PRL (1);
+       PR_FLOAT ( grade , 1 );
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+          Insira sua nota: 12.3
+12.3
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> float getD ( const char * QUESTION_TEXT , int LINES , int SPACES , int CONDITION , double COMPARATOR ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Mesma funcionalidade de getI, só que para double. Os parâmetros dessa função são definidos assim, QUESTION_TEXT se refere a informação / texto que será printado toda vez que for requisitado o input, LINES a quantidade de print de quebra de linhas, SPACES a quantidade de prints de ' ' , CONDITION se refere de que forma será feita a validação usando os macros OPERADORES ( HT , LT , EQ , DF , HE , LE , NRM  ) para serem comparados com COMPARATOR`
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{ 
+       double grade;
+
+       // Recebendo o input do usuário
+       grade = getD ( "Insira sua nota: " , 1 , 10 , NRM , 0 );
+
+       // Printando o valor
+       PRL (1);
+       PR_DOUBLE ( grade , 1 );
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+          Insira sua nota: 12.3
+12.3
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> float getS ( const char * QUESTION_TEXT , int LINES , int SPACES , int CONDITION , int MAX_SIZE , char STRING [MAX_SIZE] , char TOKEN , int NUMBER_OF_REPLACEMENTS , ...  ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Segue com a mesma funcionalidade de getI, só que mais sofisticada, essa função permite que atráves dos macros de OPERADORES ( mais específicamente SZE -> funciona como NRM só que para essa função , CRY , PWD , ONS , PWS , ONN , PWN ) receba strings de forma mais dinâmica e interessante. Os parâmetros são, QUESTION_TEXT que é o texto que irá ser printado toda vez quando houver input, LINES e SPACES printam a quantidade respectivamente de '\n' e ' ', CONDITION se refere aos macros de OPERADORES, MAX_SIZE define o tamanho máximo que pode ser digitado pelo usuário, TOKEN é usado na substituição de caracteres específicos quando CONDITION for igual a CRY, e em NUMBER_OF_REPLACEMENTS se CONDITION for igual a CRY se é necessário inserir os chars que serão alterados na string`
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{
+       char pass [50];
+
+       // Aqui recebemos a string, e posteriormente alteramos quando ela é retornada
+       getS ( "Insert a string: " , 1 , 10 , CRY , 20 , pass , '*' , 5 , 'a' , 'e' , 'i' , 'o' , 'u' );
+
+       // Printing the string
+       PRL (1);
+       PR (pass);
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+         Insert a string: a e i o u - removido
+* * * * * * - r*m*v*d*
+```
 
 
 
