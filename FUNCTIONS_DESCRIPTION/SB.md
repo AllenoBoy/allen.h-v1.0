@@ -26,6 +26,43 @@
 
 <br>
 
+#### MACROS PARA ESSA FUNÇÃO:
+
+```txt
+Listagem dos MACROS da api do windows que podem ser usados em UINT BOX_TYPE:
+
+> TIPOS DE MESSAGEBOX:
+
+MB_OK:               Exibe apenas o botão "OK".
+MB_OKCANCEL:         Exibe os botões "OK" e "Cancelar".
+MB_ABORTRETRYIGNORE: Exibe os botões "Abortar", "Repetir" e "Ignorar".
+MB_YESNOCANCEL:      Exibe os botões "Sim", "Não" e "Cancelar".
+MB_YESNO:            Exibe os botões "Sim" e "Não".
+MB_RETRYCANCEL:      Exibe os botões "Repetir" e "Cancelar".
+
+> ICONES DA MESSAGEBOX:
+
+MB_ICONHAND:        Exibe um ícone de mão com um "X" vermelho.
+MB_ICONQUESTION:    Exibe um ícone de ponto de interrogação.
+MB_ICONEXCLAMATION: Exibe um ícone de ponto de exclamação.
+MB_ICONASTERISK:    Exibe um ícone de asterisco.
+MB_USERICON:        Exibe um ícone personalizado. < EXEMPLO DE USO NO FIM DESSE DOCUMENTO >
+
+> DEFINIÇÕES:
+
+MB_DEFBUTTON1:  Define o primeiro botão (esquerda) como o botão padrão.
+MB_DEFBUTTON2:  Define o segundo botão como o botão padrão.
+MB_DEFBUTTON3:  Define o terceiro botão como o botão padrão.
+MB_DEFBUTTON4:  Define o quarto botão como o botão padrão.
+MB_APPLMODAL:   Especifica que a caixa de mensagem deve ser modal para a aplicação atual.
+MB_SYSTEMMODAL: Especifica que a caixa de mensagem deve ser modal para todo o sistema.
+MB_TASKMODAL:   Especifica que a caixa de mensagem deve ser modal apenas para a janela atual.
+
+OBS.: Esses macros podem ser chamados sozinhos ou com mais de um assim: MACRO | MACRO2 | MACRO 3
+```
+
+<br>
+
 #### CÓDIGO DE EXEMPLO:
 
 ```c
@@ -73,7 +110,7 @@ main ( void )
 
 <br>
 
-#### 
+#### MACROS PARA ESSA FUNÇÃO:
 
 ```txt
 Listagem dos MACROS da api do windows que podem ser usados em UINT SOUND:
