@@ -80,3 +80,128 @@ OBSERVAÇÃO: O CONSOLE ATIVOU OS PROPS
 
 ```
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> static inline void PROP_RESTORECONSOLE ( void ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função basicamente, faz com que quando chamada retorne qualquer alteração feita usando as funções PROPS sejam restauradas para o padrão do console`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Ativando os props
+    ENABLEPROPS ();
+
+    // ... códigos
+    
+    // Restaurando o console para o padrão ( Removendo cores, estilos ... )
+    PROP_RESTORECONSOLE ();
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```sh
+
+OBSERVAÇÃO: O CONSOLE RETORNA AS CONFIGURAÇÕES PADRÃO
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> static inline void PROP_TEXTCOLOR ( int CODE ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função define a cor do texto usando os macros "CORES DE ESTILIZAÇÃO DE TEXTO" para definir a cor do texto a partir da chamada da função, onde o macro utilizado deve ser usado em CODE`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Ativando os props
+    ENABLEPROPS ();
+
+    // Mudando a cor do texto para amarelo
+    PROP_TEXTCOLOR ( YELLOW_TEXT );
+
+    // Uso do echo por ser melhor que o printf
+    echo ("Eu gosto de comer arroz!");
+
+    // Restaurando o console para o padrão ( Removendo cores, estilos ... )
+    PROP_RESTORECONSOLE ();
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/114815898/232172410-6c170dfc-8957-469b-a473-634864874976.png">
+</p>
+
+
+
+
+
+
