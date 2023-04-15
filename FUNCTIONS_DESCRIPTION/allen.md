@@ -56,3 +56,482 @@ main ( void )
 ```txt
 6
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void gotoxy ( int X , int Y ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função função semelhantemente a função de tipo props "PROP_MOVECURSOR" , só que essa não necessita de inicialização ("ENABLE PROPS"), pois funciona utilizando a biblioteca windows.h, onde quando chamada define a posição do cursor`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Predefinição de texto
+    echo ("Olha, um ser vivo!");
+    echo ("Qual seria o nome dele: ");
+
+    getch ();
+    
+    // Após a execução irá preencher na posição específicada
+    gotoxy ( 24 , 1 );
+    PR ("ROBERTO\n");
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+- Antes da função:
+
+```txt
+Olha, um ser vivo!
+Qual seria o nome dele:
+_ <- Getch aqui
+```
+
+- Depois da função: 
+
+```txt
+Olha, um ser vivo!
+Qual seria o nome dele: ROBERTO
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void allen_TESTCODEPAGE ( int CODE_PAGE ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função função faz uma listagem de todos os ASCII CODES da página especificada por CODE_PAGE`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Página Cirilico
+    allen_TESTCODEPAGE ( CIRILICO );
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+Caractere 0 -> // esse é um caractere de ação por isso não é printado
+Caractere 1 -> // esse é um caractere de ação por isso não é printado
+Caractere 2 -> // esse é um caractere de ação por isso não é printado
+Caractere 3 -> // esse é um caractere de ação por isso não é printado
+[...] continua até 300
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void allen_CLEARSTRING ( char * string ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função limpa o conteúdo de uma string já preenchida`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Antes de limpar
+    char USERNAME [] = "allen walker";
+    PR (USERNAME);
+
+    PRL (1);
+
+    // Depois de limpar
+    allen_CLEARSTRING ( USERNAME );
+    PR (USERNAME);
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+allen walker
+      <- aqui está vazio pq a string não possui nada para printar
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void allen_HIGHERARRAYint ( int SIZE , int ARRAY [] ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função retorna o maior valor presente em um vetor do tipo int`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    int array [] = { 1 , 2 , 9 , 4 , 5 , 6 };
+
+    // Pegando o maior valor desse array
+    int higher = allen_HIGHERARRAYint ( 6 , array );
+
+    PR_INT (higher);
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+9
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void allen_HIGHERBARRAYint ( int LINES , int COLUNS , int B_ARRAY [LINES] [COLUNS] ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função retorna o maior valor presente em uma matriz do tipo int`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    int array [2] [3] = { { 1 , 2 , 3 } , { 9 , 5 , 7 } };
+
+    // Salvando o maior valor da matriz
+    int higher = allen_HIGHERBARRAYint ( 2 , 3 , array );
+
+    PR_INT ( higher );
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+9
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void allen_LOWERARRAYint ( int SIZE , int ARRAY [] ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função retorna o menor valor presente em um vetor do tipo int`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    int array [] = { 9 , 3 , 2 , 1 , 8  , 5 , 3 };
+    
+    // Pegando o menor valor
+    int lower = allen_LOWERARRAYint ( 7 , array );
+
+    PR_INT ( lower );
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+1
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void allen_LOWERBARRAYint ( int LINES , int COLUNS , int B_ARRAY [LINES] [COLUNS] ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função retorna o menor valor presente em uma matriz do tipo int`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    int b_array [2] [3] = { { 1 , 2 , 3 } , { 0 , 5 , 7 } };
+
+    // Pegando o menor valor
+    int lower = allen_LOWERBARRAYint ( 2 , 3 , b_array );
+
+    PR_INT ( lower );
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+0
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void allen_LOWERBARRAYint ( int LINES , int COLUNS , int B_ARRAY [LINES] [COLUNS] ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função retorna o menor valor presente em uma matriz do tipo int`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    int b_array [2] [3] = { { 1 , 2 , 3 } , { 0 , 5 , 7 } };
+
+    // Pegando o menor valor
+    int lower = allen_LOWERBARRAYint ( 2 , 3 , b_array );
+
+    PR_INT ( lower );
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+0
+```
+
+
+
+
+
+
