@@ -118,7 +118,7 @@ Ok, sua idade e = 12
 
 <br>
 
-<h3 align="center"> int G_CHAR ( void ) </h3> 
+<h3 align="center"> char G_CHAR ( void ) </h3> 
 
 <br>
 <br>
@@ -173,7 +173,7 @@ Ok, o caractere que voce escolheu e #
 
 <br>
 
-<h3 align="center"> int G_FLOAT ( void ) </h3> 
+<h3 align="center"> float G_FLOAT ( void ) </h3> 
 
 <br>
 <br>
@@ -227,7 +227,7 @@ Ok, a sua nota foi 12.33
 
 <br>
 
-<h3 align="center"> int G_DOUBLE ( void ) </h3> 
+<h3 align="center"> double G_DOUBLE ( void ) </h3> 
 
 <br>
 <br>
@@ -278,7 +278,7 @@ Ok, a sua nota foi 12.33
 
 <br>
 
-<h3 align="center"> int G_STRING ( void ) </h3> 
+<h3 align="center"> void G_STRING ( char STRING [] ) </h3> 
 
 <br>
 <br>
@@ -420,7 +420,7 @@ main ( void )
 
 <br>
 
-<h3 align="center"> int GWC_FLOAT ( float VALUE , int CONDITION , float COMPARATOR , const char* TEXT , int LINE , int SPACES ) </h3> 
+<h3 align="center"> float GWC_FLOAT ( float VALUE , int CONDITION , float COMPARATOR , const char* TEXT , int LINE , int SPACES ) </h3> 
 
 <br>
 <br>
@@ -495,7 +495,7 @@ main ( void )
 
 <br>
 
-<h3 align="center"> int GWC_DOUBLE ( float VALUE , int CONDITION , float COMPARATOR , const char* TEXT , int LINE , int SPACES ) </h3> 
+<h3 align="center"> double GWC_DOUBLE ( float VALUE , int CONDITION , float COMPARATOR , const char* TEXT , int LINE , int SPACES ) </h3> 
 
 <br>
 <br>
@@ -557,7 +557,7 @@ main ( void )
 
 <br>
 
-<h3 align="center"> int GWC_CHAR ( float VALUE , int CONDITION , float COMPARATOR , const char* TEXT , int LINE , int SPACES ) </h3> 
+<h3 align="center"> char GWC_CHAR ( float VALUE , int CONDITION , float COMPARATOR , const char* TEXT , int LINE , int SPACES ) </h3> 
 
 <br>
 <br>
@@ -613,7 +613,7 @@ main ( void )
 
 <br>
 
-<h3 align="center"> int GWC_STRING ( const char * QUESTION , char STRING [] , int LINES , int SPACES , int TYPE_OF , int SIZE_LIMITER , char TEXT_COMPARATOR [] , char EXIT_TOKEN [] ) </h3> 
+<h3 align="center"> char GWC_STRING ( const char * QUESTION , char STRING [] , int LINES , int SPACES , int TYPE_OF , int SIZE_LIMITER , char TEXT_COMPARATOR [] , char EXIT_TOKEN [] ) </h3> 
 
 <br>
 <br>
@@ -647,7 +647,7 @@ main ( void )
 
 ```txt
           Insira seu nome: abcdefghijklmnopqrs
-          Insira um simbolo: allen
+          Insira seu nome: allen
 allen
 ```
 
@@ -674,6 +674,46 @@ allen
 
 
 
+
+<br>
+
+<h3 align="center"> int GWC_STRING ( const char * QUESTION , char STRING [] , int LINES , int SPACES , int TYPE_OF , int SIZE_LIMITER , char TEXT_COMPARATOR [] , char EXIT_TOKEN [] ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função `;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+       char username [50];
+
+       // Pegando um username, usando o tamanho máximo de 20, e com o exit token -> :q!
+       GWC_STRING ( "Insira seu nome: " , username , 0 , 10 , stringSZ , 20 , notext , ":q!" );
+       
+       PR ( username );
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+          Insira seu nome: abcdefghijklmnopqrs
+          Insira seu nome: allen
+allen
+```
 
 
 
