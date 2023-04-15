@@ -42,6 +42,7 @@ A biblioteca allen.h tem como objetivo a ` simplificação dinâmica de código 
 # include <sys/stat.h>
 # include <sys/types.h>
 # include <pthread.h>
+# include <limits.h>
 ```
 
 <br> <br>
