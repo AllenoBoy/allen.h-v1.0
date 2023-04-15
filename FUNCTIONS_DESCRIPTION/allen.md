@@ -494,12 +494,12 @@ main ( void )
 
 <br>
 
-<h3 align="center"> void allen_LOWERBARRAYint ( int LINES , int COLUNS , int B_ARRAY [LINES] [COLUNS] ) </h3> 
+<h3 align="center"> void allen_SUBSINTARRAY ( int SIZE , int ARRAY [] , int CONDITION , int COMPARATOR , int TOKEN ) </h3> 
 
 <br>
 <br>
 
-- **O QUE ELA FAZ**: `Essa função retorna o menor valor presente em uma matriz do tipo int`;
+- **O QUE ELA FAZ**: `Essa função substitui em um vetor valores que atendem aos requisitos do parametro CONDITION. Os parâmetros são os seguintes: SIZE define o tamanho do vetor, ARRAY define o vetor que será atualizado, CONDITION recebe um dos macros "OPERADORES" ( HT , LT , EQ , DF , HE , LE , PAR , IMPAR , MULTIPLO , NOTMULTIPLO , QUADRADO_X_EQ_Y , QUADRADO_X_DF_Y , INVERSO , CRESCENTE , DECRESCENTE ) inclusive as alterações feitas no vetor são contabilizadas ou seja você pode adicionar uma variável que irá retornar quantas substituições foram feitas, COMPARATOR é o valor que será usado para essas comparações e por fim TOKEN nada mais é do que pelo o que você irá mudar os valores que atenderem os requisitos`;
 
 <br>
 
@@ -512,12 +512,18 @@ main ( void )
 int 
 main ( void )
 {      
-    int b_array [2] [3] = { { 1 , 2 , 3 } , { 0 , 5 , 7 } };
+    int array [] = { 0 , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 };
 
-    // Pegando o menor valor
-    int lower = allen_LOWERBARRAYint ( 2 , 3 , b_array );
+    // Printando o vetor antes da substituição
+    PR ("Antes: ");
+    PR_intVETOR ( 10 , array );
 
-    PR_INT ( lower );
+    PRL (2);
+    allen_SUBSINTARRAY ( 10 , array , PAR , 0 , 0 );
+
+    // Printando o vetor após a substituição
+    PR ("Depois: ");
+    PR_intVETOR ( 10 , array );
 }
 
 ```
@@ -527,8 +533,75 @@ main ( void )
 #### SAÍDA DO CONSOLE:
 
 ```txt
-0
+Antes: 0 1 2 3 4 5 6 7 8 9 
+
+Depois: 0 1 0 3 0 5 0 7 0 9
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void allen_SUBSINTARRAY ( int SIZE , int ARRAY [] , int CONDITION , int COMPARATOR , int TOKEN ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função copia de um vetor para outro os valores que atenderem os requisitos de CONDITION ( HT , LT , EQ , DF , HE , LE , PAR , IMPAR , MULTIPLO , NOTMULTIPLO , QUADRADO_X_EQ_Y , QUADRADO_X_DF_Y , INVERSO , CRESCENTE , DECRESCENTE ). Os parâmetros são os seguintes: SIZE define o tamanho do vetor, ARRAY é o vetor que será utilizado para coletar os valores, CONDITION é o macro, COMPARATOR é o valor que serve de comparação quando necessário, NEW_ARRAY é o vetor que irá salvar os valores que atenderem os requisitos`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{  
+    int array [] = { 0 , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 };
+    int new_array [10];
+
+    // Printando o vetor antes da substituição
+    PR ("Antes: ");
+    PR_intVETOR ( 10 , array );
+
+    PRL (2);
+    int size = allen_COPYINTARRAY ( 10 , array , PAR , 0 , new_array );
+
+    // Printando o vetor após a substituição
+    PR ("Depois: ");
+    PR_intVETOR ( size , new_array );
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+Antes: 0 1 2 3 4 5 6 7 8 9 
+
+Depois: 0 2 4 6 8
+```
+
 
 
 
