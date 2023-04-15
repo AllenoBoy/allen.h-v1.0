@@ -1096,6 +1096,8 @@ main ( void )
 {      
     // Printando olá mundo!
     echo ("olá mundo!");
+    
+    // Observação a função echo funciona da seguinte forma texto\n
 }
 
 ```
