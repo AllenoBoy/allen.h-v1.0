@@ -3315,7 +3315,7 @@ int
 main ( void )
 {   
     // Substituindo em arq.txt na linha 3 todos os '&' por *rem*
-    int subs = teste ( "arq.txt" , 3 , '&' , "*rem*" );
+    int subs = FLEE_GLOBALSUBScharl ( "arq.txt" , 3 , '&' , "*rem*" );
 
     // Printando todas as substituições
     printf ("Foram %d substituicoes", subs );
@@ -3357,6 +3357,84 @@ main ( void )
 Foram 6 substituicoes
 ```
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> int FLEE_LOCALSUBScharl ( const char * FILE_NAME , int WHAT_LINE , char VALUE , const char * TOKEN ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para substituir em um arquivo localmente, todas as ocorrências de um char definido por VALUE, a diferença dessa função para FLEE_LOCALSUBSchar, é que nessa função a substituição é feita em uma linha específica que é definido por WHAT_LINE`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // Substituindo em arq.txt localmente os valores igual a '#' por "allen" na linha 1
+    int subs = FLEE_LOCALSUBScharl ( "arq.txt" , 2 , '#' , "allen" );
+
+    // Printando todas as substituições
+    printf ("Foram %d substituicoes", subs );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```txt
+[THIS IS A SETBOX] # ##AS # ASAD # #
+USERNAME=##ASDAS
+AGE=21SA12##
+```
+
+<br>
+
+#### SAÍDA DO ARQUIVO:
+
+```txt
+[THIS IS A SETBOX] allen ##AS allen ASAD allen allen
+USERNAME=##ASDAS
+AGE=21SA12##
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+Foram 4 substituicoes
+```
 
 
 
