@@ -613,7 +613,41 @@ A PASTA allen_stuff FOI MOVIDA DIRETAMENTE PARA DENTRO DA PASTA lixeira
 
 
 
+<br>
 
+<h3 align="center"> void FLEE_COPYAFOLDER ( const char * FOLDER_NAME, const char* SAVE_PATH, const char* NEW_NAME ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para copiar uma pasta para outro lugar com um novo nome`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Movendo a pasta allen_stuff para a pasta lixeira com o nome de copied_stuff
+    FLEE_COPYAFOLDER ( "allen_stuff" , "lixeira" , "copied_stuff" );
+}
+
+```
+
+<br>
+
+#### SAÍDA:
+
+```txt
+
+A PASTA allen_stuff FOI COPIADA DIRETAMENTE PARA DENTRO DA PASTA lixeira COM O NOVO NOME copied_stuff
+
+```
 
 
 
