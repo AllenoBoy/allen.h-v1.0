@@ -5514,3 +5514,157 @@ A media = 8.73
 
 
 
+
+
+
+
+<br>
+
+<h3 align="center"> char FLEE_GETSLchar ( const char * FILE_NAME , int WHAT_LINE , int COL ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função pega um valor do tipo char em um arquivo em uma linha especifíca definida por WHAT_LINE a partir de uma coluna inicial definida por COL`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // Pegando um caractere especial em um arquivo chamado arq.txt
+    char symbol = FLEE_GETSLchar ("arq.txt" , 11 , 10 );
+
+    // Printando esse char
+    printf ("Requisited Char = %c", symbol );
+}
+```
+
+<br>
+
+#### | arq.txt
+
+```
+[list of chars]
+---------------
+char1 ====  #
+char2 ====  $
+char3 ====  &
+char4 ====  _
+char5 ====  @
+char6 ====  !
+char7 ====  ^
+char8 ====  >
+char9 ====  *
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```
+Requisited Char = *
+```
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void FLEE_GETSLstring ( const char * FILE_NAME , int WHAT_LINE , int COL , char * STRING ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função pega uma string em um arquivo em uma linha especifíca definida por WHAT_LINE a partir de uma coluna inicial definida por COL`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    char ALUNO_01 [ 50 ];
+    char ALUNO_03 [ 50 ];
+
+    // Pegando um nome específico da lista presente no arquivo arq.txt
+    FLEE_GETSLstring ( "arq.txt" , 3 , 3 , ALUNO_01 );
+    FLEE_GETSLstring ( "arq.txt" , 5 , 3 , ALUNO_03 );
+
+    // Printando os nomes do aluno
+    printf ("[REGISTRO] Aluno 01: %s\n", ALUNO_01 );
+    printf ("[REGISTRO] Aluno 03: %s", ALUNO_03 );
+}
+```
+
+<br>
+
+#### | arq.txt
+
+```
+( NAMES )
+ -------
+1. allen
+2. carl
+3. steven
+4. lina
+   ...
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```
+[REGISTRO] Aluno 01: allen
+[REGISTRO] Aluno 03: steven
+```
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
