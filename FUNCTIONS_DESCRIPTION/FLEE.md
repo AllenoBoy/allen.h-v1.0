@@ -1209,3 +1209,245 @@ main ( void )
 12.30
 ```
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void FLEE_Sstring ( const char * FILE_NAME , const char * STRING ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para salvar em um arquivo um vetor de caracteres (string), de forma não padronizada, ou seja, se tiver conteúdo ele apaga e coloca esse novo`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Salvando no arquivo a frase "i like u! my litte gamestation!" em arq.txt
+    FLEE_Sstring ( "arq.txt" , "i like u! my litte gamestation!" );
+
+    // Observação: Você pode inserir acentuação no texto que será salvo no arquivo
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```txt
+12.3
+```
+
+<br>
+
+#### SAÍDA DO ARQUIVO:
+
+```txt
+i like u! my litte gamestation!
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void FLEE_Lstring ( const char* FILE_NAME, char* STRING ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para pegar todo o conteúdo de um arquivo, sem predefinição nem nada e salvar-lo em uma variável`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    char obs [ 200 ];
+
+    // Salvando em uma string o conteúdo de arq.txt
+    FLEE_Lstring ( "arq.txt" , obs );
+
+    // Printando o a string que foi salva
+    SYS_SETREGION ( ISO );
+    PR ( obs );
+    
+    // Voltando o console ao padrão
+    SYS_SETREGION ( DEFAULT );
+    
+    // Observação: Na biblioteca existe um macro chamado ISO, quando vc usar qualquer
+    // função que pegue uma string que possua acentuação, você pode usar-ló para printar
+    // a string corretamente, e depois retornar para o padrão, caso não tenha acentos
+    // não precisa disso
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```txt
+i like u! my litte gamestation!
+olha a acentuação!
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+i like u! my litte gamestation!
+olha a acentuação!
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> int FLEE_COUNTLINES ( const char * FILE_NAME ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para contar quantas linhas existem em um arquivo, retornando esse valor em int`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Contando quantas linhas existem no arquivo arq.txt
+    int lines = FLEE_COUNTLINES ( "arq.txt" );
+
+    // Printando a quantidade de linhas
+    printf ("A quantidade de linhas = %d", lines);
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```txt
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+A quantidade de linhas = 15
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
