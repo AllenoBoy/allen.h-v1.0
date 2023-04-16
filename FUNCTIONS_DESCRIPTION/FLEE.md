@@ -936,8 +936,12 @@ OLHA QUE LEGAL
 int 
 main ( void )
 {      
-    // Printando no arquivo oloi.txt o valor 202200132
+    // Pegando do arquivo arq.txt o char '#'
     char cach = FLEE_Lchar ( "arq.txt" );
+    
+    // Observação: Pegar chars ou vetor de chars (strings) que possuam acentuação, não é recomendado
+    // pois a linguagem c, tem um problema crônica com acentuação, ou seja, se vc usar essa função para
+    // pegar 'ç' tem muita chance desse valor ser pego de forma errada!
 
     // Printando o char
     printf ("%c", cach);
@@ -975,4 +979,233 @@ main ( void )
 
 
 
+
+
+<br>
+
+<h3 align="center"> void FLEE_Sfloat ( float VALUE , int COMMAS , const char * FILE_NAME ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para salvar em um arquivo um valor do tipo float, substituindo todo o arquivo`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Printando um valor do tipo float em arq.txt
+    FLEE_Sfloat ( 12.334412 , 1 , "arq.txt" );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```txt
+
+*TEM CONTEÚDO AQUI*
+
+```
+
+<br>
+
+#### SAÍDA DO ARQUIVO:
+
+```txt
+12.3
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> float FLEE_Lfloat ( const char * FILE_NAME ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para pegar em um arquivo um valor do tipo float, de forma não padronizada`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Pegando um valor do tipo float em arq.txt e printando
+    float value = FLEE_Lfloat ( "arq.txt" );
+
+    printf ("%.2f", value );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```txt
+12.3
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+12.30
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void FLEE_Sdouble ( double VALUE , int COMMAS , const char * FILE_NAME ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para salvar em um arquivo um valor do tipo double, substituindo todo o arquivo`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Printando um valor do tipo double em arq.txt
+    FLEE_Sdouble ( 12.334412 , 1 , "arq.txt" );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```txt
+
+*TEM CONTEÚDO AQUI*
+
+```
+
+<br>
+
+#### SAÍDA DO ARQUIVO:
+
+```txt
+12.3
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> float FLEE_Ldouble ( const char * FILE_NAME ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para pegar em um arquivo um valor do tipo double, de forma não padronizada`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Pegando um valor do tipo double em arq.txt e printando
+    double value = FLEE_Ldouble ( "arq.txt" );
+
+    printf ("%.2f", value );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```txt
+12.3
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+12.30
+```
 
