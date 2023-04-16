@@ -2559,7 +2559,7 @@ Foram 4 substituicoes
 <br>
 <br>
 
-- **O QUE ELA FAZ**: `Essa função serve para substituir em um arquivo localmente, todas as ocorrências de um float definido por VALUE, a diferença dessa função para FLEE_GLOBALSUBSfloat, é que nessa função a substituição é feita somente em valores separados, por isso o locamente`;
+- **O QUE ELA FAZ**: `Essa função serve para substituir em um arquivo localmente, todas as ocorrências de um double definido por VALUE, a diferença dessa função para FLEE_GLOBALSUBSdouble, é que nessa função a substituição é feita somente em valores separados, por isso o locamente`;
 
 <br>
 
@@ -2575,7 +2575,7 @@ main ( void )
     // LOCAL = substitui somente valores separados 
 
     // Substituindo localmente todos os valores igual a 12.35 em arq.txt por removed
-    int subs = FLEE_LOCALSUBSfloat ( "arq.txt" , 12.35 , 2 , ":q!" );
+    int subs = FLEE_LOCALSUBSdouble ( "arq.txt" , 12.35 , 2 , "___" );
 
     // Printando todas as substituições
     printf ("Foram %d substituicoes", subs );
@@ -2603,10 +2603,10 @@ arriz12.35
 #### SAÍDA DO ARQUIVO:
 
 ```txt
-arquivo de nota :q!
-arquivo de nota :q!
+arquivo de nota ___
+arquivo de nota ___
 
-:q! :q!  12.345
+___ ___  12.345
 
 arriz12.35
 
