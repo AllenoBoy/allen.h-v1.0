@@ -16,7 +16,7 @@ A biblioteca allen.h tem como objetivo a ` simplificação dinâmica de código 
 
 <br>
 
-<h3 align="center"> BIBLIOTECAS PADRÃO </h3> 
+<h3 align="center"> CABEÇALHOS PADRÃO </h3> 
 <br>
 <br>
 
