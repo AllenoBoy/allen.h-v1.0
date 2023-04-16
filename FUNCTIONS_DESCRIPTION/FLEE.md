@@ -1451,3 +1451,500 @@ A quantidade de linhas = 15
 
 
 
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> int FLEE_COUNTWORDS ( const char * FILE_NAME ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para contar quantas palavras existem em um arquivo, retornando esse valor em int`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Contando quantas palavras existem no arquivo arq.txt
+    int words = FLEE_COUNTWORDS ( "arq.txt" );
+
+    // Printando a quantidade de linhas
+    printf ("Nesse arquivo existem %d palavras!", words );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```txt
+Pula, pula pipoquinha
+Pula pula sem parar
+Pula, pula pipoquinha
+Pra crescer e estourar
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+Nesse arquivo existem 14 palavras!
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> int FLEE_COUNTNUMBERS ( const char * FILE_NAME ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para contar quantas números existem em um arquivo, números reais tbm, retornando esse valor em int`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Contando quantos números existem no arquivo arq.txt
+    int nums = FLEE_COUNTNUMBERS ( "arq.txt" );
+    
+    // Observação: Essa função conta inteiros e números reais
+    
+    // Printando a quantidade de linhas
+    printf ("Nesse arquivo existem %d numeros!", nums );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```txt
+ 1 1,3 1.3 1)2
+
+
+1 2 3 
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+Nesse arquivo existem 8 numeros!
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> int FLEE_COUNTint ( const char * FILE_NAME , int VALUE ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para contar quantas números inteiros específicos existem em um arquivo, retornando esse valor em int`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Contando quantos números 2 existem no arquivo arq.txt
+    int count_int = FLEE_COUNTint ( "arq.txt" , 2 );
+    
+    // Observação: Essa função não lê números inteiros
+    
+    // Printando essa quantidade
+    printf ("Existem -> %d", count_int );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```txt
+allen 2
+2 i am tall 2 
+2,3 1. 3 2.3
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+Existem -> 3
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> int FLEE_COUNTfloat ( const char * FILE_NAME , float VALUE ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para contar quantas números reais do tipo float específicos existem em um arquivo, retornando esse valor em int`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Contando quantos números 1.2 existem no arquivo arq.txt
+    int count_float = FLEE_COUNTfloat ( "arq.txt" , 1.2 );
+    
+    // Observação: Se você definiu 1.2 ele só vai pegar se o número estiver realmente assim 1.2 ou assim 1,2
+    // mas se esse valor estiver assim 1.23432 ele ignora, para que pegasse esse valor precisa definir ele completo
+    
+    // Printando essa quantidade
+    printf ("Existem -> %d", count_float );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```txt
+NOTA 01 = 1.2
+NOTA 02 = 1,2
+TESTE   = 1.2 1,2 1.23
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+Existem -> 4
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> int FLEE_COUNTdouble ( const char * FILE_NAME , double VALUE ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para contar quantas números reais do tipo double específicos existem em um arquivo, retornando esse valor em int`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Contando quantos números 1.2 existem no arquivo arq.txt
+    int count_double = FLEE_COUNTdouble ( "arq.txt" , 1.2 );
+        
+    // Printando essa quantidade
+    printf ("Existem -> %d", count_double );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```txt
+NOTA 01 = 1.2
+NOTA 02 = 1,2
+TESTE   = 1.2 1,2 1.23
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+Existem -> 4
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> int FLEE_COUNTchar ( const char * FILE_NAME , char CHAR ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para contar quantos chars específicos existem em um arquivo, retornando esse valor em int`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Contando quantos chars # e @ existem no arquivo arq.txt
+    int velha = FLEE_COUNTchar ( "arq.txt" , '#' );
+    int arrob = FLEE_COUNTchar ( "arq.txt" , '@' );
+
+    // Printando essa quantidade
+    printf ("Existem %d -> @\n", velha );
+    printf ("Existem %d -> #", arrob );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```txt
+@ @ 
+# # @
+# # 
+
+allen@text.com
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+Existem 4 -> @
+Existem 4 -> #
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> int FLEE_COUNTstring ( const char * FILE_NAME , const char * STRING ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para contar quantas palavras específicas existem em um arquivo, retornando esse valor em int`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Contando quantas palavras allen existem em arq.txt
+    int allen = FLEE_COUNTstring ( "arq.txt" , "allen" );
+
+    // Observação: Essa função não pegará valores que estiverem assim
+    // !palavra , _palavra_ , _palavra , @palavra!
+    // Em outras palavras essa função só procura strings separadas
+
+    // Printando a quantidade
+    printf ("Existem: %d, allen", allen );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```txt
+meu nome é allen
+allen allen 
+allen_ !allen
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+Existem 3, allen
+```
+
+
+
+
+
+
+
+
+
+
+
