@@ -2627,3 +2627,95 @@ Foram 4 substituicoes
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> int FLEE_LOCALSUBSchar ( const char * FILE_NAME , char VALUE , const char * TOKEN ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para substituir em um arquivo localmente, todas as ocorrências de um char definido por VALUE, a diferença dessa função para FLEE_GLOBALSUBSchar, é que nessa função a substituição é feita somente em valores separados, por isso o locamente`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // LOCAL = substitui somente valores separados 
+
+    // Substituindo localmente todos os '&' em arq.txt por "_"
+    int subs = FLEE_LOCALSUBSchar ( "arq.txt" , '&' , "_" );
+
+    // Printando todas as substituições
+    printf ("Foram %d substituicoes", subs );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```txt
+walking&learning
+
+if ( alive && breathing ) do this ();
+
+if ( alive & breathing ) eat ();
+
+if & & 7& 
+```
+
+<br>
+
+#### SAÍDA DO ARQUIVO:
+
+```txt
+walking&learning
+
+if ( alive && breathing ) do this ();
+
+if ( alive _ breathing ) eat ();
+
+if _ _ 7&
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+Foram 3 substituicoes
+```
+
+
+
+
+
+
+
+
