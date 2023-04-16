@@ -333,3 +333,138 @@ main ( void )
 O ARQUIVO QUE SE CHAMAVA arq.txt FOI COPIADO PARA allen_data e definido como copy.txt
 
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void FLEE_CREATEAFILEANDFOLDER ( const char * FOLDER_NAME , const cha r* FILE_NAME ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para criar uma pasta e arquivo`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Criando uma pasta chamada allen_info e um arquivo arq.txt
+    FLEE_CREATEAFILEANDFOLDER ( "allen_info" , "arq.txt" );
+
+    // Observação: Caso só queira criar a pasta a função fica assim ( "nome_da_pasta" , "" )
+    // Outra coisa o arquivo não é criado se for definido assim "uma_pasta/arq.txt"
+}
+
+```
+
+<br>
+
+#### SAÍDA:
+
+```txt
+
+O ARQUIVO CRIOU A PASTA CHAMADA allen_info E CONSEQUENTEMENTE CRIOU O arq.txt
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void FLEE_CREATEAFOLDER ( const char * FOLDER_NAME ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para criar uma pasta`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Criando uma pasta chamada butcher
+    FLEE_CREATEAFOLDER ( "butcher" );
+
+    // Observação: Essa função cria exclusivamente só uma pasta no máximo ele cria em uma pasta
+    // específica -> "nome_de_uma_pasta/butcher"
+}
+
+```
+
+<br>
+
+#### SAÍDA:
+
+```txt
+
+O ARQUIVO CRIOU A PASTA CHAMADA butcher
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
