@@ -384,7 +384,7 @@ double MATTE_raizquadrada        ( double X , bool PRINT , int COMMAS );
 /* 9. LOCH FUNCTIONS */
 
 void LOCH_LOCAL ( void );
-void LOCH_SETLOCAL ( char TEXT [] );
+void LOCH_SETLOCAL ( char REGION [] );
 
 
 
@@ -395,14 +395,13 @@ void   FLEE_PUTS                 ( const char * FILE_NAME, bool ADD , const char
 void   FLEE_CREATEAFILE          ( const char * FILE_NAME );
 void   FLEE_RENAMEAFILE          ( const char * FILE_NAME , const char * NEW_FILE_NAME );
 void   FLEE_MOVEAFILE            ( const char * FILE_NAME , const char * NEW_DIRECTORY );
-void   FLEE_COPYAFILE            ( const char * FOLDER , const char * FILE_NAME, const char* NEW_FOLDER , const char* NEW_FILENAME );
+void   FLEE_COPYAFILE            ( const char * FILE_NAME , const char * NEW_FOLDER , const char* NEW_FILENAME  );
 void   FLEE_CREATEAFILEANDFOLDER ( const char * FOLDER_NAME , const char * FILE_NAME );
 void   FLEE_CREATEAFOLDER        ( const char * FOLDER_NAME );
-void   FLEE_RENAMEAFOLDER        ( const char * FOLDER_NAME , const char * NEW_FOLDER_NAME );
 void   FLEE_DELETEAFILE          ( const char * FILE_NAME );
 void   FLEE_DELETEAFOLDER        ( const char * FOLDER_NAME );
 void   FLEE_MOVEAFOLDER          ( const char * FOLDER_NAME , const char * NEW_PATH );
-void   FLEE_COPYAFOLDER          ( const char * FOLDER_NAME , const char * NEW_PATH );
+void   FLEE_COPYAFOLDER          ( const char * FOLDER_NAME, const char* SAVE_PATH, const char* NEW_NAME );
 void   FLEE_SYSTEMFOLDER         ( const char * SYSTEM_FOLDER_NAME , char * FOLDER , char * SAVE_PATH );
 void   FLEE_Sint                 ( int VALUE , const char * FILE_NAME );
 int    FLEE_Lint                 ( const char * FILE_NAME );
@@ -7102,6 +7101,7 @@ MATTE_tangentehiperbolica ( double ANGULO , bool PRINT , int COMMAS )
 
 
 
+// FUNCTION: SET THE CONSOLE REGION TO PORTUGUESE
 void
 LOCH_LOCAL ( void )
 {
@@ -7112,10 +7112,12 @@ LOCH_LOCAL ( void )
 
 
 
+// FUNCTION: SET THE CONSOLE REGION TO A USER DEFINED VERSION
+// @param01: TEXT { A REGION VALID TO LOCALE }
 void
-LOCH_SETLOCAL ( char TEXT [] )
+LOCH_SETLOCAL ( char REGION [] )
 {
-    setlocale ( LC_ALL , TEXT );
+    setlocale ( LC_ALL , REGION );
 }
 
 
@@ -7125,6 +7127,11 @@ LOCH_SETLOCAL ( char TEXT [] )
 
 
 
+
+// FUNCTION: WORKS LIKE PRINTF BUT FOR FILES
+// @param01: FILE_NAME { THE NAME / PATH OF THE FILE }
+// @param02: ADD { A REGION VALID TO LOCALE }
+// @param03: TEXT { A REGION VALID TO LOCALE }
 void
 FLEE_PUTS ( const char * FILE_NAME, bool ADD , const char * TEXT , ... )
 {
@@ -7134,8 +7141,7 @@ FLEE_PUTS ( const char * FILE_NAME, bool ADD , const char * TEXT , ... )
     if ( ADD == true  ) { file = fopen ( FILE_NAME , "a"); }
     if ( ADD == false ) { file = fopen ( FILE_NAME , "w"); }
 
-
-    if ( file == NULL ) printf ("Error with the file!\n");
+    // if ( file == NULL ) printf ("Error with the file!\n");
 
     va_list args;
     va_start ( args , TEXT );
@@ -7149,19 +7155,15 @@ FLEE_PUTS ( const char * FILE_NAME, bool ADD , const char * TEXT , ... )
 
 
 
-
-
-/* GENERAL FILE FUNCTIONS */
-
-
-
+// FUNCTION: CREATE A NEW FILE
+// @param01: FILE_NAME { THE NAME OF THE FILE }
 void
 FLEE_CREATEAFILE ( const char* FILE_NAME )
 {
 
                   FILE* file = fopen ( FILE_NAME , "w" );
 
-                  if ( file == NULL ) printf ("Error creating file!");
+                  // if ( file == NULL ) printf ("Error creating file!");
 
                   fclose ( file );
 }
@@ -7170,19 +7172,26 @@ FLEE_CREATEAFILE ( const char* FILE_NAME )
 
 
 
+// FUNCTION: RENAME A EXISTING FILE
+// @param01: FILE_NAME { THE NAME OF THE FILE }
+// @param02: NEW_FILE_NAME { THE NEW NAME TO THIS FILE }
 void
 FLEE_RENAMEAFILE ( const char* FILE_NAME , const char * NEW_FILE_NAME )
 {
 
-                   int RESULT = rename ( FILE_NAME , NEW_FILE_NAME );
+                    rename ( FILE_NAME , NEW_FILE_NAME );
 
-                   if ( RESULT not_eq 0 ) printf ("Erro on renaming the file");
+                    // int RESULT = rename ( FILE_NAME , NEW_FILE_NAME );
+                    // if ( RESULT not_eq 0 ) printf ("Erro on renaming the file");
 }
 
 
 
 
 
+// FUNCTION: MOVE A ESPECIFIC FILE TO ANOTHER DIRECTORY
+// @param01: FILE_NAME { THE NAME OF THE FILE }
+// @param02: NEW_DIRECTORY { THE NEW PLACE OF SAVE }
 void
 FLEE_MOVEAFILE ( const char * FILE_NAME , const char * NEW_DIRECTORY )
 {
@@ -7190,9 +7199,10 @@ FLEE_MOVEAFILE ( const char * FILE_NAME , const char * NEW_DIRECTORY )
                  char NEW_DIR [50];
                  sprintf ( NEW_DIR , "./%s/%s" , NEW_DIRECTORY , FILE_NAME  );
 
-                 int RESULT = rename ( FILE_NAME , NEW_DIR );
+                 rename ( FILE_NAME , NEW_DIR );
 
-                 if ( RESULT not_eq 0 ) printf ("Error moving the file!");
+                 // int RESULT = rename ( FILE_NAME , NEW_DIR );
+                 // if ( RESULT not_eq 0 ) printf ("Error moving the file!");
 
 }
 
@@ -7200,50 +7210,53 @@ FLEE_MOVEAFILE ( const char * FILE_NAME , const char * NEW_DIRECTORY )
 
 
 
+// FUNCTION: COPY A ESPECIFIC FILE TO ANOTHER DIRECTORY WITH A NEW NAME
+// @param01: FILE_NAME { THE NAME OF THE FILE }
+// @param02: NEW_FOLDER { THE FOLDER PLACE THAT WILL RECEIVE THE COPY }
+// @param03: NEW_FILENAME { THE NEW NAME TO THE FILE_NAME }
 void
-FLEE_COPYAFILE ( const char * FOLDER , const char * FILE_NAME, const char* NEW_FOLDER , const char* NEW_FILENAME )
+FLEE_COPYAFILE ( const char * FILE_NAME , const char * NEW_FOLDER , const char* NEW_FILENAME )
 {
+    char CHECKNAME [1024];
+    sprintf ( CHECKNAME , "./%s", FILE_NAME);
 
-                char CHECKNAME [1024];
-                sprintf ( CHECKNAME , "./%s/%s", FOLDER , FILE_NAME );
+    FILE* ORIGIN = fopen ( CHECKNAME , "rb");
 
-                FILE * ORIGIN = fopen ( CHECKNAME, "rb");
-                if ( ORIGIN == NULL) printf ("Error with the copied file!");
+    // if ( ORIGIN == NULL ) printf("Erro ao copiar o arquivo!");
 
+    char NEW_FOLDER_PLACE[200];
+    sprintf(NEW_FOLDER_PLACE, "./%s/%s", NEW_FOLDER, NEW_FILENAME);
 
-                char NEW_FOLDER_PLACE [200];
-                sprintf ( NEW_FOLDER_PLACE, "./%s/%s", NEW_FOLDER, NEW_FILENAME );
+    FILE* ENDPOINT = fopen(NEW_FOLDER_PLACE, "wb");
+    // if (ENDPOINT == NULL) { printf("Erro ao copiar o arquivo!"); fclose(ORIGIN); }
 
+    char buffer[1024];
+    size_t bytes_lidos;
 
-                FILE * ENDPOINT = fopen(NEW_FOLDER_PLACE, "wb");
-                if ( ENDPOINT == NULL ) { printf ("Error with the copy, not the copied file!"); fclose(ORIGIN); }
+    while ((bytes_lidos = fread(buffer, sizeof(char), sizeof(buffer), ORIGIN)) > 0) fwrite(buffer, sizeof(char), bytes_lidos, ENDPOINT);
 
-
-                char buffer [1024];
-                size_t bytes_lidos;
-
-                while ( ( bytes_lidos = fread ( buffer , sizeof(char) , sizeof ( buffer ) , ORIGIN ) ) > 0 )
-                fwrite ( buffer , sizeof(char) , bytes_lidos , ENDPOINT );
-
-
-    fclose ( ORIGIN );
-    fclose ( ENDPOINT );
-
+    fclose(ORIGIN);
+    fclose(ENDPOINT);
 }
 
 
 
 
+
+// FUNCTION: CREATE A FOLDER AND A FILE
+// @param01: FOLDER_NAME { THE NAME OF THE FOLDER THAT WILL BE CREATED }
+// @param02: FILE_NAME { THE FOLDER PLACE THAT WILL CREATE THE FILE }
 void
 FLEE_CREATEAFILEANDFOLDER ( const char* FOLDER_NAME , const char* FILE_NAME )
 {
+                            mkdir ( FOLDER_NAME );
 
                             char FINAL [50];
                             sprintf ( FINAL , "./%s/%s" , FOLDER_NAME , FILE_NAME );
 
                             FILE* file = fopen ( FINAL , "w" );
 
-                            if ( file == NULL ) printf ("Error with the creation!");
+                            // if ( file == NULL ) printf ("Error with the creation!");
 
                             fclose ( file );
 
@@ -7253,13 +7266,16 @@ FLEE_CREATEAFILEANDFOLDER ( const char* FOLDER_NAME , const char* FILE_NAME )
 
 
 
+// FUNCTION: CREATE A FOLDER
+// @param01: FOLDER_NAME { THE NAME OF THE FOLDER THAT WILL BE CREATED }
 void
-FLEE_CREATEAFOLDER ( const char* FOLDER_NAME )
+FLEE_CREATEAFOLDER ( const char * FOLDER_NAME )
 {
 
-                     int RESULT = mkdir ( FOLDER_NAME );
+                     mkdir ( FOLDER_NAME );
 
-                     if ( RESULT not_eq 0 ) printf ("Error creating folder!");
+                     // int RESULT = mkdir ( FOLDER_NAME );
+                     // if ( RESULT not_eq 0 ) printf ("Error creating folder!");
 
 }
 
@@ -7267,13 +7283,15 @@ FLEE_CREATEAFOLDER ( const char* FOLDER_NAME )
 
 
 
+// FUNCTION: DELETE A ESPECIFIC FILE
+// @param01: FILE_NAME { THE FILE THAT WILL BE DELETED }
 void
-FLEE_RENAMEAFOLDER ( const char *FOLDER_NAME , const char *NEW_FOLDER_NAME )
+FLEE_DELETEAFILE ( const char * FILE_NAME )
 {
 
-                    int RESULT = rename ( FOLDER_NAME , NEW_FOLDER_NAME );
-
-                    if ( RESULT not_eq 0 ) printf ("Error renaming the folder!");
+                  remove ( FILE_NAME );
+                  // int RESULT = remove ( FILE_NAME );
+                  // if ( RESULT not_eq 0 ) printf ("Error removing the file!");
 
 }
 
@@ -7281,21 +7299,8 @@ FLEE_RENAMEAFOLDER ( const char *FOLDER_NAME , const char *NEW_FOLDER_NAME )
 
 
 
-void
-FLEE_DELETEAFILE ( const char *FILE_NAME )
-{
-
-                  int RESULT = remove ( FILE_NAME );
-
-                  if ( RESULT not_eq 0 ) printf ("Error removing the file!");
-
-}
-
-
-
-
-
-
+// FUNCTION: DELETE A FOLDER
+// @param01: FOLDER_NAME { THE FOLDER THAT WILL BE DELETED }
 void
 FLEE_DELETEAFOLDER ( const char * FOLDER_NAME )
 {
@@ -7313,7 +7318,7 @@ FLEE_DELETEAFOLDER ( const char * FOLDER_NAME )
 
               if ( stat ( caminho , &info ) not_eq 0 )
               {
-                printf("Error with the following file %s.", caminho );
+                // printf("Error with the following file %s.", caminho );
                 continue;
               }
               if ( S_ISDIR ( info.st_mode ) ) FLEE_DELETEAFOLDER ( caminho );
@@ -7323,8 +7328,9 @@ FLEE_DELETEAFOLDER ( const char * FOLDER_NAME )
     }
 
     closedir ( FOLDER );
-    int RESULT = rmdir ( FOLDER_NAME );
-    if ( RESULT not_eq 0 ) printf ("Error deleting the folder!");
+    rmdir ( FOLDER_NAME );
+    // int RESULT = rmdir ( FOLDER_NAME );
+    // if ( RESULT not_eq 0 ) printf ("Error deleting the folder!");
 
 }
 
@@ -7332,16 +7338,19 @@ FLEE_DELETEAFOLDER ( const char * FOLDER_NAME )
 
 
 
-
+// FUNCTION: DELETE A FOLDER
+// @param01: FOLDER_NAME { THE FOLDER THAT WILL BE MOVED }
+// @param02: NEW_PATH { THE NEW PATH OF THE FOLDER }
 void
-FLEE_MOVEAFOLDER ( const char *FOLDER_NAME , const char *NEW_PATH )
+FLEE_MOVEAFOLDER ( const char * FOLDER_NAME , const char * NEW_PATH )
 {
 
                    DIR* dir = opendir ( FOLDER_NAME );
 
-                   if ( dir == NULL ) printf ("Failed to open directory!");
+                   // if ( dir == NULL ) printf ("Failed to open directory!");
 
-                   int ret = mkdir ( NEW_PATH );
+                   mkdir ( NEW_PATH );
+                   // int ret = mkdir ( NEW_PATH );
 
                    struct dirent * entry;
 
@@ -7357,20 +7366,21 @@ FLEE_MOVEAFOLDER ( const char *FOLDER_NAME , const char *NEW_PATH )
 
                        struct stat stat_buf;
 
-                                   if ( stat ( source_path , &stat_buf ) not_eq 0 ) { printf("Failed to get file status!"); continue; }
+                                   if ( stat ( source_path , &stat_buf ) not_eq 0 ) { /* printf("Failed to get file status!"); */ continue; }
                                    if ( S_ISDIR ( stat_buf.st_mode ) )
                                    {
                                         FLEE_MOVEAFOLDER ( source_path , dest_path );
-                                        ret = rmdir ( source_path );
-                                        if ( ret not_eq 0 ) printf ("Failed to delete subfolder!");
+                                        rmdir ( source_path );
+                                        // ret = rmdir ( source_path );
+                                        // if ( ret not_eq 0 ) printf ("Failed to delete subfolder!");
                                    }
                                    else
                                    {
                                        FILE* source_file = fopen ( source_path , "rb" );
-                                       if ( source_file == NULL ) { printf("Failed to open source file!"); continue; }
+                                       if ( source_file == NULL ) { /* printf("Failed to open source file!"); */ continue; }
 
                                        FILE* dest_file = fopen ( dest_path , "wb" );
-                                       if ( dest_file == NULL ) { printf("Failed to open destination file!"); fclose ( source_file );  continue; }
+                                       if ( dest_file == NULL ) { /* printf("Failed to open destination file!"); */ fclose ( source_file );  continue; }
 
                                        char buffer [1024];
                                        size_t bytes_read;
@@ -7381,8 +7391,9 @@ FLEE_MOVEAFOLDER ( const char *FOLDER_NAME , const char *NEW_PATH )
                        fclose ( source_file );
                        fclose ( dest_file );
 
-                                ret = remove ( source_path );
-                                if (ret not_eq 0) printf("Failed to delete file!");
+                                remove ( source_path );
+                                // ret = remove ( source_path );
+                                // if (ret not_eq 0) printf("Failed to delete file!");
                                    }
                    }
                    closedir ( dir );
@@ -7394,82 +7405,100 @@ FLEE_MOVEAFOLDER ( const char *FOLDER_NAME , const char *NEW_PATH )
 
 
 
+// FUNCTION: COPY A FOLDER TO ANOTHER
+// @param01: FOLDER_NAME { THE FOLDER THAT WILL BE COPIED }
+// @param02: SAVE_PATH { THE NEW PATH OF THIS COPIED FOLDER }
+// @param03: NEW_NAME { THE NEW NAME FOR THIS FOLDER }
 void
-FLEE_COPYAFOLDER ( const char *FOLDER_NAME , const char *NEW_PATH )
+FLEE_COPYAFOLDER ( const char * FOLDER_NAME, const char* SAVE_PATH, const char* NEW_NAME )
 {
+    DIR* dir = opendir(FOLDER_NAME);
 
-                   DIR* dir = opendir ( FOLDER_NAME );
+    // if ( dir == NULL ) printf("Failed to open directory!");
 
-                   if ( dir == NULL ) printf ("Failed to open directory!");
 
-                   mkdir ( FOLDER_NAME );
+    char* new_folder_path = malloc(strlen(SAVE_PATH) + strlen(NEW_NAME) + 2);  // 1 for / and 1 for \0
+    sprintf(new_folder_path, "%s/%s", SAVE_PATH, NEW_NAME);
+    mkdir(new_folder_path);
 
-                   struct dirent * entry;
+    struct dirent* entry;
+    char source_path[1024];
+    char dest_path[1024];
 
-                   char source_path [ 1024 ];
-                   char dest_path   [ 1024 ];
+    while ((entry = readdir(dir)) != NULL) {
+        if (strcmp(entry->d_name, ".") == 0 || strcmp(entry->d_name, "..") == 0) {
+            continue;
+        }
 
-                   while ( ( entry = readdir ( dir ) ) not_eq NULL )
-                   {
-                             if ( strcmp ( entry -> d_name , "." ) == 0 or strcmp ( entry -> d_name , ".." ) == 0) continue;
+        sprintf(source_path, "%s/%s", FOLDER_NAME, entry->d_name);
+        sprintf(dest_path, "%s/%s", new_folder_path, entry->d_name);
 
-                             sprintf ( source_path , "%s/%s" , FOLDER_NAME , entry -> d_name );
-                             sprintf ( dest_path   , "%s/%s" , FOLDER_NAME   , entry -> d_name );
+        struct stat stat_buf;
+        if (stat(source_path, &stat_buf) != 0) {
+            // printf("Failed to get file status!");
+            continue;
+        }
 
-                       struct stat stat_buf;
+        if (S_ISDIR(stat_buf.st_mode)) {
+            FLEE_COPYAFOLDER(source_path, new_folder_path, entry->d_name);
+        }
+        else {
+            FILE* source_file = fopen(source_path, "rb");
+            if (source_file == NULL) {
+                // printf("Failed to open source file!");
+                continue;
+            }
 
-                                   if ( stat ( source_path , &stat_buf ) not_eq 0 ) { printf("Failed to get file status!"); continue; }
-                                   if ( S_ISDIR ( stat_buf.st_mode ) )
-                                   {
-                                        FLEE_COPYAFOLDER ( source_path , dest_path );
-                                   }
-                                   else
-                                   {
-                                       FILE* source_file = fopen ( source_path , "rb" );
-                                       if ( source_file == NULL ) { printf("Failed to open source file!"); continue; }
+            FILE* dest_file = fopen(dest_path, "wb");
+            if (dest_file == NULL) {
+                // printf("Failed to open destination file!");
+                fclose(source_file);
+                continue;
+            }
 
-                                       FILE* dest_file = fopen ( dest_path , "wb" );
-                                       if ( dest_file == NULL ) { printf("Failed to open destination file!"); fclose ( source_file );  continue; }
+            char buffer[1024];
+            size_t bytes_read;
 
-                                       char buffer [1024];
-                                       size_t bytes_read;
+            while ((bytes_read = fread(buffer, sizeof(char), sizeof(buffer), source_file)) > 0) {
+                fwrite(buffer, sizeof(char), bytes_read, dest_file);
+            }
 
-                       while ( ( bytes_read = fread ( buffer , sizeof ( char ) , sizeof ( buffer ) , source_file ) ) > 0)
-                       fwrite ( buffer , sizeof ( char ) , bytes_read , dest_file );
+            fclose(source_file);
+            fclose(dest_file);
+        }
+    }
 
-                       fclose ( source_file );
-                       fclose ( dest_file );
-
-                                   }
-                   }
-                   closedir ( dir );
-
+    closedir(dir);
+    free(new_folder_path);
 }
 
 
 
 
 
+// FUNCTION: GET A ESPECIFIC SYSTEM FOLDER
+// @param01: SYSTEM_FOLDER_NAME { THE ESPECIFIC WINDOWS FOLDER }
+// @param02: FOLDER { FOLDER NAME TO BE CREATED IN THIS PATH }
+// @param03: SAVE_PATH { THE STRING THAT WILL RECEIVE THE PATH }
 void
 FLEE_SYSTEMFOLDER ( const char * SYSTEM_FOLDER_NAME , char * FOLDER , char * SAVE_PATH )
 {
-
      sprintf ( SAVE_PATH , "%s\\%s\\" , getenv ( SYSTEM_FOLDER_NAME ) , FOLDER );
-
 }
 
 
 
-/* BASIC / SIMPLE VARIABLE FILE FUNCTIONS */
 
 
-
+// FUNCTION: SIMPLE PRINT OF A INT ON A FILE
+// @param01: VALUE { THE VALUE }
+// @param02: FILE_NAME { THE FILE NAME }
 void
 FLEE_Sint ( int VALUE , const char * FILE_NAME )
 {
 
     FILE* fp = fopen ( FILE_NAME , "w");
-    if (fp == NULL)  printf("Erro ao abrir o arquivo.\n");
+    // if (fp == NULL)  printf("Erro ao abrir o arquivo.\n");
 
     fprintf ( fp , "%d" , VALUE );
     fclose ( fp );
@@ -7480,6 +7509,8 @@ FLEE_Sint ( int VALUE , const char * FILE_NAME )
 
 
 
+// FUNCTION: GETS A INT VALUE FROM A FILE
+// @param02: FILE_NAME { THE FILE NAME THAT WILL GET A INT VALUE }
 int
 FLEE_Lint ( const char * FILE_NAME )
 {
@@ -7488,7 +7519,7 @@ FLEE_Lint ( const char * FILE_NAME )
 
     FILE* fp = fopen ( FILE_NAME , "r" );
 
-    if ( fp == NULL ) printf("Erro ao abrir o arquivo.\n");
+    // if ( fp == NULL ) printf("Erro ao abrir o arquivo.\n");
 
     fscanf ( fp, "%d", &RETURN_VALUE);
     fclose ( fp );
@@ -7500,12 +7531,15 @@ FLEE_Lint ( const char * FILE_NAME )
 
 
 
+// FUNCTION: SIMPLE PRINT OF A CHAR ON A FILE
+// @param01: VALUE { THE VALUE }
+// @param02: FILE_NAME { THE FILE NAME }
 void
 FLEE_Schar ( char CHARACTER , const char * FILE_NAME )
 {
     FILE* fp = fopen ( FILE_NAME, "w");
 
-    if ( fp == NULL ) printf ("Erro ao abrir o arquivo.\n");
+    // if ( fp == NULL ) printf ("Erro ao abrir o arquivo.\n");
 
     fputc ( CHARACTER , fp );
     fclose ( fp );
@@ -7515,21 +7549,20 @@ FLEE_Schar ( char CHARACTER , const char * FILE_NAME )
 
 
 
+// FUNCTION: GETS A CHAR VALUE FROM A FILE
+// @param01: FILE_NAME { THE FILE NAME THAT WILL BE USED }
 char
 FLEE_Lchar ( const char * FILE_NAME )
 {
-    SetConsoleOutputCP ( 65001 );
 
     char CHARACTER;
 
     FILE* fp = fopen ( FILE_NAME, "r" );
 
-    if ( fp == NULL ) printf ("Erro ao abrir o arquivo.\n");
+    // if ( fp == NULL ) printf ("Erro ao abrir o arquivo.\n");
 
     CHARACTER = fgetc ( fp );
     fclose ( fp );
-
-    SetConsoleOutputCP ( 850 );
 
     return CHARACTER;
 }
@@ -7538,13 +7571,17 @@ FLEE_Lchar ( const char * FILE_NAME )
 
 
 
+// FUNCTION: PRINTS A FLOAT VALUE ON A FILE
+// @param01: VALUE { THE FLOAT VALUE THAT WILL BE PRINTED }
+// @param02: COMMAS { HOW MANY HOUSE COMMAS WILL BE PRINTED }
+// @param03: FILE_NAME { THE FILE NAME THAT WILL BE USED }
 void
 FLEE_Sfloat ( float VALUE , int COMMAS , const char * FILE_NAME )
 {
 
     FILE * fp = fopen ( FILE_NAME , "w" );
 
-    if ( fp == NULL ) printf ("Erro ao abrir o arquivo.\n");
+    // if ( fp == NULL ) printf ("Erro ao abrir o arquivo.\n");
 
     char format [20];
 
@@ -7558,6 +7595,8 @@ FLEE_Sfloat ( float VALUE , int COMMAS , const char * FILE_NAME )
 
 
 
+// FUNCTION: GETS A FLOAT VALUE FROM THE FIILE
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
 float
 FLEE_Lfloat ( const char * FILE_NAME )
 {
@@ -7567,7 +7606,7 @@ FLEE_Lfloat ( const char * FILE_NAME )
 
     FILE* fp = fopen ( FILE_NAME , "r" );
 
-    if (fp == NULL) printf("Erro ao abrir o arquivo.\n");
+    // if (fp == NULL) printf("Erro ao abrir o arquivo.\n");
 
     fgets  ( str , 100 , fp );
     sscanf ( str , "%f" , &RETURN_VALUE );
@@ -7580,13 +7619,17 @@ FLEE_Lfloat ( const char * FILE_NAME )
 
 
 
+// FUNCTION: PRINTS A DOUBLE VALUE ON A FILE
+// @param01: VALUE { THE DOUBLE VALUE THAT WILL BE PRINTED }
+// @param02: COMMAS { HOW MANY HOUSE COMMAS WILL BE PRINTED }
+// @param03: FILE_NAME { THE FILE NAME THAT WILL BE USED }
 void
 FLEE_Sdouble ( double VALUE , int COMMAS , const char * FILE_NAME )
 {
 
     FILE* fp = fopen ( FILE_NAME, "w" );
 
-    if ( fp == NULL ) printf("Erro ao abrir o arquivo.\n");
+    // if ( fp == NULL ) printf("Erro ao abrir o arquivo.\n");
 
     char format[20];
 
@@ -7600,6 +7643,8 @@ FLEE_Sdouble ( double VALUE , int COMMAS , const char * FILE_NAME )
 
 
 
+// FUNCTION: GETS A DOUBLE VALUE FROM THE FIILE
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
 double
 FLEE_Ldouble ( const char* FILE_NAME )
 {
@@ -7609,7 +7654,7 @@ FLEE_Ldouble ( const char* FILE_NAME )
 
     FILE* fp = fopen ( FILE_NAME , "r" );
 
-    if ( fp == NULL ) printf("Erro ao abrir o arquivo.\n");
+    // if ( fp == NULL ) printf("Erro ao abrir o arquivo.\n");
 
     fgets  ( str , 100 , fp );
     sscanf ( str , "%lf" , &RETURN_VALUE );
@@ -7622,13 +7667,16 @@ FLEE_Ldouble ( const char* FILE_NAME )
 
 
 
+// FUNCTION: PRINTS A STRING ON A FILE
+// @param01: FILE_NAME { THE FILE THAT WILL RECEIVE THE TEXT }
+// @param02: STRING { WHAT WILL BE PRINTED }
 void
 FLEE_Sstring ( const char * FILE_NAME , const char * STRING  )
 {
 
     FILE* fp = fopen ( FILE_NAME , "w");
 
-    if (fp == NULL) printf ("Erro ao abrir o arquivo.\n");
+    // if (fp == NULL) printf ("Erro ao abrir o arquivo.\n");
 
     fprintf ( fp , "%s" , STRING );
     fclose  ( fp );
@@ -7639,35 +7687,39 @@ FLEE_Sstring ( const char * FILE_NAME , const char * STRING  )
 
 
 
+// FUNCTION: GETS ALL THE TEXT OF A FILE
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: STRING { THE STRING THAT WILL SAVE THE TEXT TAKEN }
 void
 FLEE_Lstring ( const char* FILE_NAME, char* STRING )
 {
-    SetConsoleOutputCP ( 65001 );
+    // SetConsoleOutputCP ( 65001 );
 
     FILE * file = fopen ( FILE_NAME , "r" );
-    if ( file == NULL ) printf ("Error opening the file\n");
+    // if ( file == NULL ) printf ("Error opening the file\n");
 
     char line [ 999999 ];
     STRING [ 0 ]  = '\0';
 
     while ( fgets ( line , 999999 , file ) not_eq NULL ) strncat ( STRING , line , 999999 - strlen ( STRING ) - 1 );
     fclose ( file );
-    SetConsoleOutputCP ( 850 );
+
+    // SetConsoleOutputCP ( 850 );
 }
 
 
 
-/* SCAN FILE FUNCTIONS */
 
 
-
+// FUNCTION: COUNT HOW MANY LINES THE FILE HAVE AND RETURNS IT TO A VARIABLE
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
 int
 FLEE_COUNTLINES ( const char * FILE_NAME )
 {
 
     FILE* fp = fopen ( FILE_NAME , "r" );
 
-    if (fp == NULL) printf("Error opening the file\n");
+    // if (fp == NULL) printf("Error opening the file\n");
 
     int NUMBER_OF_LINES = 0;
 
@@ -7684,13 +7736,15 @@ FLEE_COUNTLINES ( const char * FILE_NAME )
 
 
 
+// FUNCTION: COUNT HOW MANY WORDS HAVE ON THE FILE
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
 int
 FLEE_COUNTWORDS ( const char * FILE_NAME )
 {
 
     FILE* fp = fopen ( FILE_NAME , "r" );
 
-    if ( fp == NULL ) printf("Erro ao abrir o arquivo.\n");
+    // if ( fp == NULL ) printf("Erro ao abrir o arquivo.\n");
 
     int NUMBER_OF_WORDS = 0;
 
@@ -7707,6 +7761,8 @@ FLEE_COUNTWORDS ( const char * FILE_NAME )
 
 
 
+// FUNCTION: COUNT HOW MANY NUMBERS EXIST ON THE FILE
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
 int
 FLEE_COUNTNUMBERS ( const char * FILE_NAME )
 {
@@ -7719,7 +7775,7 @@ FLEE_COUNTNUMBERS ( const char * FILE_NAME )
     int ch;
 
     fp = fopen ( FILE_NAME, "r" );
-    if ( fp == NULL ) perror ("Error opening file");
+    // if ( fp == NULL ) perror ("Error opening file");
 
 
     while ( ( ch = fgetc ( fp ) ) not_eq EOF )
@@ -7743,13 +7799,17 @@ FLEE_COUNTNUMBERS ( const char * FILE_NAME )
 
 
 
-int FLEE_COUNTint ( const char * FILE_NAME , int VALUE )
+// FUNCTION: COUNT HOW MANY ESPECIFIC INT NUMBERS EXIST ON THE FILE
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: VALUE { THE VALUE THAT WILL BE SEARCHED }
+int
+FLEE_COUNTint ( const char * FILE_NAME , int VALUE )
 {
 
     FILE *fp = fopen ( FILE_NAME , "r" );
     int RETURN_VALUE = 0;
 
-    if ( fp == NULL ) printf("Erro ao abrir o arquivo.\n");
+    // if ( fp == NULL ) printf("Erro ao abrir o arquivo.\n");
 
     char c;
     int num = 0;
@@ -7789,20 +7849,25 @@ int FLEE_COUNTint ( const char * FILE_NAME , int VALUE )
 
 
 
+// FUNCTION: COUNT HOW MANY ESPECIFIC FLOAT NUMBERS EXIST ON THE FILE
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: VALUE { THE VALUE THAT WILL BE SEARCHED }
 int
 FLEE_COUNTfloat ( const char * FILE_NAME , float VALUE )
 {
 
 
                   FILE* fp;
-             char buffer [ 1024 ];
+             char buffer [ 99999 ];
               int len;
             float num, diff;
               int RETURN_VALUE = 0;
 
-    if ( ( fp = fopen ( FILE_NAME , "r" ) ) == NULL ) fprintf ( stderr, "Error opening the file!\n");
+    fp = fopen ( FILE_NAME , "r" );
 
-    while ( fgets ( buffer , 1024 , fp ) )
+    // if ( ( fp = fopen ( FILE_NAME , "r" ) ) == NULL ) fprintf ( stderr, "Error opening the file!\n");
+
+    while ( fgets ( buffer , 99999 , fp ) )
     {
         len = strlen ( buffer );
 
@@ -7831,19 +7896,24 @@ FLEE_COUNTfloat ( const char * FILE_NAME , float VALUE )
 
 
 
+// FUNCTION: COUNT HOW MANY ESPECIFIC DOUBLE NUMBERS EXIST ON THE FILE
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: VALUE { THE VALUE THAT WILL BE SEARCHED }
 int
 FLEE_COUNTdouble ( const char * FILE_NAME , double VALUE )
 {
 
                   FILE* fp;
-             char buffer [ 1024 ];
+             char buffer [ 99999 ];
               int len;
             double num, diff;
               int RETURN_VALUE = 0;
 
-    if ( ( fp = fopen ( FILE_NAME , "r" ) ) == NULL ) fprintf ( stderr, "Error opening the file!\n");
+    fp = fopen ( FILE_NAME , "r" );
 
-    while ( fgets ( buffer , 1024 , fp ) )
+    // if ( ( fp = fopen ( FILE_NAME , "r" ) ) == NULL ) fprintf ( stderr, "Error opening the file!\n");
+
+    while ( fgets ( buffer , 99999 , fp ) )
     {
         len = strlen ( buffer );
 
@@ -7872,18 +7942,23 @@ FLEE_COUNTdouble ( const char * FILE_NAME , double VALUE )
 
 
 
+// FUNCTION: COUNT HOW MANY ESPECIFIC CHARS EXIST ON THE FILE
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: CHAR { THE VALUE THAT WILL BE SEARCHED }
 int
 FLEE_COUNTchar ( const char * FILE_NAME , char CHAR )
 {
 
     FILE* fp;
-    char buffer[1024];
+    char buffer[99999];
     int len, i;
     int RETURN_VALUE = 0;
 
-    if ( ( fp = fopen ( FILE_NAME , "r" ) ) == NULL ) fprintf ( stderr , "Erro ao abrir o arquivo.\n" );
+    fp = fopen ( FILE_NAME , "r" );
 
-    while ( fgets ( buffer , 1024 , fp ) )
+    // if ( ( fp = fopen ( FILE_NAME , "r" ) ) == NULL ) fprintf ( stderr , "Erro ao abrir o arquivo.\n" );
+
+    while ( fgets ( buffer , 99999 , fp ) )
     {
             len = strlen ( buffer );
                 for ( i = 0; i < len; i++ ) if ( buffer [ i ] == CHAR ) RETURN_VALUE++;
@@ -7901,20 +7976,25 @@ FLEE_COUNTchar ( const char * FILE_NAME , char CHAR )
 
 
 
+// FUNCTION: COUNT HOW MANY ESPECIFIC WORDS EXIST ON THE FILE
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: STRING { THE VALUE THAT WILL BE SEARCHED }
 int
 FLEE_COUNTstring ( const char * FILE_NAME , const char * STRING )
 {
 
     FILE* fp;
 
-    char buffer [ 1024 ];
+    char buffer [ 99999 ];
     int RETURN_VALUE = 0;
 
-    if ( ( fp = fopen ( FILE_NAME , "r" ) ) == NULL ) fprintf ( stderr, "Erro ao abrir o arquivo.\n");
+    fp = fopen ( FILE_NAME , "r" );
+
+    // if ( ( fp = fopen ( FILE_NAME , "r" ) ) == NULL ) fprintf ( stderr, "Erro ao abrir o arquivo.\n");
 
     int string_len = strlen ( STRING );
 
-    while ( fgets ( buffer , 1024 , fp ) )
+    while ( fgets ( buffer , 99999 , fp ) )
     {
             int buffer_len = strlen ( buffer );
 
@@ -7937,10 +8017,12 @@ FLEE_COUNTstring ( const char * FILE_NAME , const char * STRING )
 
 
 
-/* SUBS IN THE FILE FUNCTIONS */
 
 
-
+// FUNCTION: REPLACES GLOBALY ALL THE INT OCORRENCES
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: VALUE { THE VALUE THAT WILL BE REPLACED }
+// @param03: TOKEN { THE TOKEN THAT WILL BE IN THE PLACE }
 int
 FLEE_GLOBALSUBSint ( const char * FILE_NAME, int VALUE , const char * TOKEN )
 {
@@ -7956,10 +8038,10 @@ FLEE_GLOBALSUBSint ( const char * FILE_NAME, int VALUE , const char * TOKEN )
     int RETURN_VALUE = 0;
 
     file = fopen ( FILE_NAME , "r" );
-    if ( file == NULL ) printf ("Failed to open the file!\n");
+    // if ( file == NULL ) printf ("Failed to open the file!\n");
 
     FILE * temp_file = fopen ( temp_filename , "w" );
-    if ( temp_file == NULL ) { printf("Error with the file reading!\n"); fclose ( file ); }
+    // if ( temp_file == NULL ) { printf("Error with the file reading!\n"); fclose ( file ); }
 
          char line [ 99999 ];
 
@@ -7996,6 +8078,11 @@ FLEE_GLOBALSUBSint ( const char * FILE_NAME, int VALUE , const char * TOKEN )
 
 
 
+// FUNCTION: REPLACES GLOBALY ALL THE FLOAT OCORRENCES
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: VALUE { THE VALUE THAT WILL BE REPLACED }
+// @param03: COMMAS { HOW MANY COMMAS THIS FUNCTION WILL CONSIDER }
+// @param04: TOKEN { THE TOKEN THAT WILL BE IN THE PLACE }
 int
 FLEE_GLOBALSUBSfloat ( const char * FILE_NAME , float VALUE , int COMMAS , const char * TOKEN )
 {
@@ -8018,10 +8105,10 @@ FLEE_GLOBALSUBSfloat ( const char * FILE_NAME , float VALUE , int COMMAS , const
      new_word_len = strlen ( TOKEN );
 
      file = fopen ( FILE_NAME , "r" );
-           if ( file == NULL ) printf ("Failed to open the file!\n");
+           // if ( file == NULL ) printf ("Failed to open the file!\n");
 
      temp_file = fopen ( temp_filename , "w" );
-              if ( temp_file == NULL ) { printf ("Failed to open temporary file!\n"); fclose ( file ); }
+              if ( temp_file == NULL ) { /* printf ("Failed to open temporary file!\n"); */ fclose ( file ); }
 
               while ( fgets ( line , 99999 , file ) )
               {
@@ -8058,8 +8145,10 @@ FLEE_GLOBALSUBSfloat ( const char * FILE_NAME , float VALUE , int COMMAS , const
 
      fclose ( file ); fclose ( temp_file );
 
-     if ( remove ( FILE_NAME ) not_eq 0 )                 printf ("Failed on the end of the function execution!");
-     if ( rename ( temp_filename , FILE_NAME ) not_eq 0 ) printf ("Failed on the end of the function execution!");
+     remove ( FILE_NAME );
+     // if ( remove ( FILE_NAME ) not_eq 0 )                 printf ("Failed on the end of the function execution!");
+     rename ( temp_filename , FILE_NAME );
+     // if ( rename ( temp_filename , FILE_NAME ) not_eq 0 ) printf ("Failed on the end of the function execution!");
 
 
      return return_value;
@@ -8069,6 +8158,11 @@ FLEE_GLOBALSUBSfloat ( const char * FILE_NAME , float VALUE , int COMMAS , const
 
 
 
+// FUNCTION: REPLACES GLOBALY ALL THE DOUBLE OCORRENCES
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: VALUE { THE VALUE THAT WILL BE REPLACED }
+// @param03: COMMAS { HOW MANY COMMAS THIS FUNCTION WILL CONSIDER }
+// @param04: TOKEN { THE TOKEN THAT WILL BE IN THE PLACE }
 int
 FLEE_GLOBALSUBSdouble ( const char * FILE_NAME , double VALUE , int COMMAS , const char * TOKEN )
 {
@@ -8091,10 +8185,10 @@ FLEE_GLOBALSUBSdouble ( const char * FILE_NAME , double VALUE , int COMMAS , con
      new_word_len = strlen ( TOKEN );
 
      file = fopen ( FILE_NAME , "r" );
-           if ( file == NULL ) printf ("Failed to open the file!\n");
+           // if ( file == NULL ) printf ("Failed to open the file!\n");
 
      temp_file = fopen ( temp_filename , "w" );
-              if ( temp_file == NULL ) { printf ("Failed to open temporary file!\n"); fclose ( file ); }
+              if ( temp_file == NULL ) { /* printf ("Failed to open temporary file!\n"); */ fclose ( file ); }
 
               while ( fgets ( line , 99999 , file ) )
               {
@@ -8131,8 +8225,10 @@ FLEE_GLOBALSUBSdouble ( const char * FILE_NAME , double VALUE , int COMMAS , con
 
      fclose ( file ); fclose ( temp_file );
 
-     if ( remove ( FILE_NAME ) not_eq 0 )                 printf ("Failed on the end of the function execution!");
-     if ( rename ( temp_filename , FILE_NAME ) not_eq 0 ) printf ("Failed on the end of the function execution!");
+     remove ( FILE_NAME );
+     // if ( remove ( FILE_NAME ) not_eq 0 )                 printf ("Failed on the end of the function execution!");
+     rename ( temp_filename , FILE_NAME );
+     // if ( rename ( temp_filename , FILE_NAME ) not_eq 0 ) printf ("Failed on the end of the function execution!");
 
      return return_value;
 }
@@ -8141,6 +8237,10 @@ FLEE_GLOBALSUBSdouble ( const char * FILE_NAME , double VALUE , int COMMAS , con
 
 
 
+// FUNCTION: REPLACES GLOBALY ALL THE CHAR OCORRENCES
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: VALUE { THE VALUE THAT WILL BE REPLACED }
+// @param03: TOKEN { THE TOKEN THAT WILL BE IN THE PLACE }
 int
 FLEE_GLOBALSUBSchar ( const char * FILE_NAME , char VALUE , const char * TOKEN )
 {
@@ -8156,10 +8256,10 @@ FLEE_GLOBALSUBSchar ( const char * FILE_NAME , char VALUE , const char * TOKEN )
     int RETURN_VALUE       = 0;
 
                             file = fopen ( FILE_NAME , "r" );
-                            if ( file == NULL ) printf ("Failed to open the file!");
+                            // if ( file == NULL ) printf ("Failed to open the file!");
 
                             FILE * temp_file = fopen ( temp_filename , "w" );
-                            if ( temp_file == NULL ) { printf ("Error with the file reading!\n"); fclose ( file ); }
+                            if ( temp_file == NULL ) { /* printf ("Error with the file reading!\n"); */ fclose ( file ); }
 
     char line [ 99999 ];
 
@@ -8193,6 +8293,10 @@ FLEE_GLOBALSUBSchar ( const char * FILE_NAME , char VALUE , const char * TOKEN )
 
 
 
+// FUNCTION: REPLACES GLOBALY ALL THE STRING OCORRENCES
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: OLD_WORD { THE STRING THAT WILL BE REPLACED }
+// @param03: TOKEN { THE TOKEN THAT WILL BE IN THE PLACE }
 int
 FLEE_GLOBALSUBSstring ( const char * FILE_NAME , const char * OLD_WORD , const char * TOKEN )
 {
@@ -8206,10 +8310,10 @@ FLEE_GLOBALSUBSstring ( const char * FILE_NAME , const char * OLD_WORD , const c
     int RETURN_VALUE = 0;
 
     file = fopen ( FILE_NAME, "r");
-    if ( file == NULL) printf("Failed to open the file!");
+    // if ( file == NULL) printf("Failed to open the file!");
 
     FILE * temp_file = fopen ( temp_filename , "w" );
-    if ( temp_file == NULL ) { printf("Error with the file reading!\n"); fclose ( file ); }
+    if ( temp_file == NULL ) { /* printf("Error with the file reading!\n"); */ fclose ( file ); }
 
     char line [ 99999 ];
 
@@ -8240,6 +8344,10 @@ FLEE_GLOBALSUBSstring ( const char * FILE_NAME , const char * OLD_WORD , const c
 
 
 
+// FUNCTION: REPLACES LOCALLY ALL THE INT OCORRENCES
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: VALUE { THE VALUE THAT WILL BE REPLACED }
+// @param03: TOKEN { THE TOKEN THAT WILL BE IN THE PLACE }
 int
 FLEE_LOCALSUBSint ( const char * FILE_NAME , int VALUE , const char * TOKEN )
 {
@@ -8256,10 +8364,10 @@ FLEE_LOCALSUBSint ( const char * FILE_NAME , int VALUE , const char * TOKEN )
     int RETURN_VALUE = 0;
 
     file = fopen ( FILE_NAME , "r" );
-    if ( file == NULL ) printf ("Failed to open the file!\n");
+    // if ( file == NULL ) printf ("Failed to open the file!\n");
 
     FILE * temp_file = fopen ( temp_filename , "w" );
-    if ( temp_file == NULL ) { printf ("Error with the file reading!\n"); fclose ( file ); }
+    if ( temp_file == NULL ) { /* printf ("Error with the file reading!\n"); */ fclose ( file ); }
 
     char line [ 99999 ];
 
@@ -8294,6 +8402,11 @@ FLEE_LOCALSUBSint ( const char * FILE_NAME , int VALUE , const char * TOKEN )
 
 
 
+// FUNCTION: REPLACES LOCALLY ALL THE FLOAT OCORRENCES
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: VALUE { THE VALUE THAT WILL BE REPLACED }
+// @param03: COMMAS { HOW MANY DECIMAL HOUSES WILL BE CHANGED }
+// @param04: TOKEN { THE TOKEN THAT WILL BE IN THE PLACE }
 int
 FLEE_LOCALSUBSfloat ( const char * FILE_NAME , float VALUE , int COMMAS , const char * TOKEN )
 {
@@ -8316,10 +8429,10 @@ FLEE_LOCALSUBSfloat ( const char * FILE_NAME , float VALUE , int COMMAS , const 
     new_word_len = strlen ( TOKEN );
 
                 file = fopen ( FILE_NAME , "r" );
-                if ( file == NULL ) printf ("Failed to open the file!\n");
+                // if ( file == NULL ) printf ("Failed to open the file!\n");
 
                 temp_file = fopen ( temp_filename , "w" );
-                if ( temp_file == NULL ) { printf ("Failed to open temporary file!\n");  fclose ( file ); }
+                if ( temp_file == NULL ) { /* printf ("Failed to open temporary file!\n"); */ fclose ( file ); }
 
     while ( fgets ( line , 99999 , file ) )
     {
@@ -8361,8 +8474,10 @@ FLEE_LOCALSUBSfloat ( const char * FILE_NAME , float VALUE , int COMMAS , const 
 
     fclose ( file );    fclose ( temp_file );
 
-    if ( remove ( FILE_NAME ) not_eq 0 )                 printf ("Error with the end of the function!");
-    if ( rename ( temp_filename , FILE_NAME ) not_eq 0 ) printf ("Error with the end of the function!");
+    remove ( FILE_NAME );
+    // if ( remove ( FILE_NAME ) not_eq 0 )                 printf ("Error with the end of the function!");
+    rename ( temp_filename , FILE_NAME );
+    // if ( rename ( temp_filename , FILE_NAME ) not_eq 0 ) printf ("Error with the end of the function!");
 
     return return_value;
 }
@@ -8370,6 +8485,12 @@ FLEE_LOCALSUBSfloat ( const char * FILE_NAME , float VALUE , int COMMAS , const 
 
 
 
+
+// FUNCTION: REPLACES LOCALLY ALL THE DOUBLE OCORRENCES
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: VALUE { THE VALUE THAT WILL BE REPLACED }
+// @param03: COMMAS { HOW MANY DECIMAL HOUSES WILL BE CHANGED }
+// @param04: TOKEN { THE TOKEN THAT WILL BE IN THE PLACE }
 int
 FLEE_LOCALSUBSdouble ( const char * FILE_NAME , double VALUE , int COMMAS , const char * TOKEN )
 {
@@ -8392,10 +8513,10 @@ FLEE_LOCALSUBSdouble ( const char * FILE_NAME , double VALUE , int COMMAS , cons
     new_word_len = strlen ( TOKEN );
 
                 file = fopen ( FILE_NAME , "r" );
-                if ( file == NULL ) printf ("Failed to open the file!\n");
+                // if ( file == NULL ) printf ("Failed to open the file!\n");
 
                 temp_file = fopen ( temp_filename , "w" );
-                if ( temp_file == NULL ) { printf ("Failed to open temporary file!\n");  fclose ( file ); }
+                if ( temp_file == NULL ) { /* printf ("Failed to open temporary file!\n"); */ fclose ( file ); }
 
     while ( fgets ( line , 99999 , file ) )
     {
@@ -8437,8 +8558,10 @@ FLEE_LOCALSUBSdouble ( const char * FILE_NAME , double VALUE , int COMMAS , cons
 
     fclose ( file );    fclose ( temp_file );
 
-    if ( remove ( FILE_NAME ) not_eq 0 )                 printf ("Error with the end of the function!");
-    if ( rename ( temp_filename , FILE_NAME ) not_eq 0 ) printf ("Error with the end of the function!");
+    remove ( FILE_NAME );
+    // if ( remove ( FILE_NAME ) not_eq 0 )                 printf ("Error with the end of the function!");
+    rename ( temp_filename , FILE_NAME );
+    // if ( rename ( temp_filename , FILE_NAME ) not_eq 0 ) printf ("Error with the end of the function!");
 
 
     return return_value;
@@ -8448,52 +8571,59 @@ FLEE_LOCALSUBSdouble ( const char * FILE_NAME , double VALUE , int COMMAS , cons
 
 
 
+// FUNCTION: REPLACES LOCALLY ALL THE CHAR OCORRENCES
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: VALUE { THE VALUE THAT WILL BE REPLACED }
+// @param03: TOKEN { THE TOKEN THAT WILL BE IN THE PLACE }
 int
-FLEE_LOCALSUBSchar ( const char * FILE_NAME , char VALUE , const char * TOKEN )
+FLEE_LOCALSUBSchar ( const char * FILE_NAME , char VALUE , const char* TOKEN )
 {
+    FILE* file;
+    char STRING_VALUE[2];
+    sprintf(STRING_VALUE, "%c", VALUE);
 
-    FILE *file;
+    char temp_filename[] = "allen.txt";
+    int old_word_len = strlen(STRING_VALUE);
+    int new_word_len = strlen(TOKEN);
+    int RETURN_VALUE = 0;
 
-    char STRING_VALUE [ 2 ];
-                            sprintf ( STRING_VALUE , "%c" , VALUE );
+    file = fopen(FILE_NAME, "r");
+    // if (file == NULL) printf("Failed to open the file!");
 
-    char temp_filename [ ] = "allen.txt";
-    int  old_word_len      = strlen ( STRING_VALUE );
-    int  new_word_len      = strlen ( TOKEN );
-    int  RETURN_VALUE = 0;
+    FILE* temp_file = fopen(temp_filename, "w");
+    if (temp_file == NULL) { /* printf("Error with the file reading!\n"); */ fclose(file); }
 
-    file = fopen ( FILE_NAME , "r" );
-    if ( file == NULL ) printf ("Failed to open the file!");
+    char line[99999];
 
-    FILE * temp_file = fopen ( temp_filename , "w" );
-    if ( temp_file == NULL ) { printf ("Error with the file reading!\n"); fclose(file); }
-
-    char line [ 99999 ];
-
-    while ( fgets ( line , 99999 , file ) )
+    while (fgets(line, 99999, file))
     {
+        char* pos = line;
 
-         char * pos = line;
+        while ((pos = strstr(pos, STRING_VALUE)) != NULL)
+        {
+            if ((pos == line || *(pos - 1) == ' ' || *(pos - 1) == '\n') &&
+                ((*(pos + old_word_len) == '\0') || *(pos + old_word_len) == ' ' || *(pos + old_word_len) == '\n'))
+            {
+                fwrite(line, pos - line, 1, temp_file);
+                fwrite(TOKEN, new_word_len, 1, temp_file);
+                pos += old_word_len;
+                strcpy(line, pos);
+                pos = line;
+                RETURN_VALUE++;
+            }
+            else
+            {
+                pos += old_word_len;
+            }
+        }
 
-    while ( ( pos = strstr ( pos , STRING_VALUE ) ) not_eq NULL )
-    {
-
-         if ( pos [ old_word_len ] not_eq ' ' and pos [ old_word_len ] not_eq '\n' ) { pos += old_word_len; continue; }
-
-       fwrite ( line  , pos - line   , 1 , temp_file );
-       fwrite ( TOKEN , new_word_len , 1 , temp_file );
-       pos += old_word_len;
-
-       strcpy ( line , pos );
-       pos = line;
-       RETURN_VALUE++;
+        fwrite(line, strlen(line), 1, temp_file);
     }
 
-       fwrite ( line , strlen ( line ) , 1 , temp_file );
-    }
-
-    fclose ( file ); fclose ( temp_file ); remove ( FILE_NAME ); rename ( temp_filename , FILE_NAME );
-
+    fclose(file);
+    fclose(temp_file);
+    remove(FILE_NAME);
+    rename(temp_filename, FILE_NAME);
 
     return RETURN_VALUE;
 }
@@ -8502,6 +8632,10 @@ FLEE_LOCALSUBSchar ( const char * FILE_NAME , char VALUE , const char * TOKEN )
 
 
 
+// FUNCTION: REPLACES LOCALLY ALL THE STRING OCORRENCES
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: OLD_WORLD { THE STRING THAT WILL BE REPLACED }
+// @param03: TOKEN { THE TOKEN THAT WILL BE IN THE PLACE }
 int
 FLEE_LOCALSUBSstring ( const char * FILE_NAME , const char * OLD_WORD , const char * TOKEN )
 {
@@ -8514,10 +8648,10 @@ FLEE_LOCALSUBSstring ( const char * FILE_NAME , const char * OLD_WORD , const ch
     int RETURN_VALUE = 0;
 
     file = fopen ( FILE_NAME , "r" );
-    if ( file == NULL ) printf ("Failed to open the file!");
+    // if ( file == NULL ) printf ("Failed to open the file!");
 
     FILE * temp_file = fopen ( temp_filename , "w" );
-    if ( temp_file == NULL ) { printf ("Error with the file reading!\n"); fclose ( file ); }
+    if ( temp_file == NULL ) { /* printf ("Error with the file reading!\n"); */ fclose ( file ); }
 
     char line [ 99999 ];
 
@@ -8556,6 +8690,11 @@ FLEE_LOCALSUBSstring ( const char * FILE_NAME , const char * OLD_WORD , const ch
 
 
 
+// FUNCTION: REPLACES GLOBALLY ALL THE INT OCORRENCES
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: WHAT_LINE { THE LINE THAT WILL BE CHANGED }
+// @param03: VALUE { THE INT THAT WILL BE REPLACED }
+// @param04: TOKEN { THE TOKEN THAT WILL BE IN THE PLACE }
 int
 FLEE_GLOBALSUBSintl ( const char* FILE_NAME , int WHAT_LINE , int VALUE , const char* TOKEN )
 {
@@ -8571,10 +8710,10 @@ FLEE_GLOBALSUBSintl ( const char* FILE_NAME , int WHAT_LINE , int VALUE , const 
      int  current_line      = 1;
 
           file = fopen(FILE_NAME, "r");
-              if ( file == NULL ) printf ("Failed to open the file!\n");
+              // if ( file == NULL ) printf ("Failed to open the file!\n");
 
           FILE * temp_file = fopen ( temp_filename , "w" );
-              if ( temp_file == NULL ) { printf ("Error with the file reading!\n"); fclose ( file ); }
+              if ( temp_file == NULL ) { /* printf ("Error with the file reading!\n"); */ fclose ( file ); }
 
      char line [ 99999 ];
 
@@ -8617,6 +8756,11 @@ FLEE_GLOBALSUBSintl ( const char* FILE_NAME , int WHAT_LINE , int VALUE , const 
 
 
 
+// FUNCTION: REPLACES LOCALLY ALL THE INT OCORRENCES
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: WHAT_LINE { THE LINE THAT WILL BE CHANGED }
+// @param03: VALUE { THE INT THAT WILL BE REPLACED }
+// @param04: TOKEN { THE TOKEN THAT WILL BE IN THE PLACE }
 int
 FLEE_LOCALSUBSintl ( const char * FILE_NAME , int WHAT_LINE , int VALUE , const char * TOKEN )
 {
@@ -8633,10 +8777,10 @@ FLEE_LOCALSUBSintl ( const char * FILE_NAME , int WHAT_LINE , int VALUE , const 
     int current_line_number = 1;
 
                             file = fopen ( FILE_NAME , "r" );
-                                if ( file == NULL ) printf ("Failed to open the file!\n");
+                                // if ( file == NULL ) printf ("Failed to open the file!\n");
 
                             FILE * temp_file = fopen ( temp_filename , "w" );
-                                if ( temp_file == NULL ) { printf ("Error with the file reading!\n"); fclose ( file ); }
+                                if ( temp_file == NULL ) { /* printf ("Error with the file reading!\n"); */ fclose ( file ); }
 
     char line [ 99999 ];
 
@@ -8677,6 +8821,12 @@ FLEE_LOCALSUBSintl ( const char * FILE_NAME , int WHAT_LINE , int VALUE , const 
 
 
 
+// FUNCTION: REPLACES GLOBALLY ALL THE FLOAT OCORRENCES
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: WHAT_LINE { THE LINE THAT WILL BE CHANGED }
+// @param03: VALUE { THE FLOAT THAT WILL BE REPLACED }
+// @param04: COMMAS { HOW MANY DECIMAL HOUSES WILL BE CONSIDERED }
+// @param05: TOKEN { THE TOKEN THAT WILL BE IN THE PLACE }
 int
 FLEE_GLOBALSUBSfloatl ( const char * FILE_NAME , int WHAT_LINE , float VALUE, int COMMAS , const char * TOKEN )
 {
@@ -8699,10 +8849,10 @@ FLEE_GLOBALSUBSfloatl ( const char * FILE_NAME , int WHAT_LINE , float VALUE, in
     new_word_len = strlen ( TOKEN );
 
     file = fopen ( FILE_NAME , "r" );
-    if ( file == NULL ) printf ("Failed to open the file!\n");
+    // if ( file == NULL ) printf ("Failed to open the file!\n");
 
     temp_file = fopen ( temp_filename , "w" );
-    if ( temp_file == NULL ) { printf ("Failed to open temporary file!\n"); fclose ( file ); }
+    if ( temp_file == NULL ) { /* printf ("Failed to open temporary file!\n"); */ fclose ( file ); }
 
       while ( fgets ( line , 99999 , file ) )
       {
@@ -8744,8 +8894,9 @@ FLEE_GLOBALSUBSfloatl ( const char * FILE_NAME , int WHAT_LINE , float VALUE, in
 
     fclose ( file );    fclose ( temp_file );
 
-    if ( remove ( FILE_NAME ) not_eq 0 or rename ( temp_filename , FILE_NAME ) not_eq 0)
-    printf("Failed on the end of the function execution!\n");
+    remove ( FILE_NAME );
+    rename ( temp_filename , FILE_NAME );
+    // if ( remove ( FILE_NAME ) not_eq 0 or rename ( temp_filename , FILE_NAME ) not_eq 0) printf("Failed on the end of the function execution!\n");
 
     return return_value;
 }
@@ -8754,6 +8905,12 @@ FLEE_GLOBALSUBSfloatl ( const char * FILE_NAME , int WHAT_LINE , float VALUE, in
 
 
 
+// FUNCTION: REPLACES LOCALLY ALL THE FLOAT OCORRENCES
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: WHAT_LINE { THE LINE THAT WILL BE CHANGED }
+// @param03: VALUE { THE FLOAT THAT WILL BE REPLACED }
+// @param04: COMMAS { HOW MANY DECIMAL HOUSES WILL BE CONSIDERED }
+// @param05: TOKEN { THE TOKEN THAT WILL BE IN THE PLACE }
 int
 FLEE_LOCALSUBSfloatl ( const char * FILE_NAME , int WHAT_LINE , float VALUE , int COMMAS , const char * TOKEN )
 {
@@ -8777,10 +8934,10 @@ FLEE_LOCALSUBSfloatl ( const char * FILE_NAME , int WHAT_LINE , float VALUE , in
     new_word_len = strlen ( TOKEN );
 
                 file = fopen ( FILE_NAME , "r" );
-                if ( file == NULL ) printf ("Failed to open the file!\n");
+                // if ( file == NULL ) printf ("Failed to open the file!\n");
 
                 temp_file = fopen ( temp_filename , "w" );
-                if ( temp_file == NULL ) { printf ("Failed to open temporary file!\n");  fclose ( file ); }
+                if ( temp_file == NULL ) { /* printf ("Failed to open temporary file!\n"); */  fclose ( file ); }
 
     while ( fgets ( line , 99999 , file ) )
     {
@@ -8825,8 +8982,10 @@ FLEE_LOCALSUBSfloatl ( const char * FILE_NAME , int WHAT_LINE , float VALUE , in
 
     fclose ( file );    fclose ( temp_file );
 
-    if ( remove ( FILE_NAME ) not_eq 0 )                 printf ("Error with the end of the function!");
-    if ( rename ( temp_filename , FILE_NAME ) not_eq 0 ) printf ("Error with the end of the function!");
+    remove ( FILE_NAME );
+    // if ( remove ( FILE_NAME ) not_eq 0 )                 printf ("Error with the end of the function!");
+    rename ( temp_filename , FILE_NAME );
+    // if ( rename ( temp_filename , FILE_NAME ) not_eq 0 ) printf ("Error with the end of the function!");
 
     return return_value;
 }
@@ -8835,6 +8994,12 @@ FLEE_LOCALSUBSfloatl ( const char * FILE_NAME , int WHAT_LINE , float VALUE , in
 
 
 
+// FUNCTION: REPLACES GLOBALLY ALL THE DOUBLE OCORRENCES
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: WHAT_LINE { THE LINE THAT WILL BE CHANGED }
+// @param03: VALUE { THE DOUBLE THAT WILL BE REPLACED }
+// @param04: COMMAS { HOW MANY DECIMAL HOUSES WILL BE CONSIDERED }
+// @param05: TOKEN { THE TOKEN THAT WILL BE IN THE PLACE }
 int
 FLEE_GLOBALSUBSdoublel ( const char * FILE_NAME , int WHAT_LINE , double VALUE, int COMMAS , const char * TOKEN )
 {
@@ -8857,7 +9022,7 @@ FLEE_GLOBALSUBSdoublel ( const char * FILE_NAME , int WHAT_LINE , double VALUE, 
     new_word_len = strlen ( TOKEN );
 
     file = fopen ( FILE_NAME , "r" );
-    if ( file == NULL ) printf ("Failed to open the file!\n");
+    // if ( file == NULL ) printf ("Failed to open the file!\n");
 
     temp_file = fopen ( temp_filename , "w" );
     if ( temp_file == NULL ) { printf ("Failed to open temporary file!\n"); fclose ( file ); }
@@ -8902,8 +9067,9 @@ FLEE_GLOBALSUBSdoublel ( const char * FILE_NAME , int WHAT_LINE , double VALUE, 
 
     fclose ( file );    fclose ( temp_file );
 
-    if ( remove ( FILE_NAME ) not_eq 0 or rename ( temp_filename , FILE_NAME ) not_eq 0)
-    printf("Failed on the end of the function execution!\n");
+    remove ( FILE_NAME );
+    rename ( temp_filename , FILE_NAME );
+    // if ( remove ( FILE_NAME ) not_eq 0 or rename ( temp_filename , FILE_NAME ) not_eq 0) printf("Failed on the end of the function execution!\n");
 
 
     return return_value;
@@ -8913,6 +9079,12 @@ FLEE_GLOBALSUBSdoublel ( const char * FILE_NAME , int WHAT_LINE , double VALUE, 
 
 
 
+// FUNCTION: REPLACES LOCALLY ALL THE DOUBLE OCORRENCES
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: WHAT_LINE { THE LINE THAT WILL BE CHANGED }
+// @param03: VALUE { THE DOUBLE THAT WILL BE REPLACED }
+// @param04: COMMAS { HOW MANY DECIMAL HOUSES WILL BE CONSIDERED }
+// @param05: TOKEN { THE TOKEN THAT WILL BE IN THE PLACE }
 int
 FLEE_LOCALSUBSdoublel ( const char * FILE_NAME , int WHAT_LINE , double VALUE , int COMMAS , const char * TOKEN )
 {
@@ -8936,10 +9108,10 @@ FLEE_LOCALSUBSdoublel ( const char * FILE_NAME , int WHAT_LINE , double VALUE , 
     new_word_len = strlen ( TOKEN );
 
                 file = fopen ( FILE_NAME , "r" );
-                if ( file == NULL ) printf ("Failed to open the file!\n");
+                // if ( file == NULL ) printf ("Failed to open the file!\n");
 
                 temp_file = fopen ( temp_filename , "w" );
-                if ( temp_file == NULL ) { printf ("Failed to open temporary file!\n");  fclose ( file ); }
+                if ( temp_file == NULL ) { /* printf ("Failed to open temporary file!\n"); */ fclose ( file ); }
 
     while ( fgets ( line , 99999 , file ) )
     {
@@ -8984,8 +9156,10 @@ FLEE_LOCALSUBSdoublel ( const char * FILE_NAME , int WHAT_LINE , double VALUE , 
 
     fclose ( file );    fclose ( temp_file );
 
-    if ( remove ( FILE_NAME ) not_eq 0 )                 printf ("Error with the end of the function!");
-    if ( rename ( temp_filename , FILE_NAME ) not_eq 0 ) printf ("Error with the end of the function!");
+    remove ( FILE_NAME );
+    // if ( remove ( FILE_NAME ) not_eq 0 )                 printf ("Error with the end of the function!");
+    rename ( temp_filename , FILE_NAME );
+    // if ( rename ( temp_filename , FILE_NAME ) not_eq 0 ) printf ("Error with the end of the function!");
 
     return return_value;
 }
@@ -8993,54 +9167,74 @@ FLEE_LOCALSUBSdoublel ( const char * FILE_NAME , int WHAT_LINE , double VALUE , 
 
 
 
+
+// FUNCTION: REPLACES GLOBALLY ALL THE CHAR OCORRENCES
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: WHAT_LINE { THE LINE THAT WILL BE CHANGED }
+// @param03: VALUE { THE CHAR THAT WILL BE REPLACED }
+// @param04: TOKEN { THE TOKEN THAT WILL BE IN THE PLACE }
 int
-FLEE_GLOBALSUBScharl ( const char * FILE_NAME , int WHAT_LINE , char VALUE , const char * TOKEN )
+FLEE_GLOBALSUBScharl ( const char * FILE_NAME , int WHAT_LINE , char VALUE , const char *TOKEN )
 {
 
-    FILE * file = fopen ( FILE_NAME , "r" );
-    if ( file == NULL ) printf ("Failed to open the file!\n");
+    FILE *file = fopen(FILE_NAME, "r");
+    // if ( file == NULL ) printf("Failed to open the file!\n");
+
 
     int RETURN_VALUE = 0;
-    char temp_filename [ 100 ];
+    char temp_filename[100];
+    snprintf(temp_filename, sizeof(temp_filename), "%s.temp", FILE_NAME);
 
-                        snprintf ( temp_filename , sizeof ( temp_filename ), "%s.temp" , FILE_NAME );
+    FILE *temp_file = fopen(temp_filename, "w");
+    if (temp_file == NULL) {
+        /* printf("Error creating temporary file.\n"); */
+        fclose(file);
+        return 0;
+    }
 
-    FILE * temp_file = fopen ( temp_filename , "w" );
-    if ( temp_file == NULL ) { printf ("Error creating temporary file.\n"); fclose ( file ); }
-
-    char line [ 1000 ];
+    char line[99999];
     int line_count = 0;
 
-    while ( fgets ( line , sizeof ( line ) , file ) )
-    {
-         line_count++;
+    while (fgets(line, sizeof(line), file)) {
+        line_count++;
 
-         if ( line_count == WHAT_LINE )
-         {
+        int substitutions = 0;
 
-           int i = 0;
+        if (line_count == WHAT_LINE) {
+            int i = 0;
+            while (line[i]) {
+                if (line[i] == VALUE) {
+                    fputs(TOKEN, temp_file);
+                    substitutions++;
+                } else {
+                    fputc(line[i], temp_file);
+                }
+                i++;
+            }
+        } else {
+            fputs(line, temp_file);
+        }
 
-    while ( line [ i ] )
-    {
-         if ( line [ i ] == VALUE ) fputs ( TOKEN , temp_file );
-         else fputc ( line [ i ] , temp_file );
-         i++;
-
+        RETURN_VALUE += substitutions;
     }
-         }
-         else fputs ( line , temp_file );
-    RETURN_VALUE++;
-    }
-    fclose ( file ); fclose ( temp_file ); remove ( FILE_NAME ); rename ( temp_filename , FILE_NAME );
+
+    fclose(file);
+    fclose(temp_file);
+    remove(FILE_NAME);
+    rename(temp_filename, FILE_NAME);
 
     return RETURN_VALUE;
-
 }
 
 
 
 
 
+// FUNCTION: REPLACES LOCALLY ALL THE CHAR OCORRENCES
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: WHAT_LINE { THE LINE THAT WILL BE CHANGED }
+// @param03: VALUE { THE CHAR THAT WILL BE REPLACED }
+// @param04: TOKEN { THE TOKEN THAT WILL BE IN THE PLACE }
 int
 FLEE_LOCALSUBScharl ( const char * FILE_NAME , int WHAT_LINE , char VALUE , const char * TOKEN )
 {
@@ -9057,10 +9251,10 @@ FLEE_LOCALSUBScharl ( const char * FILE_NAME , int WHAT_LINE , char VALUE , cons
     int  current_line     = 1;
 
     file = fopen ( FILE_NAME , "r" );
-    if ( file == NULL ) printf ("Failed to open the file!");
+    // if ( file == NULL ) printf ("Failed to open the file!");
 
     FILE * temp_file = fopen ( temp_filename , "w" );
-    if ( temp_file == NULL ) { printf ("Error with the file reading!\n"); fclose ( file ); }
+    if ( temp_file == NULL ) { /* printf ("Error with the file reading!\n"); */ fclose ( file ); }
 
     char line [ 99999 ];
 
@@ -9102,6 +9296,11 @@ FLEE_LOCALSUBScharl ( const char * FILE_NAME , int WHAT_LINE , char VALUE , cons
 
 
 
+// FUNCTION: REPLACES GLOBALLY ALL THE STRING OCORRENCES
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: WHAT_LINE { THE LINE THAT WILL BE CHANGED }
+// @param03: STRING { THE STRING THAT WILL BE REPLACED }
+// @param04: TOKEN { THE TOKEN THAT WILL BE IN THE PLACE }
 int
 FLEE_GLOBALSUBSstringl ( const char * FILE_NAME , int WHAT_LINE , const char * STRING , const char * TOKEN )
 {
@@ -9115,10 +9314,10 @@ FLEE_GLOBALSUBSstringl ( const char * FILE_NAME , int WHAT_LINE , const char * S
     int  current_line      = 0;
 
     file = fopen ( FILE_NAME , "r" );
-    if (file == NULL) printf ("Failed to open the file!\n");
+    // if (file == NULL) printf ("Failed to open the file!\n");
 
     FILE * temp_file = fopen ( temp_filename , "w" );
-    if ( temp_file == NULL ) { printf ("Error with the file reading!\n"); fclose ( file ); }
+    if ( temp_file == NULL ) { /* printf ("Error with the file reading!\n"); */ fclose ( file ); }
 
     char line_buffer [ 1000 ];
     while ( fgets ( line_buffer , sizeof ( line_buffer ) , file ) not_eq NULL )
@@ -9160,6 +9359,11 @@ FLEE_GLOBALSUBSstringl ( const char * FILE_NAME , int WHAT_LINE , const char * S
 
 
 
+// FUNCTION: REPLACES LOCALLY ALL THE STRING OCORRENCES
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: WHAT_LINE { THE LINE THAT WILL BE CHANGED }
+// @param03: STRING { THE STRING THAT WILL BE REPLACED }
+// @param04: TOKEN { THE TOKEN THAT WILL BE IN THE PLACE }
 int
 FLEE_LOCALSUBSstringl ( const char * FILE_NAME , int WHAT_LINE , const char * STRING , const char * TOKEN )
 {
@@ -9172,10 +9376,10 @@ FLEE_LOCALSUBSstringl ( const char * FILE_NAME , int WHAT_LINE , const char * ST
     int return_value       = 0;
 
     file = fopen ( FILE_NAME , "r" );
-    if ( file == NULL ) printf ("Failed to open the file!");
+    // if ( file == NULL ) printf ("Failed to open the file!");
 
     FILE * temp_file = fopen ( temp_filename , "w" );
-    if ( temp_file == NULL ) { printf ("Error with the file reading!\n"); fclose ( file ); }
+    if ( temp_file == NULL ) { /* printf ("Error with the file reading!\n"); */ fclose ( file ); }
 
     char line [ 99999 ];
     int current_line_num = 0;
@@ -9215,17 +9419,19 @@ FLEE_LOCALSUBSstringl ( const char * FILE_NAME , int WHAT_LINE , const char * ST
 
 
 
-/* WRITE IN A FILE FUNCTIONS */
 
 
-
+// FUNCTION: ADDS A VALUE TO THE LAST CURSOR POSITION OF THE FILE
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: VALUE { THE VALUE THAT WILL BE ADDED }
 void
 FLEE_WRITEint ( const char * FILE_NAME , int VALUE )
 {
 
 
     FILE * fp = fopen ( FILE_NAME , "a" );
-    if ( fp == NULL ) printf("Error opening the file!");
+
+    // if ( fp == NULL ) printf("Error opening the file!");
 
     fprintf ( fp , "%d" , VALUE );
 
@@ -9237,27 +9443,31 @@ FLEE_WRITEint ( const char * FILE_NAME , int VALUE )
 
 
 
+// FUNCTION: ADDS A VALUE TO THE END OF A ESPECIFIC LINE IN THE FILE
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: VALUE { THE VALUE THAT WILL BE ADDED }
+// @param03: WHAT_LINE { THE LINE THAT WILL BE USED }
 void
 FLEE_WRITEintl ( const char * FILE_NAME , int VALUE , int WHAT_LINE )
 {
 
     FILE * fp , * fpTemp;
 
-    char STRING [ 1024 ];
+    char STRING [ 99999 ];
 
     sprintf ( STRING , "%d" , VALUE );
 
-    char buffer [ 1024 ];
+    char buffer [ 99999 ];
     int  linhaAtual = 1;
     int  linhaEncontrada = 0;
 
     fp = fopen ( FILE_NAME , "r" );
-    if ( fp == NULL ) printf ("Error opening the file!");
+    // if ( fp == NULL ) printf ("Error opening the file!");
 
     fpTemp = fopen ("temp.txt", "w");
-    if ( fpTemp == NULL ) { printf ("Error with the function execution on the file!"); fclose(fp); }
+    if ( fpTemp == NULL ) { /* printf ("Error with the function execution on the file!"); */ fclose(fp); }
 
-      while ( fgets ( buffer , 1024 , fp ) not_eq NULL )
+      while ( fgets ( buffer , 99999 , fp ) not_eq NULL )
       {
            if ( linhaAtual == WHAT_LINE )
            {
@@ -9297,6 +9507,11 @@ FLEE_WRITEintl ( const char * FILE_NAME , int VALUE , int WHAT_LINE )
 
 
 
+// FUNCTION: ADDS A VALUE TO THE END OF A ESPECIFIC LINE AND START OF A COLUN IN THE FILE
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: VALUE { THE VALUE THAT WILL BE ADDED }
+// @param03: WHAT_LINE { THE LINE THAT WILL BE USED }
+// @param04: WHAT_COLUMN { THE COLS THAT WILL BE USED }
 void
 FLEE_WRITESUPAint ( const char * FILE_NAME , int VALUE , int WHAT_LINE , int WHAT_COLUMN )
 {
@@ -9306,12 +9521,12 @@ FLEE_WRITESUPAint ( const char * FILE_NAME , int VALUE , int WHAT_LINE , int WHA
     sprintf ( STRING , "%d" , VALUE );
 
     FILE * file = fopen ( FILE_NAME , "r" );
-    if ( file == NULL ) printf ("Failed to open the file !");
+    // if ( file == NULL ) printf ("Failed to open the file !");
 
     char tmp_filename [ ] = "temp.txt";
 
     FILE * tmp_file = fopen ( tmp_filename , "w" );
-    if ( tmp_file == NULL ) { printf ("Error creating temporary file."); fclose ( file ); }
+    if ( tmp_file == NULL ) { /* printf ("Error creating temporary file."); */ fclose ( file ); }
 
     char line_buf [ 9999 ];
     int  current_line = 1;
@@ -9341,21 +9556,28 @@ FLEE_WRITESUPAint ( const char * FILE_NAME , int VALUE , int WHAT_LINE , int WHA
 
          fclose ( file ); fclose ( tmp_file );
 
-    if ( remove ( FILE_NAME ) not_eq 0 ) printf ("Error with the final of the function! (maybe the original file have been broken)");
+    remove ( FILE_NAME );
+    // if ( remove ( FILE_NAME ) not_eq 0 ) printf ("Error with the final of the function! (maybe the original file have been broken)");
 
-    if ( rename ( tmp_filename, FILE_NAME) not_eq 0 ) printf ("Error with the final of the function!");
+    rename ( tmp_filename, FILE_NAME );
+    // if ( rename ( tmp_filename, FILE_NAME) not_eq 0 ) printf ("Error with the final of the function!");
 }
 
 
 
 
 
+// FUNCTION: ADDS A VALUE TO THE LAST CURSOR POSITION OF THE FILE
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: VALUE { THE VALUE THAT WILL BE ADDED }
+// @param03: COMMAS { HOW MANY DECIMAL HOUSES THE VALUE WILL PRINT }
 void
 FLEE_WRITEfloat ( const char * FILE_NAME , float VALUE , int COMMAS )
 {
 
     FILE * fp = fopen ( FILE_NAME , "a" );
-    if ( fp == NULL ) printf("Error opening the file!");
+
+    // if ( fp == NULL ) printf("Error opening the file!");
 
     fprintf ( fp , "%.*f" , COMMAS , VALUE );
 
@@ -9366,6 +9588,11 @@ FLEE_WRITEfloat ( const char * FILE_NAME , float VALUE , int COMMAS )
 
 
 
+// FUNCTION: ADDS A VALUE TO THE END OF A ESPECIFIC LINE IN THE FILE
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: VALUE { THE VALUE THAT WILL BE ADDED }
+// @param03: COMMAS { HOW MANY DECIMAL HOUSES THE VALUE WILL PRINT }
+// @param04: WHAT_LINE { WHAT LINE WILL PRINT }
 void
 FLEE_WRITEfloatl ( const char * FILE_NAME , float VALUE , int COMMAS , int WHAT_LINE )
 {
@@ -9381,10 +9608,10 @@ FLEE_WRITEfloatl ( const char * FILE_NAME , float VALUE , int COMMAS , int WHAT_
     int  linhaEncontrada = 0;
 
     fp = fopen ( FILE_NAME , "r" );
-    if ( fp == NULL ) printf ("Error opening the file!");
+    // if ( fp == NULL ) printf ("Error opening the file!");
 
     fpTemp = fopen ("temp.txt", "w");
-    if ( fpTemp == NULL ) { printf ("Error with the function execution on the file!"); fclose(fp); }
+    if ( fpTemp == NULL ) { /* printf ("Error with the function execution on the file!"); */ fclose(fp); }
 
       while ( fgets ( buffer , 1024 , fp ) not_eq NULL )
       {
@@ -9424,6 +9651,12 @@ FLEE_WRITEfloatl ( const char * FILE_NAME , float VALUE , int COMMAS , int WHAT_
 
 
 
+// FUNCTION: ADDS A VALUE TO THE END OF A ESPECIFIC LINE AND START OF A COLUN IN THE FILE
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: VALUE { THE VALUE THAT WILL BE ADDED }
+// @param03: COMMAS { THOW MANY DECIMAL HOUSES WILL BE PRINTED }
+// @param04: WHAT_LINE { THE LINE THAT WILL BE USED }
+// @param05: WHAT_COLUMN { THE COLS THAT WILL BE USED }
 void
 FLEE_WRITESUPAfloat ( const char * FILE_NAME , float VALUE , int COMMA , int WHAT_LINE , int WHAT_COLUMN )
 {
@@ -9432,12 +9665,12 @@ FLEE_WRITESUPAfloat ( const char * FILE_NAME , float VALUE , int COMMA , int WHA
     sprintf ( STRING , "%.*f" , COMMA , VALUE );
 
     FILE * file = fopen ( FILE_NAME , "r" );
-    if ( file == NULL ) printf ("Failed to open the file !");
+    // if ( file == NULL ) printf ("Failed to open the file !");
 
     char tmp_filename [ ] = "temp.txt";
 
     FILE * tmp_file = fopen ( tmp_filename , "w" );
-    if ( tmp_file == NULL ) { printf ("Error creating temporary file."); fclose ( file ); }
+    if ( tmp_file == NULL ) { /* printf ("Error creating temporary file."); */ fclose ( file ); }
 
     char line_buf [ 9999 ];
     int  current_line = 1;
@@ -9467,20 +9700,27 @@ FLEE_WRITESUPAfloat ( const char * FILE_NAME , float VALUE , int COMMA , int WHA
 
          fclose ( file ); fclose ( tmp_file );
 
-    if ( remove ( FILE_NAME ) not_eq 0 ) printf ("Error with the final of the function! (maybe the original file have been broken)");
+    remove ( FILE_NAME );
+    // if ( remove ( FILE_NAME ) not_eq 0 ) printf ("Error with the final of the function! (maybe the original file have been broken)");
 
-    if ( rename ( tmp_filename, FILE_NAME) not_eq 0 ) printf ("Error with the final of the function!");
+    rename ( tmp_filename, FILE_NAME );
+    // if ( rename ( tmp_filename, FILE_NAME) not_eq 0 ) printf ("Error with the final of the function!");
 }
 
 
 
 
 
+// FUNCTION: ADDS A VALUE TO THE LAST CURSOR POSITION OF THE FILE
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: VALUE { THE VALUE THAT WILL BE ADDED }
+// @param03: COMMAS { HOW MANY DECIMAL HOUSES THE VALUE WILL PRINT }
 void
 FLEE_WRITEdouble ( const char * FILE_NAME , double VALUE , int COMMAS )
 {
     FILE * fp = fopen ( FILE_NAME , "a" );
-    if ( fp == NULL ) printf("Error opening the file!");
+
+    // if ( fp == NULL ) printf("Error opening the file!");
 
     fprintf ( fp , "%.*lf" , COMMAS , VALUE );
 
@@ -9491,6 +9731,11 @@ FLEE_WRITEdouble ( const char * FILE_NAME , double VALUE , int COMMAS )
 
 
 
+// FUNCTION: ADDS A VALUE TO THE END OF A ESPECIFIC LINE IN THE FILE
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: VALUE { THE VALUE THAT WILL BE ADDED }
+// @param03: COMMAS { HOW MANY DECIMAL HOUSES THE VALUE WILL PRINT }
+// @param04: WHAT_LINE { WHAT LINE WILL PRINT }
 void
 FLEE_WRITEdoublel ( const char * FILE_NAME , double VALUE , int COMMAS , int WHAT_LINE )
 {
@@ -9506,10 +9751,10 @@ FLEE_WRITEdoublel ( const char * FILE_NAME , double VALUE , int COMMAS , int WHA
     int  linhaEncontrada = 0;
 
     fp = fopen ( FILE_NAME , "r" );
-    if ( fp == NULL ) printf ("Error opening the file!");
+    // if ( fp == NULL ) printf ("Error opening the file!");
 
     fpTemp = fopen ("temp.txt", "w");
-    if ( fpTemp == NULL ) { printf ("Error with the function execution on the file!"); fclose(fp); }
+    if ( fpTemp == NULL ) { /* printf ("Error with the function execution on the file!"); */ fclose(fp); }
 
       while ( fgets ( buffer , 1024 , fp ) not_eq NULL )
       {
@@ -9549,6 +9794,12 @@ FLEE_WRITEdoublel ( const char * FILE_NAME , double VALUE , int COMMAS , int WHA
 
 
 
+// FUNCTION: ADDS A VALUE TO THE END OF A ESPECIFIC LINE AND START OF A COLUN IN THE FILE
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: VALUE { THE VALUE THAT WILL BE ADDED }
+// @param03: COMMAS { THOW MANY DECIMAL HOUSES WILL BE PRINTED }
+// @param04: WHAT_LINE { THE LINE THAT WILL BE USED }
+// @param05: WHAT_COLUMN { THE COLS THAT WILL BE USED }
 void
 FLEE_WRITESUPAdouble ( const char * FILE_NAME , double VALUE , int COMMA , int WHAT_LINE , int WHAT_COLUMN )
 {
@@ -9557,12 +9808,12 @@ FLEE_WRITESUPAdouble ( const char * FILE_NAME , double VALUE , int COMMA , int W
     sprintf ( STRING , "%.*lf" , COMMA , VALUE );
 
     FILE * file = fopen ( FILE_NAME , "r" );
-    if ( file == NULL ) printf ("Failed to open the file !");
+    // if ( file == NULL ) printf ("Failed to open the file !");
 
     char tmp_filename [ ] = "temp.txt";
 
     FILE * tmp_file = fopen ( tmp_filename , "w" );
-    if ( tmp_file == NULL ) { printf ("Error creating temporary file."); fclose ( file ); }
+    if ( tmp_file == NULL ) { /* printf ("Error creating temporary file."); */ fclose ( file ); }
 
     char line_buf [ 9999 ];
     int  current_line = 1;
@@ -9592,20 +9843,26 @@ FLEE_WRITESUPAdouble ( const char * FILE_NAME , double VALUE , int COMMA , int W
 
          fclose ( file ); fclose ( tmp_file );
 
-    if ( remove ( FILE_NAME ) not_eq 0 ) printf ("Error with the final of the function! (maybe the original file have been broken)");
+    remove ( FILE_NAME );
+    // if ( remove ( FILE_NAME ) not_eq 0 ) printf ("Error with the final of the function! (maybe the original file have been broken)");
 
-    if ( rename ( tmp_filename, FILE_NAME) not_eq 0 ) printf ("Error with the final of the function!");
+    rename ( tmp_filename, FILE_NAME );
+    // if ( rename ( tmp_filename, FILE_NAME) not_eq 0 ) printf ("Error with the final of the function!");
 }
 
 
 
 
 
+// FUNCTION: ADDS A VALUE TO THE LAST CURSOR POSITION OF THE FILE
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: VALUE { THE VALUE THAT WILL BE ADDED }
 void
 FLEE_WRITEchar ( const char * FILE_NAME , char VALUE )
 {
     FILE * fp = fopen ( FILE_NAME , "a" );
-    if ( fp == NULL ) printf("Error opening the file!");
+
+    // if ( fp == NULL ) printf("Error opening the file!");
 
     fprintf ( fp , "%c" , VALUE );
 
@@ -9616,7 +9873,10 @@ FLEE_WRITEchar ( const char * FILE_NAME , char VALUE )
 
 
 
-
+// FUNCTION: ADDS A VALUE TO THE END OF A ESPECIFIC LINE IN THE FILE
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: VALUE { THE VALUE THAT WILL BE ADDED }
+// @param03: WHAT_LINE { WHAT LINE WILL PRINT }
 void
 FLEE_WRITEcharl ( const char * FILE_NAME , char VALUE , int WHAT_LINE )
 {
@@ -9631,10 +9891,10 @@ FLEE_WRITEcharl ( const char * FILE_NAME , char VALUE , int WHAT_LINE )
     int  linhaEncontrada = 0;
 
     fp = fopen ( FILE_NAME , "r" );
-    if ( fp == NULL ) printf ("Error opening the file!");
+    // if ( fp == NULL ) printf ("Error opening the file!");
 
     fpTemp = fopen ("temp.txt", "w");
-    if ( fpTemp == NULL ) { printf ("Error with the function execution on the file!"); fclose(fp); }
+    if ( fpTemp == NULL ) { /* printf ("Error with the function execution on the file!"); */ fclose(fp); }
 
       while ( fgets ( buffer , 1024 , fp ) not_eq NULL )
       {
@@ -9674,6 +9934,11 @@ FLEE_WRITEcharl ( const char * FILE_NAME , char VALUE , int WHAT_LINE )
 
 
 
+// FUNCTION: ADDS A VALUE TO THE END OF A ESPECIFIC LINE AND START OF A COLUN IN THE FILE
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: VALUE { THE VALUE THAT WILL BE ADDED }
+// @param03: WHAT_LINE { THE LINE THAT WILL BE USED }
+// @param04: WHAT_COLUMN { THE COLS THAT WILL BE USED }
 void
 FLEE_WRITESUPAchar ( const char * FILE_NAME , char VALUE , int WHAT_LINE , int WHAT_COLUMN )
 {
@@ -9681,12 +9946,12 @@ FLEE_WRITESUPAchar ( const char * FILE_NAME , char VALUE , int WHAT_LINE , int W
     sprintf ( STRING , "%c" , VALUE );
 
     FILE * file = fopen ( FILE_NAME , "r" );
-    if ( file == NULL ) printf ("Failed to open the file !");
+    // if ( file == NULL ) printf ("Failed to open the file !");
 
     char tmp_filename [ ] = "temp.txt";
 
     FILE * tmp_file = fopen ( tmp_filename , "w" );
-    if ( tmp_file == NULL ) { printf ("Error creating temporary file."); fclose ( file ); }
+    if ( tmp_file == NULL ) { /* printf ("Error creating temporary file."); */ fclose ( file ); }
 
     char line_buf [ 9999 ];
     int  current_line = 1;
@@ -9716,20 +9981,26 @@ FLEE_WRITESUPAchar ( const char * FILE_NAME , char VALUE , int WHAT_LINE , int W
 
          fclose ( file ); fclose ( tmp_file );
 
-    if ( remove ( FILE_NAME ) not_eq 0 ) printf ("Error with the final of the function! (maybe the original file have been broken)");
+    remove ( FILE_NAME );
+    // if ( remove ( FILE_NAME ) not_eq 0 ) printf ("Error with the final of the function! (maybe the original file have been broken)");
 
-    if ( rename ( tmp_filename, FILE_NAME) not_eq 0 ) printf ("Error with the final of the function!");
+    rename ( tmp_filename, FILE_NAME );
+    // if ( rename ( tmp_filename, FILE_NAME) not_eq 0 ) printf ("Error with the final of the function!");
 }
 
 
 
 
 
+// FUNCTION: ADDS A STRING TO THE LAST CURSOR POSITION OF THE FILE
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: STRING { THE STRING THAT WILL BE ADDED }
 void
 FLEE_WRITEstring ( const char * FILE_NAME , const char * STRING )
 {
     FILE * fp = fopen ( FILE_NAME , "a" );
-    if ( fp == NULL ) printf("Error opening the file!");
+
+    // if ( fp == NULL ) printf("Error opening the file!");
 
     fprintf ( fp , "%s" , STRING );
 
@@ -9740,6 +10011,10 @@ FLEE_WRITEstring ( const char * FILE_NAME , const char * STRING )
 
 
 
+// FUNCTION: ADDS A STRING TO THE END OF A ESPECIFIC LINE IN THE FILE
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: STRING { THE STRING THAT WILL BE ADDED }
+// @param03: WHAT_LINE { WHAT LINE WILL PRINT }
 void
 FLEE_WRITEstringl ( const char * FILE_NAME , const char * STRING , int WHAT_LINE )
 {
@@ -9750,10 +10025,10 @@ FLEE_WRITEstringl ( const char * FILE_NAME , const char * STRING , int WHAT_LINE
     int  linhaEncontrada = 0;
 
     fp = fopen ( FILE_NAME , "r" );
-    if ( fp == NULL ) printf ("Error opening the file!");
+    // if ( fp == NULL ) printf ("Error opening the file!");
 
     fpTemp = fopen ("temp.txt", "w");
-    if ( fpTemp == NULL ) { printf ("Error with the function execution on the file!"); fclose(fp); }
+    if ( fpTemp == NULL ) { /* printf ("Error with the function execution on the file!"); */ fclose(fp); }
 
       while ( fgets ( buffer , 1024 , fp ) not_eq NULL )
       {
@@ -9793,22 +10068,28 @@ FLEE_WRITEstringl ( const char * FILE_NAME , const char * STRING , int WHAT_LINE
 
 
 
+// FUNCTION: ADDS A STRING TO THE END OF A ESPECIFIC LINE AND START OF A COLUN IN THE FILE
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: STRING { THE STRING THAT WILL BE ADDED }
+// @param03: WHAT_LINE { THE LINE THAT WILL BE USED }
+// @param04: WHAT_COLUMN { THE COLS THAT WILL BE USED }
 void
 FLEE_WRITESUPAstring ( const char * FILE_NAME , const char * STRING , int WHAT_LINE , int WHAT_COLUMN )
 {
     FILE * file = fopen ( FILE_NAME , "r" );
-    if ( file == NULL ) printf ("Failed to open the file !");
+    // if ( file == NULL ) printf ("Failed to open the file !");
 
     char tmp_filename [ ] = "temp.txt";
 
     FILE * tmp_file = fopen ( tmp_filename , "w" );
-    if ( tmp_file == NULL ) { printf ("Error creating temporary file."); fclose ( file ); }
+    if ( tmp_file == NULL ) { /*printf ("Error creating temporary file."); */ fclose ( file ); }
 
-    char line_buf [ 9999 ];
+    char line_buf [ 100000 ];
     int  current_line = 1;
 
         while ( fgets ( line_buf , sizeof ( line_buf ) , file ) )
         {
+
              if ( current_line == WHAT_LINE )
              {
 
@@ -9832,28 +10113,34 @@ FLEE_WRITESUPAstring ( const char * FILE_NAME , const char * STRING , int WHAT_L
 
          fclose ( file ); fclose ( tmp_file );
 
-    if ( remove ( FILE_NAME ) not_eq 0 ) printf ("Error with the final of the function! (maybe the original file have been broken)");
+    remove ( FILE_NAME );
+    // if ( remove ( FILE_NAME ) not_eq 0 ) printf ("Error with the final of the function! (maybe the original file have been broken)");
 
-    if ( rename ( tmp_filename, FILE_NAME) not_eq 0 ) printf ("Error with the final of the function!");
+    rename ( tmp_filename, FILE_NAME );
+    // if ( rename ( tmp_filename, FILE_NAME) not_eq 0 ) printf ("Error with the final of the function!");
 }
 
 
 
-/* READ VALUE FROM FILES */
 
 
-
+// FUNCTION: GETS A INT VALUE FROM A LINE IN A FILE
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: WHAT_LINE { THE LINE THAT WE GONNA GET }
 int
 FLEE_GETSint ( const char * FILE_NAME , int WHAT_LINE )
 {
+
     FILE * fp = fopen ( FILE_NAME , "r" );
-    if ( fp == NULL )   printf ("Error opening the file!\n");
+    // if ( fp == NULL )   printf ("Error opening the file!\n");
+
+    WHAT_LINE++;
 
     char linha_atual [ 99999 ];
-    int  valor = -1;
+    int  valor = 1;
 
     for ( int i = 1; i <= WHAT_LINE; i++ )
-    if ( fgets ( linha_atual , sizeof ( linha_atual ) , fp ) == NULL ) { printf ("Error with the line\n"); fclose ( fp ); }
+    if ( fgets ( linha_atual , sizeof ( linha_atual ) , fp ) == NULL ) { /* printf ("Error with the line\n"); */ fclose ( fp ); }
 
     char valor_str [ 100 ];
     int j = 0;
@@ -9863,7 +10150,7 @@ FLEE_GETSint ( const char * FILE_NAME , int WHAT_LINE )
 
     valor_str [ j ] = '\0';
 
-    if ( sscanf ( valor_str , "%d" , &valor ) not_eq 1 ) { printf ("Error with the int value!\n"); fclose ( fp ); }
+    if ( sscanf ( valor_str , "%d" , &valor ) not_eq 1 ) { /* printf ("Error with the int value!\n"); */ fclose ( fp ); }
 
     fclose ( fp );
 
@@ -9874,18 +10161,23 @@ FLEE_GETSint ( const char * FILE_NAME , int WHAT_LINE )
 
 
 
+// FUNCTION: GETS A FLOAT VALUE FROM A LINE IN A FILE
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: WHAT_LINE { THE LINE THAT WE GONNA GET }
 float
 FLEE_GETSfloat ( const char * FILE_NAME , int WHAT_LINE )
 {
 
     FILE* fp = fopen ( FILE_NAME , "r" );
-    if ( fp == NULL ) printf ("Error opening the file.\n");
+    // if ( fp == NULL ) printf ("Error opening the file.\n");
+
+    WHAT_LINE++;
 
     char  linha_atual [ 99999 ];
     float valor = -1;
 
     for ( int i = 1; i <= WHAT_LINE; i++ )
-       if ( fgets ( linha_atual , sizeof ( linha_atual ) , fp ) == NULL ) { printf ("Error reading the line.\n");  fclose ( fp ); }
+       if ( fgets ( linha_atual , sizeof ( linha_atual ) , fp ) == NULL ) { /* printf ("Error reading the line.\n"); */  fclose ( fp ); }
 
     char valor_str [ 99999 ];
     int j = 0;
@@ -9898,7 +10190,7 @@ FLEE_GETSfloat ( const char * FILE_NAME , int WHAT_LINE )
     for ( int i = 0; i < strlen ( valor_str ); i++)
        if ( valor_str [ i ] == ',' ) valor_str [ i ] = '.';
 
-    if ( sscanf ( valor_str , "%f" , &valor ) not_eq 1 ) { printf ("Error reading the line.\n"); fclose ( fp ); }
+    if ( sscanf ( valor_str , "%f" , &valor ) not_eq 1 ) { /* printf ("Error reading the line.\n"); */ fclose ( fp ); }
 
     fclose ( fp );
     return valor;
@@ -9908,6 +10200,9 @@ FLEE_GETSfloat ( const char * FILE_NAME , int WHAT_LINE )
 
 
 
+// FUNCTION: GETS A DOUBLE VALUE FROM A LINE IN A FILE
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: WHAT_LINE { THE LINE THAT WE GONNA GET }
 double
 FLEE_GETSdouble ( const char * FILE_NAME , int WHAT_LINE )
 {
@@ -9942,11 +10237,15 @@ FLEE_GETSdouble ( const char * FILE_NAME , int WHAT_LINE )
 
 
 
+// FUNCTION: GETS A STRING VALUE FROM A LINE IN A FILE
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: STRING { THE PLACE TO SAVE THE STRING }
+// @param03: WHAT_LINE { THE LINE THAT WE GONNA GET }
 void
 FLEE_GETSstring ( const char * FILE_NAME , char * STRING, int WHAT_LINE )
 {
     FILE * file = fopen ( FILE_NAME , "r" );
-    if ( file == NULL ) printf("Error opening the file!");
+    // if ( file == NULL ) printf("Error opening the file!");
 
     int  line_number = 0;
     char line[ 99999 ];
@@ -9969,17 +10268,22 @@ FLEE_GETSstring ( const char * FILE_NAME , char * STRING, int WHAT_LINE )
 
 
 
+// FUNCTION: GETS A INT WITHIN A AREA
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: WHAT_LINE { THE LINE THAT WE GONNA GET }
+// @param03: START_COL { THE STARTING COL }
+// @param04: END_COL   { THE ENDING COL }
 int
 FLEE_GETCHint ( const char * FILE_NAME, int WHAT_LINE, int START_COL, int END_COL )
 {
     FILE * fp = fopen ( FILE_NAME , "r" );
-    if ( fp == NULL ) printf ("Error opening the file!\n");
+    // if ( fp == NULL ) printf ("Error opening the file!\n");
 
     char linha_atual[ 99999 ];
     int valor = -1;
 
     for ( int i = 1; i <= WHAT_LINE; i++ )
-       if ( fgets ( linha_atual , sizeof ( linha_atual ) , fp ) == NULL ) { printf ("Error with the line\n"); fclose ( fp ); }
+       if ( fgets ( linha_atual , sizeof ( linha_atual ) , fp ) == NULL ) { /* printf ("Error with the line\n"); */ fclose ( fp ); }
 
     char valor_str [ 100 ];
     int j = 0;
@@ -9989,7 +10293,7 @@ FLEE_GETCHint ( const char * FILE_NAME, int WHAT_LINE, int START_COL, int END_CO
 
     valor_str [ j ] = '\0';
 
-    if ( sscanf ( valor_str , "%d" , &valor ) not_eq 1 ) { printf ("Error with the int value!\n"); fclose ( fp ); }
+    if ( sscanf ( valor_str , "%d" , &valor ) not_eq 1 ) { /* printf ("Error with the int value!\n"); */ fclose ( fp ); }
 
     fclose ( fp );
     return valor;
@@ -9999,18 +10303,23 @@ FLEE_GETCHint ( const char * FILE_NAME, int WHAT_LINE, int START_COL, int END_CO
 
 
 
+// FUNCTION: GETS A FLOAT WITHIN A AREA
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: WHAT_LINE { THE LINE THAT WE GONNA GET }
+// @param03: START_COL { THE STARTING COL }
+// @param04: END_COL   { THE ENDING COL }
 float
 FLEE_GETCHfloat ( const char * FILE_NAME , int WHAT_LINE , int START_COL , int END_COL )
 {
 
     FILE * fp = fopen ( FILE_NAME , "r" );
-    if ( fp == NULL ) printf ("Error opening the file!\n");
+    // if ( fp == NULL ) printf ("Error opening the file!\n");
 
     char linha_atual[ 99999 ];
     float valor = -1.0;
 
     for ( int i = 1; i <= WHAT_LINE; i++ )
-       if ( fgets ( linha_atual , sizeof ( linha_atual ) , fp ) == NULL ) { printf ("Error reading the file!\n"); fclose ( fp ); }
+       if ( fgets ( linha_atual , sizeof ( linha_atual ) , fp ) == NULL ) { /* printf ("Error reading the file!\n"); */ fclose ( fp ); }
 
     char valor_str[100];
     int j = 0;
@@ -10020,7 +10329,7 @@ FLEE_GETCHfloat ( const char * FILE_NAME , int WHAT_LINE , int START_COL , int E
 
     valor_str [ j ] = '\0';
 
-    if ( sscanf ( valor_str , "%f" , &valor ) not_eq 1 ) { printf("Error with the float value!\n"); fclose ( fp ); }
+    if ( sscanf ( valor_str , "%f" , &valor ) not_eq 1 ) { /* printf("Error with the float value!\n"); */ fclose ( fp ); }
 
     fclose ( fp );
     return valor;
@@ -10029,19 +10338,23 @@ FLEE_GETCHfloat ( const char * FILE_NAME , int WHAT_LINE , int START_COL , int E
 
 
 
-
+// FUNCTION: GETS A DOUBLE WITHIN A AREA
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: WHAT_LINE { THE LINE THAT WE GONNA GET }
+// @param03: START_COL { THE STARTING COL }
+// @param04: END_COL   { THE ENDING COL }
 double
 FLEE_GETCHdouble ( const char * FILE_NAME , int WHAT_LINE , int START_COL , int END_COL )
 {
 
     FILE * fp = fopen ( FILE_NAME , "r" );
-    if ( fp == NULL ) printf ("Error opening the file!\n");
+    // if ( fp == NULL ) printf ("Error opening the file!\n");
 
     char linha_atual[ 99999 ];
     double valor = -1.0;
 
     for ( int i = 1; i <= WHAT_LINE; i++ )
-       if ( fgets ( linha_atual , sizeof ( linha_atual ) , fp ) == NULL ) { printf ("Error reading the file!\n"); fclose ( fp ); }
+       if ( fgets ( linha_atual , sizeof ( linha_atual ) , fp ) == NULL ) { /* printf ("Error reading the file!\n"); */ fclose ( fp ); }
 
     char valor_str[100];
     int j = 0;
@@ -10051,7 +10364,7 @@ FLEE_GETCHdouble ( const char * FILE_NAME , int WHAT_LINE , int START_COL , int 
 
     valor_str [ j ] = '\0';
 
-    if ( sscanf ( valor_str , "%lf" , &valor ) not_eq 1 ) { printf("Error with the float value!\n"); fclose ( fp ); }
+    if ( sscanf ( valor_str , "%lf" , &valor ) not_eq 1 ) { /* printf("Error with the float value!\n"); */ fclose ( fp ); }
 
     fclose ( fp );
     return valor;
@@ -10061,17 +10374,24 @@ FLEE_GETCHdouble ( const char * FILE_NAME , int WHAT_LINE , int START_COL , int 
 
 
 
+// FUNCTION: GETS A CHAR WITHIN A AREA
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: WHAT_LINE { THE LINE THAT WE GONNA GET }
+// @param03: START_COL { THE STARTING COL }
+// @param04: END_COL   { THE ENDING COL }
 char
 FLEE_GETCHchar ( const char * FILE_NAME , int WHAT_LINE , int START_COL , int END_COL )
 {
     FILE * fp = fopen ( FILE_NAME , "r" );
-    if ( fp == NULL ) printf ("Error opening the file!\n");
+    // if ( fp == NULL ) printf ("Error opening the file!\n");
+
+    START_COL++;
 
     char linha_atual [ 99999 ];
     char valor = '\0';
 
     for ( int i = 1; i <= WHAT_LINE; i++ )
-        if ( fgets ( linha_atual , sizeof ( linha_atual ) , fp ) == NULL ) { printf ("Error with the line\n"); fclose ( fp ); }
+        if ( fgets ( linha_atual , sizeof ( linha_atual ) , fp ) == NULL ) { /* printf ("Error with the line\n"); */ fclose ( fp ); }
 
     for ( int i = START_COL - 1; i < END_COL and i < strlen ( linha_atual ); i++ )
        if ( !isspace ( linha_atual [ i ] ) ) { valor = linha_atual [ i ]; break; }
@@ -10084,17 +10404,25 @@ FLEE_GETCHchar ( const char * FILE_NAME , int WHAT_LINE , int START_COL , int EN
 
 
 
+// FUNCTION: GETS A STRING WITHIN A AREA
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: WHAT_LINE { THE LINE THAT WE GONNA GET }
+// @param03: START_COL { THE STARTING COL }
+// @param04: END_COL   { THE ENDING COL }
+// @param05: STRING   { THE SAVING STRING}
 void
 FLEE_GETCHstring ( const char * FILE_NAME , int WHAT_LINE , int START_COL , int END_COL , char * STRING )
 {
 
     FILE * fp = fopen ( FILE_NAME , "r" );
-    if ( fp == NULL ) printf ("Error opening the file!\n");
+    // if ( fp == NULL ) printf ("Error opening the file!\n");
+
+    START_COL++;
 
     char linha_atual [ 99999 ];
 
     for ( int i = 1; i <= WHAT_LINE; i++ )
-       if ( fgets ( linha_atual , sizeof ( linha_atual ) , fp ) == NULL ) { printf ("Error with the line\n"); fclose ( fp ); }
+       if ( fgets ( linha_atual , sizeof ( linha_atual ) , fp ) == NULL ) { /* printf ("Error with the line\n"); */ fclose ( fp ); }
 
     int j = 0;
 
@@ -10113,16 +10441,20 @@ FLEE_GETCHstring ( const char * FILE_NAME , int WHAT_LINE , int START_COL , int 
 
 
 
+// FUNCTION: GETS A INT WITHIN A STARTING COL
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: WHAT_LINE { THE LINE THAT WE GONNA GET }
+// @param03: COL { THE STARTING COL }
 int
 FLEE_GETSLint ( const char * FILE_NAME , int WHAT_LINE , int COL )
 {
     FILE * fp = fopen ( FILE_NAME , "r" );
-    if ( fp == NULL ) printf ("Error opening the file!\n");
+    // if ( fp == NULL ) printf ("Error opening the file!\n");
 
     char linha_atual [ 99999 ];
 
     for ( int i = 1; i <= WHAT_LINE; i++ )
-       if ( fgets ( linha_atual , sizeof ( linha_atual ) , fp ) == NULL ) { printf ("Error with the line\n"); fclose ( fp ); }
+       if ( fgets ( linha_atual , sizeof ( linha_atual ) , fp ) == NULL ) { /* printf ("Error with the line\n"); */ fclose ( fp ); }
 
     int valor = -1;
     char valor_str [ 100 ];
@@ -10133,7 +10465,7 @@ FLEE_GETSLint ( const char * FILE_NAME , int WHAT_LINE , int COL )
 
     valor_str [ j ] = '\0';
 
-    if ( sscanf ( valor_str , "%d" , &valor ) not_eq 1 ) { printf("Error with the int value!\n"); fclose ( fp ); }
+    if ( sscanf ( valor_str , "%d" , &valor ) not_eq 1 ) { /* printf("Error with the int value!\n"); */ fclose ( fp ); }
 
     fclose ( fp );
     return valor;
@@ -10143,17 +10475,21 @@ FLEE_GETSLint ( const char * FILE_NAME , int WHAT_LINE , int COL )
 
 
 
+// FUNCTION: GETS A FLOAT WITHIN A STARTING COL
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: WHAT_LINE { THE LINE THAT WE GONNA GET }
+// @param03: COL { THE STARTING COL }
 float
 FLEE_GETSLfloat ( const char * FILE_NAME , int WHAT_LINE , int COL )
 {
 
     FILE * fp = fopen ( FILE_NAME , "r" );
-    if ( fp == NULL ) printf ("Error opening the file!\n");
+    // if ( fp == NULL ) printf ("Error opening the file!\n");
 
     char linha_atual [ 99999 ];
 
     for ( int i = 1; i <= WHAT_LINE; i++)
-       if ( fgets ( linha_atual , sizeof ( linha_atual ) , fp ) == NULL) { printf ("Error with the line\n"); fclose ( fp ); }
+       if ( fgets ( linha_atual , sizeof ( linha_atual ) , fp ) == NULL) { /* printf ("Error with the line\n"); */ fclose ( fp ); }
 
     float valor = -1.0;
     char valor_str [ 100 ];
@@ -10169,7 +10505,7 @@ FLEE_GETSLfloat ( const char * FILE_NAME , int WHAT_LINE , int COL )
 
     if ( sscanf ( valor_str , "%f" , &valor ) not_eq 1 )
     {
-        printf ("Error with the float value!\n");
+        // printf ("Error with the float value!\n");
         fclose ( fp );
     }
 
@@ -10181,17 +10517,21 @@ FLEE_GETSLfloat ( const char * FILE_NAME , int WHAT_LINE , int COL )
 
 
 
+// FUNCTION: GETS A DOUBLE WITHIN A STARTING COL
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: WHAT_LINE { THE LINE THAT WE GONNA GET }
+// @param03: COL { THE STARTING COL }
 double
 FLEE_GETSLdouble ( const char * FILE_NAME , int WHAT_LINE , int COL )
 {
 
     FILE * fp = fopen ( FILE_NAME , "r" );
-    if ( fp == NULL ) printf ("Error opening the file!\n");
+    // if ( fp == NULL ) printf ("Error opening the file!\n");
 
     char linha_atual [ 99999 ];
 
     for ( int i = 1; i <= WHAT_LINE; i++)
-       if ( fgets ( linha_atual , sizeof ( linha_atual ) , fp ) == NULL) { printf ("Error with the line\n"); fclose ( fp ); }
+       if ( fgets ( linha_atual , sizeof ( linha_atual ) , fp ) == NULL) { /* printf ("Error with the line\n"); */ fclose ( fp ); }
 
     double valor = -1.0;
     char valor_str [ 100 ];
@@ -10207,7 +10547,7 @@ FLEE_GETSLdouble ( const char * FILE_NAME , int WHAT_LINE , int COL )
 
     if ( sscanf ( valor_str , "%lf" , &valor ) not_eq 1 )
     {
-        printf ("Error with the float value!\n");
+        // printf ("Error with the float value!\n");
         fclose ( fp );
     }
 
@@ -10219,17 +10559,21 @@ FLEE_GETSLdouble ( const char * FILE_NAME , int WHAT_LINE , int COL )
 
 
 
+// FUNCTION: GETS A CHAR WITHIN A STARTING COL
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: WHAT_LINE { THE LINE THAT WE GONNA GET }
+// @param03: COL { THE STARTING COL }
 char
 FLEE_GETSLchar ( const char * FILE_NAME , int WHAT_LINE , int COL )
 {
     FILE * fp = fopen ( FILE_NAME , "r" );
-    if ( fp == NULL ) printf ("Error opening the file!\n");
+    // if ( fp == NULL ) printf ("Error opening the file!\n");
 
     char linha_atual [ 99999 ];
     char valor = '\0';
 
     for (int i = 1; i <= WHAT_LINE; i++)
-       if ( fgets ( linha_atual , sizeof ( linha_atual ) , fp ) == NULL ) { printf ("Error with the line\n"); fclose ( fp ); }
+       if ( fgets ( linha_atual , sizeof ( linha_atual ) , fp ) == NULL ) { /* printf ("Error with the line\n"); */ fclose ( fp ); }
 
     for ( int i = COL; i < strlen ( linha_atual ); i++)
        if ( !isspace ( linha_atual [ i ] ) ) { valor = linha_atual [ i ]; break; }
@@ -10242,16 +10586,21 @@ FLEE_GETSLchar ( const char * FILE_NAME , int WHAT_LINE , int COL )
 
 
 
+// FUNCTION: GETS A STRING WITHIN A STARTING COL
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: WHAT_LINE { THE LINE THAT WE GONNA GET }
+// @param03: COL { THE STARTING COL }
+// @param04: STRING { THE STRING TO SAVE }
 void
 FLEE_GETSLstring ( const char * FILE_NAME , int WHAT_LINE , int COL , char * STRING )
 {
     FILE * fp = fopen ( FILE_NAME , "r" );
-    if ( fp == NULL ) printf ("Error opening the file!\n");
+    // if ( fp == NULL ) printf ("Error opening the file!\n");
 
     char linha_atual [ 99999 ];
 
     for ( int i = 0; i < WHAT_LINE; i++ )
-       if ( fgets ( linha_atual , sizeof ( linha_atual ) , fp ) == NULL) { printf ("Error with the line\n"); fclose ( fp ); }
+       if ( fgets ( linha_atual , sizeof ( linha_atual ) , fp ) == NULL) { /* printf ("Error with the line\n"); */ fclose ( fp ); }
 
     int len = strlen ( linha_atual );
 
@@ -10270,15 +10619,14 @@ FLEE_GETSLstring ( const char * FILE_NAME , int WHAT_LINE , int COL , char * STR
 
 
 
-/* PRINT FILE FUNCTIONS */
-
-
-
+// FUNCTION: PRINT ALL THE CONTENT OF THE FILE
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
 void
 FLEE_PRINT ( const char * FILE_NAME )
 {
     FILE * file = fopen ( FILE_NAME , "r" );
-    if ( file == NULL ) printf ("Error opening the file!\n");
+
+    // if ( file == NULL ) printf ("Error opening the file!\n");
 
     int c;
 
@@ -10291,11 +10639,15 @@ FLEE_PRINT ( const char * FILE_NAME )
 
 
 
+// FUNCTION: PRINT A ESPECIFIC LINE OF A FILE
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: WHAT_LINE { THE LINE THAT WILL BE PRINTED }
 void
 FLEE_PRINTLINE ( const char * FILE_NAME , int WHAT_LINE )
 {
     FILE * file = fopen ( FILE_NAME , "r" );
-    if ( file == NULL ) printf ("Erro ao abrir o arquivo!\n");
+
+    // if ( file == NULL ) printf ("Erro ao abrir o arquivo!\n");
 
     int current_line = 1;
     int c;
@@ -10314,11 +10666,16 @@ FLEE_PRINTLINE ( const char * FILE_NAME , int WHAT_LINE )
 
 
 
+// FUNCTION: PRINT A ESPECIFIC LINE OF A FILE STARTING FROM A COL
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: WHAT_LINE { THE LINE THAT WILL BE PRINTED }
+// @param02: WHAT_COL { THE STARTING COL }
 void
 FLEE_PRINTCOL ( const char * FILE_NAME , int WHAT_LINE , int WHAT_COL )
 {
     FILE * file = fopen ( FILE_NAME , "r" );
-    if ( file == NULL ) printf ("Error opening the file!\n");
+
+    // if ( file == NULL ) printf ("Error opening the file!\n");
 
     int current_line = 1;
     int current_col = 0;
@@ -10341,11 +10698,17 @@ FLEE_PRINTCOL ( const char * FILE_NAME , int WHAT_LINE , int WHAT_COL )
 
 
 
+// FUNCTION: PRINT A ESPECIFIC AREA TEXT FROM A FILE
+// @param01: FILE_NAME { THE FILE THAT WILL BE USED }
+// @param02: WHAT_LINE { THE LINE THAT WILL BE PRINTED }
+// @param02: START_COL { THE STARTING COL }
+// @param02: END_COL { THE ENDING COL }
 void
 FLEE_PRINTAREA ( const char* FILE_NAME , int WHAT_LINE , int START_COL , int END_COL )
 {
     FILE * file = fopen ( FILE_NAME , "r" );
-    if ( file == NULL ) printf ("Error opening the file!\n");
+
+    // if ( file == NULL ) printf ("Error opening the file!\n");
 
     int current_line = 1;
     int current_col = 0;
@@ -10362,5 +10725,6 @@ FLEE_PRINTAREA ( const char* FILE_NAME , int WHAT_LINE , int START_COL , int END
 
     fclose ( file );
 }
+
 
 // END
