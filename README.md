@@ -5,11 +5,24 @@
 
 <br>
 
-A biblioteca allen.h tem como objetivo a ` simplificação dinâmica de código da linguagem c `, permitindo maior controle sobre o programa sendo criado substituindo a enorme quantidade de linhas necessárias, para o uso de funções que variam desde o controle do console, controle de arquivos, estilização, formatação de texto e alteração de valores. `A biblioteca não possui suporte a outro sistema operacional, somente funcionará no windows.` É necessário ressaltar que caso, a biblioteca apresente erros de execução quando copiada e incluida ao seu projeto, o motivo pode ser por causa do compilador, pois essa biblioteca foi produzida utilizando o compilador <a href="https://jmeubank.github.io/tdm-gcc/download/" title="Download do TDM-GCC."> TDM-GCC </a> no Code::Blocks, por fim caso tenha dicas ou queira reportar algo, faça isso usando a aba issues. Enfim essa biblioteca foi feita como forma de aprendizado e adquirimento de experiência com um projeto de grande porte e autoral, ressalto que me abstenho de qualquer coisa errada que for feita usando essa biblioteca pois a mesma foi produzida para estudo e auto-experiência com projetos grandes.
+<p>
+
+<img align="right" src="https://user-images.githubusercontent.com/114815898/232342528-026e718d-f4ce-4e2b-9ec1-508b3484546a.png" width="297" height="293">
+
+### 1. A biblioteca `allen.h` tem como objetivo, a simplificação dinâmica de códigos em c, facilitando certos processos.
+### 2. Sua criação se deu como forma de estudo e adquirimento de experiência com projetos de larga escala, ou seja foi produzida por uma pessoa. 
+### 3. Essa biblioteca é de código aberto, ou seja, qualquer um pode usar ou melhorar-lá.
+### 4. Me absento de qualquer coisa ruim feita usando essa biblioteca.
+### 5. O compilador usado na biblioteca é o <a href="https://jmeubank.github.io/tdm-gcc/download/" title="Link para Donwload"> TDM-GCC </a>.
+
+</p>
+
+
+
 
 <br>
 
-#### <p align="center"> <a href="https://pastebin.com/KAFTdxL4" title="Pastebin da biblioteca."> LINK PARA DOWNLOAD DA BIBLIOTECA </a> </p>
+#### <p align="left"> <a href="https://pastebin.com/KAFTdxL4" title="Pastebin da biblioteca."> LINK PARA DOWNLOAD DA BIBLIOTECA </a> </p>
 
 <br>
 
