@@ -3612,3 +3612,211 @@ Foram 1 substituicoes
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void FLEE_WRITEint ( const char * FILE_NAME , int VALUE ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função basicamente adiciona ao arquivo um inteiro definido por VALUE, na última posição do arquivo, sem apagar o conteúdo existente`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // Adicionando o valor 202200132 no arquivo arq.txt
+    FLEE_WRITEint ( "arq.txt" , 202200132 );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```
+[content]
+age=
+```
+
+<br>
+
+#### SAÍDA DO ARQUIVO:
+
+```
+[content]
+age=202200132
+```
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void FLEE_WRITEintl ( const char * FILE_NAME , int VALUE , int WHAT_LINE ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função basicamente adiciona ao arquivo um inteiro definido por VALUE no fim de uma linha especificada por WHAT_LINE`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // Adicionando o valor 65 no arquivo arq.txt na linha 3
+    FLEE_WRITEintl ( "arq.txt" , 65 , 3 );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```
+[content]
+name=
+age=
+```
+
+<br>
+
+#### SAÍDA DO ARQUIVO:
+
+```
+[content]
+name=
+age=65
+```
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void FLEE_WRITESUPAint ( const char * FILE_NAME , int VALUE , int WHAT_LINE , int WHAT_COLUMN ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função basicamente adiciona ao arquivo um inteiro definido por VALUE, em uma linha especificada por WHAT_LINE a partir de uma coluna especificada por WHAT_COLUMN`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // Observação: Linhas começam em 1
+    // Observação: Colunas começam em 0
+
+    // Adicionando o valor 12 no arquivo arq.txt na linha 3 na coluna 5
+    FLEE_WRITESUPAint ( "arq.txt" , 12 , 3 , 5 );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```
+[content]
+name=
+age= , young
+```
+
+<br>
+
+#### SAÍDA DO ARQUIVO:
+
+```
+[content]
+name=
+age= 12, young
+```
+
+<br>
+
+
+
+
+
+
+
+
+
