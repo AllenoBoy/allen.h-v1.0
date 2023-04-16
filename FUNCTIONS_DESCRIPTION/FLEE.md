@@ -2134,12 +2134,12 @@ Foram 5 substituicoes
 
 <br>
 
-<h3 align="center"> int FLEE_GLOBALSUBSdouble ( const char * FILE_NAME , float VALUE , int COMMAS , const char * TOKEN ) </h3> 
+<h3 align="center"> int FLEE_GLOBALSUBSchar ( const char * FILE_NAME , char VALUE , const char * TOKEN ) </h3> 
 
 <br>
 <br>
 
-- **O QUE ELA FAZ**: `Essa função serve para substituir em um arquivo globalmente, todas as ocorrências de um valor do tipo double definido por VALUE`;
+- **O QUE ELA FAZ**: `Essa função serve para substituir em um arquivo globalmente, todas as ocorrências de um valor do tipo char definido por VALUE`;
 
 <br>
 
@@ -2152,9 +2152,14 @@ Foram 5 substituicoes
 int 
 main ( void )
 {      
-    // Substituindo todas os números 12.35 por | chop | em arq.txt
-    int subs = FLEE_GLOBALSUBSdouble ( "arq.txt" , 12.35 , 2 , "| chop |" );
-
+    // Substituindo todos os chars '&' de arq.txt
+    int subs = FLEE_GLOBALSUBSchar ( "arq.txt" , '&' , "--disabled" );
+    
+    // Observação: Essa função substitui todos as ocorrências do char definido
+    // ou seja defini a substiuição de & para "_rem" então em um arquivo: 
+    // na seguinte linha do arquivo  -> "if ( live && breath ) eat ();"
+    //                                  "if ( live _rem_rem breath ) eat ();"
+    
     // Printando todas as substituições
     printf ("Foram %d substituicoes", subs );
 }
@@ -2166,12 +2171,11 @@ main ( void )
 #### | arq.txt
 
 ```txt
-arquivo de nota 12.35
-arquivo de nota 12,35
+ain&shaka
+& & & 
+_& 
 
-12,35 12.35  12.345
-
-12,351212 
+if ( this && robson )
 ```
 
 <br>
@@ -2179,12 +2183,11 @@ arquivo de nota 12,35
 #### SAÍDA DO ARQUIVO:
 
 ```txt
-arquivo de nota | chop |
-arquivo de nota | chop |
+ain--disabledshaka
+--disabled --disabled --disabled 
+_--disabled 
 
-| chop | | chop |  12.345
-
-| chop |1212 
+if ( this --disabled--disabled robson )
 ```
 
 <br>
@@ -2192,7 +2195,7 @@ arquivo de nota | chop |
 #### SAÍDA DO CONSOLE:
 
 ```txt
-Foram 5 substituicoes
+Foram 7 substituicoes
 ```
 
 
