@@ -152,3 +152,184 @@ main ( void )
 O ARQUIVO FOI CRIADO!
 
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void FLEE_RENAMEAFILE ( const char* FILE_NAME , const char * NEW_FILE_NAME ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para renomear um arquivo definido por FILE_NAME por NEW_FILE_NAME`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Renomeando o arquivo arq.txt para allen.txt
+    FLEE_RENAMEAFILE ( "arq.txt" , "allen.txt" );
+
+    // Caso precise alterar em uma pasta ficará assim: nome_da_pasta/arq.txt
+    // Essa função renomeia qualquer arquivo inclusive pastas
+}
+
+```
+
+<br>
+
+#### SAÍDA:
+
+```txt
+
+O ARQUIVO QUE SE CHAMAVA arq.txt SE TORNOU allen.txt
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void FLEE_MOVEAFILE ( const char * FILE_NAME , const char * NEW_DIRECTORY ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para mover um arquivo definido por FILE_NAME para o path definido por NEW_DIRECTORY`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Movendo arq.txt para uma pasta chamada user_data
+    FLEE_MOVEAFILE ( "arq.txt" , "user_data" );
+
+    // Observação: Essa função move qualquer arquivo mesmo que esteja dentro de
+    // uma sequência de pastas, só que quando copiar uma pasta a mesma precisa
+    // estar vazia para ser copiada, caso contrário não será copiada
+}
+
+```
+
+<br>
+
+#### SAÍDA:
+
+```txt
+
+O ARQUIVO QUE SE CHAMAVA arq.txt FOI MOVIDO PARA user_data
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void FLEE_COPYAFILE ( const char * FILE_NAME , const char * NEW_FOLDER , const char* NEW_FILENAME ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para copiar um arquivo definido por FILE_NAME para o path definido por NEW_FOLDER com um nome novo definido por NEW_FILENAME`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Copiando um arquivo arq.txt e definindo um novo nome para uma pasta chamada allen_data
+    FLEE_COPYAFILE ( "arq.txt" , "allen_data" , "copy.txt" );
+
+    // Observação: Caso o arquivo estivesse em uma pasta específica seria "nome_da_pasta/arq.txt"
+    // e não essa função não copia uma pasta e seu conteúdo
+}
+
+```
+
+<br>
+
+#### SAÍDA:
+
+```txt
+
+O ARQUIVO QUE SE CHAMAVA arq.txt FOI COPIADO PARA allen_data e definido como copy.txt
+
+```
