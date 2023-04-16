@@ -136,7 +136,7 @@ main ( void )
     FLEE_CREATEAFILE ("arq.txt");
     
     // Observação: caso queira criar em uma pasta específica -> "nome_da_pasta/arq.txt"
-    // mas leve em consideração que essa função em específico não cria a pasta definida não existir
+    // mas leve em consideração que essa função em específico não cria o arquivo se a pasta não existir
     // o programa simplesmente não irá criar o arquivo,
     
 }
