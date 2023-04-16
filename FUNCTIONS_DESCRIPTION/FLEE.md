@@ -5666,5 +5666,275 @@ main ( void )
 
 
 
+<br>
+
+<h3 align="center"> void FLEE_PRINT ( const char * FILE_NAME ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função printa todo o conteúdo do arquivo definido por FILE_NAME`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // Printando todo o conteúdo de um arquivo chamado bota_bota.txt
+    FLEE_PRINT ( "bota_bota.txt" );
+}
+```
+
+<br>
+
+#### | arq.txt
+
+```
+Bota na, bota na, bota na
+Bota na Pipokinha
+Bota na, bota na, bota na
+Bota na Pipokinha
+Bota na, bota na, bota na
+Bota na Pipokinha
+Bota na, bota na, bota na
+Bota na Pipokinha
+Bota na, bota na, bota na
+Bota na Pipokinha
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```
+Bota na, bota na, bota na
+Bota na Pipokinha
+Bota na, bota na, bota na
+Bota na Pipokinha
+Bota na, bota na, bota na
+Bota na Pipokinha
+Bota na, bota na, bota na
+Bota na Pipokinha
+Bota na, bota na, bota na
+Bota na Pipokinha
+```
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void FLEE_PRINTLINE ( const char * FILE_NAME , int WHAT_LINE ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função printa uma linha especifica definida por WHAT_LINE de um arquivo definido por FILE_NAME`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // Printando toda uma linha especifica de um arquivo chamado lorem_ipsum
+    FLEE_PRINTLINE ( "lorem_ipsum.txt" , 3 );
+}
+```
+
+<br>
+
+#### | arq.txt
+
+```
+Lorem ipsum dolor sit amet. Et asperiores nihil eos dolore obcaecati aut enim pariatur ut similique eius aut aliquid consequatur cum inventore minus aut suscipit quisquam. Ut saepe quia aut omnis aspernatur quo eligendi ipsum qui corporis neque quo explicabo tenetur aut possimus repellat aut autem culpa!
+
+Et explicabo galisum qui quia repellat est quidem sunt eos dolor quaerat est dolor cumque? Qui dolor earum est repellendus pariatur aut esse harum et optio ducimus aut nemo omnis? Id autem necessitatibus ut blanditiis sequi et temporibus vitae 33 nihil similique et beatae internos. Aut voluptatibus officia aut nihil atque et quis placeat 33 minus doloribus ut fugit corrupti sit reprehenderit libero ut architecto dolore.
+
+Aut deleniti architecto sit doloribus sunt aut neque nemo est natus harum aut suscipit commodi sed iste voluptatem. Sed ipsam velit quo quos perspiciatis ut quidem aliquam ut vitae sapiente est magnam ipsam aut fuga error qui iusto omnis. Sed corporis beatae qui architecto minus et explicabo enim sit voluptates labore. Non doloribus internos et voluptates dolor sit quibusdam error 33 provident vero ut ipsam voluptatibus est provident autem.
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```
+Et explicabo galisum qui quia repellat est quidem sunt eos dolor quaerat est dolor cumque? Qui dolor earum est repellendus pariatur aut esse harum et optio ducimus aut nemo omnis? Id autem necessitatibus ut blanditiis sequi et temporibus vitae 33 nihil similique et beatae internos. Aut voluptatibus officia aut nihil atque et quis placeat 33 minus doloribus ut fugit corrupti sit reprehenderit libero ut architecto dolore.
+```
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void FLEE_PRINTCOL ( const char * FILE_NAME , int WHAT_LINE , int WHAT_COL ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função printa uma linha especifica definida por WHAT_LINE de um arquivo definido por FILE_NAME a partir de uma coluna inicial definida em WHAT_COL`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // Printando o que a aninha estava pensando
+    FLEE_PRINTCOL ( "chat.txt" , 5 , 51 );
+}
+```
+
+<br>
+
+#### | arq.txt
+
+```
+Me diga o que você está pensando senhor raimundo: Et explicabo galisum qui quia repellat.
+
+Me diga o que você está pensando senhor carlinho: Id autem necessitatibus ut blanditiis. 
+
+Me diga o que você está pensando senhora aninha: sequi et temporibus vitae 33 nihil similique et beatae internos.
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```
+sequi et temporibus vitae 33 nihil similique et beatae internos.
+```
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void FLEE_PRINTAREA ( const char* FILE_NAME , int WHAT_LINE , int START_COL , int END_COL ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função basicamente printa uma área de um arquivo, ou seja a linha onde está o conteúdo ( WHAT_LINE ), a coluna inicial ( START_COL ) e a coluna final ( END_COL )`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // Printando o que as 3 primeiras palavras de carlinho
+    FLEE_PRINTAREA ( "chat.txt" , 3, 52 , 75 );
+}
+```
+
+<br>
+
+#### | arq.txt
+
+```
+Me diga o que você está pensando senhor raimundo: Et explicabo galisum qui quia repellat.
+
+Me diga o que você está pensando senhor carlinho: Id autem necessitatibus ut blanditiis. 
+
+Me diga o que você está pensando senhora aninha: sequi et temporibus vitae 33 nihil similique et beatae internos.
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```
+Id autem necessitatibus
+```
+
+<br>
+
+
 
 
