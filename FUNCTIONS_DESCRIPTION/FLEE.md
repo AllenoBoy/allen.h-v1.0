@@ -456,6 +456,182 @@ O ARQUIVO CRIOU A PASTA CHAMADA butcher
 
 
 
+<br>
+
+<h3 align="center"> void FLEE_DELETEAFILE ( const char * FILE_NAME ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para deletar um arquivo especifico`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Removendo o arquivo chamado arq.txt
+    FLEE_DELETEAFILE ( "arq.txt" );
+
+    // Observação: Essa função não deleta pastas
+}
+
+```
+
+<br>
+
+#### SAÍDA:
+
+```txt
+
+O ARQUIVO arq.txt FOI DELETADO!
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void FLEE_DELETEAFOLDER ( const char * FOLDER_NAME ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para deletar uma pasta vazia ou com conteúdo`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Deletando uma pasta chamada simple que possui arquivos
+    FLEE_DELETEAFOLDER ( "simple" );
+
+    // Observação: Essa função também remove pastas vazias
+    // mas não remove arquivos
+}
+
+```
+
+<br>
+
+#### SAÍDA:
+
+```txt
+
+A PASTA simple QUE POSSUI ALGUNS ARQUIVOS FOI DELETADA!
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void FLEE_MOVEAFOLDER ( const char *FOLDER_NAME , const char *NEW_PATH ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para mover uma pasta para outro lugar, mesmo que essa pasta esteja repleta de conteúdo`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Movendo a pasta allen_stuff para a pasta lixeira
+    FLEE_MOVEAFOLDER ( "allen_stuff" , "lixeira" );
+
+    // Observação: Essa função copia tanto uma pasta com conteúdo como uma preenchida
+}
+
+```
+
+<br>
+
+#### SAÍDA:
+
+```txt
+
+A PASTA allen_stuff FOI MOVIDA DIRETAMENTE PARA DENTRO DA PASTA lixeira
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
