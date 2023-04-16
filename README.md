@@ -1,5 +1,7 @@
 <h1 align="center"> ALLEN.H </h1>
 
+add the == != < macros
+
 ---
 
 <br>
