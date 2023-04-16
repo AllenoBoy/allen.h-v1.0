@@ -3479,6 +3479,11 @@ Foram 4 substituicoes
 int 
 main ( void )
 {   
+    // Substituindo globalmente todas as palavras allen por lindo no arquivo "arq.txt" na linha 5
+    int subs = FLEE_GLOBALSUBSstringl ( "arq.txt" , 5 , "allen" , "lindo" );
+
+    // Printando a quantidade de substituições feitas
+    printf ("Foram %d substituicoes" , subs );
 }
 
 ```
@@ -3487,14 +3492,24 @@ main ( void )
 
 #### | arq.txt
 
-```txt
+```
+this is a place for allen
+allen have been here for a long time
+do u remember of allen?
+allen wasn't your friend?
+u don't know allen? allen is a master of hacking, he used to be called allenwalker
 ```
 
 <br>
 
 #### SAÍDA DO ARQUIVO:
 
-```txt
+```
+this is a place for allen
+allen have been here for a long time
+do u remember of allen?
+allen wasn't your friend?
+u don't know lindo? lindo is a master of hacking, he used to be called lindowalker
 ```
 
 <br>
@@ -3502,7 +3517,7 @@ main ( void )
 #### SAÍDA DO CONSOLE:
 
 ```txt
-Foram 6 substituicoes
+Foram 3 substituicoes
 ```
 
 
@@ -3547,6 +3562,11 @@ Foram 6 substituicoes
 int 
 main ( void )
 {   
+    // Substituindo localmente todas as palavras allen por shaka no arquivo "arq.txt" na linha 5
+    int subs = FLEE_LOCALSUBSstringl ( "arq.txt" , 5 , "allen" , "shaka" );
+
+    // Printando a quantidade de substituições feitas
+    printf ("Foram %d substituicoes" , subs );
 }
 
 ```
@@ -3556,6 +3576,11 @@ main ( void )
 #### | arq.txt
 
 ```
+this is a place for allen
+allen have been here for a long time
+do u remember of allen?
+allen wasn't your friend?
+u don't know allen? allen is a master of hacking, he used to be called allenwalker
 ```
 
 <br>
@@ -3563,6 +3588,11 @@ main ( void )
 #### SAÍDA DO ARQUIVO:
 
 ```
+this is a place for allen
+allen have been here for a long time
+do u remember of allen?
+allen wasn't your friend?
+u don't know allen? shaka is a master of hacking, he used to be called allenwalker
 ```
 
 <br>
@@ -3570,7 +3600,7 @@ main ( void )
 #### SAÍDA DO CONSOLE:
 
 ```txt
-Foram 4 substituicoes
+Foram 1 substituicoes
 ```
 
 
