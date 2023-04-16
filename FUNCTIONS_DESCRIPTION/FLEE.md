@@ -2360,3 +2360,270 @@ Foram 3 substituicoes
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> int FLEE_LOCALSUBSint ( const char * FILE_NAME , int VALUE , const char * TOKEN ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para substituir em um arquivo localmente, todas as ocorrências de um int definido por VALUE, a diferença dessa função para FLEE_GLOBALSUBSint, é que nessa função a substituição é feita somente em valores separados, por isso o locamente`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // LOCAL = substitui somente valores separados 
+
+    // Substituindo localmente todos os valores igual a 12.45 em arq.txt por removed
+    int subs = FLEE_LOCALSUBSint ( "arq.txt" , 12 , "removed" );
+
+    // Printando todas as substituições
+    printf ("Foram %d substituicoes", subs );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```txt
+allen 12 tem 12 anos de idade=12
+supa 12!
+12_3
+123
+
+total = 
+```
+
+<br>
+
+#### SAÍDA DO ARQUIVO:
+
+```txt
+allen removed tem removed anos de idade=12
+supa 12!
+12_3
+123
+
+total = 
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+Foram 2 substituicoes
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> int FLEE_LOCALSUBSfloat ( const char * FILE_NAME , float VALUE , int COMMAS , const char * TOKEN ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para substituir em um arquivo localmente, todas as ocorrências de um float definido por VALUE, a diferença dessa função para FLEE_GLOBALSUBSfloat, é que nessa função a substituição é feita somente em valores separados, por isso o locamente`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // LOCAL = substitui somente valores separados 
+
+    // Substituindo localmente todos os valores igual a 12.35 em arq.txt por removed
+    int subs = FLEE_LOCALSUBSfloat ( "arq.txt" , 12.35 , 2 , ":q!" );
+
+    // Printando todas as substituições
+    printf ("Foram %d substituicoes", subs );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```txt
+arquivo de nota 12.35
+arquivo de nota 12,35
+
+12,35 12.35  12.345
+
+arriz12.35
+
+12,351212  
+```
+
+<br>
+
+#### SAÍDA DO ARQUIVO:
+
+```txt
+arquivo de nota :q!
+arquivo de nota :q!
+
+:q! :q!  12.345
+
+arriz12.35
+
+12.351212  
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+Foram 4 substituicoes
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> int FLEE_LOCALSUBSdouble ( const char * FILE_NAME , double VALUE , int COMMAS , const char * TOKEN ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para substituir em um arquivo localmente, todas as ocorrências de um float definido por VALUE, a diferença dessa função para FLEE_GLOBALSUBSfloat, é que nessa função a substituição é feita somente em valores separados, por isso o locamente`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // LOCAL = substitui somente valores separados 
+
+    // Substituindo localmente todos os valores igual a 12.35 em arq.txt por removed
+    int subs = FLEE_LOCALSUBSfloat ( "arq.txt" , 12.35 , 2 , ":q!" );
+
+    // Printando todas as substituições
+    printf ("Foram %d substituicoes", subs );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```txt
+arquivo de nota 12.35
+arquivo de nota 12,35
+
+12,35 12.35  12.345
+
+arriz12.35
+
+12,351212  
+```
+
+<br>
+
+#### SAÍDA DO ARQUIVO:
+
+```txt
+arquivo de nota :q!
+arquivo de nota :q!
+
+:q! :q!  12.345
+
+arriz12.35
+
+12.351212  
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+Foram 4 substituicoes
+```
+
+
+
+
+
+
+
