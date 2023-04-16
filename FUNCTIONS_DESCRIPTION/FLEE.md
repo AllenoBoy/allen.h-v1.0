@@ -1948,3 +1948,254 @@ Existem 3, allen
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> int FLEE_GLOBALSUBSint ( const char * FILE_NAME, int VALUE , const char * TOKEN ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para substituir em um arquivo globalmente, todas as ocorrências de um valor do tipo inteiro definido por VALUE`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Substituindo todas os números 12 por ** em arq.txt
+    int subs = FLEE_GLOBALSUBSint ( "arq.txt" , 12 , "**" );
+
+    // Observação: Essa função substitui tudo, ou seja
+    // se tiver a seguinte frase "gosto de comer lá no 12cinema"
+    // ela ficará assim "gosto de comer lá no **cinema"
+
+    // Printando todas as substituições
+    printf ("Foram %d substituicoes", subs);
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```txt
+allen 12 tem 12 anos de idade=12
+supa 12!
+12_3
+123
+
+total = 
+```
+
+<br>
+
+#### SAÍDA DO ARQUIVO:
+
+```txt
+allen ** tem ** anos de idade=**
+supa **!
+**_3
+**3
+
+total = 
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+Foram 6 substituicoes
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> int FLEE_GLOBALSUBSfloat ( const char * FILE_NAME , float VALUE , int COMMAS , const char * TOKEN ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para substituir em um arquivo globalmente, todas as ocorrências de um valor do tipo float definido por VALUE`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Substituindo todas os números 12.35 por *rm* em arq.txt
+    int subs = FLEE_GLOBALSUBSfloat ( "arq.txt" , 12.35 , 2 , "*rm*" );
+
+    // Observação: Essa função considera o parâmetro de COMMA para considerar até quantas casas decimais 
+    // desse valor serão alteradas, por exemplo -> 12.345 , 2 -> "hakare 12.345" -> "hakare *rm*5" 
+
+    // Printando todas as substituições
+    printf ("Foram %d substituicoes", subs );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```txt
+arquivo de nota 12.35
+arquivo de nota 12,35
+
+12,35 12.35  12.345
+
+12,351212 
+```
+
+<br>
+
+#### SAÍDA DO ARQUIVO:
+
+```txt
+arquivo de nota *rm*
+arquivo de nota *rm*
+
+*rm* *rm*  12.345
+
+*rm*1212 
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+Foram 5 substituicoes
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> int FLEE_GLOBALSUBSdouble ( const char * FILE_NAME , float VALUE , int COMMAS , const char * TOKEN ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para substituir em um arquivo globalmente, todas as ocorrências de um valor do tipo double definido por VALUE`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Substituindo todas os números 12.35 por | chop | em arq.txt
+    int subs = FLEE_GLOBALSUBSdouble ( "arq.txt" , 12.35 , 2 , "| chop |" );
+
+    // Printando todas as substituições
+    printf ("Foram %d substituicoes", subs );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```txt
+arquivo de nota 12.35
+arquivo de nota 12,35
+
+12,35 12.35  12.345
+
+12,351212 
+```
+
+<br>
+
+#### SAÍDA DO ARQUIVO:
+
+```txt
+arquivo de nota | chop |
+arquivo de nota | chop |
+
+| chop | | chop |  12.345
+
+| chop |1212 
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+Foram 5 substituicoes
+```
+
+
+
+
+
