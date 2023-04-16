@@ -915,3 +915,64 @@ OLHA QUE LEGAL
 
 
 
+
+<br>
+
+<h3 align="center"> char FLEE_Lchar ( const char * FILE_NAME ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para pegar um char de um arquivo, sem predefinição alguma`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Printando no arquivo oloi.txt o valor 202200132
+    char cach = FLEE_Lchar ( "arq.txt" );
+
+    // Printando o char
+    printf ("%c", cach);
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```txt
+#
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+#
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
