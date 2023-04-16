@@ -5283,3 +5283,80 @@ Bem vindo, allen_walker
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> int FLEE_GETSLint ( const char * FILE_NAME , int WHAT_LINE , int COL ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função pega um valor do tipo int em um arquivo em uma linha especifíca definida por WHAT_LINE a partir de uma coluna inicial definida por COL`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // Pegando uma data a partir de um arquivo arq.txt
+    int dia = FLEE_GETSLint ( "arq.txt" , 4 , 4 );
+    int mes = FLEE_GETSLint ( "arq.txt" , 5 , 4 );
+    int ano = FLEE_GETSLint ( "arq.txt" , 6 , 4 );
+
+    // Printando
+    printf ("DATA: %d / %d / %d ", dia , mes , ano );
+}
+```
+
+<br>
+
+#### | arq.txt
+
+```
+---
+age= 12
+---
+dia=16
+mes=11
+ano=2004
+---
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```
+DATA: 16 / 11 / 2004
+```
+
+<br>
+
+
+
+
+
+
+
+
