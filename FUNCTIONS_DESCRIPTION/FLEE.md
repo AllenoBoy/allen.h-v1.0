@@ -670,6 +670,243 @@ A PASTA allen_stuff FOI COPIADA DIRETAMENTE PARA DENTRO DA PASTA lixeira COM O N
 
 
 
+<br>
+
+<h3 align="center"> void FLEE_SYSTEMFOLDER ( const char * SYSTEM_FOLDER_NAME , char * FOLDER , char * SAVE_PATH ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para pegar o caminho completo de uma pasta específica do sistema`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    char system_path [50];
+
+    // Pegando o endereço da pasta APPDATA
+    FLEE_SYSTEMFOLDER ( "APPDATA" , "" , system_path );
+
+    // Observação: Caso queira criar uma pasta específica, o 2 parâmetro é o nome da pasta
+    // Qual o uso dessa função? Padronizar o salvamento de dados, em locais que o
+    // usuário normalmente não irá ter acesso ( não irá ver )
+    
+    // Printando o caminho
+    PR (system_path);
+}
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+C:\Users\...\AppData\Roaming
+```
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void FLEE_Sint ( int VALUE , const char * FILE_NAME ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para printar em um arquivo um valor do tipo int, substituindo o arquivo toda vez`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Printando no arquivo oloi.txt o valor 202200132
+    FLEE_Sint ( 202200132 , "oloi.txt" );
+
+    // Observação: Essa função não é recomendada pois seu uso é simples
+    // toda vez que for chamada ela simplesmente substitui todo o conteúdo
+    // do arquivo pela int informada, enfim seu uso deve ser feito para programas simples
+}
+
+```
+
+<br>
+
+#### | oloi.txt
+
+```txt
+
+**Esse conteúdo será removido 
+
+```
+
+<br>
+
+#### SAÍDA:
+
+```txt
+202200132
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> int FLEE_Lint ( const char * FILE_NAME ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para pegar de um arquivo um valor do tipo inteiro sem definição alguma`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Printando no arquivo oloi.txt o valor 202200132
+    int x = FLEE_Lint ( "oloi.txt" );
+
+    PR_INT ( x );
+}
+
+```
+
+<br>
+
+#### | oloi.txt
+
+```txt
+
+202200132
+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+202200132
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void FLEE_Schar ( char CHARACTER , const char * FILE_NAME ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para printar em um arquivo o char sem definição alguma, ou seja, ele substitui se o arquivo estiver preenchido`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Printando no arquivo oloi.txt o valor 202200132
+    FLEE_Schar ('*', "arq.txt");
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```txt
+TINHA UM TEXTO AQUI
+OLHA QUE LEGAL
+```
+
+<br>
+
+#### SAÍDA DO ARQUIVO:
+
+```txt
+*
+```
+
+
+
+
+
+
+
+
 
 
 
