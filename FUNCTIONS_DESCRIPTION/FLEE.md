@@ -4247,8 +4247,399 @@ content = name {} , grade {10.0} , age {}
 
 
 
+<br>
+
+<h3 align="center"> void FLEE_WRITEchar ( const char * FILE_NAME , char VALUE ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função basicamente adiciona ao final do arquivo um caractere do tipo char definido por VALUE`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // Observação: Linhas começam em 1
+    // Observação: Colunas começam em 0
+
+    // Adicionando o char # no arquivo arq.txt
+    FLEE_WRITEchar ( "arq.txt" , '#' );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```
+[content]
+special=
+```
+
+<br>
+
+#### SAÍDA DO ARQUIVO:
+
+```
+[content]
+special=#
+```
+
+<br>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void FLEE_WRITEcharl ( const char * FILE_NAME , char VALUE , int WHAT_LINE ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função basicamente adiciona em um arquivo, um char definido por VALUE no fim de uma linha específica que é definida por WHAT_LINE`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // Observação: Linhas começam em 1
+    // Observação: Colunas começam em 0
+
+    // Adicionando o char '*' no arquivo arq.txt na linha 3
+    FLEE_WRITEcharl ( "arq.txt" , '*' , 3  );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```
+[content]
+name=
+especial=
+thing=
+```
+
+<br>
+
+#### SAÍDA DO ARQUIVO:
+
+```
+[content]
+name=
+especial=*
+thing=
+```
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void FLEE_WRITESUPAchar ( const char * FILE_NAME , char VALUE , int WHAT_LINE , int WHAT_COLUMN ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função basicamente adiciona em um arquivo, um char definido por VALUE no fim de uma linha específica que é definida por WHAT_LINE e uma coluna definida por WHAT_COLUMN`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // Observação: Linhas começam em 1
+    // Observação: Colunas começam em 0
+
+    // Adicionando o char '!' no arquivo "arq.txt" na linha 1 e coluna 29
+    FLEE_WRITESUPAchar ( "arq.txt" , '!' , 1 , 29 );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```
+professor: aluno tome cuidado
+```
+
+<br>
+
+#### SAÍDA DO ARQUIVO:
+
+```
+professor: aluno tome cuidado!
+```
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void FLEE_WRITEstring ( const char * FILE_NAME , const char * STRING ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função basicamente adiciona ao final do arquivo uma palavra / string definida por STRING`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // Observação: Linhas começam em 1
+    // Observação: Colunas começam em 0
+
+    // Adicionando a palavra allen no arquivo arq.txt
+    FLEE_WRITEstring ( "arq.txt" , "allen" );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```
+[content]
+namaewa=
+```
+
+<br>
+
+#### SAÍDA DO ARQUIVO:
+
+```
+[content]
+namaewa=allen
+```
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void FLEE_WRITEstringl ( const char * FILE_NAME , const char * STRING , int WHAT_LINE ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função basicamente adiciona em um arquivo, uma palavra / string definida por STRING no fim de uma linha específica que é definida por WHAT_LINE`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // Observação: Linhas começam em 1
+    // Observação: Colunas começam em 0
+
+    // Adicionando a palavra allen no arquivo "arq.txt" na linha 4
+    FLEE_WRITEstringl ( "arq.txt" , "allen" , 4 );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```
+[content]
+id=
+age=
+name=
+```
+
+<br>
+
+#### SAÍDA DO ARQUIVO:
+
+```
+[content]
+id=
+age=
+name=allen
+```
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void FLEE_WRITESUPAstring ( const char * FILE_NAME , const char * STRING , int WHAT_LINE , int WHAT_COLUMN ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função basicamente adiciona em um arquivo, uma palavra / string definida por STRING no fim de uma linha específica que é definida por WHAT_LINE e uma coluna definida por WHAT_COLUMN`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // Observação: Linhas começam em 1
+    // Observação: Colunas começam em 0
+
+    // Adicionando a palavra lindo na linha 3 na coluna 27 
+    FLEE_WRITESUPAstring ( "arq.txt" , "lindo" , 3 , 27 );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```
+Senpai: : )
+allen: >B )
+Senpai: allen você é muito !
+```
+
+<br>
+
+#### SAÍDA DO ARQUIVO:
+
+```
+Senpai: : )
+allen: >B )
+Senpai: allen você é muito lindo!
+```
+
+<br>
 
 
 
