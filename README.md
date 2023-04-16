@@ -4,7 +4,7 @@
 
 <br>
 
-A biblioteca allen.h tem como objetivo a ` simplificação dinâmica de código da linguagem c `, permitindo maior controle sobre o programa sendo criado substituindo a enorme quantidade de linhas necessárias, para o uso de funções que variam desde o controle do console, controle de arquivos, estilização, formatação de texto e alteração de valores. É necessário ressaltar que caso, a biblioteca apresente erros de execução quando copiada e incluida ao seu projeto, o motivo pode ser por causa do compilador ( onde essa biblioteca foi produzida utilizando o ` TDM-GCC ` ), por fim caso tenha dicas ou queira reportar algo, faça isso usando a aba issues. Enfim essa biblioteca foi feita meramente como forma de estudar e adquiri experiência com um projeto grande, e já ressalto que me abstenho de qualquer coisa errada que for feita usando essa biblioteca.
+A biblioteca allen.h tem como objetivo a ` simplificação dinâmica de código da linguagem c `, permitindo maior controle sobre o programa sendo criado substituindo a enorme quantidade de linhas necessárias, para o uso de funções que variam desde o controle do console, controle de arquivos, estilização, formatação de texto e alteração de valores. É necessário ressaltar que caso, a biblioteca apresente erros de execução quando copiada e incluida ao seu projeto, o motivo pode ser por causa do compilador ( onde essa biblioteca foi produzida utilizando o ` TDM-GCC ` ), por fim caso tenha dicas ou queira reportar algo, faça isso usando a aba issues. Enfim essa biblioteca foi feita como forma de aprendizado e adquirimento de experiência com um projeto de grande porte e autoral, ressalto que me abstenho de qualquer coisa errada que for feita usando essa biblioteca.
 
 <br>
 
