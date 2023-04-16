@@ -1,12 +1,11 @@
 <h1 align="center"> ALLEN.H </h1>
 
-add the == != < macros
 
 ---
 
 <br>
 
-A biblioteca allen.h tem como objetivo a ` simplificação dinâmica de código da linguagem c `, permitindo maior controle sobre o programa sendo criado substituindo a enorme quantidade de linhas necessárias, para o uso de funções que variam desde o controle do console, controle de arquivos, estilização, formatação de texto e alteração de valores. É necessário ressaltar que caso, a biblioteca apresente erros de execução quando copiada e incluida ao seu projeto, o motivo pode ser por causa do compilador ( onde essa biblioteca foi produzida utilizando o ` TDM-GCC ` ), por fim caso tenha dicas ou queira reportar algo, faça isso usando a aba issues. Enfim essa biblioteca foi feita como forma de aprendizado e adquirimento de experiência com um projeto de grande porte e autoral, ressalto que me abstenho de qualquer coisa errada que for feita usando essa biblioteca.
+A biblioteca allen.h tem como objetivo a ` simplificação dinâmica de código da linguagem c `, permitindo maior controle sobre o programa sendo criado substituindo a enorme quantidade de linhas necessárias, para o uso de funções que variam desde o controle do console, controle de arquivos, estilização, formatação de texto e alteração de valores. É necessário ressaltar que caso, a biblioteca apresente erros de execução quando copiada e incluida ao seu projeto, o motivo pode ser por causa do compilador ( onde essa biblioteca foi produzida utilizando o ` TDM-GCC ` ), por fim caso tenha dicas ou queira reportar algo, faça isso usando a aba issues. Enfim essa biblioteca foi feita como forma de aprendizado e adquirimento de experiência com um projeto de grande porte e autoral, ressalto que me abstenho de qualquer coisa errada que for feita usando essa biblioteca pois a mesma foi produzida para estudo e auto-experiência com projetos grandes.
 
 <br>
 
@@ -58,9 +57,13 @@ A biblioteca allen.h tem como objetivo a ` simplificação dinâmica de código 
 <br>
 <br>
 
-- Como funciona um projeto no `Code::Blocks`, <a href="https://pastebin.com/KAFTdxL4" title="Ajuda de como funciona o projeto"> veja aqui </a>;
-- A biblioteca possui suporte ao uso de `threads` por causa da biblioteca pthread.h;
+- Como funciona um projeto no `Code::Blocks`, <a href="https://pastebin.com/KAFTdxL4" title="Ajuda de como funciona um projeto"> veja aqui </a>;
+- A biblioteca possui suporte ao uso de `threads`, portanto é uma boa pesquisar sobre;
 - Qual é a diferença entre `float` e `double`? float é de formato 32 bits e double de 64 bits, ou seja, double possui um melhor arredondamento;
+- A biblioteca foi produzida durante o segundo semestre de ciências da computação, e levou em torno de 3 semanas para ser concluida, fora a documentação;
+- A biblioteca não está passível de bugs, caso ocorra reporte na aba issues, e leve em consideração que foi feita por uma só pessoa;
+- Em relação a possíveis dúvidas que as documentações desse artigo tragam ou não solucionem, o chat-gpt tem capacidade de explicar : );
+- A biblioteca é de código aberto, ou seja, não possui direitos autorais ( como se alguém fosse licenciar uma simples biblioteca ) e qualquer um pode usar ou melhorar;
 
 <br> <br>
 
