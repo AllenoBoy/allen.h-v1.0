@@ -7,7 +7,7 @@
 
 <p>
 
-<img align="right" src="https://user-images.githubusercontent.com/114815898/232342528-026e718d-f4ce-4e2b-9ec1-508b3484546a.png" width="297" height="293">
+<img align="right" src="https://user-images.githubusercontent.com/114815898/232342528-026e718d-f4ce-4e2b-9ec1-508b3484546a.png" width="297" height="293" title="allen-san">
 
 ### 1. A biblioteca `allen.h` tem como objetivo, a simplificação dinâmica de códigos em c, facilitando certos processos.
 ### 2. Sua criação se deu como forma de estudo e adquirimento de experiência com projetos de larga escala, ou seja foi produzida por uma pessoa. 
