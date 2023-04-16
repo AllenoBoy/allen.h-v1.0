@@ -3820,3 +3820,450 @@ age= 12, young
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void FLEE_WRITEfloat ( const char * FILE_NAME , float VALUE , int COMMAS ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função basicamente adiciona ao final do arquivo um número real do tipo float definido por VALUE`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // Observação: Linhas começam em 1
+    // Observação: Colunas começam em 0
+
+    // Adicionando o valor 12.35 no arquivo arq.txt
+    FLEE_WRITEfloat ( "arq.txt" , 12.35 , 1 );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```
+[content]
+name=
+```
+
+<br>
+
+#### SAÍDA DO ARQUIVO:
+
+```
+[content]
+name=12.4 <- arredondou
+```
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void FLEE_WRITEfloatl ( const char * FILE_NAME , float VALUE , int COMMAS , int WHAT_LINE ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função basicamente adiciona em um arquivo, um número real do tipo float definido por VALUE no fim de uma linha específica que é definida por WHAT_LINE`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // Observação: Linhas começam em 1
+    // Observação: Colunas começam em 0
+
+    // Adicionando o valor 9.35 no arquivo arq.txt na linha 3
+    FLEE_WRITEfloatl ("arq.txt" , 9.35 , 1 , 3 );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```
+[content]
+name=
+age=
+id=
+```
+
+<br>
+
+#### SAÍDA DO ARQUIVO:
+
+```
+[content]
+name=
+age=9.4 <- arredondou
+id=
+```
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void FLEE_WRITESUPAfloat ( const char * FILE_NAME , float VALUE , int COMMA , int WHAT_LINE , int WHAT_COLUMN ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função basicamente adiciona em um arquivo, um número real do tipo float definido por VALUE no fim de uma linha específica que é definida por WHAT_LINE e uma coluna definida por WHAT_COLUMN`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // Observação: Linhas começam em 1
+    // Observação: Colunas começam em 0
+
+    // Adicionando o valor 10.00 no arquivo arq.txt na linha 3 na coluna 30
+    FLEE_WRITESUPAfloat ( "arq.txt" , 10.00 , 1 , 3 , 30 );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```
+[list]
+content = name {  } , grade {  } , age {  }
+content = name {  } , grade {  } , age {  }
+content = name {  } , grade {  } , age {  }
+```
+
+<br>
+
+#### SAÍDA DO ARQUIVO:
+
+```
+[list]
+content = name {  } , grade {  } , age {  }
+content = name {  } , grade { 10.0 } , age {  }
+content = name {  } , grade {  } , age {  }
+```
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void FLEE_WRITEdouble ( const char * FILE_NAME , double VALUE , int COMMAS ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função basicamente adiciona ao final do arquivo um número real do tipo double definido por VALUE`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // Observação: Linhas começam em 1
+    // Observação: Colunas começam em 0
+
+    // Adicionando o valor 12.4 no arquivo arq.txt
+    FLEE_WRITEdouble ( "arq.txt" , 12.4 , 1 );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```
+[content]
+name=
+```
+
+<br>
+
+#### SAÍDA DO ARQUIVO:
+
+```
+[content]
+name=12.4 <- arredondou
+```
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void FLEE_WRITEdoublel ( const char * FILE_NAME , double VALUE , int COMMAS , int WHAT_LINE ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função basicamente adiciona em um arquivo, um número real do tipo double definido por VALUE no fim de uma linha específica que é definida por WHAT_LINE`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // Observação: Linhas começam em 1
+    // Observação: Colunas começam em 0
+
+    // Adicionando o valor 14.99 no arquivo arq.txt na linha 3
+    FLEE_WRITEfloatl ("arq.txt" , 14.99 , 2 , 2 );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```
+[content]
+name=
+age=
+```
+
+<br>
+
+#### SAÍDA DO ARQUIVO:
+
+```
+[content]
+[content]
+name=
+age=14.99
+```
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void FLEE_WRITESUPAdouble ( const char * FILE_NAME , double VALUE , int COMMA , int WHAT_LINE , int WHAT_COLUMN ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função basicamente adiciona em um arquivo, um número real do tipo double definido por VALUE no fim de uma linha específica que é definida por WHAT_LINE e uma coluna definida por WHAT_COLUMN`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // Observação: Linhas começam em 1
+    // Observação: Colunas começam em 0
+
+    // Adicionando o valor 10.00 no arquivo arq.txt na linha 2 na coluna 27
+    FLEE_WRITESUPAdouble ( "arq.txt" , 10.00 , 1 , 2 , 27 );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```
+[list]
+content = name {} , grade {} , age {}
+```
+
+<br>
+
+#### SAÍDA DO ARQUIVO:
+
+```
+[list]
+content = name {} , grade {10.0} , age {}
+```
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
