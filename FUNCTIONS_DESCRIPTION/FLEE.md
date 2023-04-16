@@ -4612,6 +4612,11 @@ main ( void )
 {   
     // Observação: Linhas começam em 1
     // Observação: Colunas começam em 0
+    
+    // Aviso: A função pode ter alguns problemas no posicionamento da strings em algumas linhas
+    // por isso, sempre faça o teste para saber onde o resultado irá ficar, e se possível caso vá preencher
+    // uma coluna que não exista adicione um espaço em branco para evitar erros, e o valor ser printado na linha de baixo
+    // basicamente isso [ faça isso: "linha = " e não isso: "linha =" ]
 
     // Adicionando a palavra lindo na linha 3 na coluna 27 
     FLEE_WRITESUPAstring ( "arq.txt" , "lindo" , 3 , 27 );
