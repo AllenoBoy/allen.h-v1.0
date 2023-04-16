@@ -1979,7 +1979,9 @@ Existem 3, allen
 
 int 
 main ( void )
-{      
+{   
+    // GLOBAL = substitui tudo de qualquer jeito
+    
     // Substituindo todas os números 12 por ** em arq.txt
     int subs = FLEE_GLOBALSUBSint ( "arq.txt" , 12 , "**" );
 
@@ -2064,9 +2066,90 @@ Foram 6 substituicoes
 
 int 
 main ( void )
-{      
+{   
+    // GLOBAL = substitui tudo de qualquer jeito
+
     // Substituindo todas os números 12.35 por *rm* em arq.txt
     int subs = FLEE_GLOBALSUBSfloat ( "arq.txt" , 12.35 , 2 , "*rm*" );
+
+    // Observação: Essa função considera o parâmetro de COMMA para considerar até quantas casas decimais 
+    // desse valor serão alteradas, por exemplo -> 12.345 , 2 -> "hakare 12.345" -> "hakare *rm*5" 
+
+    // Printando todas as substituições
+    printf ("Foram %d substituicoes", subs );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```txt
+arquivo de nota 12.35
+arquivo de nota 12,35
+
+12,35 12.35  12.345
+
+12,351212 
+```
+
+<br>
+
+#### SAÍDA DO ARQUIVO:
+
+```txt
+arquivo de nota *rm*
+arquivo de nota *rm*
+
+*rm* *rm*  12.345
+
+*rm*1212 
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+Foram 5 substituicoes
+```
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> int FLEE_GLOBALSUBSdouble ( const char * FILE_NAME , double VALUE , int COMMAS , const char * TOKEN ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para substituir em um arquivo globalmente, todas as ocorrências de um valor do tipo double definido por VALUE`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // GLOBAL = substitui tudo de qualquer jeito
+
+    // Substituindo todas os números 12.35 por *rm* em arq.txt
+    int subs = FLEE_GLOBALSUBSdouble ( "arq.txt" , 12.35 , 2 , "*rm*" );
 
     // Observação: Essa função considera o parâmetro de COMMA para considerar até quantas casas decimais 
     // desse valor serão alteradas, por exemplo -> 12.345 , 2 -> "hakare 12.345" -> "hakare *rm*5" 
@@ -2130,8 +2213,6 @@ Foram 5 substituicoes
 
 
 
-
-
 <br>
 
 <h3 align="center"> int FLEE_GLOBALSUBSchar ( const char * FILE_NAME , char VALUE , const char * TOKEN ) </h3> 
@@ -2151,7 +2232,9 @@ Foram 5 substituicoes
 
 int 
 main ( void )
-{      
+{   
+    // GLOBAL = substitui tudo de qualquer jeito
+
     // Substituindo todos os chars '&' de arq.txt
     int subs = FLEE_GLOBALSUBSchar ( "arq.txt" , '&' , "--disabled" );
     
