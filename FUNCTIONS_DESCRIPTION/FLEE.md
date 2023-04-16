@@ -5360,3 +5360,157 @@ DATA: 16 / 11 / 2004
 
 
 
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> float FLEE_GETSLfloat ( const char * FILE_NAME , int WHAT_LINE , int COL ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função pega um valor do tipo float em um arquivo em uma linha especifíca definida por WHAT_LINE a partir de uma coluna inicial definida por COL`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // Pegando um valor do tipo float a partir de uma coluna inicial
+    float media = FLEE_GETSLfloat ( "arq.txt" , 6 , 7 );
+
+    // Printando esse valor
+    printf ("A media = %.2f", media);
+}
+```
+
+<br>
+
+#### | arq.txt
+
+```
+[data]
+------
+aluno 01
+{
+nome  = ciclano
+media = 3.73 
+}
+---
+aluno 02
+{
+nome  = fulano
+media = 8.73 
+}
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```
+A media = 3.73
+```
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> double FLEE_GETSLdouble ( const char * FILE_NAME , int WHAT_LINE , int COL ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função pega um valor do tipo double em um arquivo em uma linha especifíca definida por WHAT_LINE a partir de uma coluna inicial definida por COL`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // Pegando um valor do tipo double a partir de uma coluna inicial
+    double media = FLEE_GETSLdouble ( "arq.txt" , 12 , 7 );
+
+    // Printando esse valor
+    printf ("A media = %.2f", media);
+}
+```
+
+<br>
+
+#### | arq.txt
+
+```
+[data]
+------
+aluno 01
+{
+nome  = ciclano
+media = 3.73 
+}
+---
+aluno 02
+{
+nome  = fulano
+media = 8.73 
+}
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```
+A media = 8.73
+```
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
