@@ -2285,3 +2285,78 @@ Foram 7 substituicoes
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> int FLEE_GLOBALSUBSstring ( const char * FILE_NAME , const char * OLD_WORD , const char * TOKEN ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para substituir em um arquivo globalmente, todas as ocorrências de uma palavra definido por OLD_WORD`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // GLOBAL = substitui tudo de qualquer jeito
+
+    // Substituindo todas as palavras "allen" por lindo em arq.txt
+    int subs = FLEE_GLOBALSUBSstring ( "arq.txt" , "allen" , "lindo" );
+
+    // Printando todas as substituições
+    printf ("Foram %d substituicoes", subs );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```txt
+você conhece o allen?
+ele é moh allen!
+não é fulana o allen tá ali!
+```
+
+<br>
+
+#### SAÍDA DO ARQUIVO:
+
+```txt
+você conhece o lindo?
+ele é moh lindo!
+não é fulana o lindo tá ali!
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+Foram 3 substituicoes
+```
+
+
+
