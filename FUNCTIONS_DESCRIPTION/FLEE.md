@@ -3291,3 +3291,93 @@ Foram 1 substituicoes
 
 
 
+
+
+
+<br>
+
+<h3 align="center"> int FLEE_GLOBALSUBScharl ( const char * FILE_NAME , int WHAT_LINE , char VALUE , const char * TOKEN ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para substituir em um arquivo globalmente, todas as ocorrências de um char definido por VALUE, a diferença dessa função para FLEE_GLOBALSUBSchar, é que nessa função a substituição é feita em uma linha específica que é definido por WHAT_LINE`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // Substituindo 12.35 na linha 2 por "*rem" em arq.txt
+    int subs = FLEE_LOCALSUBSfloatl ( "arq.txt" , 2 , 12.35 , 2 , "removed" );
+
+    // Printando todas as substituições
+    printf ("Foram %d substituicoes", subs );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```txt
+*I HAVE THIS FILE*
+------------------
+& for& && &things list &
+& for& && &things list &
+& for& && &things list &
+&&
+```
+
+<br>
+
+#### SAÍDA DO ARQUIVO:
+
+```txt
+*I HAVE THIS FILE*
+------------------
+*rem* for*rem* *rem**rem* *rem*things list *rem*
+& for& && &things list &
+& for& && &things list &
+&&
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+Foram 6 substituicoes
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
