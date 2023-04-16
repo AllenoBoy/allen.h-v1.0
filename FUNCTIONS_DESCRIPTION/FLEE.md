@@ -8,7 +8,7 @@
 
 ---
 
-> OBSERVAÇÃO: Enquanto você estiver programando, as funções irão funcionar dentro da pasta onde se encontram os arquivos de código, mas caso você exporte seu programa ( o executável ) ele irá levar em conta o local desse executável para realizar as funções! ! NÃO ME RESPONSABILIZO POR NADA QUE FOR PRODUZIDO USANDO AS FUNÇÕES, ESSAS FUNÇÕES FORAM FEITAS SOMENTE COMO UMA FORMA DE ESTUDO ! 
+> OBSERVAÇÃO: Enquanto você estiver programando, as funções irão funcionar dentro da pasta onde se encontram os arquivos de código, mas caso você exporte seu programa ( o executável ) ele irá levar em conta o local desse executável para realizar as funções! ! NÃO ME RESPONSABILIZO POR NADA QUE FOR PRODUZIDO USANDO AS FUNÇÕES, ESSAS FUNÇÕES FORAM FEITAS SOMENTE COMO UMA FORMA DE ESTUDO E APERFEIÇOAMENTO PESSOAL ! 
 
 ---
 
