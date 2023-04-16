@@ -57,13 +57,14 @@ A biblioteca allen.h tem como objetivo a ` simplificação dinâmica de código 
 <br>
 <br>
 
-- Como funciona um projeto no `Code::Blocks`, <a href="https://pastebin.com/KAFTdxL4" title="Ajuda de como funciona um projeto"> veja aqui </a>;
+- Como funciona um projeto no `Code::Blocks`, <a href="https://github.com/AllenoBoy/allen.h/blob/6f164c497b6ed59f92255fd358862ed081e81788/FUNCTIONS_DESCRIPTION/HELP_WITH_CODE_BLOCKS.md" title="Ajuda de como funciona um projeto"> veja aqui </a>;
 - A biblioteca possui suporte ao uso de `threads`, portanto é uma boa pesquisar sobre;
 - Qual é a diferença entre `float` e `double`? float é de formato 32 bits e double de 64 bits, ou seja, double possui um melhor arredondamento;
 - A biblioteca foi produzida durante o segundo semestre de ciências da computação, e levou em torno de 3 semanas para ser concluida, fora a documentação;
 - A biblioteca não está passível de bugs, caso ocorra reporte na aba issues, e leve em consideração que foi feita por uma só pessoa;
 - Em relação a possíveis dúvidas que as documentações desse artigo tragam ou não solucionem, o chat-gpt tem capacidade de explicar : );
 - A biblioteca é de código aberto, ou seja, não possui direitos autorais ( como se alguém fosse licenciar uma simples biblioteca ) e qualquer um pode usar ou melhorar;
+- Inicialmente a biblioteca, nas atuais funções `SB` teriam outro nome -> `W`, onde basicamente serviriam para projetar seu próprio programa com interface gráfica, só não foram adicionadas pois perdi o interesse pelo baixo retorno;
 
 <br> <br>
 
@@ -251,7 +252,7 @@ A biblioteca allen.h tem como objetivo a ` simplificação dinâmica de código 
 
 <br>
 
-### <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/blob/main/FUNCTIONS_DESCRIPTION/PR.md" title="Listagem Rápida de Funções."> Descrição Resumida </a> </p>
+### <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/blob/8ce1df192e8572219523609e3c8ad1b6eab0ef57/FUNCTIONS_DESCRIPTION/RESUME.md" title="Listagem Rápida de Funções."> Descrição Resumida </a> </p>
 
 <br>
 
