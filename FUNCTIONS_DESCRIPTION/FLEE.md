@@ -4662,3 +4662,186 @@ Senpai: allen você é muito lindo!
 
 
 
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> int FLEE_GETSint ( const char * FILE_NAME , int WHAT_LINE ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função pega um inteiro em uma linha especifíca definida por WHAT_LINE e o retorna`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // Pegando dois valores específicos do arquivo arq.txt
+    int x = FLEE_GETSint ( "arq.txt" , 1 );
+    int y = FLEE_GETSint ( "arq.txt" , 2 );
+
+    // Printando esses valores
+    printf ("GOTOXY ( %d , %d );" , x , y );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```
+[posx]
+x=12
+y=14
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```
+GOTOXY ( 12 , 14 );
+```
+
+<br>
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> float FLEE_GETSfloat ( const char * FILE_NAME , int WHAT_LINE ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função pega um float em uma linha especifíca definida por WHAT_LINE e o retorna`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // Pegando dois valores específicos do arquivo arq.txt
+    float alun01 = FLEE_GETSfloat ( "arq.txt" , 1 );
+    float alun02 = FLEE_GETSfloat ( "arq.txt" , 2 );
+
+    // Printando esses valores
+    printf ("NOTA DO ALUNO 01 = %.1f \nNOTA DO ALUNO 02 = %.1f" , alun01 , alun02 );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```
+[GRADES]
+aluno_um -> 2.3
+aluno_dois -> 9.33
+...
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```
+NOTA DO ALUNO 01 = 2.3
+NOTA DO ALUNO 02 = 9.3
+```
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> double FLEE_GETSdouble ( const char * FILE_NAME , int WHAT_LINE ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função pega um double em uma linha especifíca definida por WHAT_LINE e o retorna`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // Pegando dois valores específicos do arquivo arq.txt
+    double n1 = FLEE_GETSdouble ( "arq.txt" , 1 );
+    double n2 = FLEE_GETSdouble ( "arq.txt" , 2 );
+
+    // Printando esses valores
+    printf ("NOTA 01 = %.1lf \nNOTA 02 = %.1lf" , n1 , n2 );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```
+[GRADES]
+nota_um -> 1.5
+nota_dois -> 3.4
+...
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```
+NOTA 01 = 1.5
+NOTA 02 = 3.4
+```
+
+<br>
+
+
+
+
+
