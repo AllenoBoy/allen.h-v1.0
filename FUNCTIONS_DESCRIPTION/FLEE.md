@@ -3314,8 +3314,8 @@ Foram 1 substituicoes
 int 
 main ( void )
 {   
-    // Substituindo 12.35 na linha 2 por "*rem" em arq.txt
-    int subs = FLEE_LOCALSUBSfloatl ( "arq.txt" , 2 , 12.35 , 2 , "removed" );
+    // Substituindo em arq.txt na linha 3 todos os '&' por *rem*
+    int subs = teste ( "arq.txt" , 3 , '&' , "*rem*" );
 
     // Printando todas as substituições
     printf ("Foram %d substituicoes", subs );
