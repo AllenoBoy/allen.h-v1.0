@@ -45,12 +45,12 @@
 
 <br>
 
-<h3 align="center"> static inline void PROP_TEXTCOLOR ( int CODE ) </h3> 
+<h3 align="center"> void FLEE_PUTS ( const char * FILE_NAME, bool ADD , const char * TEXT , ... ) </h3> 
 
 <br>
 <br>
 
-- **O QUE ELA FAZ**: `Essa função define a cor do texto usando os macros de "CORES DE ESTILIZAÇÃO DE TEXTO" para definir a cor do texto a partir da chamada da função, onde o macro utilizado deve ser usado em CODE`;
+- **O QUE ELA FAZ**: `Essa função funciona como um printf só que para arquivos, onde FILE_NAME define o path do arquivo, ADD define se esse print no arquivo será substituindo todo o conteúdo novo pelo digitado ou se só vai adicionar ( isso caso ADD seja igual a true ), TEXT define o que será printado, por exemplo: "a nota dela = %d", 12`;
 
 <br>
 
@@ -63,25 +63,33 @@
 int 
 main ( void )
 {      
-    // Ativando os props
-    ENABLEPROPS ();
-
-    // Mudando a cor do texto para amarelo
-    PROP_TEXTCOLOR ( YELLOW_TEXT );
-
-    // Uso do echo por ser melhor que o printf
-    echo ("Eu gosto de comer arroz!");
-
-    // Restaurando o console para o padrão ( Removendo cores, estilos ... )
-    PROP_RESTORECONSOLE ();
+    // Adicionando ao arquivo arq.txt
+    FLEE_PUTS ("arq.txt" , yes , "allen %d" , 12 );
+    
+    // Outro detalhe, caso o segundo parametro seja falso, então ele sobreescreve todo o arquivo e aí coloca o texto
+    
+    // caso o arquivo estivesse em uma pasta a chamada seria assim -> "nome_da_pasta/arq.txt"
+    
 }
 
 ```
 
 <br>
 
-#### SAÍDA DO CONSOLE:
+#### | arq.txt
 
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/114815898/232172410-6c170dfc-8957-469b-a473-634864874976.png">
-</p>
+```txt
+
+NAME = 
+
+```
+
+<br>
+
+#### SAÍDA DO ARQUIVO:
+
+```txt
+
+NAME = allen 12
+
+```
