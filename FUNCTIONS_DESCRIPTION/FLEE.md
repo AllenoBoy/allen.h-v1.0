@@ -3412,7 +3412,7 @@ main ( void )
 
 #### | arq.txt
 
-```txt
+```
 [THIS IS A SETBOX] # ##AS # ASAD # #
 USERNAME=##ASDAS
 AGE=21SA12##
@@ -3422,7 +3422,7 @@ AGE=21SA12##
 
 #### SAÍDA DO ARQUIVO:
 
-```txt
+```
 [THIS IS A SETBOX] allen ##AS allen ASAD allen allen
 USERNAME=##ASDAS
 AGE=21SA12##
@@ -3449,6 +3449,129 @@ Foram 4 substituicoes
 
 
 
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> int FLEE_GLOBALSUBSstringl ( const char * FILE_NAME , int WHAT_LINE , const char * STRING , const char * TOKEN ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para substituir em um arquivo globalmente, todas as ocorrências de uma palavra / string definida por STRING, a diferença dessa função para FLEE_GLOBALSUBSstring, é que nessa função a substituição é feita em uma linha específica que é definido por WHAT_LINE`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```txt
+```
+
+<br>
+
+#### SAÍDA DO ARQUIVO:
+
+```txt
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+Foram 6 substituicoes
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> int FLEE_LOCALSUBSstringl ( const char * FILE_NAME , int WHAT_LINE , const char * STRING , const char * TOKEN ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para substituir em um arquivo localmente, todas as ocorrências de uma palavra / string definido por STRING, a diferença dessa função para FLEE_LOCALSUBSstring, é que nessa função a substituição é feita em uma linha específica que é definido por WHAT_LINE`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```
+```
+
+<br>
+
+#### SAÍDA DO ARQUIVO:
+
+```
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+Foram 4 substituicoes
+```
 
 
 
