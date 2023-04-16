@@ -4909,3 +4909,377 @@ Bota na Pipokinha
 ```
 
 <br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> int FLEE_GETCHint ( const char * FILE_NAME, int WHAT_LINE, int START_COL, int END_COL ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função pega um valor do tipo int em um arquivo em uma linha especifíca definida por WHAT_LINE e entre duas colunas a START_COL e a END_COL e então retorna esse valor`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // Pegando o valor do id presente no arquivo "arq.txt"
+    int ID = FLEE_GETCHint ( "arq.txt" , 8 , 5 , 14 );
+
+    // Printando o valor no console
+    printf ("O ID requisitado = %d", ID );
+}
+```
+
+<br>
+
+#### | arq.txt
+
+```
++----------------+
+| [SYSTEM_ALLEN] |
++----------------+
+|	   NAME      |
+|    [ allen ]   |		
++----------------+
+|	    ID	     |
+|  [ 202200132 ] |
++----------------+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```
+O ID requisitado = 202200132
+```
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> float FLEE_GETCHfloat ( const char * FILE_NAME , int WHAT_LINE , int START_COL , int END_COL ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função pega um valor do tipo float em um arquivo em uma linha especifíca definida por WHAT_LINE e entre duas colunas a START_COL e a END_COL e então retorna esse valor`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // Pegando o valor de GRADE presente no arquivo "arq.txt"
+    float GRADE = FLEE_GETCHfloat ( "arq.txt" , 8 , 7 , 12 );
+
+    // Printando o valor no console
+    printf ("A GRADE = %.2f", GRADE );
+}
+```
+
+<br>
+
+#### | arq.txt
+
+```
++----------------+
+| [SYSTEM_ALLEN] |
++----------------+
+|	   NAME      |
+|    [ allen ]   |		
++----------------+
+|	  GRADE	     |
+|   [ 7.65 ]     |
++----------------+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```
+A GRADE = 7.65
+```
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> double FLEE_GETCHdouble ( const char * FILE_NAME , int WHAT_LINE , int START_COL , int END_COL ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função pega um valor do tipo double em um arquivo em uma linha especifíca definida por WHAT_LINE e entre duas colunas a START_COL e a END_COL e então retorna esse valor`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // Pegando o valor de GASTO presente no arquivo "arq.txt"
+    double GASTO = FLEE_GETCHdouble ( "arq.txt" , 8 , 7 , 12 );
+
+    // Printando o valor no console
+    printf ("O gasto foi de R$%.2f", GASTO );
+}
+```
+
+<br>
+
+#### | arq.txt
+
+```
++----------------+
+| [SYSTEM_ALLEN] |
++----------------+
+|	   NAME      |
+|    [ allen ]   |		
++----------------+
+|	  GASTO	     |
+|   [ 9.35 ]     |
++----------------+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```
+O gasto foi de R$9.35
+```
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> char FLEE_GETCHchar ( const char * FILE_NAME , int WHAT_LINE , int START_COL , int END_COL ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função pega um valor do tipo char em um arquivo em uma linha especifíca definida por WHAT_LINE e entre duas colunas a START_COL e a END_COL e então retorna esse valor`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // Pegando o valor de SPC presente no arquivo "arq.txt"
+    char SPC = FLEE_GETCHchar ( "arq.txt" , 8 , 9 , 11 );
+    
+    // Printando o valor no console
+    printf ("Seu especial e %c", SPC );
+}
+```
+
+<br>
+
+#### | arq.txt
+
+```
++----------------+
+| [SYSTEM_ALLEN] |
++----------------+
+|	   NAME      |
+|    [ allen ]   |		
++----------------+
+|	  SPECIAL	 | 
+|      [ % ]     |
++----------------+
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```
+Seu especial e %
+```
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void FLEE_GETCHstring ( const char * FILE_NAME , int WHAT_LINE , int START_COL , int END_COL , char * STRING ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função pega um valor do tipo string em um arquivo em uma linha especifíca definida por WHAT_LINE e entre duas colunas a START_COL e a END_COL e então retorna esse valor`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    char USERNAME [ 50 ];
+
+    // Pegando o nome de usuário de um protótipo
+    // de um banco de dados de um jogo
+    FLEE_GETCHstring ( "arq.txt" , 4 , 18 , 30 , USERNAME );
+
+    // Printando o nome de usuário registrado
+    printf ("Bem vindo, %s", USERNAME);
+}
+```
+
+<br>
+
+#### | arq.txt
+
+```
+[args:(ALLEN_GAME:{pirocki's Adventure})]
+|
+|
++->>> USERNAME = (allen_walker)
+|
+|
+|
++->>> MONEY    = (R$ 1500.00)
+|
+|
+|
++->>> STREAK   = (120)
+|
+|
+|
++->>> ID       = (202000132)
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```
+Bem vindo, allen_walker
+```
+
+<br>
+
+
+
+
+
