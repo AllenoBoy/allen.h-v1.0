@@ -2799,3 +2799,495 @@ Foram 3 substituicoes
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> int FLEE_GLOBALSUBSintl ( const char* FILE_NAME , int WHAT_LINE , int VALUE , const char* TOKEN ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para substituir em um arquivo globalmente, todas as ocorrências de um int definido por VALUE, a diferença dessa função para FLEE_GLOBALSUBSint, é que nessa função a substituição é feita em uma linha específica que é definida por WHAT_LINE`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // GLOBAL = substitui todas as ocorrências
+
+    // Substituindo todos os 18 presentes em arq.txt na linha 2
+    int subs = FLEE_GLOBALSUBSintl ( "arq.txt" , 2 , 18 , ":z!" );
+
+    // Printando todas as substituições
+    printf ("Foram %d substituicoes", subs );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```txt
+18
+18 18 18 18 allen18
+korega ni saimi is samaena ki to 18
+```
+
+<br>
+
+#### SAÍDA DO ARQUIVO:
+
+```txt
+18
+removed removed removed removed allenremoved
+korega ni saimi is samaena ki to 18
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+Foram 5 substituicoes
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> int FLEE_LOCALSUBSintl ( const char * FILE_NAME , int WHAT_LINE , int VALUE , const char * TOKEN ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para substituir em um arquivo localmente, todas as ocorrências de um int definido por VALUE, a diferença dessa função para FLEE_LOCALSUBSint, é que nessa função a substituição é feita em uma linha específica que é definido por WHAT_LINE`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // LOCAL = substitui valores separados
+
+    // Substituindo 12.35 na linha 2 por "removed" em arq.txt
+    int subs = FLEE_LOCALSUBSintl ( "arq.txt" , 2 , 18 , "removed" );
+
+    // Printando todas as substituições
+    printf ("Foram %d substituicoes", subs );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```txt
+18
+18 18 18 18 allen18
+korega ni saimi is samaena ki to 18
+```
+
+<br>
+
+#### SAÍDA DO ARQUIVO:
+
+```txt
+18
+removed removed removed removed allen18
+korega ni saimi is samaena ki to 18
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+Foram 4 substituicoes
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> int FLEE_GLOBALSUBSfloatl ( const char * FILE_NAME , int WHAT_LINE , float VALUE, int COMMAS , const char * TOKEN ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para substituir em um arquivo globalmente, todas as ocorrências de um float definido por VALUE, a diferença dessa função para FLEE_GLOBALSUBSfloat, é que nessa função a substituição é feita em uma linha específica que é definido por WHAT_LINE`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // Substituindo 12.35 na linha 2 por "removed" em arq.txt
+    int subs = FLEE_GLOBALSUBSfloatl ( "arq.txt" , 2 , 12.35 , 2 , "removed" );
+
+    // Printando todas as substituições
+    printf ("Foram %d substituicoes", subs );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```txt
+text = 12.35
+tokado12.35 surime 12,35
+
+aquihabara 12,35
+```
+
+<br>
+
+#### SAÍDA DO ARQUIVO:
+
+```txt
+text = 12.35
+tokadoremoved surime removed
+
+aquihabara 12,35
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+Foram 2 substituicoes
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> int FLEE_LOCALSUBSfloatl ( const char * FILE_NAME , int WHAT_LINE , float VALUE , int COMMAS , const char * TOKEN ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para substituir em um arquivo localmente, todas as ocorrências de um float definido por VALUE, a diferença dessa função para FLEE_LOCALSUBSfloat, é que nessa função a substituição é feita em uma linha específica que é definido por WHAT_LINE`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // Substituindo 12.35 na linha 2 por "removed" em arq.txt
+    int subs = FLEE_LOCALSUBSfloatl ( "arq.txt" , 2 , 12.35 , 2 , "removed" );
+
+    // Printando todas as substituições
+    printf ("Foram %d substituicoes", subs );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```txt
+text = 12.35
+tokado12.35 surime 12,35
+
+aquihabara 12,35
+```
+
+<br>
+
+#### SAÍDA DO ARQUIVO:
+
+```txt
+text = 12.35
+tokado12.35 surime removed
+
+aquihabara 12,35
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+Foram 1 substituicoes
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> int FLEE_GLOBALSUBSdoublel ( const char * FILE_NAME , int WHAT_LINE , double VALUE, int COMMAS , const char * TOKEN ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para substituir em um arquivo globalmente, todas as ocorrências de um double definido por VALUE, a diferença dessa função para FLEE_GLOBALSUBSdouble, é que nessa função a substituição é feita em uma linha específica que é definido por WHAT_LINE`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // Substituindo 12.35 na linha 2 por "*rem" em arq.txt
+    int subs = FLEE_GLOBALSUBSdouble ( "arq.txt" , 2 , 12.35 , 2 , "*rem" );
+
+    // Printando todas as substituições
+    printf ("Foram %d substituicoes", subs );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```txt
+text = 12.35
+tokado12.35 surime 12,35
+
+aquihabara 12,35
+```
+
+<br>
+
+#### SAÍDA DO ARQUIVO:
+
+```txt
+text = 12.35
+tokado*rem surime *rem
+
+aquihabara 12,35
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+Foram 2 substituicoes
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> int FLEE_LOCALSUBSdouble ( const char * FILE_NAME , int WHAT_LINE , double VALUE , int COMMAS , const char * TOKEN ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para substituir em um arquivo localmente, todas as ocorrências de um double definido por VALUE, a diferença dessa função para FLEE_LOCALSUBSdouble, é que nessa função a substituição é feita em uma linha específica que é definido por WHAT_LINE`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    // Substituindo 12.35 na linha 2 por "*rem" em arq.txt
+    int subs = FLEE_LOCALSUBSfloatl ( "arq.txt" , 2 , 12.35 , 2 , "removed" );
+
+    // Printando todas as substituições
+    printf ("Foram %d substituicoes", subs );
+}
+
+```
+
+<br>
+
+#### | arq.txt
+
+```txt
+text = 12.35
+tokado12.35 surime 12,35
+
+aquihabara 12,35
+```
+
+<br>
+
+#### SAÍDA DO ARQUIVO:
+
+```txt
+text = 12.35
+tokado12.35 surime removed
+
+aquihabara 12,35
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```txt
+Foram 1 substituicoes
+```
+
+
+
+
+
+
