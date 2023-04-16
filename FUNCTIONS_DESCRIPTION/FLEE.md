@@ -2,7 +2,7 @@
 
 ---
 
-#### As funções do tipo ` FLEE `, servem para realizar as mais diversas coisas em arquivos e pastas, de forma extremamente simplificada. 
+#### As funções do tipo ` FLEE `, servem para realizar as mais diversas coisas em arquivos e pastas, de forma extremamente simplificada, as mensagens de erro sobre arquivo foram totalmente removidas para evitar problemas com a padronização do seu programa. 
 
 #### <p align="center"> <a href="https://github.com/AllenoBoy/allen.h" title="Retornar a documentação."> VOLTAR PARA O DOCUMENTO PRINCIPAL</a> </p>
 
@@ -86,10 +86,69 @@ NAME =
 
 <br>
 
-#### SAÍDA DO ARQUIVO:
+#### SAÍDA DO ARQUIVO APÓS A EXECUÇÃO DA FUNÇÃO:
 
 ```txt
 
 NAME = allen 12
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void FLEE_CREATEAFILE ( const char* FILE_NAME ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função serve para criar um arquivo com o nome e tipo definido por FILE_NAME`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{      
+    // Criando um arquivo chamado arq.txt
+    FLEE_CREATEAFILE ("arq.txt");
+    
+    // Observação: caso queira criar em uma pasta específica -> "nome_da_pasta/arq.txt"
+    // mas leve em consideração que essa função em específico não cria a pasta definida não existir
+    // o programa simplesmente não irá criar o arquivo,
+    
+}
+
+```
+
+<br>
+
+#### SAÍDA:
+
+```txt
+
+O ARQUIVO FOI CRIADO!
 
 ```
