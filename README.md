@@ -58,6 +58,7 @@ A biblioteca allen.h tem como objetivo a ` simplificação dinâmica de código 
 
 - Como funciona um projeto no `Code::Blocks`, <a href="https://pastebin.com/KAFTdxL4" title="Ajuda de como funciona o projeto"> veja aqui </a>;
 - A biblioteca possui suporte ao uso de `threads` por causa da biblioteca pthread.h;
+- Qual é a diferença entre `float` e `double`? float é de formato 32 bits e double de 64 bits, ou seja, double possui um melhor arredondamento;
 
 <br> <br>
 
