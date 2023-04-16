@@ -4845,3 +4845,67 @@ NOTA 02 = 3.4
 
 
 
+
+
+
+
+
+
+
+
+<br>
+
+<h3 align="center"> void FLEE_GETSstring ( const char * FILE_NAME , char * STRING, int WHAT_LINE ) </h3> 
+
+<br>
+<br>
+
+- **O QUE ELA FAZ**: `Essa função pega uma string em uma linha especifíca definida por WHAT_LINE e a salva em STRING`;
+
+<br>
+
+#### CÓDIGO DE EXEMPLO:
+
+```c
+
+# include "allen.h"
+
+int 
+main ( void )
+{   
+    char line_01 [ 100 ];
+    char line_06 [ 100 ];
+
+    // Pegando algumas linha inteira de um arquivo
+    FLEE_GETSstring ( "arq.txt" , line_01 , 1 );
+    FLEE_GETSstring ( "arq.txt" , line_06 , 6 );
+
+    // Printando as 2 linhas
+    echo (line_01);
+    echo (line_06);
+}
+```
+
+<br>
+
+#### | arq.txt
+
+```
+Bota na, bota na, bota na
+Bota na Pipokinha
+Bota na, bota na, bota na
+Bota na Pipokinha
+Bota na, bota na, bota na
+Bota na Pipokinha
+```
+
+<br>
+
+#### SAÍDA DO CONSOLE:
+
+```
+Bota na, bota na, bota na
+Bota na Pipokinha
+```
+
+<br>
