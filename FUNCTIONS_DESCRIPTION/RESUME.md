@@ -144,9 +144,31 @@
 
 <br>
 
-- TOTAL DE FUNÇÕES 25
+- TOTAL DE FUNÇÕES 21
 
 <br>
+
+### ENABLEPROPS ` Permite o uso das funções PROPS `
+### PROP_RESTORECONSOLE ` Redefine alterações feitas no console `
+### PROP_TEXTCOLOR ` Define a cor do texto `
+### PROP_STYLE ` Define o estilo do texto `
+### PROP_BACKGROUNDCOLOR ` Define a cor do plano de fundo `
+### PROP_RESETCOLOR ` Reseta qualquer alteração feita `
+### PROP_CLEARSCREEN ` Limpa a tela `
+### PROP_CLEARBELOW ` Limpa abaixo do cursor `
+### PROP_CLEARABOVE ` Limpa acima do cursor  `
+### PROP_CLEARLINE ` Limpa a linha onde está o cursor `
+### PROP_CLEARLEFT ` Limpa a linha a partir do cursor para a esquerda `
+### PROP_CLEARRIGHT ` Limpa a linha a partir do cursor para a direita `
+### PROP_MOVEUP ` Move o cursor para cima uma quantidade de vezes `
+### PROP_MOVEDOWN ` Move o cursor para baixo uma quantidade de vezes `
+### PROP_MOVERIGHT ` Move o cursor para a direita uma quantidade de vezes `
+### PROP_MOVELEFT ` Move o cursor para a esquerda uma quantidade de vezes `
+### PROP_MOVECURSOR ` Move o cursor para uma posição X e Y `
+### PROP_SAVECURSOR ` Salva a posição do cursor `
+### PROP_LOADCURSOR ` Carrega ( volta o cursor para essa posição ) a última posição salva por PROP_SAVECURSOR `
+### PROP_HIDECURSOR ` Esconde o cursor `
+### PROP_SHOWCURSOR ` Mostra o cursor `
 
 
 
