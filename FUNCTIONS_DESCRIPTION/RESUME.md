@@ -444,9 +444,37 @@
 
 ## <p align="center"> Escrita </p>
 
+### FLEE_WRITEint ` Adiciona um valor do tipo inteiro no fim da última posição do cursor do arquivo `
+### FLEE_WRITEintl ` Adiciona um valor do tipo inteiro no fim da linha específicada no arquivo `
+### FLEE_WRITESUPAint ` Adiciona um valor do tipo inteiro em uma área `
 
+<br>
 
+### FLEE_WRITEfloat ` Adiciona um valor do tipo float no fim da última posição do cursor do arquivo `
+### FLEE_WRITEfloatl ` Adiciona um valor do tipo float no fim da linha específicada no arquivo `
+### FLEE_WRITESUPAfloat ` Adiciona um valor do tipo float em uma área `
 
+<br>
+
+### FLEE_WRITEdouble ` Adiciona um valor do tipo double no fim da última posição do cursor do arquivo `
+### FLEE_WRITEdoublel ` Adiciona um valor do tipo double no fim da linha específicada no arquivo `
+### FLEE_WRITESUPAdouble ` Adiciona um valor do tipo double em uma área `
+
+<br>
+
+### FLEE_WRITEchar ` Adiciona um valor do tipo char no fim da última posição do cursor do arquivo `
+### FLEE_WRITEcharl ` Adiciona um valor do tipo char no fim da linha específicada no arquivo `
+### FLEE_WRITESUPAchar` Adiciona um valor do tipo char em uma área `
+
+<br>
+
+### FLEE_WRITEstring ` Adiciona uma string no fim da última posição do cursor do arquivo `
+### FLEE_WRITEcharl ` Adiciona uma string no fim da linha específicada no arquivo `
+### FLEE_WRITESUPAchar` Adiciona uma string em uma área `
+
+<br>
+
+## <p align="center"> Escrita </p>
 
 ---
 
