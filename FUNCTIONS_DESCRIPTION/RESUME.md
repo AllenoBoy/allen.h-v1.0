@@ -229,7 +229,11 @@
 
 ---
 
-<h1 align="center"> allen </h1>
+<h1 align="center"> <a href="https://github.com/AllenoBoy/allen.h/blob/main/FUNCTIONS_DESCRIPTION/allen.md" title="Funções específicas."> allen </a> </h1>
+
+<br>
+
+- TOTAL DE FUNÇÕES 15
 
 <br>
 
