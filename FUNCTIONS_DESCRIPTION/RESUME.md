@@ -188,7 +188,11 @@
 
 ---
 
-<h1 align="center"> G </h1>
+<h1 align="center"> <a href="https://github.com/AllenoBoy/allen.h/blob/main/FUNCTIONS_DESCRIPTION/G.md" title="Funções de entrada de dados."> G </a> </h1>
+
+<br>
+
+- TOTAL DE FUNÇÕES 21
 
 <br>
 
