@@ -23,7 +23,7 @@
 
 <br>
 
-#### <p align="left"> <a href="https://pastebin.com/KAFTdxL4" title="Pastebin da biblioteca."> LINK PARA DOWNLOAD DA BIBLIOTECA </a> </p>
+#### <p align="center"> <a href="https://pastebin.com/KAFTdxL4" title="Pastebin da biblioteca."> LINK PARA DOWNLOAD DA BIBLIOTECA </a> </p>
 
 <br>
 
