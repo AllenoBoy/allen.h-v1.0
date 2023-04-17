@@ -352,9 +352,56 @@
 
 
 
-<h1 align="center"> FLEE </h1>
+<h1 align="center"> <a href="https://github.com/AllenoBoy/allen.h/blob/main/FUNCTIONS_DESCRIPTION/FLEE.md" title="Funções de arquivos."> FLEE </a> </h1>
 
 <br>
+
+- TOTAL DE FUNÇÕES 
+
+<br>
+
+## Variações genêricas: 
+
+### FLEE_PUTS ` Printf para arquivos ` 
+### FLEE_CREATEAFILE ` Cria um arquivo `
+### FLEE_RENAMEAFILE ` Renomeia um arquivo `
+### FLEE_MOVEAFILE ` Move um arquivo para algum lugar `
+### FLEE_COPYAFILE ` Copia um arquivo `
+### FLEE_CREATEAFILEANDFOLDER  `  Cria uma pasta e um arquivo `
+### FLEE_CREATEAFOLDER ` Cria uma pasta `
+### FLEE_DELETEAFILE ` Deleta um arquivo `
+### FLEE_DELETEAFOLDER ` Deleta uma pasta com arquivos `
+### FLEE_MOVEAFOLDER ` Move uma pasta `
+### FLEE_COPYAFOLDER ` Copia uma pasta com um novo nome `
+### FLEE_SYSTEMFOLDER ` Gera o diretório de uma pasta específica do sistema `
+
+<br>
+
+## Print e coleta de valores de forma simples: 
+
+### FLEE_Sint ` Printa um valor do tipo inteiro substituindo todo o arquivo `
+### FLEE_Lint ` Pega um valor do tipo inteiro em um arquivo sem qualquer padronização `
+### FLEE_Schar ` Printa um valor do tipo char substituindo todo o arquivo `
+### FLEE_Lchar ` Pega um valor do tipo char em um arquivo sem qualquer padronização `
+### FLEE_Sfloat ` Printa um valor do tipo float substituindo todo o arquivo `
+### FLEE_Lfloat ` Pega um valor do tipo float em um arquivo sem qualquer padronização `
+### FLEE_Sdouble ` Printa um valor do tipo double substituindo todo o arquivo `
+### FLEE_Ldouble ` Pega um valor do tipo double em um arquivo sem qualquer padronização `
+### FLEE_Sstring ` Printa uma string substituindo todo o arquivo `
+### FLEE_Lstring ` Pega uma string em um arquivo sem qualquer padronização `
+
+<br>
+
+## Contagem: 
+
+### FLEE_COUNTLINES ` Conta quantas linhas existem no arquivo ` 
+### FLEE_COUNTWORDS ` Conta quantas palavras existem no arquivo `
+### FLEE_COUNTNUMBERS ` Conta quantos números existem no arquivo `
+### FLEE_COUNTint ` Conta quantos números inteiros específicos existem no arquivo `
+### FLEE_COUNTfloat ` Conta quantos números float específicos existem no arquivo `
+### FLEE_COUNTdouble ` Conta quantos números double específicos existem no arquivo `
+### FLEE_COUNTchar ` Conta quantos caracteres específicos existem no arquivo `
+### FLEE_COUNTstring ` Conta quantas strings específicas existem no arquivo ` 
 
 
 
