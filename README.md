@@ -224,7 +224,7 @@
 | `e_se`                                             | else if                                                             | 
 | `outro`                                            | else                                                                | 
 | `para`                                             | for                                                                 | 
-| `qubre`                                            | break                                                               | 
+| `quebre`                                           | break                                                               | 
 | `caso`                                             | case                                                                | 
 | `caractere`                                        | char                                                                | 
 | `constante`                                        | const                                                               | 
