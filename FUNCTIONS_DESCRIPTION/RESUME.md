@@ -95,7 +95,7 @@
 
 ---
 
-<h1 align="center"> <a href="https://github.com/AllenoBoy/allen.h/blob/main/FUNCTIONS_DESCRIPTION/SYS.md" title="Funções de controle do console."> SYS </a> </h1>
+<h1 align="center"> <a href="https://github.com/AllenoBoy/allen.h/blob/main/FUNCTIONS_DESCRIPTION/SYS.md" title="Funções de controle do sistema."> SYS </a> </h1>
 
 <br>
 
@@ -140,7 +140,11 @@
 
 ---
 
-<h1 align="center"> PROPS </h1>
+<h1 align="center"> <a href="https://github.com/AllenoBoy/allen.h/blob/main/FUNCTIONS_DESCRIPTION/PROPS.md" title="Funções de estilização de texto."> PROPS </a> </h1>
+
+<br>
+
+- TOTAL DE FUNÇÕES 25
 
 <br>
 
