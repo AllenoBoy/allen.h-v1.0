@@ -356,7 +356,7 @@
 
 <br>
 
-- TOTAL DE FUNÇÕES 
+- TOTAL DE FUNÇÕES 89
 
 <br>
 
