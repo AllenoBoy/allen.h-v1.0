@@ -95,11 +95,38 @@
 
 ---
 
-<h1 align="center"> SYS </h1>
+<h1 align="center"> <a href="https://github.com/AllenoBoy/allen.h/blob/main/FUNCTIONS_DESCRIPTION/CS.md" title="Funções de controle do console."> CS </a> </h1>
 
 <br>
 
+- TOTAL DE FUNÇÕES 25
 
+<br>
+
+### SYS_SETREGION ` Define a linguagem do console / região `
+### SYS_SETSIZE ` Define o tamanho do console usando colunas e linhas `
+### SYS_SETCOLOR ` Define a cor do console `
+### SYS_SETTITLE ` Define o nome do título do console `
+### SYS_PAUSE ` Pausa o console `
+### SYS_GCCVERSION ` Gera as informações do seu compilador de c `
+### SYS_RESTARTCOMPUTER ` Reinicia o computador `
+### SYS_SETFULLSCREEN ` Define o console em tela cheia `
+### SYS_POPS ` Copia da função system (""); `
+### SYS_CLEARSCREEN ` Limpa toda a tela `
+### SYS_READFILE ` Printa todo o conteúdo de um arquivo `
+### SYS_LISTDIR ` Lista todas as pastas do diretório atual `
+### SYS_CREATEDIR ` Cria uma pasta `
+### SYS_REMOVEDIR ` Deleta uma pasta vazia `
+### SYS_COPYFILE  ` Copia um arquivo para um endereço `
+### SYS_MOVEDIR ` Move um diretório para outro `
+### SYS_DELETEFILE ` Deleta um arquivo ou pasta `
+### SYS_RENAMEFILE ` Renomeia um arquivo ou pasta `
+### echo ` Printf com quebra de linha no fim, só que aceita acentuação sem problemas `
+### SYS_PING ` Gera informações específicas do wifi que está conectado `
+### SYS_SHOWSAVEDWIFI ` Gera uma lista com todos os wifis salvos no seu pc `
+### SYS_SHOWSAVEDWIFIINFO ` Gera as informações de um wifi salvo no seu pc ` 
+### SYS_INFO ` Gera informações do computador / sistema `
+### SYS_WEATHER ` Gera informações do clima de uma área especificada `
 
 
 
