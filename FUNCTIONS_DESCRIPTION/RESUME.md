@@ -15,9 +15,9 @@
 
 <br>
 
-### PR ` Escreve uma palavra no console `
-### PRL ` Printa uma quantidade específica de linhas `
-### PRS ` Printa uma quantidade específica de espaços `
+### PR  ` Escreve uma palavra no console `
+### PRL    ` Printa uma quantidade específica de linhas `
+### PRS    ` Printa uma quantidade específica de espaços `
 ### PR_INT ` Printa um valor do tipo inteiro ` 
 ### PR_CHAR ` Printa um valor do tipo char ` 
 ### PR_FLOAT ` Printa um valor do tipo float `  
