@@ -192,9 +192,25 @@
 
 <br>
 
-- TOTAL DE FUNÇÕES 21
+- TOTAL DE FUNÇÕES 15
 
 <br>
+
+### BUFFER ` setbuf e fflush buffados `
+### G_INT ` Pega um valor do tipo inteiro `
+### G_CHAR ` Pega um valor do tipo char `
+### G_FLOAT ` Pega um valor do tipo float `
+### G_DOUBLE ` Pega um valor do tipo double `  
+### G_STRING ` Pega uma string `
+### GWC_INT ` Pega um valor inteiro com condições  `
+### GWC_FLOAT ` Pega um valor real ( float ) com condições `
+### GWC_DOUBLE ` Pega um valor real ( double ) com condições `
+### GWC_CHAR ` Pega um valor do tipo char com condições `
+### GWC_STRING ` Pega uma string com condições `
+### getI ` Pega um valor do tipo inteiro usando o metódo allen `
+### getF ` Pega um valor do tipo real ( float ) usando o método allen ` 
+### getD ` Pega um valor do tipo real ( double ) usando o método allen `
+### getS ` Pega uma string usando o método allen `
 
 
 
