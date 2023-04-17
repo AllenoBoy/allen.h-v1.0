@@ -474,7 +474,44 @@
 
 <br>
 
-## <p align="center"> Escrita </p>
+## <p align="center"> Pegando valores </p>
+
+### FLEE_GETSint ` Pega um valor do tipo inteiro em uma linha especifica `
+### FLEE_GETSLint ` Pega um valor do tipo inteiro em uma linha especifica a partir de uma coluna inicial `
+### FLEE_GETCHint ` Pega um valor do tipo inteiro em uma área `
+
+<br>
+
+### FLEE_GETSfloat ` Pega um valor do tipo float em uma linha especifica `
+### FLEE_GETSLfloat ` Pega um valor do tipo float em uma linha especifica a partir de uma coluna inicial `
+### FLEE_GETCHfloat ` Pega um valor do tipo float em uma área `
+
+<br>
+
+### FLEE_GETSdouble ` Pega um valor do tipo double em uma linha especifica `
+### FLEE_GETSLdouble ` Pega um valor do tipo double em uma linha especifica a partir de uma coluna inicial `
+### FLEE_GETCHdouble ` Pega um valor do tipo double em uma área `
+
+<br>
+
+### FLEE_GETSchar ` Pega um valor do tipo char em uma linha especifica `
+### FLEE_GETSLchar ` Pega um valor do tipo char em uma linha especifica a partir de uma coluna inicial `
+### FLEE_GETCHchar ` Pega um valor do tipo char em uma área `
+
+<br>
+
+### FLEE_GETSstring ` Pega uma string em uma linha especifica `
+### FLEE_GETSLchar ` Pega uma string em uma linha especifica a partir de uma coluna inicial `
+### FLEE_GETCHchar ` Pega uma string em uma área `
+
+<br>
+
+## <p align="center"> Print </p>
+
+### FLEE_PRINT ` Printa todo o conteúdo de um arquivo `
+### FLEE_PRINTLINE ` Printa uma linha específica do arquivo `
+### FLEE_PRINTCOL ` Printa uma linha específica a partir de uma coluna de um arquivo  `
+### FLEE_PRINTAREA ` Printa um conteúdo delimitado por uma área `
 
 ---
 
