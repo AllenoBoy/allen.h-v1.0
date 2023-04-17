@@ -233,15 +233,49 @@
 
 <br>
 
-- TOTAL DE FUNÇÕES 15
+- TOTAL DE FUNÇÕES 16
 
 <br>
+
+### allen_GETDIGITS ` Conta quantas casas decimais o número possui `
+### gotoxy ` define a posição X e Y do cursor no console `
+### allen_TESTCODEPAGE ` Printa a tabela ascii de um código específico `
+### allen_CLEARSTRING ` Limpa uma string fornecida `
+### allen_HIGHERARRAYint ` Pega o maior valor de um vetor de inteiros `
+### allen_HIGHERBARRAYint ` Pega o maior valor de uma matriz de inteiros `
+### allen_LOWERARRAYint ` Pega o menor valor de um vetor de inteiros `
+### allen_LOWERBARRAYint ` Pega o menor valor de uma matriz de inteiros `
+### allen_SUBSINTARRAY ` Substitui em um vetor valores levando em conta condições `
+### allen_COPYINTARRAY ` Copia um vetor para outro levando em conta condições `
+### allen_CLEARINTARRAY ` Limpa um vetor do tipo inteiro `
+### allen_SUBSINTBARRAY  ` Substitui em uma matriz valores levando em conta as condições` 
+### allen_COPYINTBARRAY ` Copia uma matriz para outro levando em conta condições `
+### allen_CLEARINTBARRAY ` Limpa completamente uma matriz de inteiros `
+### allen_ADDTOSTRING ` Adiciona algo a uma string `
+### allen_REMAKESTRING ` Substitui toda a string por algo novo `
+
+
+
+
+
+
 
 ---
 
-<h1 align="center"> SB </h1>
+<h1 align="center"> <a href="https://github.com/AllenoBoy/allen.h/blob/main/FUNCTIONS_DESCRIPTION/SB.md" title="Funções de caixas simples."> SB </a> </h1>
 
 <br>
+
+- TOTAL DE FUNÇÕES 2
+
+<br>
+
+### SB_CREATEBOX ` Cria uma simple box `
+### SB_PLAYSOUND  ` Executa um som específico do sistema windows, funciona como uma variação da função MessageBeep `
+
+
+
+
 
 ---
 
@@ -251,15 +285,41 @@
 
 ---
 
-<h1 align="center"> LOCH </h1>
+
+
+
+
+
+<h1 align="center"> <a href="https://github.com/AllenoBoy/allen.h/blob/main/FUNCTIONS_DESCRIPTION/LOCH.md" title="Funções simples do setlocale."> LOCH </a> </h1>
 
 <br>
 
+- TOTAL DE FUNÇÕES 2
+
+<br>
+
+### LOCH_LOCAL ` Set locale já definido para pt-br `
+### LOCH_SETLOCAL ` Set locale para uso em outra região `
+
+
+
+
 ---
+
+
+
 
 <h1 align="center"> FLEE </h1>
 
 <br>
+
+
+
+
+
+
+
+
 
 ---
 
