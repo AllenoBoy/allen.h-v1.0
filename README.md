@@ -128,7 +128,7 @@
 
 <br>
 
-> Esses macros devem ser utilizados somente nas seguintes funções: `PROP_TEXTSTYLE` e `PROP_BACKGROUNDSTYLE` quando `ENABLEPROPS` tiver sido chamado;
+> Esses macros devem ser utilizados somente na seguinte função: `PROP_TEXTSTYLE` quando `ENABLEPROPS` tiver sido chamado;
 
 <br>
 <br>
