@@ -506,7 +506,7 @@
 
 <br>
 
-## <p align="center"> Print </p>
+## <p align="center"> Print no Console </p>
 
 ### FLEE_PRINT ` Printa todo o conteúdo de um arquivo `
 ### FLEE_PRINTLINE ` Printa uma linha específica do arquivo `
