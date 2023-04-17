@@ -95,7 +95,7 @@
 
 ---
 
-<h1 align="center"> <a href="https://github.com/AllenoBoy/allen.h/blob/main/FUNCTIONS_DESCRIPTION/CS.md" title="Funções de controle do console."> CS </a> </h1>
+<h1 align="center"> <a href="https://github.com/AllenoBoy/allen.h/blob/main/FUNCTIONS_DESCRIPTION/CS.md" title="Funções de controle do console."> SYS </a> </h1>
 
 <br>
 
