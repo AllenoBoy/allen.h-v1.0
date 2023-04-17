@@ -3,7 +3,7 @@
 
 ---
 
-### <p align="center"> Nesse documento estão listadas as funções da biblioteca de forma simplificada e organizada por tópicos! </p>
+### <p align="center"> Nesse documento estão listadas as funções da biblioteca de forma simplificada e organizada por tópicos, assim como em qualquer outro documento é recomendável usar o crtl + f para pesquisar o que lhe interessa </p>
 
 #### <p align="center"> <a href="https://github.com/AllenoBoy/allen.h" title="Retornar a documentação."> VOLTAR PARA O DOCUMENTO PRINCIPAL</a> </p>
 
