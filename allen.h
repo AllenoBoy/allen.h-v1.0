@@ -305,7 +305,6 @@ static inline void PROP_SHOWCURSOR            ( void );
 /* 5. G FUNCTIONS */
 
 static inline void BUFFER     ( void );
-char               get        ( void );
 int                G_INT      ( void );
 char               G_CHAR     ( void );
 float              G_FLOAT    ( void );
