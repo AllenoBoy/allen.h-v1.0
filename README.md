@@ -264,7 +264,7 @@
 
 <br>
 
-### <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/blob/8ce1df192e8572219523609e3c8ad1b6eab0ef57/FUNCTIONS_DESCRIPTION/RESUME.md" title="Listagem Rápida de Funções."> Descrição Resumida </a> </p>
+### <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/blob/ec447a2c97275e5c0f8e664fdbf9ae5c9192e158/FUNCTIONS_DESCRIPTION/RESUME.md" title="Listagem Rápida de Funções."> Descrição Resumida </a> </p>
 
 <br>
 
