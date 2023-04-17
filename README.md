@@ -14,6 +14,7 @@
 ### 3. Essa biblioteca é de código aberto, ou seja, qualquer um pode usar ou melhorar-lá.
 ### 4. Me absento de qualquer coisa ruim feita usando essa biblioteca.
 ### 5. O compilador usado na biblioteca é o <a href="https://jmeubank.github.io/tdm-gcc/download/" title="Link para Donwload"> TDM-GCC </a>, o instale para evitar erros.
+### 6. Recomendo o uso de crtl + f para navegar pelas páginas.
 
 </p>
 
