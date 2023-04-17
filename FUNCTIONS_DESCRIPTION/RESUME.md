@@ -279,9 +279,52 @@
 
 ---
 
-<h1 align="center"> MATTE </h1>
+<h1 align="center"> <a href="https://github.com/AllenoBoy/allen.h/blob/main/FUNCTIONS_DESCRIPTION/LOCH.md" title="Funções simples do setlocale."> LOCH </a> </h1>
 
 <br>
+
+- TOTAL DE FUNÇÕES 20
+
+<br>
+
+### MATTE_cosseno  ` Cálcula o cosseno ` 
+### MATTE_cosemrad ` Cálcula o cosseno em radiano`
+### MATTE_coshiperbolico ` Cálcula o cosseno hiperbólico `
+### MATTE_seno ` Cálcula o seno `
+### MATTE_senoemrad ` Cálcula o seno em radiano `
+### MATTE_senohiperbolico ` Cálcula o seno hiperbólico `
+### MATTE_tangente ` Cálcula a tangente `
+### MATTE_tangenteemrad ` Cálcula a tangente em radiano `
+### MATTE_tangentehiperbolica ` Cálcula a tangente hiperbólica `
+### MATTE_arcotangente ` Cálcula o arcotangente `
+### MATTE_arredondarparamaior ` Arredonda um valor do tipo double fornecido para um número menor `
+### MATTE_arredondarparamenor ` Arredonda um valor do tipo double fornecido para um número maior `
+### MATTE_exp ` Cálculo do número de Euler `
+### MATTE_modulo ` Cálcula o módulo de um vetor `
+### MATTE_ldexp ` Cálcula um valor vezes um expoente elevado a exp `
+### MATTE_log ` Cálcula o logarítmo natural de um valor `
+### MATTE_log10 ` Cálcula o logarítmo na base 10 de um valor `
+### MATTE_soapartedecimal ` Pega só a parte decimal de um valor do tipo double `
+### MATTE_potencia ` Cálcula a potência de uma base e potência `
+### MATTE_raizquadrada ` Calcula a raiz quadrada de um valor `  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ---
 
