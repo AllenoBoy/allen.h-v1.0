@@ -360,7 +360,7 @@
 
 <br>
 
-## Variações genêricas: 
+## <p align="center"> Variações genêricas </p>
 
 ### FLEE_PUTS ` Printf para arquivos ` 
 ### FLEE_CREATEAFILE ` Cria um arquivo `
@@ -377,7 +377,7 @@
 
 <br>
 
-## Print e coleta de valores de forma simples: 
+## <p align="center"> Print e coleta de valores de forma simples </p> 
 
 ### FLEE_Sint ` Printa um valor do tipo inteiro substituindo todo o arquivo `
 ### FLEE_Lint ` Pega um valor do tipo inteiro em um arquivo sem qualquer padronização `
@@ -392,7 +392,7 @@
 
 <br>
 
-## Contagem: 
+## <p align="center"> Contagem </p> 
 
 ### FLEE_COUNTLINES ` Conta quantas linhas existem no arquivo ` 
 ### FLEE_COUNTWORDS ` Conta quantas palavras existem no arquivo `
@@ -403,9 +403,46 @@
 ### FLEE_COUNTchar ` Conta quantos caracteres específicos existem no arquivo `
 ### FLEE_COUNTstring ` Conta quantas strings específicas existem no arquivo ` 
 
+<br>
 
+## <p align="center"> Substituições </p>
 
+### FLEE_GLOBALSUBSint ` Substitui qualquer inteiro em todo o arquivo `
+### FLEE_LOCALSUBSint ` Substitui somente inteiros separados no arquivo `
+### FLEE_GLOBALSUBSintl ` Substitui qualquer inteiro em uma linha específica `
+### FLEE_LOCALSUBSintl ` Substitui somente inteiros separados em uma linha específica `
 
+<br>
+
+### FLEE_GLOBALSUBSfloat ` Substitui qualquer float em todo o arquivo `
+### FLEE_LOCALSUBSfloat ` Substitui somente floats separados no arquivo `
+### FLEE_GLOBALSUBSfloatl ` Substitui qualquer float em uma linha específica `
+### FLEE_LOCALSUBSfloatl ` Substitui somente floats separados em uma linha específica `
+
+<br>
+
+### FLEE_GLOBALSUBSdouble ` Substitui qualquer double em todo o arquivo `
+### FLEE_LOCALSUBSdouble ` Substitui somente doubles separados no arquivo `
+### FLEE_GLOBALSUBSdoublel ` Substitui qualquer double em uma linha específica `
+### FLEE_LOCALSUBSdoublel ` Substitui somente doubles separados em uma linha específica `
+
+<br>
+
+### FLEE_GLOBALSUBSdouble ` Substitui qualquer caractere em todo o arquivo `
+### FLEE_LOCALSUBSdouble ` Substitui somente caracteres separados no arquivo `
+### FLEE_GLOBALSUBSdoublel ` Substitui qualquer caracteres em uma linha específica `
+### FLEE_LOCALSUBSdoublel ` Substitui somente caractere separados em uma linha específica `
+
+<br>
+
+### FLEE_GLOBALSUBSstring ` Substitui qualquer string em todo o arquivo `
+### FLEE_LOCALSUBSstring ` Substitui somente strings separados no arquivo `
+### FLEE_GLOBALSUBSstringl ` Substitui qualquer string em uma linha específica `
+### FLEE_LOCALSUBSstringl ` Substitui somente strings separados em uma linha específica `
+
+<br>
+
+## <p align="center"> Escrita </p>
 
 
 
