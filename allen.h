@@ -249,7 +249,6 @@ void SYS_SETCOLOR          ( char TEXTCOLOR , char BACKGROUNDCOLOR );
 void SYS_SETTITLE          ( const char* TITLE );
 void SYS_PAUSE             ( int HIDE_ );
 void SYS_GCCVERSION        ( void );
-void SYS_READFILE          ( const char* TITLE );
 void SYS_RESTARTCOMPUTER   ( void );
 void SYS_SETFULLSCREEN     ( void );
 void SYS_POPS              ( const char* COMMAND );
