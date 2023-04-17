@@ -415,7 +415,6 @@ int    FLEE_COUNTLINES           ( const char * FILE_NAME );
 int    FLEE_COUNTWORDS           ( const char * FILE_NAME );
 int    FLEE_COUNTNUMBERS         ( const char * FILE_NAME );
 int    FLEE_COUNTint             ( const char * FILE_NAME , int VALUE );
-int    FLEE_COUNTLINES           ( const char * FILE_NAME );
 int    FLEE_COUNTWORDS           ( const char * FILE_NAME );
 int    FLEE_COUNTNUMBERS         ( const char * FILE_NAME );
 int    FLEE_COUNTint             ( const char * FILE_NAME , int VALUE );
