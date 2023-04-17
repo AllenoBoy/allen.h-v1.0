@@ -279,7 +279,7 @@
 
 ---
 
-<h1 align="center"> <a href="https://github.com/AllenoBoy/allen.h/blob/main/FUNCTIONS_DESCRIPTION/LOCH.md" title="Funções simples do setlocale."> LOCH </a> </h1>
+<h1 align="center"> <a href="https://github.com/AllenoBoy/allen.h/blob/main/FUNCTIONS_DESCRIPTION/MATTE.md" title="Funções de matemática."> MATTE </a> </h1>
 
 <br>
 
