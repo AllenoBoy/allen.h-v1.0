@@ -22,15 +22,15 @@
 # <p align="center"> SUMÁRIO </p>
 
 # <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/edit/main/FUNCTIONS_DESCRIPTION/RESUME.md#-pr-" title="Funções de Print"> PR </a>
-# <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/edit/main/FUNCTIONS_DESCRIPTION/RESUME.md#-pr-" title="Funções do Console"> CS </a>  
-# <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/edit/main/FUNCTIONS_DESCRIPTION/RESUME.md#-pr-" title="Funções do Sistema"> SYS </a>
-# <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/edit/main/FUNCTIONS_DESCRIPTION/RESUME.md#-pr-" title="Funções de Estilização"> PROPS </a>
-# <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/edit/main/FUNCTIONS_DESCRIPTION/RESUME.md#-pr-" title="Funções de Entrada"> G </a>
-# <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/edit/main/FUNCTIONS_DESCRIPTION/RESUME.md#-pr-" title="Funções aleatórias"> allen </a>
-# <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/edit/main/FUNCTIONS_DESCRIPTION/RESUME.md#-pr-" title="Funções de Caixas Simples"> SB </a>
-# <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/edit/main/FUNCTIONS_DESCRIPTION/RESUME.md#-pr-" title="Funções Matemáticas"> MATTE </a>
-# <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/edit/main/FUNCTIONS_DESCRIPTION/RESUME.md#-pr-" title="Funções do setlocale"> LOCH </a>
-# <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/edit/main/FUNCTIONS_DESCRIPTION/RESUME.md#-pr-" title="Funções de Arquivos"> FLEE </a>
+# <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/edit/main/FUNCTIONS_DESCRIPTION/RESUME.md#--cs-" title="Funções do Console"> CS </a>  
+# <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/edit/main/FUNCTIONS_DESCRIPTION/RESUME.md#--sys--" title="Funções do Sistema"> SYS </a>
+# <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/edit/main/FUNCTIONS_DESCRIPTION/RESUME.md#--props-" title="Funções de Estilização"> PROPS </a>
+# <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/edit/main/FUNCTIONS_DESCRIPTION/RESUME.md#--g--" title="Funções de Entrada"> G </a>
+# <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/edit/main/FUNCTIONS_DESCRIPTION/RESUME.md#--allen-" title="Funções aleatórias"> allen </a>
+# <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/edit/main/FUNCTIONS_DESCRIPTION/RESUME.md#--sb-" title="Funções de Caixas Simples"> SB </a>
+# <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/edit/main/FUNCTIONS_DESCRIPTION/RESUME.md#--matte-" title="Funções Matemáticas"> MATTE </a>
+# <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/edit/main/FUNCTIONS_DESCRIPTION/RESUME.md#--loch-" title="Funções do setlocale"> LOCH </a>
+# <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/edit/main/FUNCTIONS_DESCRIPTION/RESUME.md#-flee-" title="Funções de Arquivos"> FLEE </a>
 
 <br>
   
