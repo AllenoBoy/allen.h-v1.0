@@ -72,7 +72,7 @@
 
 - Como funciona um projeto no `Code::Blocks`, <a href="https://github.com/AllenoBoy/allen.h/blob/6f164c497b6ed59f92255fd358862ed081e81788/FUNCTIONS_DESCRIPTION/HELP_WITH_CODE_BLOCKS.md" title="Ajuda de como funciona um projeto"> veja aqui </a>;
 - A biblioteca possui suporte ao uso de `threads`, portanto é uma boa pesquisar sobre;
-- A biblioteca não funciona direto no dev c++, você precisa configurar as opções de compilação, ou mudar o compilador;
+- A biblioteca não irá funcionar direto no dev c++, você precisa configurar as opções de compilação, ou mudar o compilador para a nova versão, pois o padrão do dev c++ é o `TDM-GCC 4.92` e o necessário para rodar a biblioteca é o 10.3.0;
 - Qual é a diferença entre `float` e `double`? float é de formato 32 bits e double de 64 bits, ou seja, double possui um melhor arredondamento;
 - A biblioteca foi produzida durante o segundo semestre de ciências da computação, e levou em torno de 3 semanas para ser concluida, fora a documentação;
 - A biblioteca não está passível de bugs, caso ocorra reporte na aba issues, e leve em consideração que foi feita por uma só pessoa;
