@@ -9,6 +9,35 @@
 
 ---
 
+
+
+
+
+
+
+
+
+<br>
+
+# <p align="center"> SUMÁRIO </p>
+
+# <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/edit/main/FUNCTIONS_DESCRIPTION/RESUME.md#-pr-" title="Funções de Print"> PR </a>
+# <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/edit/main/FUNCTIONS_DESCRIPTION/RESUME.md#-pr-" title="Funções do Console"> CS </a>  
+# <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/edit/main/FUNCTIONS_DESCRIPTION/RESUME.md#-pr-" title="Funções do Sistema"> SYS </a>
+# <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/edit/main/FUNCTIONS_DESCRIPTION/RESUME.md#-pr-" title="Funções de Estilização"> PROPS </a>
+# <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/edit/main/FUNCTIONS_DESCRIPTION/RESUME.md#-pr-" title="Funções de Entrada"> G </a>
+# <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/edit/main/FUNCTIONS_DESCRIPTION/RESUME.md#-pr-" title="Funções aleatórias"> allen </a>
+# <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/edit/main/FUNCTIONS_DESCRIPTION/RESUME.md#-pr-" title="Funções de Caixas Simples"> SB </a>
+# <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/edit/main/FUNCTIONS_DESCRIPTION/RESUME.md#-pr-" title="Funções Matemáticas"> MATTE </a>
+# <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/edit/main/FUNCTIONS_DESCRIPTION/RESUME.md#-pr-" title="Funções do setlocale"> LOCH </a>
+# <p align="center"> <a href="https://github.com/AllenoBoy/allen.h/edit/main/FUNCTIONS_DESCRIPTION/RESUME.md#-pr-" title="Funções de Arquivos"> FLEE </a>
+
+<br>
+  
+---
+ 
+ 
+
 <br>
 
 <h1 align="center"> PR </h1>
