@@ -15,6 +15,10 @@
 
 <br>
 
+- TOTAL DE FUNÇÕES 25
+
+<br>
+
 ### PR  ` Escreve uma palavra no console `
 ### PRL    ` Printa uma quantidade específica de linhas `
 ### PRS    ` Printa uma quantidade específica de espaços `
@@ -43,9 +47,49 @@
 
 <br>
 
+
+
+
+
+
+
+
+
 ---
 
-<h1 align="center"> CS </h1>
+<h1 align="center"> <a href="https://github.com/AllenoBoy/allen.h/blob/main/FUNCTIONS_DESCRIPTION/CS.md" title="Funções de controle do console."> CS </a> </h1>
+
+<br>
+
+- TOTAL DE FUNÇÕES 18
+
+<br>
+
+### CS_SETREGION ` Define a região ( linguagem ) do console ` 
+### CS_SETTITLE ` Define o título do console ` 
+### CS_SETFULLSCREEN ` Deixa o console em tela cheia `
+### CS_DISABLEMAXIMIZEBUTTON ` Desativa o botão de maximizar do console `
+### CS_DISABLEMINIMIZEBUTTON ` Desativa o botão de minimizar do console `
+### CS_DISABLECLOSEBUTTON ` Desativa o botão de fechar do console `
+### CS_DISABLEALLBUTTONS ` Desativa todos os botões do console `
+### CS_DISABLERESIZE ` Desativa o resize do console `
+### CS_DISABLESCROLLBAR ` Desativa a barra de scroll do console `
+### CS_SETTEXTATTRIBUTE ` Define a variação do texto do console ( cor ) `
+### CS_SETPOSITION ` Desativa o botão de maximizar do console `
+### CS_SETSIZE ` Define o tamanho do console  `
+### CS_SETCURSORATTRIBUTES ` Define alguns atributos do cursor ( aquele negócio que fica piscando ) do console `
+### CS_GETCURSORPOSITION ` Pega a atual posição do cursor no console `
+### CS_SETCURSORPOSITION ` Define a posição do cursor no console `
+### CS_SETVISIBILITY ` Define a visibilidade do console `
+### NEWCONSOLE ` Destroi o console e cria um novo ( liberar memória ) `
+### CLOSECONSOLE ` Encerrar o programa `
+
+
+
+
+
+
+
 
 <br>
 
@@ -55,17 +99,60 @@
 
 <br>
 
+
+
+
+
+
+
+
+
+
+
+
+
 ---
 
 <h1 align="center"> PROPS </h1>
 
 <br>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ---
 
 <h1 align="center"> G </h1>
 
 <br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ---
 
