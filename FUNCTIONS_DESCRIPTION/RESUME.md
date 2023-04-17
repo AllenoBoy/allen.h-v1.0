@@ -10,7 +10,36 @@
 --- 
 
 
-<h1 align="center"> PR </h1>
+<h1 align="center"> <a href="https://github.com/AllenoBoy/allen.h/blob/main/FUNCTIONS_DESCRIPTION/PR.md" title="Funções de print formatado."> PR </a> </h1>
+
+
+<br>
+
+### PR ` Escreve uma palavra no console `
+### PRL ` Printa uma quantidade específica de linhas `
+### PRS ` Printa uma quantidade específica de espaços `
+### PR_INT ` Printa um valor do tipo inteiro ` 
+### PR_CHAR ` Printa um valor do tipo char ` 
+### PR_FLOAT ` Printa um valor do tipo float `  
+### PR_DOUBLE ` Printa um valor do tipo double `
+### PR_STRING ` Printa uma string formatado `
+### PRV_INT ` Printa um vetor de inteiros formatado ` 
+### PRV_FLOAT ` Printa um vetor de valores do tipo float formatado `
+### PRV_DOUBLE ` Printa um vetor de valores do tipo double de double formatado ` 
+### PRM_INT ` Printa uma matriz de inteiros formatada `
+### PRM_FLOAT ` Printa uma matriz de valores do tipo float formatada `
+### PRM_DOUBLE ` Printa uma matriz de valores do tipo double formatada  `
+### PRL_INT ` Printa uma lista / vetor de strings com auxílio de int `
+### PRL_FLOAT ` Printa uma lista / vetor de strings com auxílio de um valor do tipo float `
+### PRL_DOUBLE ` Printa uma lista / vetor de strings com auxílio de um valor do tipo double `
+### PR_intVETOR ` Printa um vetor de inteiros de forma simples `
+### PR_intMATRIZ ` Printa uma matriz de inteiros de forma simples `
+### PR_floatVETOR ` Printa um vetor de valores do tipo float de forma simples `
+### PR_floatMATRIZ ` Printa uma matriz de valores do tipo float de forma simples `
+### PR_doubleVETOR ` Printa um vetor de valores do tipo double de forma simples `
+### PR_doubleMATRIZ ` Printa uma matriz de valores do tipo double de forma simples `
+### PR_charVETOR ` Printa um vetor de caracteres de forma simples `
+### PR_charMATRIZ ` Printa uma matriz de caracteres de forma simples `
 
 <br>
 
