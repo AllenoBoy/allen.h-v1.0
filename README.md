@@ -75,7 +75,7 @@
 - A biblioteca foi produzida durante o segundo semestre de ciências da computação, e levou em torno de 3 semanas para ser concluida, fora a documentação;
 - A biblioteca não está passível de bugs, caso ocorra reporte na aba issues, e leve em consideração que foi feita por uma só pessoa;
 - Em relação a possíveis dúvidas que as documentações desse artigo tragam ou não solucionem, o `chat-gpt` tem capacidade de explicar : );
-- A biblioteca é de código aberto, ou seja, não possui direitos autorais ( como se alguém fosse licenciar uma simples biblioteca ) e qualquer um pode usar ou melhorar;
+- A biblioteca é de `código aberto`, ou seja, não possui direitos autorais ( como se alguém fosse licenciar uma simples biblioteca ) e qualquer um pode usar ou melhorar;
 - Inicialmente a biblioteca, nas atuais funções `SB` teriam outro nome -> `W`, onde basicamente serviriam para projetar seu próprio programa com interface gráfica, só não foram adicionadas pois perdi o interesse por causa do tempo;
 - A biblioteca só funciona no `Windows`, o uso recomendável é no Code::Blocks.
 
