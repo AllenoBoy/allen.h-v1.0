@@ -24,7 +24,7 @@
 <br>
 
 #### <p align="center"> <a href="https://pastebin.com/KAFTdxL4" title="Pastebin da biblioteca."> LINK PARA DOWNLOAD DA BIBLIOTECA </a> </p>
-#### <p align="center"> <a href="" title="Projetos usando a biblioteca."> Programas Finalizados </a> </p>
+#### <p align="center"> <a href="" title="Projetos usando a biblioteca."> PROGRAMAS FINALIZADOS </a> </p>
 
 <br>
 
