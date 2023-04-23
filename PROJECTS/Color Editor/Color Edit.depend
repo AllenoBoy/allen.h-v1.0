@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1682254760 source:c:\users\vanilma\documents\color edit\main.c
+	"allen.h"
+
+1682097254 c:\users\vanilma\documents\color edit\allen.h
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+	<errno.h>
+	<setjmp.h>
+	<assert.h>
+	<signal.h>
+	<locale.h>
+	<string.h>
+	<Windows.h>
+	<stdarg.h>
+	<commctrl.h>
+	<iso646.h>
+	<ctype.h>
+	<stdbool.h>
+	<conio.h>
+	<time.h>
+	<dirent.h>
+	<sys/stat.h>
+	<sys/types.h>
+	<pthread.h>
+	<limits.h>
+
+1682097966 source:c:\users\vanilma\documents\color edit\res.rc
+
