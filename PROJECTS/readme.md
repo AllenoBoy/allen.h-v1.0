@@ -1,3 +1,7 @@
-# O PROJETO ESTÁ DIVIDIDO EM EXECUTÁVEL E ARQUIVOS
+# Color Editor
 
-### OBSERVAÇÕES: O Projeto foi feito utilizando a biblioteca allen.h com o compilador TDM-GCC ou seja pode exibir erros na hora de compilar, mais para isso o executável também está disponibilizado!
+---
+
+## O projeto está disponibilizado com seu arquivo executável e o seu código base no link a seguir
+
+< https://mega.nz/folder/cNhgmLRB#ilHPYXe9oSGSlCx3L_wuNA >
