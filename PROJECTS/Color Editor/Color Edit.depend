@@ -1,8 +1,8 @@
 # depslib dependency file v1.0
-1682254760 source:c:\users\vanilma\documents\color edit\main.c
+1682319398 source:c:\users\vanilma\documents\color editor\main.c
 	"allen.h"
 
-1682097254 c:\users\vanilma\documents\color edit\allen.h
+1682310193 c:\users\vanilma\documents\color editor\allen.h
 	<stdio.h>
 	<stdlib.h>
 	<math.h>
@@ -26,5 +26,5 @@
 	<pthread.h>
 	<limits.h>
 
-1682097966 source:c:\users\vanilma\documents\color edit\res.rc
+1682097966 source:c:\users\vanilma\documents\color editor\res.rc
 

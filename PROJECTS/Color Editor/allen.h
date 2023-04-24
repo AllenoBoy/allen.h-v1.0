@@ -9449,7 +9449,7 @@ FLEE_WRITEintl ( const char * FILE_NAME , int VALUE , int WHAT_LINE )
 
     char STRING [ 99999 ];
 
-    sprintf ( STRING , "%d" , VALUE );
+    sprintf ( STRING , "%d " , VALUE );
 
     char buffer [ 99999 ];
     int  linhaAtual = 1;
