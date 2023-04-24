@@ -1,7 +1,9 @@
-# Color Editor
+# CÓDIGOS FONTES DOS PROGRAMAS FEITOS UTILIZANDO A BIBLIOTECA allen.h 
 
 ---
 
-## O projeto está disponibilizado com seu arquivo executável e o seu código base no link a seguir
+## COLOR EDITOR: FERRAMENTA DE RENDERIZAÇÃO DE CORES NO CONSOLE
 
 https://mega.nz/folder/cNhgmLRB#ilHPYXe9oSGSlCx3L_wuNA
+
+## FUTURAS...
