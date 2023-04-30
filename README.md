@@ -24,7 +24,7 @@
 <br>
 
 #### <p align="center"> <a href="https://pastebin.com/KAFTdxL4" title="Pastebin da biblioteca."> LINK PARA DOWNLOAD DA BIBLIOTECA </a> </p>
-#### <p align="center"> <a href="https://pastebin.com/KAFTdxL4" title="Projeto Finalizado"> Projeto finalizado: Color Editor </a> </p>
+#### <p align="center"> <a href="https://mega.nz/folder/cNhgmLRB#ilHPYXe9oSGSlCx3L_wuNA" title="Projeto Finalizado"> Projeto finalizado: Color Editor </a> </p>
 
 <br>
 
