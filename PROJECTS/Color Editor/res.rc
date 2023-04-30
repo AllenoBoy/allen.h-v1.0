@@ -1,9 +1,0 @@
-# ifndef _COLOR_EDIT_
-# define _COLOR_EDIT_
-
-// .EXE icon
-MAINICON ICON  "capt.ico"
-
-# endif // _COLOR_EDIT_
-
-
