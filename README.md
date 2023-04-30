@@ -24,6 +24,7 @@
 <br>
 
 #### <p align="center"> <a href="https://pastebin.com/KAFTdxL4" title="Pastebin da biblioteca."> LINK PARA DOWNLOAD DA BIBLIOTECA </a> </p>
+#### <p align="center"> <a href="https://pastebin.com/KAFTdxL4" title="Projeto Finalizado"> Exemplo de Projeto: Color Editor </a> </p>
 
 <br>
 
